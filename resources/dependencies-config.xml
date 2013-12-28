@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how 
+	to break up the configuration file into multiple files. -->
+<struts>
+
+	<package name="default" extends="struts-default"/>
+	
+	<package name="example" namespace="/university" extends="default">
+	
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<action name="HelloWorld" class="com.skmm.app.example.action.HelloWorld">
+			<result>/example/HelloWorld.jsp</result>
+		</action>
+		<action name="LoginAction" method="execute" class="loginClass">
+			<result name="input" type="tiles">login</result>
+			<result name="success" type="tiles">main</result>
+		</action>
+
+		<action name="logout" class="com.skmm.app.example.action.LogoutAction">
+			<result name="success" type="tiles">welcome</result>
+		</action>
+		<action name="RegistrationAction" method="doRegistration"
+			class="com.skmm.app.example.action.RegistrationAction">
+			<result name="input" type="tiles">registration</result>
+			<result name="error" type="tiles">login</result>
+			<result name="success" type="tiles">registrationSuccess</result>
+		</action>
+		
+		<action name="*WL" method="{1}"
+			class="com.skmm.app.example.action.ExampleSupport">
+			<result name="welcome" type="tiles">welcome</result>
+			<result name="login" type="tiles">login</result>
+			<result name="register" type="tiles">registration</result>
+		</action>
+
+		<!-- Add additional "example" package actions here. -->
+	</package>
+
+	<package name="adminActions" namespace="/admin" extends="default">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="createItem" class="com.skmm.app.example.action.ItemAction">
+			<result name="success">/admin/Success.jsp</result>
+			<result name="error" type="tiles">adminFailed</result>
+		</action>
+	</package>
+	
+</struts>

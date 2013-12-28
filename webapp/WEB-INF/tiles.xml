@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" template="/base/BaseLayout.jsp">
+		<put-attribute name="title" value="Student Portal" />
+		<put-attribute name="header" value="/base/Header.jsp" />
+		<put-attribute name="topMenu" value="/main/WelcomeTopMenu.jsp" />
+		<put-attribute name="sideBar" value="/base/SideBar.jsp" />
+		<put-attribute name="footer" value="/base/Footer.jsp" />
+	</definition>
+
+	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body" value="/example/Welcome.jsp" />
+	</definition>
+
+	<definition name="login" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="topMenu" value="/login/LoginTopMenu.jsp" />
+		<put-attribute name="body" value="/login/Login.jsp" />
+	</definition>
+
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="Main" />
+		<put-attribute name="topMenu" value="/main/LoginTopMenu.jsp" />
+		<put-attribute name="body" value="/main/Main.jsp" />
+	</definition>
+
+	<definition name="registration" extends="baseLayout">
+		<put-attribute name="title" value="Registration" />
+		<put-attribute name="topMenu" value="/main/MainTopMenu.jsp" />
+		<put-attribute name="body" value="/registration/Register.jsp" />
+	</definition>
+
+	<definition name="registrationSuccess" extends="registration">
+		<put-attribute name="body" value="/registration/RegisterSuccess.jsp" />
+	</definition>
+
+	<definition name="adminFailed" extends="baseLayout">
+		<put-attribute name="title" value="Try again" />
+		<put-attribute name="body" value="/admin/CreateItem.jsp" />
+	</definition>
+
+	<definition name="eventSlider" extends="baseLayout">
+		<put-attribute name="title" value="Admin" />
+		<put-attribute name="body" value="/admin/CreateItem.jsp" />
+	</definition>
+	
+</tiles-definitions>

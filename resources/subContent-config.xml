@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+  <constant name="struts.enable.SlashesInActionNames" value="true"/>
+  <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+  
+  <package name="subcontent" namespace="/content" extends="struts-default">
+  <result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+  </result-types>
+    
+	<!-- Content actions -->
+	<action name="Rector1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">rector.one</result>
+    </action>
+	<action name="Rector2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">rector.two</result>
+    </action>
+	<action name="Rector3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">rector.three</result>
+    </action>
+	
+	<action name="Documents1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.one</result>
+    </action>
+	<action name="Documents2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.two</result>
+    </action>
+	<action name="Documents3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.three</result>
+    </action>
+	<action name="Documents4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.four</result>
+    </action>
+	<action name="Documents5" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.five</result>
+    </action>
+	<action name="Documents6" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">documents.six</result>
+    </action>
+	
+	<action name="News1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">news.one</result>
+    </action>
+	<action name="News2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">news.two</result>
+    </action>
+	
+	<action name="ContinuingEducation1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.one</result>
+    </action>
+	<action name="ContinuingEducation2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.two</result>
+    </action>
+	<action name="ContinuingEducation3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.three</result>
+    </action>
+	
+	<action name="DepartmentsPhilosophy" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy</result>
+    </action>
+	<action name="DepartmentsPhilosophy1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.one</result>
+    </action>
+	<action name="DepartmentsPhilosophy2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.two</result>
+    </action>
+	<action name="DepartmentsPhilosophy3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.three</result>
+    </action>
+	<action name="DepartmentsPhilosophy4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.four</result>
+    </action>
+	
+		
+	<action name="DepartmentsPsychology" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology</result>
+    </action>
+	<action name="DepartmentsPsychology1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.one</result>
+    </action>
+	<action name="DepartmentsPsychology2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.two</result>
+    </action>
+	<action name="DepartmentsPsychology3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.three</result>
+    </action>
+	<action name="DepartmentsPsychology4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.four</result>
+    </action>
+	<action name="DepartmentsPsychology5" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.five</result>
+    </action>
+	
+		
+	<action name="DepartmentsChildren" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children</result>
+    </action>
+	<action name="DepartmentsChildren1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.one</result>
+    </action>
+	<action name="DepartmentsChildren2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.two</result>
+    </action>
+	<action name="DepartmentsChildren3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.three</result>
+    </action>
+	<action name="DepartmentsChildren4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.four</result>
+    </action>
+	
+	<action name="DepartmentsScience" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science</result>
+    </action>
+	<action name="DepartmentsScience1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.one</result>
+    </action>
+	<action name="DepartmentsScience2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.two</result>
+    </action>
+	<action name="DepartmentsScience3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.three</result>
+    </action>
+	<action name="DepartmentsScience4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.four</result>
+    </action>
+	
+	<action name="DepartmentsVocational" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational</result>
+    </action>
+	<action name="DepartmentsVocational1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.one</result>
+    </action>
+	<action name="DepartmentsVocational2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.two</result>
+    </action>
+	<action name="DepartmentsVocational3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.three</result>
+    </action>
+	<action name="DepartmentsVocational4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.four</result>
+    </action>
+	
+	<action name="DepartmentsHumanities" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities</result>
+    </action>
+	<action name="DepartmentsHumanities1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.one</result>
+    </action>
+	<action name="DepartmentsHumanities2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.two</result>
+    </action>
+	<action name="DepartmentsHumanities3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.three</result>
+    </action>
+	<action name="DepartmentsHumanities4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.four</result>
+    </action>
+	<action name="DepartmentsHumanities5" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.five</result>
+    </action>
+	<action name="DepartmentsHumanities6" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.six</result>
+    </action>
+	
+	<action name="DepartmentsPhilological" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological</result>
+    </action>
+	<action name="DepartmentsPhilological1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.one</result>
+    </action>
+	<action name="DepartmentsPhilological2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.two</result>
+    </action>
+	<action name="DepartmentsPhilological3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.three</result>
+    </action>
+	<action name="DepartmentsPhilological4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.four</result>
+    </action>
+	
+	
+	<action name="DepartmentsIT" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it</result>
+    </action>
+	<action name="DepartmentsIT1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.one</result>
+    </action>
+	<action name="DepartmentsIT2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.two</result>
+    </action>
+	<action name="DepartmentsIT3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.three</result>
+    </action>
+	<action name="DepartmentsIT4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.four</result>
+    </action>
+
+	<action name="DepartmentsSocioScientific" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific</result>
+    </action>
+	<action name="DepartmentsSocioScientific1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.one</result>
+    </action>
+	<action name="DepartmentsSocioScientific2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.two</result>
+    </action>
+	<action name="DepartmentsSocioScientific3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.three</result>
+    </action>
+	<action name="DepartmentsSocioScientific4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.four</result>
+    </action>
+	
+	<action name="DepartmentsCabinet" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet</result>
+    </action>
+	<action name="DepartmentsCabinet1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.one</result>
+    </action>
+	<action name="DepartmentsCabinet2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.two</result>
+    </action>
+	<action name="DepartmentsCabinet3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.three</result>
+    </action>
+	<action name="DepartmentsCabinet4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.four</result>
+    </action>
+	
+	<action name="CentersInformation" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information</result>
+    </action>
+	<action name="CentersInformation1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.one</result>
+    </action>
+	<action name="CentersInformation2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.two</result>
+    </action>
+	<action name="CentersInformation3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.three</result>
+    </action>
+	<action name="CentersInformation4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.four</result>
+    </action>
+	
+	<action name="CentersRegional" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional</result>
+    </action>
+	<action name="CentersRegional1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.one</result>
+    </action>
+	<action name="CentersRegional2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.two</result>
+    </action>
+	<action name="CentersRegional3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.three</result>
+    </action>
+	<action name="CentersRegional4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.four</result>
+    </action>
+	<action name="CentersRegional5" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.five</result>
+    </action>
+	
+	<action name="CentersEducationSystem" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem</result>
+    </action>
+	<action name="CentersEducationSystem1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.one</result>
+    </action>
+	<action name="CentersEducationSystem2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.two</result>
+    </action>
+	<action name="CentersEducationSystem3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.three</result>
+    </action>
+	<action name="CentersEducationSystem4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.four</result>
+    </action>
+	
+	<action name="CentersLibrary" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library</result>
+    </action>
+	<action name="CentersLibrary1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.one</result>
+    </action>
+	<action name="CentersLibrary2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.two</result>
+    </action>
+	<action name="CentersLibrary3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.three</result>
+    </action>
+	<action name="CentersLibrary4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.four</result>
+    </action>
+	<action name="CentersLibrary5" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.five</result>
+    </action>
+	<action name="CentersLibrary6" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.six</result>
+    </action>
+	<action name="CentersLibrary7" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.seven</result>
+    </action>
+	<action name="CentersLibrary8" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.eight</result>
+    </action>
+	
+	<action name="CentersAdministration" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration</result>
+    </action>
+	<action name="CentersAdministration1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.one</result>
+    </action>
+	<action name="CentersAdministration2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.two</result>
+    </action>
+	<action name="CentersAdministration3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.three</result>
+    </action>
+	<action name="CentersAdministration4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.four</result>
+    </action>
+	
+	<action name="DivisionsEscort" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort</result>
+    </action>	
+	<action name="DivisionsEscort1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.one</result>
+    </action>
+	<action name="DivisionsEscort2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.two</result>
+    </action>
+	<action name="DivisionsEscort3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.three</result>
+    </action>
+	<action name="DivisionsEscort4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.four</result>
+    </action>
+	
+		
+	<action name="DivisionsEditorial" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial</result>
+    </action>
+	<action name="DivisionsEditorial1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.one</result>
+    </action>
+	<action name="DivisionsEditorial2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.two</result>
+    </action>
+	<action name="DivisionsEditorial3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.three</result>
+    </action>
+	<action name="DivisionsEditorial4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.four</result>
+    </action>
+	
+		
+	<action name="DivisionsCustomerEvaluation" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation</result>
+    </action>
+	<action name="DivisionsCustomerEvaluation1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.one</result>
+    </action>
+	<action name="DivisionsCustomerEvaluation2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.two</result>
+    </action>
+	<action name="DivisionsCustomerEvaluation3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.three</result>
+    </action>
+	<action name="DivisionsCustomerEvaluation4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.four</result>
+    </action>
+	
+	<action name="DivisionsPostUniversity" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity</result>
+    </action>
+	<action name="DivisionsPostUniversity1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.one</result>
+    </action>
+	<action name="DivisionsPostUniversity2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.two</result>
+    </action>
+	<action name="DivisionsPostUniversity3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.three</result>
+    </action>
+	<action name="DivisionsPostUniversity4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.four</result>
+    </action>
+	
+	<action name="DivisionsTechSupport" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport</result>
+    </action>
+	<action name="DivisionsTechSupport1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.one</result>
+    </action>
+	<action name="DivisionsTechSupport2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.two</result>
+    </action>
+	<action name="DivisionsTechSupport3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.three</result>
+    </action>
+	<action name="DivisionsTechSupport4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.four</result>
+    </action>
+	
+	<action name="DivisionsLaw" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law</result>
+    </action>
+	<action name="DivisionsLaw1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.one</result>
+    </action>
+	<action name="DivisionsLaw2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.two</result>
+    </action>
+	<action name="DivisionsLaw3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.three</result>
+    </action>
+	<action name="DivisionsLaw4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.four</result>
+    </action>
+	
+	<action name="DivisionsOrganization" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization</result>
+    </action>
+	<action name="DivisionsOrganization1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.one</result>
+    </action>
+	<action name="DivisionsOrganization2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.two</result>
+    </action>
+	<action name="DivisionsOrganization3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.three</result>
+    </action>
+	<action name="DivisionsOrganization4" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.four</result>
+    </action>
+		
+	<action name="BranchOfficeNizhny" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.nizhny</result>
+    </action>
+	<action name="BranchOfficeKamyshlov" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.kamyshlov</result>
+    </action>
+	<action name="BranchOfficeKrasnoufimsk" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.krasnoufimsk</result>
+    </action>	
+	<action name="BranchOfficeSerov" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.serov</result>
+    </action>
+	
+	<action name="EducationalActivitiesDevelopment" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development</result>
+    </action>
+	
+	<action name="EducationalActivitiesDevelopment1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.one</result>
+    </action>
+	<action name="EducationalActivitiesDevelopment2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.two</result>
+    </action>
+	<action name="EducationalActivitiesDevelopment3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.three</result>
+    </action>
+	
+	
+	<action name="EducationalActivitiesRetraining" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining</result>
+    </action>	
+	<action name="EducationalActivitiesRetraining1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.one</result>
+    </action>
+	<action name="EducationalActivitiesRetraining2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.two</result>
+    </action>
+	<action name="EducationalActivitiesRetraining3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.three</result>
+    </action>
+	
+	<action name="EducationalActivitiesInternship" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship</result>
+    </action>
+	<action name="EducationalActivitiesInternship1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.one</result>
+    </action>
+	<action name="EducationalActivitiesInternship2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.two</result>
+    </action>
+	<action name="EducationalActivitiesInternship3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.three</result>
+    </action>
+	
+	<action name="EducationalActivitiesDistanceLearning" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning</result>
+    </action>
+	<action name="EducationalActivitiesDistanceLearning1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning.one</result>
+    </action>
+	<action name="EducationalActivitiesDistanceLearning2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning.two</result>
+    </action>
+	
+	<action name="EducationalActivitiesExtrabudgetary" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary</result>
+    </action>
+	<action name="EducationalActivitiesExtrabudgetary1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary.one</result>
+    </action>
+	<action name="EducationalActivitiesExtrabudgetary2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary.two</result>
+    </action>
+	
+	
+	<action name="EducationalActivitiesSeminar" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.seminar</result>
+    </action>
+	
+	<action name="ConferenceInternational" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">conference.international</result>
+    </action>
+	<action name="ConferenceRussia" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">conference.russia</result>
+    </action>
+	<action name="ConferenceRegional" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">conference.regional</result>
+    </action>
+	<action name="ConferenceOblastnyye" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">conference.oblastnyye</result>
+    </action>
+	
+	<action name="Contests/Staff" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">contests.staff</result>
+    </action>
+	<action name="ContestsOrganization" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">contests.organization</result>
+    </action>
+	<action name="ContestsLearner" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">contests.learner</result>
+    </action>
+	
+	<action name="OlympicsAllRussia" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">olympics.allRussia</result>
+    </action>
+	<action name="OlympicsSchool" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">olympics.school</result>
+    </action>
+	
+	<action name="Employees1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">employees.one</result>
+    </action>
+	<action name="Employees2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">employees.two</result>
+    </action>
+	<action name="Employees3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">employees.three</result>
+    </action>
+	
+	<action name="GraduatesJEG" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg</result>
+    </action>
+	<action name="GraduatesJEG1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.one</result>
+    </action>
+	<action name="GraduatesJEG2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.two</result>
+    </action>
+	<action name="GraduatesJEG3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.three</result>
+    </action>
+	
+	<action name="GraduatesEGE" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege</result>
+    </action>
+	<action name="GraduatesEGE1" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.one</result>
+    </action>
+	<action name="GraduatesEGE2" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.two</result>
+    </action>
+	<action name="GraduatesEGE3" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.three</result>
+    </action>
+	
+	
+	<action name="SverdlovskOptional" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.optional</result>
+    </action>
+	<action name="SverdlovskInstitutions" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.institutions</result>
+    </action>
+	<action name="SverdlovskChildren" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.children</result>
+    </action>
+	<action name="SverdlovskRuralSchool" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.ruralSchool</result>
+    </action>
+	<action name="SverdlovskModernEducation" class="com.skmm.app.example.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.modernEducation</result>
+    </action>
+	
+	
+  </package>
+</struts>
