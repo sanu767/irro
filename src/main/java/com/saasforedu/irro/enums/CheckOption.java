@@ -1,4 +1,4 @@
-package com.skmm.app.example.enums;
+package com.saasforedu.irro.enums;
 
 public enum CheckOption {
 

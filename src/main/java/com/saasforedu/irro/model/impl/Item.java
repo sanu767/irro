@@ -1,4 +1,4 @@
-package com.skmm.app.example.model;
+package com.saasforedu.irro.model.impl;
 
 import java.util.Date;
 
@@ -8,19 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.skmm.app.example.enums.CheckOption;
-import com.skmm.app.example.enums.EventType;
+import com.saasforedu.irro.model.IItem;
 
 @Entity
 @Table(name = "ITEM")
-public class Item {
+public class Item implements IItem {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "ITEM_ID")
-	String itemId;
+	Long itemId;
 
 	@Column(name = "ITEM_TYPE", length = 1)
 	String type;
@@ -35,10 +32,10 @@ public class Item {
 	Date endDate;
 
 	@Column(name = "SHORT_DESC")
-	String shortDescrption;
+	String shortDescription;
 
 	@Column(name = "LONG_DESC")
-	String longDescrption;
+	String longDescription;
 
 	@Column(name = "IS_SLIDER")
 	String sliderSelected;
@@ -49,7 +46,7 @@ public class Item {
 	@Column(name = "FILE_PATH")
 	String filePath;
 
-	public String getItemId() {
+	public Long getItemId() {
 		return itemId;
 	}
 
@@ -58,7 +55,7 @@ public class Item {
 	}
 
 	public void setType(String type) {
-		this.type = EventType.getTypeId(Integer.parseInt(type));
+		this.type = type;
 	}
 
 	public String getTitle() {
@@ -85,20 +82,20 @@ public class Item {
 		this.endDate = endDate;
 	}
 
-	public String getShortDescrption() {
-		return shortDescrption;
+	public String getShortDescription() {
+		return shortDescription;
 	}
 
-	public void setShortDescrption(String shortDescrption) {
-		this.shortDescrption = shortDescrption;
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
 	}
 
-	public String getLongDescrption() {
-		return longDescrption;
+	public String getLongDescription() {
+		return longDescription;
 	}
 
-	public void setLongDescrption(String longDescrption) {
-		this.longDescrption = longDescrption;
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
 	}
 
 	public String getSliderSelected() {
@@ -106,8 +103,7 @@ public class Item {
 	}
 
 	public void setSliderSelected(String sliderSelected) {
-		this.sliderSelected = StringUtils.isEmpty(sliderSelected) ? 
-				CheckOption.FALSE.getChecked() : CheckOption.TRUE.getChecked();
+		this.sliderSelected = sliderSelected;
 	}
 
 	public String getImage() {
@@ -130,8 +126,8 @@ public class Item {
 	public String toString() {
 		return "Item [itemId=" + itemId + ", type=" + type + ", title=" + title
 				+ ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", shortDescrption=" + shortDescrption + ", longDescrption="
-				+ longDescrption + ", sliderSelected=" + sliderSelected
+				+ ", shortDescription=" + shortDescription + ", longDescription="
+				+ longDescription + ", sliderSelected=" + sliderSelected
 				+ ", image=" + image + ", filePath=" + filePath + "]";
 	}
 

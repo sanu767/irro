@@ -1,4 +1,4 @@
-package com.skmm.app.example.enums;
+package com.saasforedu.irro.enums;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -17,7 +17,7 @@ public enum EventType {
 		return this.typeId;
 	}
 
-	public static String getTypeId(int id) {
+	public static String getTypeValue(int id) {
 		switch (id) {
 		case 1:
 			return NEWS.typeId;
@@ -27,5 +27,16 @@ public enum EventType {
 			return OTHERS.typeId;
 		}
 		return StringUtils.EMPTY;
+	}
+	
+	public static int getTypeId(String typeId) {
+		if(StringUtils.equals(EventType.NEWS.typeId, typeId)) {
+			return 1;
+		}
+		else if(StringUtils.equals(EventType.EVENTS.typeId, typeId)) {
+			return 2;
+		} else {
+			return 3;
+		}
 	}
 }
