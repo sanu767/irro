@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- 
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+  <constant name="struts.enable.SlashesInActionNames" value="true"/>
+  <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+  
+  <package name="subcontent" namespace="/content" extends="struts-default">
+  <result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+  </result-types>
+    
+	<!-- Content actions -->
+	<action name="RectorMediaReports" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">rector.mediaReports</result>
+    </action>
+	<action name="RectorPublications" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">rector.publications</result>
+    </action>
+	<action name="RectorPhotoGallery" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">rector.photoGallery</result>
+    </action>
+	
+	<action name="DocumentsLicense" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.license</result>
+    </action>
+	<action name="DocumentsConstituent" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.constituent</result>
+    </action>
+	<action name="DocumentsSupervisoryBoard" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.supervisoryBoard</result>
+    </action>
+	<action name="DocumentsPaidEducationalServices" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.paidEducationalServices</result>
+    </action>
+	<action name="DocumentsLaborLawRegulations" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.laborLawRegulations</result>
+    </action>
+	<action name="DocumentsControlMeasures" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents.controlMeasures</result>
+    </action>
+	
+	<action name="NewsAnnouncements" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">news.announcements</result>
+    </action>
+	<action name="NewsArchive" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">news.archive</result>
+    </action>
+	
+	<action name="ContinuingEducationActionPlan" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.actionPlan</result>
+    </action>
+	<action name="ContinuingEducationSupport" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.support</result>
+    </action>
+	<action name="ContinuingEducationNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation.news</result>
+    </action>
+	
+	<action name="DepartmentsPhilosophy" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy</result>
+    </action>
+	<action name="DepartmentsPhilosophyConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.constitution</result>
+    </action>
+	<action name="DepartmentsPhilosophyNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.news</result>
+    </action>
+	<action name="DepartmentsPhilosophyMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.materials</result>
+    </action>
+	<action name="DepartmentsPhilosophyContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philosophy.contacts</result>
+    </action>
+	
+		
+	<action name="DepartmentsPsychology" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology</result>
+    </action>
+	<action name="DepartmentsPsychologyConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.constitution</result>
+    </action>
+	<action name="DepartmentsPsychologyNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.news</result>
+    </action>
+	<action name="DepartmentsPsychologyMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.materials</result>
+    </action>
+	<action name="DepartmentsPsychologyContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.contacts</result>
+    </action>
+	<action name="DepartmentsPsychologyReviews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.psychology.reviews</result>
+    </action>
+	
+		
+	<action name="DepartmentsChildren" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children</result>
+    </action>
+	<action name="DepartmentsChildrenConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.constitution</result>
+    </action>
+	<action name="DepartmentsChildrenNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.news</result>
+    </action>
+	<action name="DepartmentsChildrenMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.materials</result>
+    </action>
+	<action name="DepartmentsChildrenContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.children.contacts</result>
+    </action>
+	
+	<action name="DepartmentsScience" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science</result>
+    </action>
+	<action name="DepartmentsScienceConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.constitution</result>
+    </action>
+	<action name="DepartmentsScienceNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.news</result>
+    </action>
+	<action name="DepartmentsScienceMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.materials</result>
+    </action>
+	<action name="DepartmentsScienceContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.science.contacts</result>
+    </action>
+	
+	<action name="DepartmentsVocational" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational</result>
+    </action>
+	<action name="DepartmentsVocationalConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.constitution</result>
+    </action>
+	<action name="DepartmentsVocationalNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.news</result>
+    </action>
+	<action name="DepartmentsVocationalMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.materials</result>
+    </action>
+	<action name="DepartmentsVocationalContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.contacts</result>
+    </action>
+    <action name="DepartmentsVocationalService" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.vocational.service</result>
+    </action>
+	
+	<action name="DepartmentsHumanities" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities</result>
+    </action>
+	<action name="DepartmentsHumanitiesNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.news</result>
+    </action>
+	<action name="DepartmentsHumanitiesEducationalActivities" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.educationalActivities</result>
+    </action>
+	<action name="DepartmentsHumanitiesReviews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.reviews</result>
+    </action>
+	<action name="DepartmentsHumanitiesMaterialsDepartment" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.materialsDepartment</result>
+    </action>
+	<action name="DepartmentsHumanitiesFaculties" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.faculties</result>
+    </action>
+	<action name="DepartmentsHumanitiesContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.humanities.contacts</result>
+    </action>
+	
+	<action name="DepartmentsPhilological" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological</result>
+    </action>
+	<action name="DepartmentsPhilologicalConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.constitution</result>
+    </action>
+	<action name="DepartmentsPhilologicalNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.news</result>
+    </action>
+	<action name="DepartmentsPhilologicalMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.materials</result>
+    </action>
+	<action name="DepartmentsPhilologicalContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.philological.contacts</result>
+    </action>
+	
+	
+	<action name="DepartmentsIT" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it</result>
+    </action>
+	<action name="DepartmentsITConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.constitution</result>
+    </action>
+	<action name="DepartmentsITNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.news</result>
+    </action>
+	<action name="DepartmentsITMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.materials</result>
+    </action>
+	<action name="DepartmentsITContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.it.contacts</result>
+    </action>
+
+	<action name="DepartmentsSocioScientific" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific</result>
+    </action>
+	<action name="DepartmentsSocioScientificConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.constitution</result>
+    </action>
+	<action name="DepartmentsSocioScientificNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.news</result>
+    </action>
+	<action name="DepartmentsSocioScientificMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.materials</result>
+    </action>
+	<action name="DepartmentsSocioScientificContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.socioScientific.contacts</result>
+    </action>
+	
+	<action name="DepartmentsCabinet" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet</result>
+    </action>
+	<action name="DepartmentsCabinetConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.constitution</result>
+    </action>
+	<action name="DepartmentsCabinetNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.news</result>
+    </action>
+	<action name="DepartmentsCabinetMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.materials</result>
+    </action>
+	<action name="DepartmentsCabinetContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments.cabinet.contacts</result>
+    </action>
+	
+	<action name="CentersInformation" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information</result>
+    </action>
+	<action name="CentersInformationConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.constitution</result>
+    </action>
+	<action name="CentersInformationNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.news</result>
+    </action>
+	<action name="CentersInformationMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.materials</result>
+    </action>
+	<action name="CentersInformationContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.information.contacts</result>
+    </action>
+	
+	<action name="CentersRegional" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional</result>
+    </action>
+	<action name="CentersRegionalConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.constitution</result>
+    </action>
+	<action name="CentersRegionalNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.news</result>
+    </action>
+	<action name="CentersRegionalMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.materials</result>
+    </action>
+	<action name="CentersRegionalContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.contacts</result>
+    </action>
+	<action name="CentersRegionalBasic" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.regional.basic</result>
+    </action>
+	
+	<action name="CentersEducationSystem" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem</result>
+    </action>
+	<action name="CentersEducationSystemConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.constitution</result>
+    </action>
+	<action name="CentersEducationSystemNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.news</result>
+    </action>
+	<action name="CentersEducationSystemMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.materials</result>
+    </action>
+	<action name="CentersEducationSystemContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.educationSystem.contacts</result>
+    </action>
+	
+	<action name="CentersLibrary" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library</result>
+    </action>
+	<action name="CentersLibraryShelter" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.shelter</result>
+    </action>
+	<action name="CentersLibraryBibliography" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.bibliography</result>
+    </action>
+	<action name="CentersLibraryPublications" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.publications</result>
+    </action>
+	<action name="CentersLibraryExhibitionCalendar" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.exhibitionCalendar</result>
+    </action>
+	<action name="CentersLibraryNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.news</result>
+    </action>
+	<action name="CentersLibraryUsefulLinks" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.usefulLinks</result>
+    </action>
+	<action name="CentersLibrarySeminars" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.seminars</result>
+    </action>
+	<action name="CentersLibraryEducationalPublishing" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.library.educationalPublishing</result>
+    </action>
+	
+	<action name="CentersAdministration" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration</result>
+    </action>
+	<action name="CentersAdministrationConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.constitution</result>
+    </action>
+	<action name="CentersAdministrationNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.news</result>
+    </action>
+	<action name="CentersAdministrationMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.materials</result>
+    </action>
+	<action name="CentersAdministrationContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers.administration.contacts</result>
+    </action>
+	
+	<action name="DivisionsEscort" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort</result>
+    </action>	
+	<action name="DivisionsEscortConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.constitution</result>
+    </action>
+	<action name="DivisionsEscortNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.news</result>
+    </action>
+	<action name="DivisionsEscortMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.materials</result>
+    </action>
+	<action name="DivisionsEscortContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.escort.contacts</result>
+    </action>
+	
+		
+	<action name="DivisionsEditorial" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial</result>
+    </action>
+	<action name="DivisionsEditorialConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.constitution</result>
+    </action>
+	<action name="DivisionsEditorialNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.news</result>
+    </action>
+	<action name="DivisionsEditorialMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.materials</result>
+    </action>
+	<action name="DivisionsEditorialContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.editorial.contacts</result>
+    </action>
+	
+		
+	<action name="DivisionsCustomerEvaluation" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation</result>
+    </action>
+	<action name="DivisionsCustomerEvaluationConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.constitution</result>
+    </action>
+	<action name="DivisionsCustomerEvaluationNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.news</result>
+    </action>
+	<action name="DivisionsCustomerEvaluationMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.materials</result>
+    </action>
+	<action name="DivisionsCustomerEvaluationContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.customerEvaluation.contacts</result>
+    </action>
+	
+	<action name="DivisionsPostUniversity" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity</result>
+    </action>
+	<action name="DivisionsPostUniversityConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.constitution</result>
+    </action>
+	<action name="DivisionsPostUniversityNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.news</result>
+    </action>
+	<action name="DivisionsPostUniversityMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.materials</result>
+    </action>
+	<action name="DivisionsPostUniversityContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.postUniversity.contacts</result>
+    </action>
+	
+	<action name="DivisionsTechSupport" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport</result>
+    </action>
+	<action name="DivisionsTechSupportConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.constitution</result>
+    </action>
+	<action name="DivisionsTechSupportNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.news</result>
+    </action>
+	<action name="DivisionsTechSupportMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.materials</result>
+    </action>
+	<action name="DivisionsTechSupportContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.techSupport.contacts</result>
+    </action>
+	
+	<action name="DivisionsLaw" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law</result>
+    </action>
+	<action name="DivisionsLawConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.constitution</result>
+    </action>
+	<action name="DivisionsLawNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.news</result>
+    </action>
+	<action name="DivisionsLawMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.materials</result>
+    </action>
+	<action name="DivisionsLawContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.law.contacts</result>
+    </action>
+	
+	<action name="DivisionsOrganization" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization</result>
+    </action>
+	<action name="DivisionsOrganizationConstitution" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.constitution</result>
+    </action>
+	<action name="DivisionsOrganizationNews" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.news</result>
+    </action>
+	<action name="DivisionsOrganizationMaterials" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.materials</result>
+    </action>
+	<action name="DivisionsOrganizationContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions.organization.contacts</result>
+    </action>
+		
+	<action name="BranchOfficeNizhny" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.nizhny</result>
+    </action>
+	<action name="BranchOfficeKamyshlov" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.kamyshlov</result>
+    </action>
+	<action name="BranchOfficeKrasnoufimsk" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.krasnoufimsk</result>
+    </action>	
+	<action name="BranchOfficeSerov" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice.serov</result>
+    </action>
+	
+	<action name="EducationalActivitiesDevelopment" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development</result>
+    </action>
+	
+	<action name="EducationalActivitiesDevelopmentYearlySchedule" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.yearlySchedule</result>
+    </action>
+	<action name="EducationalActivitiesDevelopmentMonthlyPlan" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.monthlyPlan</result>
+    </action>
+	<action name="EducationalActivitiesDevelopmentCatalog" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.development.catalog</result>
+    </action>
+	
+	
+	<action name="EducationalActivitiesRetraining" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining</result>
+    </action>	
+	<action name="EducationalActivitiesRetrainingYearlySchedule" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.yearlySchedule</result>
+    </action>
+	<action name="EducationalActivitiesRetrainingMonthlyPlan" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.monthlyPlan</result>
+    </action>
+	<action name="EducationalActivitiesRetrainingCatalog" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.retraining.catalog</result>
+    </action>
+	
+	<action name="EducationalActivitiesInternship" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship</result>
+    </action>
+	<action name="EducationalActivitiesInternshipYearlySchedule" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.yearlySchedule</result>
+    </action>
+	<action name="EducationalActivitiesInternshipMonthlyPlan" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.monthlyPlan</result>
+    </action>
+	<action name="EducationalActivitiesInternshipCatalog" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.internship.catalog</result>
+    </action>
+	
+	<action name="EducationalActivitiesDistanceLearning" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning</result>
+    </action>
+	<action name="EducationalActivitiesDistanceLearningContract" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning.contract</result>
+    </action>
+	<action name="EducationalActivitiesDistanceLearningCatalog" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.distanceLearning.catalog</result>
+    </action>
+	
+	<action name="EducationalActivitiesExtrabudgetary" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary</result>
+    </action>
+	<action name="EducationalActivitiesExtrabudgetaryContract" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary.contract</result>
+    </action>
+	<action name="EducationalActivitiesExtrabudgetaryCatalog" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.extrabudgetary.catalog</result>
+    </action>
+	
+	
+	<action name="EducationalActivitiesSeminar" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities.seminar</result>
+    </action>
+	
+	<action name="ConferenceInternational" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">conference.international</result>
+    </action>
+	<action name="ConferenceRussia" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">conference.russia</result>
+    </action>
+	<action name="ConferenceRegional" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">conference.regional</result>
+    </action>
+	<action name="ConferenceOblastnyye" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">conference.oblastnyye</result>
+    </action>
+	
+	<action name="ContestsStaff" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">contests.staff</result>
+    </action>
+	<action name="ContestsOrganization" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">contests.organization</result>
+    </action>
+	<action name="ContestsLearner" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">contests.learner</result>
+    </action>
+	
+	<action name="OlympicsAllRussia" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">olympics.allRussia</result>
+    </action>
+	<action name="OlympicsSchool" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">olympics.school</result>
+    </action>
+	
+	<action name="EmployeesRegulatoryDocument" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">employees.regulatoryDocument</result>
+    </action>
+	<action name="EmployeesInformation" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">employees.information</result>
+    </action>
+	<action name="EmployeesMaterial" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">employees.material</result>
+    </action>
+	
+	<action name="GraduatesJEG" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg</result>
+    </action>
+	<action name="GraduatesJEGRegulatoryDocument" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.regulatoryDocument</result>
+    </action>
+	<action name="GraduatesJEGStatistics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.statistics</result>
+    </action>
+	<action name="GraduatesJEGAnalytics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.jeg.analytics</result>
+    </action>
+	
+	<action name="GraduatesEGE" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege</result>
+    </action>
+	<action name="GraduatesEGERegulatoryDocument" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.regulatoryDocument</result>
+    </action>
+	<action name="GraduatesEGEStatistics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.statistics</result>
+    </action>
+	<action name="GraduatesEGEAnalytics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates.ege.analytics</result>
+    </action>
+	
+	
+	<action name="SverdlovskOptional" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.optional</result>
+    </action>
+	<action name="SverdlovskInstitutions" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.institutions</result>
+    </action>
+	<action name="SverdlovskChildren" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.children</result>
+    </action>
+	<action name="SverdlovskRuralSchool" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.ruralSchool</result>
+    </action>
+	<action name="SverdlovskModernEducation" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk.modernEducation</result>
+    </action>
+	
+	
+  </package>
+</struts>

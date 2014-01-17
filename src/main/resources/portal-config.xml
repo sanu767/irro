@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+  
+  <package name="default" extends="struts-default">
+	<result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+  </result-types>
+	<action name="welcomeIrro" class="com.saasforedu.irro.action.ExampleSupport">
+		<result name="success" type="tiles">welcome</result>
+	</action>
+	
+ </package>
+
+  <package name="welcomePage" namespace="/" extends="struts-default" >
+	<result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+  </result-types>
+	
+	<action name="welcomeIrro" class="com.saasforedu.irro.action.ExampleSupport" method="welcome">
+		<result name="success" type="tiles">welcome</result>
+	</action>
+
+
+  </package>
+
+  <package name="maincontent" namespace="/content" extends="struts-default">
+  	<result-types>
+            <result-type name="tiles"
+                class="org.apache.struts2.views.tiles.TilesResult" />
+  </result-types>
+  
+   	<!-- Content actions -->
+   	
+   	<action name="OnlineResources" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">onlineResources</result>
+    </action>
+    
+    <action name="Hotel" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">hotel</result>
+    </action>
+    
+    <action name="MainContacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">mainContacts</result>
+    </action>   	
+	
+	<action name="Institute" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">institute</result>
+    </action>
+	
+	<action name="Rector" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">rector</result>
+    </action>
+	<action name="Documents" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">documents</result>
+    </action>
+	<action name="History" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">history</result>
+    </action>
+	<action name="Logistics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">logistics</result>
+    </action>
+	<action name="Contacts" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">contacts</result>
+    </action>
+	
+	<action name="Jobs" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">jobs</result>
+    </action>
+	
+	<action name="Departments" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">departments</result>
+    </action>
+	
+	<action name="Centers" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">centers</result>
+    </action>
+	<action name="Divisions" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">divisions</result>
+    </action>
+	
+	<action name="BranchOffice" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">branchOffice</result>
+    </action>
+	
+	<action name="Activities" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">activities</result>
+    </action>
+	<action name="EducationalActivities" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">educationalActivities</result>
+    </action>
+	
+	<action name="Conference" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">conference</result>
+    </action>
+	
+	<action name="Contests" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">contests</result>
+    </action>
+	
+	<action name="Olympics" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">olympics</result>
+    </action>
+	
+	<action name="Certification" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">certification</result>
+    </action>
+	<action name="Employees" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">employees</result>
+    </action>
+	<action name="Graduates" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">graduates</result>
+    </action>
+	<action name="Projects" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">projects</result>
+    </action>
+	<action name="Sverdlovsk" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">sverdlovsk</result>
+    </action>
+	<action name="Basic" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">basic</result>
+    </action>
+	<action name="ContinuingEducation" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">continuingEducation</result>
+    </action>
+	<action name="News" class="com.saasforedu.irro.action.ExampleSupport">
+      <result name="success" type="tiles">news</result>
+    </action>
+  </package>    
+</struts>

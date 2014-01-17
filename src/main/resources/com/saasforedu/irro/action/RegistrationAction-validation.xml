@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE validators PUBLIC
+          "-//Apache Struts//XWork Validator 1.0.2//EN"
+          "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="user.code">
+    <field-validator type="requiredstring">
+      <message key="requiredstring"/>
+    </field-validator>
+  </field>
+  <field name="user.password">
+    <field-validator type="requiredstring">
+      <message key="requiredstring"/>
+    </field-validator>
+  </field>
+  <field name="user.emailID">
+  	<field-validator type="requiredstring" short-circuit="true">
+      <message key="requiredstring"/>
+    </field-validator>
+ 	<field-validator type="email" >
+          <!-- <param name="regexExpression">${emailPattern}</param> will be evaluated as: String getEmailPattern()
+          <param name="caseSensitiveExpression">${emailCaseSensitive}</param> will be evaluated as: boolean getEmailCaseSensitive()
+          <param name="trimExpression">${trimEmail}</param> will be evaluated as: boolean getTrimEmail()
+           --><message key="error.invalid.emailId"/>
+       </field-validator>     
+  </field>
+
+</validators>
