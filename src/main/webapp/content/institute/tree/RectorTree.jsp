@@ -4,7 +4,7 @@ window.onload = function () {
 	//Getting First Level children	
 	var selectedElem = document.getElementById('Institute');
 	selectedElem.className = "makeBold";
-		if(selectedElem !- null ) {
+		if(selectedElem != null ) {
 		var mychildren = selectedElem.children;	
 		if(mychildren != null && mychildren.length > 1) {
 			var newchildren = mychildren[1].children;
@@ -21,6 +21,17 @@ window.onload = function () {
 		   hideSiblings(sibs);
 		   parent = getParent(parent);
 		}
+	}
+
+
+	//highlight selected menu	
+	var selectedMenuElem = document.getElementById(document.title);
+		if(selectedMenuElem != null ) {
+		var achildren = selectedMenuElem.children;	
+		if(achildren != null && achildren.length > 0) {
+			var anewchildren = achildren[0];
+			anewchildren.style.color="black";	
+		}
 	}	
 };
 </script>
@@ -29,10 +40,6 @@ ul li {
     margin-left: 20px !important;
 }
 
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
 </style>
 </head>
 <body>

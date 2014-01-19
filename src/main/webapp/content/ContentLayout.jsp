@@ -52,6 +52,11 @@ height:100px;
 padding-top:5px;
 }
 
+ul li a {
+ font-family : "Calibri";
+ color : rgb(127,127,127);
+ text-decoration: none;
+}
 </style>
 </head>
 <body>
