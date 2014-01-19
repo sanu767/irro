@@ -30,7 +30,7 @@ window.onload = function () {
 		var achildren = selectedMenuElem.children;	
 		if(achildren != null && achildren.length > 0) {
 			var anewchildren = achildren[0];
-			anewchildren.style.color="black";	
+			anewchildren.style.fontWeight="bold";	
 		}
 	}	
 };
