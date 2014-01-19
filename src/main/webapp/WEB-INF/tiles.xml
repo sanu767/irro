@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+       
+ <tiles-definitions>
+ 	<definition name="baseLayout" template="/base/BaseLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="header" value="/base/Header.jsp"/>
+		<put-attribute name="search" value="/base/Search.jsp"/>
+		<put-attribute name="upperMenu" value="/base/UpperMenu.jsp"/>
+		<put-attribute name="mainMenu" value="/base/MainMenu.jsp"/>
+		<put-attribute name="slider" value="/welcome/Welcome.jsp"/>
+		<put-attribute name="footer" value="/base/Footer.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/welcome/NewsEvents.jsp"/>
+ 	</definition>
+
+ 	<definition name="login" extends="baseLayout">
+		<put-attribute name="title"  value="Login"/>
+		<put-attribute name="topMenu" value="/login/LoginTopMenu.jsp"/>
+		<put-attribute name="body" value="/login/Login.jsp"/>
+ 	</definition>
+
+ 	<definition name="main" extends="baseLayout">
+		<put-attribute name="title"  value="Main"/>
+		<put-attribute name="topMenu" value="/main/LoginTopMenu.jsp"/>
+		<put-attribute name="body" value="/main/Main.jsp"/>
+ 	</definition>
+
+ 	<definition name="registration" extends="baseLayout">
+		<put-attribute name="title"  value="Registration"/>
+		<put-attribute name="topMenu" value="/main/MainTopMenu.jsp"/>
+		<put-attribute name="body" value="/registration/Register.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="registrationSuccess" extends="registration">
+		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
+ 	</definition>
+ 	
+ 	<!--  Admin Actions -->
+ 	
+ 	<definition name="adminLayout" template="/admin/AdminLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+ 	</definition>
+	
+ 	<definition name="changeItem" extends="adminLayout">
+		<put-attribute name="title"  value="Change Item"/>
+		<put-attribute name="searchItem" value="/admin/SearchItem.jsp"/>
+		<put-attribute name="modifiableItem" value="/admin/CreateItem.jsp"/>
+ 	</definition>
+ 	
+ 	
+ 	<definition name="searchResults" extends="adminLayout">
+		<put-attribute name="title"  value="Searched Items"/>
+		<put-attribute name="searchItem" value="/admin/SearchItem.jsp"/>
+		<put-attribute name="modifiableItem" value="/admin/SearchResultItems.jsp"/>
+ 	</definition>
+	
+	
+	<!-- Content actions -->
+	
+	<definition name="contentLayout" template="/content/ContentLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="header" value="/base/Header.jsp"/>
+		<put-attribute name="search" value="/content/Search.jsp"/>
+		<put-attribute name="upperMenu" value="/content/UpperMenu.jsp"/>
+		<put-attribute name="mainMenu" value="/content/MainMenu.jsp"/>
+		<put-attribute name="slider" value="/content/Welcome.jsp"/>
+		<put-attribute name="footer" value="/content/Footer.jsp"/>
+ 	</definition>
+	
+	<definition name="onlineResources" extends="contentLayout">
+		<put-attribute name="title"  value="Institute"/>
+		<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+		<put-attribute name="content" value="/content/OnlineResources.jsp"/>
+	</definition>
+	
+	<definition name="hotel" extends="contentLayout">
+		<put-attribute name="title"  value="Institute"/>
+		<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+		<put-attribute name="content" value="/content/Hotel.jsp"/>
+	</definition>
+	
+	<definition name="mainContacts" extends="contentLayout">
+		<put-attribute name="title"  value="Institute"/>
+		<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+		<put-attribute name="content" value="/content/MainContacts.jsp"/>
+	</definition>
+	
+	<!-- Institute tiles -->
+	<definition name="institute" extends="contentLayout">
+		<put-attribute name="title"  value="Institute"/>
+		<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+		<put-attribute name="content" value="/content/institute/body/Institute.jsp"/>
+	</definition>
+		
+		<definition name="rector" extends="contentLayout">
+			<put-attribute name="title"  value="Rector"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Rector.jsp"/>
+		</definition>
+		<definition name="rector.mediaReports" extends="contentLayout">
+			<put-attribute name="title"  value="Rector MediaReports"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/RectorMediaReports.jsp"/>
+		</definition>
+		<definition name="rector.publications" extends="contentLayout">
+			<put-attribute name="title"  value="Rector Publications"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/RectorPublications.jsp"/>
+		</definition>
+		<definition name="rector.photoGallery" extends="contentLayout">
+			<put-attribute name="title"  value="Rector PhotoGallery"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/RectorPhotoGallery.jsp"/>
+		</definition>
+		
+		<definition name="documents" extends="contentLayout">
+			<put-attribute name="title"  value="Documents"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Documents.jsp"/>
+		</definition>
+		<definition name="documents.license" extends="contentLayout">
+			<put-attribute name="title"  value="Documents License"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsLicense.jsp"/>
+		</definition>
+		<definition name="documents.constituent" extends="contentLayout">
+			<put-attribute name="title"  value="Documents Constituent"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsConstituent.jsp"/>
+		</definition>
+		<definition name="documents.supervisoryBoard" extends="contentLayout">
+			<put-attribute name="title"  value="Documents SupervisoryBoard"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsSupervisoryBoard.jsp"/>
+		</definition>
+		<definition name="documents.paidEducationalServices" extends="contentLayout">
+			<put-attribute name="title"  value="Documents PaidEducationalServices"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsPaidEducationalServices.jsp"/>
+		</definition>
+		<definition name="documents.laborLawRegulations" extends="contentLayout">
+			<put-attribute name="title"  value="Documents"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsLaborLawRegulations.jsp"/>
+		</definition>
+		<definition name="documents.controlMeasures" extends="contentLayout">
+			<put-attribute name="title"  value="Documents"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DocumentsControlMeasures.jsp"/>
+		</definition>
+		
+		<definition name="history" extends="contentLayout">
+			<put-attribute name="title"  value="History"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/History.jsp"/>
+		</definition>
+		<definition name="logistics" extends="contentLayout">
+			<put-attribute name="title"  value="Logistics"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Logistics.jsp"/>
+		</definition>
+		<definition name="contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Contacts.jsp"/>
+		</definition>
+		<definition name="jobs" extends="contentLayout">
+			<put-attribute name="title"  value="Jobs"/>
+			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Jobs.jsp"/>
+		</definition>
+		
+		<definition name="departments" extends="contentLayout">
+			<put-attribute name="title"  value="Departments"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Departments.jsp"/>
+		</definition>
+		<definition name="departments.philosophy" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philosophy"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilosophy.jsp"/>
+		</definition>
+		<definition name="departments.philosophy.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philosophy Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilosophyConstitution.jsp"/>
+		</definition>
+		<definition name="departments.philosophy.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philosophy News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilosophyNews.jsp"/>
+		</definition>
+		<definition name="departments.philosophy.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philosophy Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilosophyMaterials.jsp"/>
+		</definition>
+		<definition name="departments.philosophy.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philosophy Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilosophyContacts.jsp"/>
+		</definition>
+		
+		
+		<definition name="departments.psychology" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychology.jsp"/>
+		</definition>
+		<definition name="departments.psychology.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychologyConstitution.jsp"/>
+		</definition>
+		<definition name="departments.psychology.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychologyNews.jsp"/>
+		</definition>
+		<definition name="departments.psychology.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychologyMaterials.jsp"/>
+		</definition>
+		<definition name="departments.psychology.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychologyContacts.jsp"/>
+		</definition>
+		<definition name="departments.psychology.reviews" extends="contentLayout">
+			<put-attribute name="title"  value="Department Psychology"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPsychologyReviews.jsp"/>
+		</definition>
+		
+		
+		<definition name="departments.children" extends="contentLayout">
+			<put-attribute name="title"  value="Department Children"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentChildren.jsp"/>
+		</definition>
+		<definition name="departments.children.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Children Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentChildrenConstitution.jsp"/>
+		</definition>
+		<definition name="departments.children.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Children News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentChildrenNews.jsp"/>
+		</definition>
+		<definition name="departments.children.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Children Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentChildrenMaterials.jsp"/>
+		</definition>
+		<definition name="departments.children.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Children Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentChildrenContacts.jsp"/>
+		</definition>
+		
+		<definition name="departments.science" extends="contentLayout">
+			<put-attribute name="title"  value="Department ScienceAndMath"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentScienceAndMath.jsp"/>
+		</definition>
+		<definition name="departments.science.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department ScienceAndMath Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentScienceAndMathConstitution.jsp"/>
+		</definition>
+		<definition name="departments.science.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department ScienceAndMath News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentScienceAndMathNews.jsp"/>
+		</definition>
+		<definition name="departments.science.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department ScienceAndMath Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentScienceAndMathMaterials.jsp"/>
+		</definition>
+		<definition name="departments.science.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department ScienceAndMath"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentScienceAndMathContacts.jsp"/>
+		</definition>
+		
+		<definition name="departments.vocational" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocational.jsp"/>
+		</definition>
+		<definition name="departments.vocational.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocationalConstitution.jsp"/>
+		</definition>
+		<definition name="departments.vocational.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocationalNews.jsp"/>
+		</definition>
+		<definition name="departments.vocational.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocationalMaterials.jsp"/>
+		</definition>
+		<definition name="departments.vocational.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocationalContacts.jsp"/>
+		</definition>
+		<definition name="departments.vocational.service" extends="contentLayout">
+			<put-attribute name="title"  value="Department Vocational Service"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentVocationalService.jsp"/>
+		</definition>
+		
+		<definition name="departments.humanities" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducation.jsp"/>
+		</definition>
+		<definition name="departments.humanities.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationNews.jsp"/>
+		</definition>
+		<definition name="departments.humanities.educationalActivities" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation EducationalActivities"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationEducationalActivities.jsp"/>
+		</definition>
+		<definition name="departments.humanities.reviews" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation Reviews"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationReviews.jsp"/>
+		</definition>
+		<definition name="departments.humanities.materialsDepartment" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation MaterialsDepartment"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationMaterialsDepartment.jsp"/>
+		</definition>
+		<definition name="departments.humanities.faculties" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation Faculties"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationFaculties.jsp"/>
+		</definition>
+		<definition name="departments.humanities.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department HumanitiesEducation Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentHumanitiesEducationContacts.jsp"/>
+		</definition>
+		
+		<definition name="departments.philological" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philological"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilological.jsp"/>
+		</definition>
+		<definition name="departments.philological.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philological Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilologicalConstitution.jsp"/>
+		</definition>
+		<definition name="departments.philological.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philological News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilologicalNews.jsp"/>
+		</definition>
+		<definition name="departments.philological.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philological Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilologicalMaterials.jsp"/>
+		</definition>
+		<definition name="departments.philological.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Philological Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentPhilologicalContacts.jsp"/>
+		</definition>
+		
+		<definition name="departments.it" extends="contentLayout">
+			<put-attribute name="title"  value="Department InformationTechnology"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentInformationTechnology.jsp"/>
+		</definition>
+		<definition name="departments.it.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department InformationTechnology Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentInformationTechnologyConstitution.jsp"/>
+		</definition>
+		<definition name="departments.it.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department InformationTechnology News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentInformationTechnologyNews.jsp"/>
+		</definition>
+		<definition name="departments.it.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department InformationTechnology Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentInformationTechnologyMaterials.jsp"/>
+		</definition>
+		<definition name="departments.it.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department InformationTechnology"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentInformationTechnologyContacts.jsp"/>
+		</definition>
+		
+		<definition name="departments.socioScientific" extends="contentLayout">
+			<put-attribute name="title"  value="Department SocioScientific"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentSocioScientific.jsp"/>
+		</definition>
+		<definition name="departments.socioScientific.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department SocioScientific Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentSocioScientificConstitution.jsp"/>
+		</definition>
+		<definition name="departments.socioScientific.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department SocioScientific News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentSocioScientificNews.jsp"/>
+		</definition>
+		<definition name="departments.socioScientific.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department SocioScientific"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentSocioScientificMaterials.jsp"/>
+		</definition>
+		<definition name="departments.socioScientific.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department SocioScientific"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentSocioScientificContacts.jsp"/>
+		</definition>
+		
+		
+		<definition name="departments.cabinet" extends="contentLayout">
+			<put-attribute name="title"  value="Department Cabinet"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentCabinet.jsp"/>
+		</definition>
+		<definition name="departments.cabinet.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Department Cabinet Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentCabinetConstitution.jsp"/>
+		</definition>
+		<definition name="departments.cabinet.news" extends="contentLayout">
+			<put-attribute name="title"  value="Department Cabinet News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentCabinetNews.jsp"/>
+		</definition>
+		<definition name="departments.cabinet.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Department Cabinet Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentCabinetMaterials.jsp"/>
+		</definition>
+		<definition name="departments.cabinet.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Department Cabinet Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DepartmentTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DepartmentCabinetContacts.jsp"/>
+		</definition>
+		
+		<definition name="centers" extends="contentLayout">
+			<put-attribute name="title"  value="Centers"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Centers.jsp"/>
+		</definition>
+		<definition name="centers.information" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Information"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersInformation.jsp"/>
+		</definition>
+		<definition name="centers.information.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Information Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersInformationConstitution.jsp"/>
+		</definition>
+		<definition name="centers.information.news" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Information News"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersInformation2.jsp"/>
+		</definition>
+		<definition name="centers.information.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Information Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersInformationMaterials.jsp"/>
+		</definition>
+		<definition name="centers.information.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Information Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersInformationContacts.jsp"/>
+		</definition>
+		
+		<definition name="centers.regional" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegional.jsp"/>
+		</definition>
+		<definition name="centers.regional.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegionalConstitution.jsp"/>
+		</definition>
+		<definition name="centers.regional.news" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional News"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegionalNews.jsp"/>
+		</definition>
+		<definition name="centers.regional.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegionalMaterials.jsp"/>
+		</definition>
+		<definition name="centers.regional.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegionalContacts.jsp"/>
+		</definition>
+		<definition name="centers.regional.basic" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Regional"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersRegionalBasic.jsp"/>
+		</definition>
+		
+		<definition name="centers.educationSystem" extends="contentLayout">
+			<put-attribute name="title"  value="Centers EducationSystem"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersEducationSystem.jsp"/>
+		</definition>
+		<definition name="centers.educationSystem.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Centers EducationSystem Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersEducationSystemConstitution.jsp"/>
+		</definition>
+		<definition name="centers.educationSystem.news" extends="contentLayout">
+			<put-attribute name="title"  value="Centers EducationSystem News"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersEducationSystemNews.jsp"/>
+		</definition>
+		<definition name="centers.educationSystem.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Centers EducationSystem Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersEducationSystemMaterials.jsp"/>
+		</definition>
+		<definition name="centers.educationSystem.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Centers EducationSystem Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersEducationSystemContacts.jsp"/>
+		</definition>
+		
+		<definition name="centers.library" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibrary.jsp"/>
+		</definition>
+		<definition name="centers.library.shelter" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library Shelter"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryShelter.jsp"/>
+		</definition>
+		<definition name="centers.library.bibliography" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library Bibliography"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryBibliography.jsp"/>
+		</definition>
+		<definition name="centers.library.publications" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library Publications"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryPublications.jsp"/>
+		</definition>
+		<definition name="centers.library.exhibitionCalendar" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library ExhibitionCalendar"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryExhibitionCalendar.jsp"/>
+		</definition>
+		<definition name="centers.library.news" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library News"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryNews.jsp"/>
+		</definition>
+		<definition name="centers.library.usefulLinks" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library UsefulLinks"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryUsefulLinks.jsp"/>
+		</definition>
+		<definition name="centers.library.seminars" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library Seminars"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibrarySeminars.jsp"/>
+		</definition>
+		<definition name="centers.library.educationalPublishing" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Library EducationalPublishing"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersLibraryEducationalPublishing.jsp"/>
+		</definition>
+		<definition name="centers.administration" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Administration"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersAdministration.jsp"/>
+		</definition>
+		<definition name="centers.administration.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Administration Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersAdministrationConstitution.jsp"/>
+		</definition>
+		<definition name="centers.administration.news" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Administration News"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersAdministrationNews.jsp"/>
+		</definition>
+		<definition name="centers.administration.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Administration Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersAdministrationMaterials.jsp"/>
+		</definition>
+		<definition name="centers.administration.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Centers Administration"/>
+			<put-attribute name="tree" value="/content/institute/tree/CentersTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/CentersAdministrationContacts.jsp"/>
+		</definition>
+		
+		<definition name="divisions" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/Divisions.jsp"/>
+		</definition>
+		<definition name="divisions.escort" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Escort"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEscort.jsp"/>
+		</definition>
+		<definition name="divisions.escort.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Escort Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEscortConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.escort.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Escort News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEscortNews.jsp"/>
+		</definition>
+		<definition name="divisions.escort.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Escort Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEscort3.jsp"/>
+		</definition>
+		<definition name="divisions.escort.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Escort Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEscort4.jsp"/>
+		</definition>
+		
+		<definition name="divisions.editorial" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Editorial"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEditorial.jsp"/>
+		</definition>
+		<definition name="divisions.editorial.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Editorial Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEditorialConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.editorial.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Editorial Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEditorialMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.editorial.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Editorial News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEditorialNews.jsp"/>
+		</definition>
+		<definition name="divisions.editorial.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Editorial Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsEditorialContacts.jsp"/>
+		</definition>
+		
+		
+		<definition name="divisions.customerEvaluation" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions CustomerSupport"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsCustomerSupport.jsp"/>
+		</definition>
+		<definition name="divisions.customerEvaluation.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions CustomerSupport Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsCustomerSupportConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.customerEvaluation.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions CustomerSupport News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsCustomerSupportNews.jsp"/>
+		</definition>
+		<definition name="divisions.customerEvaluation.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions CustomerSupport Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsCustomerSupportMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.customerEvaluation.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions CustomerSupport Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsCustomerSupportContacts.jsp"/>
+		</definition>
+		
+		<definition name="divisions.postUniversity" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions PostUniversity"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsPostUniversity.jsp"/>
+		</definition>
+		<definition name="divisions.postUniversity.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions PostUniversity Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsPostUniversityConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.postUniversity.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions PostUniversity News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsPostUniversityNews.jsp"/>
+		</definition>
+		<definition name="divisions.postUniversity.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions PostUniversity Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsPostUniversityMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.postUniversity.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions PostUniversity Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsPostUniversityContacts.jsp"/>
+		</definition>
+		
+		<definition name="divisions.techSupport" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions TechSupport"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsTechSupport.jsp"/>
+		</definition>
+		<definition name="divisions.techSupport.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions TechSupport Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsTechSupportConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.techSupport.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions TechSupport News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsTechSupportNews.jsp"/>
+		</definition>
+		<definition name="divisions.techSupport.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions TechSupport"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsTechSupportMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.techSupport.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions TechSupport Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsTechSupportContacts.jsp"/>
+		</definition>
+		
+		<definition name="divisions.law" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Law"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsLaw.jsp"/>
+		</definition>
+		<definition name="divisions.law.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Law Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsLawConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.law.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Law News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsLaw2.jsp"/>
+		</definition>
+		<definition name="divisions.law.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Law Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsLawMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.law.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Law Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsLawContacts.jsp"/>
+		</definition>
+		
+		<definition name="divisions.organization" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Organization"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsOrganization.jsp"/>
+		</definition>
+		<definition name="divisions.organization.constitution" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Organization Constitution"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsOrganizationConstitution.jsp"/>
+		</definition>
+		<definition name="divisions.organization.news" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Organization News"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsOrganizationNews.jsp"/>
+		</definition>
+		<definition name="divisions.organization.materials" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Organization Materials"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsOrganizationMaterials.jsp"/>
+		</definition>
+		<definition name="divisions.organization.contacts" extends="contentLayout">
+			<put-attribute name="title"  value="Divisions Organization Contacts"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/DivisionsOrganizationContacts.jsp"/>
+		</definition>
+		
+		
+		<definition name="branchOffice" extends="contentLayout">
+			<put-attribute name="title"  value="BranchOffice"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/BranchOffice.jsp"/>
+		</definition>
+		<definition name="branchOffice.nizhny" extends="contentLayout">
+			<put-attribute name="title"  value="Branch Nizhny"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/BranchNizhny.jsp"/>
+		</definition>
+		<definition name="branchOffice.kamyshlov" extends="contentLayout">
+			<put-attribute name="title"  value="Branch Kamyshlov"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/BranchKamyshlov.jsp"/>
+		</definition>
+		<definition name="branchOffice.krasnoufimsk" extends="contentLayout">
+			<put-attribute name="title"  value="Branch Krasnoufimsk"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/BranchKrasnoufimsk.jsp"/>
+		</definition>
+		<definition name="branchOffice.serov" extends="contentLayout">
+			<put-attribute name="title"  value="Branch Serov"/>
+			<put-attribute name="tree" value="/content/institute/tree/DivisionsTree.jsp"/>
+			<put-attribute name="content" value="/content/institute/body/BranchSerov.jsp"/>
+		</definition>
+		
+	<definition name="activities" extends="contentLayout">
+		<put-attribute name="title"  value="Activities"/>
+		<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+		<put-attribute name="content" value="/content/activities/body/Activities.jsp"/>
+	</definition>
+	
+	<definition name="educationalActivities" extends="contentLayout">
+		<put-attribute name="title"  value="EducationalActivities"/>
+		<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+		<put-attribute name="content" value="/content/activities/body/EducationalActivities.jsp"/>
+	</definition>
+		<definition name="educationalActivities.development" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivitiesDevelopment"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDevelopment.jsp"/>
+		</definition>
+		
+		<definition name="educationalActivities.development.yearlySchedule" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Development Yearly Schedule"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDevelopmentYearlySchedule.jsp"/>
+		</definition>
+		<definition name="educationalActivities.development.monthlyPlan" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Development Monthly Plan"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDevelopmentMonthlyPlan.jsp"/>
+		</definition>
+		<definition name="educationalActivities.development.catalog" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Development Catalog"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDevelopmentCatalog.jsp"/>
+		</definition>
+		
+		<definition name="educationalActivities.retraining" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Retraining"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesRetraining.jsp"/>
+		</definition>
+		<definition name="educationalActivities.retraining.yearlySchedule" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Retraining Yearly Schedule"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesRetrainingYearlySchedule.jsp"/>
+		</definition>
+		<definition name="educationalActivities.retraining.monthlyPlan" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Retraining Monthly Plan"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesRetrainingMonthlyPlan.jsp"/>
+		</definition>
+		<definition name="educationalActivities.retraining.catalog" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Retraining Catalog"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesRetrainingCatalog.jsp"/>
+		</definition>
+		
+		
+		<definition name="educationalActivities.internship" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Internship"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesInternship.jsp"/>
+		</definition>
+		<definition name="educationalActivities.internship.yearlySchedule" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Internship YearlySchedule"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesInternshipYearlySchedule.jsp"/>
+		</definition>
+		<definition name="educationalActivities.internship.monthlyPlan" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Internship MonthlyPlan"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesInternshipMonthlyPlan.jsp"/>
+		</definition>
+		<definition name="educationalActivities.internship.catalog" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Internship Catalog"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesInternshipCatalog.jsp"/>
+		</definition>
+		
+		
+		<definition name="educationalActivities.distanceLearning" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities DistanceLearning"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDistanceLearning.jsp"/>
+		</definition>
+		<definition name="educationalActivities.distanceLearning.contract" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities DistanceLearning Contract"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDistanceLearningContract.jsp"/>
+		</definition>
+		<definition name="educationalActivities.distanceLearning.catalog" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities DistanceLearning Catalog"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesDistanceLearningCatalog.jsp"/>
+		</definition>
+		
+		
+		<definition name="educationalActivities.extrabudgetary" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Extrabudgetary"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesExtrabudgetary.jsp"/>
+		</definition>
+		<definition name="educationalActivities.extrabudgetary.contract" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Extrabudgetary Contract"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesExtrabudgetaryContract.jsp"/>
+		</definition>
+		<definition name="educationalActivities.extrabudgetary.catalog" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Extrabudgetary Catalog"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesExtrabudgetaryCatalog.jsp"/>
+		</definition>
+		
+		
+		<definition name="educationalActivities.seminar" extends="contentLayout">
+			<put-attribute name="title"  value="EducationalActivities Seminar"/>
+			<put-attribute name="tree" value="/content/activities/tree/EducationalActivitiesTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/EducationalActivitiesSeminar.jsp"/>
+		</definition>
+		
+	<definition name="conference" extends="contentLayout">
+		<put-attribute name="title"  value="Conference"/>
+		<put-attribute name="tree" value="/content/activities/tree/ConferenceTree.jsp"/>
+		<put-attribute name="content" value="/content/activities/body/Conference.jsp"/>
+	</definition>
+	
+		<definition name="conference.international" extends="contentLayout">
+			<put-attribute name="title"  value="Conference International"/>
+			<put-attribute name="tree" value="/content/activities/tree/ConferenceTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ConferenceInternational.jsp"/>
+		</definition>
+		<definition name="conference.russia" extends="contentLayout">
+			<put-attribute name="title"  value="Conference Russia"/>
+			<put-attribute name="tree" value="/content/activities/tree/ConferenceTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ConferenceRussia.jsp"/>
+		</definition>
+		<definition name="conference.regional" extends="contentLayout">
+			<put-attribute name="title"  value="Conference Regional"/>
+			<put-attribute name="tree" value="/content/activities/tree/ConferenceTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ConferenceRegional.jsp"/>
+		</definition>
+		<definition name="conference.oblastnyye" extends="contentLayout">
+			<put-attribute name="title"  value="Conference Oblastnyye"/>
+			<put-attribute name="tree" value="/content/activities/tree/ConferenceTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ConferenceOblastnyye.jsp"/>
+		</definition>
+		
+	<definition name="contests" extends="contentLayout">
+		<put-attribute name="title"  value="Contests"/>
+		<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+		<put-attribute name="content" value="/content/activities/body/Contests.jsp"/>
+	</definition>
+	
+		<definition name="contests.staff" extends="contentLayout">
+			<put-attribute name="title"  value="Contests Staff"/>
+			<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ContestsStaff.jsp"/>
+		</definition>
+		<definition name="contests.organization" extends="contentLayout">
+			<put-attribute name="title"  value="Contests Organization"/>
+			<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ContestsOrganization.jsp"/>
+		</definition>
+		<definition name="contests.learner" extends="contentLayout">
+			<put-attribute name="title"  value="Contests Learner"/>
+			<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/ContestsLearner.jsp"/>
+		</definition>
+	
+	<definition name="olympics" extends="contentLayout">
+		<put-attribute name="title"  value="Olympics"/>
+		<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+		<put-attribute name="content" value="/content/activities/body/Olympics.jsp"/>
+	</definition>
+	
+		<definition name="olympics.allRussia" extends="contentLayout">
+			<put-attribute name="title"  value="Olympics All Russia"/>
+			<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/OlympicsAllRussia.jsp"/>
+		</definition>
+		<definition name="olympics.school" extends="contentLayout">
+			<put-attribute name="title"  value="Olympics School"/>
+			<put-attribute name="tree" value="/content/activities/tree/ContestsOlympicsTree.jsp"/>
+			<put-attribute name="content" value="/content/activities/body/OlympicsSchool.jsp"/>
+		</definition>
+	
+	<definition name="certification" extends="contentLayout">
+		<put-attribute name="title"  value="Certification"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/Certification.jsp"/>
+	</definition>
+	
+	<definition name="employees" extends="contentLayout">
+		<put-attribute name="title"  value="Employees"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/Employees.jsp"/>
+	</definition>
+	<definition name="employees.regulatoryDocument" extends="contentLayout">
+		<put-attribute name="title"  value="Employees Regulatory Document"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/EmployeesRegulatoryDocument.jsp"/>
+	</definition>
+	<definition name="employees.information" extends="contentLayout">
+		<put-attribute name="title"  value="Employees Information"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/EmployeesInformation.jsp"/>
+	</definition>
+	<definition name="employees.material" extends="contentLayout">
+		<put-attribute name="title"  value="Employees Material"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/EmployeesMaterial.jsp"/>
+	</definition>
+		
+	<definition name="graduates" extends="contentLayout">
+		<put-attribute name="title"  value="Graduates"/>
+		<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+		<put-attribute name="content" value="/content/certification/body/Graduates.jsp"/>
+	</definition>
+	
+		<definition name="graduates.jeg" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates JEG"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesJEG.jsp"/>
+		</definition>
+		<definition name="graduates.jeg.regulatoryDocument" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates JEG RegulatoryDocument"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesJEGRegulatoryDocument.jsp"/>
+		</definition>
+		<definition name="graduates.jeg.statistics" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates JEG Statistics"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesJEGStatistics.jsp"/>
+		</definition>
+		<definition name="graduates.jeg.analytics" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates JEG Analytics"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesJEGAnalytics.jsp"/>
+		</definition>
+		
+		<definition name="graduates.ege" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates EGE"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesEGE.jsp"/>
+		</definition>
+		<definition name="graduates.ege.regulatoryDocument" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates EGE RegulatoryDocument"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesEGERegulatoryDocument.jsp"/>
+		</definition>
+		<definition name="graduates.ege.statistics" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates EGE Statistics"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesEGEStatistics.jsp"/>
+		</definition>
+		<definition name="graduates.ege.analytics" extends="contentLayout">
+			<put-attribute name="title"  value="Graduates EGE Analytics"/>
+			<put-attribute name="tree" value="/content/certification/tree/CertificationTree.jsp"/>
+			<put-attribute name="content" value="/content/certification/body/GraduatesEGEAnalytics.jsp"/>
+		</definition>
+	
+	
+	<definition name="projects" extends="contentLayout">
+		<put-attribute name="title"  value="Projects"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/Projects.jsp"/>
+	</definition>
+	
+	<definition name="sverdlovsk" extends="contentLayout">
+		<put-attribute name="title"  value="Sverdlovsk"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/Sverdlovsk.jsp"/>
+	</definition>
+	
+		<definition name="sverdlovsk.optional" extends="contentLayout">
+			<put-attribute name="title"  value="Sverdlovsk Optional"/>
+			<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+			<put-attribute name="content" value="/content/projects/body/SverdlovskOptional.jsp"/>
+		</definition>
+		<definition name="sverdlovsk.institutions" extends="contentLayout">
+			<put-attribute name="title"  value="Sverdlovsk Institutions"/>
+			<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+			<put-attribute name="content" value="/content/projects/body/SverdlovskInstitutions.jsp"/>
+		</definition>
+		<definition name="sverdlovsk.children" extends="contentLayout">
+			<put-attribute name="title"  value="Sverdlovsk Children"/>
+			<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+			<put-attribute name="content" value="/content/projects/body/SverdlovskChildren.jsp"/>
+		</definition>
+		<definition name="sverdlovsk.ruralSchool" extends="contentLayout">
+			<put-attribute name="title"  value="Sverdlovsk RuralSchool"/>
+			<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+			<put-attribute name="content" value="/content/projects/body/SverdlovskRuralSchool.jsp"/>
+		</definition>
+		<definition name="sverdlovsk.modernEducation" extends="contentLayout">
+			<put-attribute name="title"  value="Sverdlovsk ModernEducation"/>
+			<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+			<put-attribute name="content" value="/content/projects/body/SverdlovskModernEducation.jsp"/>
+		</definition>
+		
+	<definition name="basic" extends="contentLayout">
+		<put-attribute name="title"  value="Basic"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/Basic.jsp"/>
+	</definition>
+	
+	<definition name="continuingEducation" extends="contentLayout">
+		<put-attribute name="title"  value="ContinuingEducation"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/ContinuingEducation.jsp"/>
+	</definition>
+	<definition name="continuingEducation.actionPlan" extends="contentLayout">
+		<put-attribute name="title"  value="ContinuingEducation ActionPlan"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/ContinuingEducationActionPlan.jsp"/>
+	</definition>
+	<definition name="continuingEducation.support" extends="contentLayout">
+		<put-attribute name="title"  value="ContinuingEducation Support"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/ContinuingEducationSupport.jsp"/>
+	</definition>
+	<definition name="continuingEducation.news" extends="contentLayout">
+		<put-attribute name="title"  value="ContinuingEducation News"/>
+		<put-attribute name="tree" value="/content/projects/tree/ProjectsTree.jsp"/>
+		<put-attribute name="content" value="/content/projects/body/ContinuingEducationNews.jsp"/>
+	</definition>
+	
+	<definition name="news" extends="contentLayout">
+		<put-attribute name="title"  value="News"/>
+		<put-attribute name="tree" value="/content/news/tree/NewsTree.jsp"/>
+		<put-attribute name="content" value="/content/news/body/News.jsp"/>
+	</definition>
+	<definition name="news.announcements" extends="contentLayout">
+		<put-attribute name="title"  value="News Announcements"/>
+		<put-attribute name="tree" value="/content/news/tree/NewsTree.jsp"/>
+		<put-attribute name="content" value="/content/news/body/NewsAnnouncements.jsp"/>
+	</definition>
+	<definition name="news.archive" extends="contentLayout">
+		<put-attribute name="title"  value="News Archive"/>
+		<put-attribute name="tree" value="/content/news/tree/NewsTree.jsp"/>
+		<put-attribute name="content" value="/content/news/body/NewsArchive.jsp"/>
+	</definition>
+ 	
+ </tiles-definitions>
