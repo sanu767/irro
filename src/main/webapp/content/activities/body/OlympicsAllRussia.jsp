@@ -1,1 +1,0 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Всероссийская олимпиада школьников</h1>
