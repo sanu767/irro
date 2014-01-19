@@ -8,7 +8,7 @@
  <result-types>
             <result-type name="tiles"
                 class="org.apache.struts2.views.tiles.TilesResult" />
-  </result-types>
+  </result-types> 
   
     <action name="Item" class="com.saasforedu.irro.action.ItemAction">
 		<result name="success" type="tiles">changeItem</result>

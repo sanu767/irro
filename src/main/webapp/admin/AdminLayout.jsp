@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <link href="../menucss/styles.css" rel="stylesheet" type="text/css"></link>
 <link href="../menucss/mainmenu.css" rel="stylesheet" type="text/css"></link>
@@ -67,3 +68,4 @@ padding-top:5px;
 </div>
 </body>
 </html>
+
