@@ -5,16 +5,17 @@ a {
 }
 #newsEventswrapper {
 
-    width: 1150px;
+    width: 1250px;
 	height:100%
     overflow: auto; 
 }
 #first {
-    float: left;
-    max-width:400px;
-    width: 400px;
-    margin: 0 0 0 100px;	
+   float: left;
+    width: 300px;
+    margin: 0 0 0 100px;
+    display: inline; 
 }
+
 #second {    
 	width: 400px;
 	max-width:400px;
@@ -33,6 +34,17 @@ div div div h6 {
 </style>
   <link rel="stylesheet" href="../welcome/eventnnews.css">
   <script src="../welcome/js/irroeventslider.js"></script>
+  	<link rel="stylesheet" href="../welcome/css/paragridma.css">
+
+	<!-- Core CSS File. The CSS code needed to make eventCalendar works -->
+	<link rel="stylesheet" href="../welcome/css/eventCalendar.css">
+
+	<!-- Theme CSS file: it makes eventCalendar nicer -->
+	<link rel="stylesheet" href="../welcome/css/eventCalendar_theme_responsive.css">
+
+	<!--<script src="js/jquery.js" type="text/javascript"></script>-->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>-->
+	<script src="../welcome/js/jquery.eventCalendar.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -80,7 +92,7 @@ div div div h6 {
 			</div>
 	</div>
 
-	<div id="second" style="background-color:white">
+	<div id="first" style="background-color:white">
 		<p>Анонсы<div class="underline"></div></p>
 
 			<div id="event-slider">
@@ -121,6 +133,20 @@ div div div h6 {
 		         			</li>
 			</div>
 	</div>
+	<div id="first">
+				<div id="eventCalendarNoCache" class="width:300px"></div>
+				<script>
+					$(document).ready(function() {
+						$("#eventCalendarNoCache").eventCalendar({
+							eventsjson: 'Data Not Found',
+							jsonDateFormat: 'human',
+							cacheJson: false
+						});
+					});
+				</script>
+
+	</div>
+
 
 	   <script class="secret-source">
         jQuery(document).ready(function($) {
@@ -128,7 +154,7 @@ div div div h6 {
           $('#event-slider').bjqs({
             animtype      : 'slide',
             height        : 250,
-            width         : 400,
+            width         : 300,
             responsive    : true,
             randomstart   : true
           });
@@ -141,12 +167,14 @@ div div div h6 {
           $('#news-slider').bjqs({
             animtype      : 'slide',
             height        : 250,
-            width         : 400,
+            width         : 300,
             responsive    : false,
             randomstart   : true
           });
           
         });
+      
       </script>
+          
 </div>
 </body>

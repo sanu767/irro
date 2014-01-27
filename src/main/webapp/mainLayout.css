@@ -53,7 +53,7 @@ color:rgb(0,0,0);
 
 .underline {
     height:5px;
-	width:480px;
+	/*width:480px;*/
     background:rgb(88,103,168);
     margin:10px 0px;
 }
