@@ -5,6 +5,7 @@
 <struts>
  <!--  <constant name="struts.enable.DynamicMethodInvocation" value="false"/> -->
   <constant name="struts.devMode" value="true"/>
+   <constant name="struts.action.excludePattern" value="/rest/[a-zA-Z_0-9]*/?[a-zA-Z_0-9]*/?[a-zA-Z_0-9]*/?[a-zA-Z_0-9]*/?[a-zA-Z_0-9]*"/>
   <include file="portal-config.xml"/>
   <include file="subContent-config.xml"/>
   <include file="admin-config.xml"/>

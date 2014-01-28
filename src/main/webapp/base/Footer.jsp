@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <head>
 <style>
-table
+.footertable
 {
 border-collapse:collapse;
 background-color:rgb(198,217,241);
@@ -12,22 +12,25 @@ float:left;
 padding-top:10px;
 }
  
-th  {
+
+.footertable th  {
   width:20%;
   text-align:left;
   color:rgb(0,0,0);
   border-bottom-width:10px;
   
 }
+.footertable tbody tr:nth-child(even) {
+  background:none;
+}
 
-td
+.footertable tbody tr td
 {
 width:20%;
 text-align:left;
 color:rgb(0,0,0);
-}
-a {
- font-color : black;
+padding: 0px;
+
 }
 </style>
 </head>
@@ -66,9 +69,9 @@ a {
 </div>
 
 <div style="padding-top:10px;padding-left:100px">
-<table style="width:1000px">
+<table class="footertable" style="width:1000px">
   <tr style="padding-bottom:10px">
-    <th style="font-weight:bold;font-size:14px"><a href="content/Institute">Об Институте</a></th>
+    <th style="font-weight:bold;font-size:14px">Об Институте</th>
     <th style="font-weight:bold;font-size:14px">Деятельность</th>
     <th style="font-weight:bold;font-size:14px">Стажировочная площадка</th>
     <th style="font-weight:bold;font-size:14px">Информационные ресурсы</th>
