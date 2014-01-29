@@ -8,6 +8,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Target;
@@ -33,6 +35,10 @@ public class Basic implements IBasic {
 	@Target(value = MainContent.class)
 	MainContent content;
 
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Project project;
+	
 	public MainContent getContent() {
 		return content;
 	}
@@ -46,4 +52,13 @@ public class Basic implements IBasic {
 		return id;
 	}
 
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	
 }

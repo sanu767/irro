@@ -8,6 +8,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Target;
@@ -42,6 +44,10 @@ public class ContinuingEducation implements IContinuingEducation {
 	@Column(name="NEWS")
 	String news;
 
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	private Project project;
+	
 	@Override
 	public Long getId() {
 		return id;
@@ -79,4 +85,13 @@ public class ContinuingEducation implements IContinuingEducation {
 		this.news = news;
 	}
 
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	
 }

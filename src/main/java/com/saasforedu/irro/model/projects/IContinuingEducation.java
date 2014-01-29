@@ -2,6 +2,7 @@ package com.saasforedu.irro.model.projects;
 
 import com.saasforedu.irro.model.IBaseEntity;
 import com.saasforedu.irro.model.impl.MainContent;
+import com.saasforedu.irro.model.projects.impl.Project;
 
 public interface IContinuingEducation extends IBaseEntity {
 
@@ -20,4 +21,8 @@ public interface IContinuingEducation extends IBaseEntity {
 	public String getNews();
 
 	public void setNews(String news);
+
+	public Project getProject();
+
+	public void setProject(Project project);
 }
