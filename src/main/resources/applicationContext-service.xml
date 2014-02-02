@@ -46,4 +46,16 @@
 		<property name="itemService" ref="itemService" /> 
 	</bean>
 
+	<bean id="eventDAO" class="com.saasforedu.irro.dao.impl.EventDAO"  scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="eventService" class="com.saasforedu.irro.service.impl.EventServiceImpl"  scope="prototype">
+		<property name="eventDAO" ref="eventDAO" />
+	</bean>	
+	
+	<bean id="eventAction" class="com.saasforedu.irro.action.EventAction" scope="prototype">
+		<property name="eventService" ref="eventService" /> 
+	</bean>
+	
 </beans>

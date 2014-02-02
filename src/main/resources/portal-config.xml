@@ -34,6 +34,12 @@
 		<action name="administrator">
 			<result>/AdminLogin.jsp</result>
 		</action>
+
+		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction"
+			method="createEvent">
+			<result name="success" />
+		</action>
+		
 	</package>
 
 	
