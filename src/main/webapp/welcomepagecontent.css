@@ -1,0 +1,29 @@
+.irro-wl-context-header {
+	font-weight:700;
+}
+
+.irro-wl-context-div {
+   float: left;
+    width: 300px;
+    margin: 0 0 0 100px;
+    display: inline;
+    background-color: #FFFFFF; 
+}
+
+.irro-wl-context-lastdiv {
+    margin: 0 0 0 50px;
+}
+
+.irro-wl-newseventswrapper {
+
+    width: 1250px;
+	height:100%
+    overflow: auto; 
+}
+
+
+.underline {
+    height:5px;
+	background:rgb(88,103,168);
+    margin:10px 0px;
+}

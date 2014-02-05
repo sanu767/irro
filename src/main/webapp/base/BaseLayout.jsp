@@ -15,6 +15,7 @@
 <script src="themes/slider/mcVideoPlugin.js" type="text/javascript"></script>
 <script src="themes/slider/js-image-slider.js" type="text/javascript"></script>
 <link href="generic.css" rel="stylesheet" type="text/css" />
+<link href="welcomepagecontent.css" rel="stylesheet" type="text/css" />
 <script src="content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(function(){

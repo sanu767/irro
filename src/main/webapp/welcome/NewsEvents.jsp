@@ -3,24 +3,6 @@
 a {
   color:rgb(6,85,117);
 }
-#newsEventswrapper {
-
-    width: 1250px;
-	height:100%
-    overflow: auto; 
-}
-#first {
-   float: left;
-    width: 300px;
-    margin: 0 0 0 100px;
-    display: inline; 
-}
-
-#second {    
-	width: 400px;
-	max-width:400px;
-    margin: 0 0 0 620px; /* considering the border you need to use a margin so the content does not float under the first div*/
-}
 
 div div div ul li p {
 	margin: 5px;
@@ -30,27 +12,25 @@ div div div ul li p {
 div div div h6 {
 	padding: 5px;
 }
-
 </style>
+
   <link rel="stylesheet" href="../welcome/eventnnews.css">
   <script src="../welcome/js/irroeventslider.js"></script>
-  	<link rel="stylesheet" href="../welcome/css/paragridma.css">
+  <link rel="stylesheet" href="../welcome/css/paragridma.css">
 
 	<!-- Core CSS File. The CSS code needed to make eventCalendar works -->
-	<link rel="stylesheet" href="../welcome/css/eventCalendar.css">
+  <link rel="stylesheet" href="../welcome/css/eventCalendar.css">
 
 	<!-- Theme CSS file: it makes eventCalendar nicer -->
-	<link rel="stylesheet" href="../welcome/css/eventCalendar_theme_responsive.css">
+  <link rel="stylesheet" href="../welcome/css/eventCalendar_theme_responsive.css">
 
-	<!--<script src="js/jquery.js" type="text/javascript"></script>-->
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>-->
-	<script src="../welcome/js/jquery.eventCalendar.js" type="text/javascript"></script>
+  <script src="../welcome/js/jquery.eventCalendar.js" type="text/javascript"></script>
 </head>
 <body>
 
-<div id="newsEventswrapper">
-	<div id="first" style="background-color:white">
-		<p>Новости<div class="underline"></div></p>
+<div class="irro-wl-newseventswrapper">
+	<div class="irro-wl-context-div">
+		<p class="irro-wl-context-header" >Новости<div class="underline"></div></p>
 			<div id="news-slider">
 				<ul class="bjqs">
 	          		<li>
@@ -92,8 +72,8 @@ div div div h6 {
 			</div>
 	</div>
 
-	<div id="first" style="background-color:white">
-		<p>Анонсы<div class="underline"></div></p>
+	<div class="irro-wl-context-div">
+		<p class="irro-wl-context-header">Анонсы<div class="underline"></div></p>
 
 			<div id="event-slider">
 					<ul class="bjqs">
@@ -133,12 +113,13 @@ div div div h6 {
 		         			</li>
 			</div>
 	</div>
-	<div id="first">
+	<div class="irro-wl-context-div irro-wl-context-lastdiv">
+		<p class="irro-wl-context-header"> календарь</p><div class="underline"></div>
 				<div id="eventCalendarNoCache" class="width:300px"></div>
 				<script>
 					$(document).ready(function() {
 						$("#eventCalendarNoCache").eventCalendar({
-							eventsjson: 'Data Not Found',
+							eventsjson: 'json/events.json.php',
 							jsonDateFormat: 'human',
 							cacheJson: false
 						});
@@ -175,6 +156,6 @@ div div div h6 {
         });
       
       </script>
-          
+     
 </div>
 </body>

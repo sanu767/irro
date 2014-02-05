@@ -14,6 +14,7 @@
 <script src="../themes/slider/mcVideoPlugin.js" type="text/javascript"></script>
 <script src="../themes/slider/js-image-slider.js" type="text/javascript"></script>
 <link href="../generic.css" rel="stylesheet" type="text/css" />
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="../themes/content/Tree.js" type="text/javascript"></script> 
 <script type="text/javascript"> 
 window.onload = function () {     

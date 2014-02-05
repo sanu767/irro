@@ -9,9 +9,6 @@ import com.saasforedu.irro.service.ItemService;
 
 public class ItemSearchAction extends ActionSupport {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6994364128717519786L;
 
 	private ItemService itemService;

@@ -71,6 +71,9 @@
 		<action name="Rector" class="com.saasforedu.irro.action.ExampleSupport">
 			<result name="success" type="tiles">rector</result>
 		</action>
+		 <action name="EditRector" class="com.skmm.app.example.action.ExampleSupport">
+        <result name="success" type="tiles">editrector</result>
+        </action>
 		<action name="Documents" class="com.saasforedu.irro.action.ExampleSupport">
 			<result name="success" type="tiles">documents</result>
 		</action>

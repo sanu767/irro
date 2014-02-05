@@ -1,6 +1,7 @@
-﻿<a id="edit" href="EditRector" ><button class="btn btn-primary" type="button" value="Edit">Edit</button></a>
-
-<div >
+﻿<a id="edit" href="#UnderConstruction" ><button class="btn btn-primary" type="button" value="Submit">Submit</button></a>
+<a id="edit" href="Rector" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</p>
+<div id="editor">
 <h1 style="font-size: 18px;">Ректор</h1>
 <p>
 <b>Оксана Владимировна Гредина</b>
@@ -111,5 +112,14 @@
 профессионального образования РФ 
 
 </div>
+</p>
+<a id="edit" href="#UnderConstruction" ><button class="btn btn-primary" type="button" value="Submit">Submit</button></a>
+<a id="edit" href="Rector" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
 
-<a id="edit" href="EditRector" ><button class="btn btn-primary" type="button" value="Edit">Edit</button></a>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet">
+<script>
+    window.onload = function() {
+        CKEDITOR.replace( 'editor' );
+    };
+</script>
