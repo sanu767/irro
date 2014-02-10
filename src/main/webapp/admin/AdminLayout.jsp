@@ -7,23 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
-<link href="../menucss/styles.css" rel="stylesheet" type="text/css"></link>
-<link href="../menucss/mainmenu.css" rel="stylesheet" type="text/css"></link>
-<link href="../mainLayout.css" rel="stylesheet" type="text/css"></link>
-<link href="../reset.css" rel="stylesheet" type="text/css"></link>
-<link href="../themes/slider/js-image-slider.css" rel="stylesheet" type="text/css" />
-<script src="../themes/slider/mcVideoPlugin.js" type="text/javascript"></script>
-<script src="../themes/slider/js-image-slider.js" type="text/javascript"></script>
-<link href="../generic.css" rel="stylesheet" type="text/css" />
-<script src="../themes/content/Tree.js" type="text/javascript"></script>
-<script type="text/javascript">
-window.onload = function () {     
-	window.location.hash = 'tree';
-};
-</script>
+
 <script src="/content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-$(function(){
+$(function() {
 
 $('li').hover(
        function(){ $(this).addClass('showlinks') },
@@ -34,14 +21,15 @@ $('li').hover(
 
 </script>
 <style>
-.thumbnail 
-{
-
-float:left;
-width:16px;
-height:16px;
-margin:0.5px;
-padding:3px;
+#wrapper {
+	margin: 0px auto; width: 1150px;
+}
+#navigationwrap {
+	margin: 0px auto; 
+	width: 1150px; 
+	float: right;
+	border-top: 10px solid rgb(6, 85, 117);
+	border-bottom: 10px solid rgb(6, 85, 117);
 }
 .logo 
 {
@@ -52,20 +40,56 @@ height:100px;
 padding-top:5px;
 }
 
+#first {
+    float: left;
+    width: 150px;
+	height : 500px;
+	border-right: 1px solid rgb(6, 85, 117);
+	border-bottom: 1px solid rgb(6, 85, 117);
+}
+
+#second {
+	width: 400px;
+	height : 500px;
+	float: left;
+    margin: 0 0 0 0; /* considering the border you need to use a margin so the content does not float under the first div*/
+	border-right: 1px solid rgb(6, 85, 117);
+	border-bottom: 1px solid rgb(6, 85, 117);
+}
+
+#third {
+	width: 595px;
+    height : 500px;
+	float: left;
+	border-bottom: 1px solid rgb(6, 85, 117);
+}
+
 </style>
 </head>
 <body>
 <div id="wrapper">
 		
      <div id="navigationwrap">
-	   <a href="../welcomeIrro"  title="IRRO">
-			<img class="logo" src="../images/logo/irrologo.png" border="0" alt="Home" />
+	   <a href="ChangeMenus"  title="IRRO">
+			<img class="logo" src="images/logo/irrologo.png" border="0" alt="Home" />
 	   </a> 
+	   <h1 style="text-align : center">Welcome to Irro Administrator</h1>
      </div>
-     <tiles:insertAttribute name="searchItem" />
-     <tiles:insertAttribute name="modifiableItem" />    
-	  
+
+<div id="first">
+	<tiles:insertAttribute name="searchGroupMenus" />
 </div>
+
+<div id="second">
+	<tiles:insertAttribute name="searchParameterSubMenus" />
+</div>
+
+<div id="third">
+	<tiles:insertAttribute name="result" />
+</div>
+
+</div>
+
 </body>
 </html>
 
