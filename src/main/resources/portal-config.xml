@@ -28,21 +28,19 @@
 		</action>
 
 		<action name="adminLogin" class="com.saasforedu.irro.action.AdminLogin">
-			<result name="success" type="redirect">/admin/SearchItem.jsp</result>
+			<result name="success" type="tiles">changeMenus</result>
 		</action>
 
 		<action name="administrator">
 			<result>/AdminLogin.jsp</result>
 		</action>
 
-		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction"
-			method="createEvent">
+
+		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createEvent">
 			<result name="success" />
 		</action>
-		
-	</package>
-
 	
+	</package>
 
 	<package name="maincontent" namespace="/content" extends="struts-default">
 		<result-types>
@@ -150,4 +148,58 @@
 			<result name="success" type="tiles">news</result>
 		</action>
 	</package>
+	
+	<package name="userAdministration" namespace="/" extends="struts-default" >
+	
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+	    </result-types>
+
+		<action name="loginWL" class="com.saasforedu.irro.action.UserAction" method="loginWL" >
+			<result name="login" type="tiles">login</result>
+		</action>
+	
+		<action method="registerWL" class="com.saasforedu.irro.action.UserAction" name="registerWL">
+			<result name="register" type="tiles">registration</result>
+	    </action>
+	    
+	    <action method="modifyWL" class="com.saasforedu.irro.action.UserAction" name="modifyWL">
+			<result name="modify" type="tiles">modifyUser</result>
+	    </action>
+	    
+	    <action method="forgotPasswordWL" class="com.saasforedu.irro.action.UserAction" name="forgotPasswordWL">
+			<result name="forgotPassword" type="tiles">forgotPassword</result>
+	    </action>
+	    
+	    <action name="Registration" class="com.saasforedu.irro.action.UserAction" method="doRegister">
+			<result name="input" type="tiles">registration</result>
+		    <result name="error" type="tiles">registrationFailed</result>
+		    <result name="success" type="tiles">registrationSuccess</result>
+	    </action>
+	    
+	    <action name="Login" class="com.saasforedu.irro.action.UserAction" method="doLogin">
+			<result name="input" type="tiles">login</result>
+		    <result name="error" type="tiles">loginFailed</result>
+		    <result name="success" type="tiles">welcome</result>
+	    </action>
+	    
+	    <action name="ForgotPassword" class="com.saasforedu.irro.action.UserAction" method="forgotPassword">
+			<result name="input" type="tiles">forgotPassword</result>
+		    <result name="error" type="tiles">forgotPassword</result>
+		    <result name="success" type="tiles">forgotPassword</result>
+	    </action>
+	    
+	    <action name="ModifyUser" class="com.saasforedu.irro.action.UserAction" method="doModify">
+			<result name="input" type="tiles">welcome</result>
+		    <result name="error" type="tiles">welcome</result>
+		    <result name="success" type="tiles">welcome</result>
+	    </action>
+	    
+	    <action name="Logout" class="com.saasforedu.irro.action.UserAction" method="doLogOut">
+			<result name="input" type="tiles">welcome</result>
+		    <result name="error" type="tiles">login</result>
+		    <result name="success" type="tiles">login</result>
+	    </action>
+	    
+    </package>
 </struts>

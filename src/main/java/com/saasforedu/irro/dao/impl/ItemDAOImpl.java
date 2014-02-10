@@ -75,9 +75,9 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 		queryBuilder.append(" or i.longDescription like ? ");
 		queryBuilder.append(" order by i.startDate DESC");
 		
-		StringBuilder searchTextBuilder = new StringBuilder("%");
+		StringBuilder searchTextBuilder = new StringBuilder("'%");
 		searchTextBuilder.append(itemSearchText);
-		searchTextBuilder.append("%");
+		searchTextBuilder.append("%'");
 		
 		List<IItem> resultItems = getHibernateTemplate().find(queryBuilder.toString(), 
 				new Object[]{searchTextBuilder.toString(), searchTextBuilder.toString(), searchTextBuilder.toString()} );

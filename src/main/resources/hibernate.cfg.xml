@@ -35,6 +35,11 @@
         <mapping class="com.saasforedu.irro.model.projects.impl.Project" />
         <mapping class="com.saasforedu.irro.model.projects.impl.Sverdlovsk" />
         
+        <!-- User -->
+        <mapping class="com.saasforedu.irro.model.impl.User" />
+        <mapping class="com.saasforedu.irro.model.impl.UserGroup" />
+        <mapping class="com.saasforedu.irro.model.impl.UserPermission" />
+        
     </session-factory>
     
 </hibernate-configuration>

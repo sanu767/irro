@@ -4,47 +4,155 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
- <package name="AdminActions" namespace="/admin" extends="struts-default">
+ <package name="AdminActions" namespace="/" extends="struts-default">
  <result-types>
             <result-type name="tiles"
                 class="org.apache.struts2.views.tiles.TilesResult" />
   </result-types> 
   
-    <action name="Item" class="com.saasforedu.irro.action.ItemAction">
+	<!-- Item -->
+	<action name="ChangeItem" class="com.saasforedu.irro.action.ItemAction">
 		<result name="success" type="tiles">changeItem</result>
-	</action>
-	
-	<action name="CreateItem" class="com.saasforedu.irro.action.ItemAction" method="createItem">
-	    <result name="input" type="tiles">changeItem</result>
-		<result name="success">/admin/Success.jsp</result>
-		<result name="error">/admin/Failure.jsp</result>
-	</action>
-		
-	<action name="ModifyItem" class="com.saasforedu.irro.action.ItemAction" method="modifyItem">
-	    <result name="input">/admin/ModifyItem.jsp</result>
-		<result name="success" type="tiles">changeItem</result>
-		<result name="error">/admin/Failure.jsp</result>
-	</action>
-	
-	<action name="DeleteItem" class="com.saasforedu.irro.action.ItemAction" method="deleteItem">
-		<result name="success" type="tiles">changeItem</result>
-		<result name="error">/admin/Failure.jsp</result>
-	</action>
-	
-	<action name="LoadItem" class="com.saasforedu.irro.action.ItemSearchAction" method="loadItem">
-		<result name="input" type="tiles">searchResults</result>
-		<result name="success">/admin/ModifyItem.jsp</result>
-	</action>
+	</action>	
 	
 	<action name="SearchItem" class="com.saasforedu.irro.action.ItemSearchAction" method="searchItems">
 	    <result name="input" type="tiles">changeItem</result>
-		<result name="success" type="tiles">searchResults</result>
+		<result name="success" type="tiles">searchItemResults</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
 	<action name="AdvancedSearchItem" class="com.saasforedu.irro.action.ItemSearchAction" method="advancedSearchItems">
 	    <result name="input" type="tiles">changeItem</result>
-		<result name="success" type="tiles">searchResults</result>
+		<result name="success" type="tiles">searchItemResults</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="LoadCreateItem" class="com.saasforedu.irro.action.ItemSearchAction">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">loadCreateItem</result>
+	</action>
+	
+	<action name="CreateItem" class="com.saasforedu.irro.action.ItemAction" method="createItem">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+		
+	<action name="ModifyItem" class="com.saasforedu.irro.action.ItemAction" method="modifyItem">
+	    <result name="input">/admin/ModifyItem.jsp</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="DeleteItem" class="com.saasforedu.irro.action.ItemAction" method="deleteItem">
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="LoadItem" class="com.saasforedu.irro.action.ItemSearchAction" method="loadItem">
+		<result name="input" type="tiles">searchItemResults</result>
+		<result name="success">/admin/ModifyItem.jsp</result>
+	</action>
+	
+	<!-- User -->
+	
+	<action name="ChangeUser" class="com.saasforedu.irro.action.UserAdminAction">
+		<result name="success" type="tiles">changeUser</result>
+	</action>
+	
+	<action name="SearchUser" class="com.saasforedu.irro.action.UserAdminAction" method="searchUsers">
+	    <result name="input" type="tiles">changeUser</result>
+		<result name="success" type="tiles">searchUserResults</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+
+	<action name="EditUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
+	    <result name="input">/admin/ModifyUser.jsp</result>
+		<result name="success" type="tiles">userSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="DeleteUser" class="com.saasforedu.irro.action.UserAdminAction" method="deleteUser">
+		<result name="success" type="tiles">userSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	
+	<action name="LoadUser" class="com.saasforedu.irro.action.UserAdminAction" method="loadUser">
+		<result name="input" type="tiles">searchUserResults</result>
+		<result name="success">/admin/ModifyUser.jsp</result>
+	</action>
+	
+	<action name="DeActivateUsers" class="com.saasforedu.irro.action.UserAdminAction" method="deActivateUsers">
+		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateUsers" class="com.saasforedu.irro.action.UserAdminAction" method="activateUsers">
+		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<!-- Permission -->
+	
+	<action name="ChangePermissions" class="com.saasforedu.irro.action.UserAdminAction" method="searchPermissionWL">
+		<result name="success" type="tiles">changePermissions</result>
+	</action>
+	
+	<action name="SearchPermission" class="com.saasforedu.irro.action.UserAdminAction" method="searchUsers">
+		<result name="input" type="tiles">changePermission</result>
+		<result name="success" type="tiles">searchPermissionResults</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	
+	<action name="EditPermissions" class="com.saasforedu.irro.action.UserAdminAction" method="editPermission">
+		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<!-- Group -->
+	
+	<action name="ChangeGroup" class="com.saasforedu.irro.action.UserGroupAction">
+		<result name="success" type="tiles">changeGroup</result>
+	</action>
+	
+	<action name="SearchGroup" class="com.saasforedu.irro.action.UserGroupAction" method="searchGroups">
+		<result name="input" type="tiles">changeGroup</result>
+		<result name="success" type="tiles">searchGroupResults</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="LoadCreateGroup" class="com.saasforedu.irro.action.UserGroupAction">
+	    <result name="input" type="tiles">changeGroup</result>
+		<result name="success" type="tiles">loadCreateGroup</result>
+	</action>
+	
+	<action name="CreateGroup" class="com.saasforedu.irro.action.UserGroupAction" method="createGroup">
+	    <result name="input" type="tiles">createGroup</result>
+		<result name="success" type="tiles">groupSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="EditGroup" class="com.saasforedu.irro.action.UserGroupAction" method="editGroup">
+	    <result name="input" type="tiles">editGroup</result>
+		<result name="success" type="tiles">groupSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="DeleteGroup" class="com.saasforedu.irro.action.UserGroupAction" method="deleteGroups">
+	    <result name="input" type="tiles">deleteGroup</result>
+		<result name="success" type="tiles">groupSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="DeActivateGroups" class="com.saasforedu.irro.action.UserAdminAction" method="deActivateGroups">
+		<result name="success" type="tiles">groupSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateGroups" class="com.saasforedu.irro.action.UserAdminAction" method="activateGroups">
+		<result name="success" type="tiles">groupSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
