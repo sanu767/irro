@@ -23,7 +23,7 @@
      <s:form action="DeleteItem" theme="xhtml" accept-charset="UTF-8">
 	 <display:table name="searchedItems"  defaultsort="2" pagesize="10" sort="list" requestURI="" uid="eachSearchedItem" id="eachSearchedItem">
 		  <display:column title="Delete">
-		     <!-- <s:checkbox name="deletedItemIds" fieldValue="%{#attr.eachSearchedItem.itemId}" value="false"/>-->
+		     <input type="checkbox" name="deletedItemIds" id="deletedItemIds" value="${eachSearchedItem.itemId}">
 		  </display:column>
 		  <display:column property="title" title="Title" sortable="true" style="width : 15px" />
 		  <display:column property="startDate" title="Start Date" sortable="true" style="width : 15px" />

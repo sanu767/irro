@@ -11,7 +11,8 @@
 </head> 
 
 <body>
-<div style="height : 300 px">
+<div style="margin : 5px 0px 0px 10px">
+	<h1 style="font-size: 18px;font-family: 'Open Sans';">Create Item</h1>
 
 	<s:form action="CreateItem" theme="xhtml" accept-charset="UTF-8">
 
@@ -39,7 +40,7 @@
 
 		<sj:textfield name="itemBean.filePath" label="Name of downloadable file " />
 
-		<sj:submit button="Create" value="Create" />
+		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Create" value="Create" />
 		
 	</s:form>
 </div>

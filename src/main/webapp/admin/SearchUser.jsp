@@ -10,7 +10,7 @@
 	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){	 
+$(document).ready(function() {
     $("#advancedSearchForm").hide();
     $("#showAdvancedSearchForm").show();
 	$('#showAdvancedSearchForm').click(function(){
@@ -29,10 +29,11 @@ $(document).ready(function(){
 </head> 
 
 <body>
-    <div style="margin : 10px 0px 0px 10px">
+
+<div style="margin : 10px 0px 0px 10px">
        <h1 style="font-size: 18px;font-family: 'Open Sans';">Search</h1>
-		 <s:form action="SearchItem" theme="xhtml" accept-charset="UTF-8" cssClass="myClass">
-			<sj:textfield name="itemBean.searchText" label="Title " maxlength="100" required="true" placeholder="Enter title" />
+		 <s:form action="SearchUser" theme="xhtml" accept-charset="UTF-8" cssClass="myClass">
+			<sj:textfield name="userSearchBean.searchedName" label="User Name " maxlength="100" required="true" placeholder="Enter User Name" />
 			<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search" />		
 		</s:form>
 		
@@ -41,31 +42,24 @@ $(document).ready(function(){
 		
 		
 	<div id="advancedSearchForm" style="margin : 5px 0px 0px 0px;">
-	<s:form action="AdvancedSearchItem" theme="xhtml" accept-charset="UTF-8">
+	<s:form action="SearchUser" theme="xhtml" accept-charset="UTF-8">
 	    
-	    <sj:textfield name="itemBean.searchText" label="Title " maxlength="100" placeholder="Enter title" />
+	    <sj:textfield name="userSearchBean.searchedName" label="User Name" maxlength="100" placeholder="Enter User Name" />
+	    
+	    <sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
+
+		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" />
 		
-		<s:radio name="itemBean.searchType" label=" Select Item  "
-			list="#{'1':'News', '2':'Events', '3':'Others'}"
-			value="1" />
-
-		<sj:datepicker name="itemBean.beforeSearchDate" label="Before "
-			changeYear="true" changeMonth="true" showOn="focus" />
-
-		<sj:datepicker name="itemBean.afterSearchDate" label="After " 
-			changeYear="true" changeMonth="true" showOn="focus" />
-				
-		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>	
-
-	</s:form>	
+		<sj:textfield name="userSearchBean.searchedEmailId" label="Email " maxlength="100" placeholder="Enter title" />
+		
+		<sj:textfield name="userSearchBean.maxUploadFileSize" label="Upload Size Less to " maxlength="100" placeholder="Allowed Size Less" />
+		
+		<sj:submit style="float:right;margin: 5px 0px 0px 0px;height : 25px;" button="Search" value="Search"/>
+		
+	</s:form>
 	</div>
 	
-	<div style="padding : 20px 0px 0px 0px">
-	  <a href="LoadCreateItem" style="text-decoration:none;color : rgb(6,85,117);font-size: 16px;font-family: 'Open Sans';">Create Item</a>
-	</div>
-	
-	
-	</div>
-	
+</div>
+	  
 </body>
 </html>
