@@ -24,6 +24,11 @@
 		<put-attribute name="topMenu" value="/login/LoginTopMenu.jsp"/>
 		<put-attribute name="body" value="/login/Login.jsp"/>
  	</definition>
+ 	
+ 	<definition name="loginFailed" extends="baseLayout">
+		<put-attribute name="title"  value="Login Failed"/>
+		<put-attribute name="body" value="/login/LoginFail.jsp"/>
+ 	</definition>
 
  	<definition name="main" extends="baseLayout">
 		<put-attribute name="title"  value="Main"/>
@@ -33,33 +38,120 @@
 
  	<definition name="registration" extends="baseLayout">
 		<put-attribute name="title"  value="Registration"/>
-		<put-attribute name="topMenu" value="/main/MainTopMenu.jsp"/>
 		<put-attribute name="body" value="/registration/Register.jsp"/>
  	</definition>
  	
- 	<definition name="registrationSuccess" extends="registration">
-		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
+ 	<definition name="registrationFailed" extends="baseLayout">
+		<put-attribute name="title"  value="Registration Failed"/>
+		<put-attribute name="body" value="/registration/RegisterFail.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="editUserAccount" extends="baseLayout">
+		<put-attribute name="title"  value="Modify User"/>
+		<put-attribute name="body" value="/login/EditUserAccount.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="registrationSuccess" extends="baseLayout">
+ 		<put-attribute name="title"  value="Registration Successful"/>
+ 		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="forgotPassword" extends="baseLayout">
+ 		<put-attribute name="title"  value="Forgot Pssword"/>
+ 		<put-attribute name="body" value="/login/ForgotPassword.jsp"/>
  	</definition>
  	
  	<!--  Admin Actions -->
  	
+ 	<!--  Item -->
  	<definition name="adminLayout" template="/admin/AdminLayout.jsp">
 		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/EmptySubMenus.jsp"/>
+		<put-attribute name="result" value="/admin/EmptyResults.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="changeMenus" extends="adminLayout">
+		<put-attribute name="title"  value="Change Menus"/>
+		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
  	</definition>
 	
  	<definition name="changeItem" extends="adminLayout">
 		<put-attribute name="title"  value="Change Item"/>
-		<put-attribute name="searchItem" value="/admin/SearchItem.jsp"/>
-		<put-attribute name="modifiableItem" value="/admin/CreateItem.jsp"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchItem.jsp"/>
  	</definition>
  	
- 	
- 	<definition name="searchResults" extends="adminLayout">
+ 	<definition name="searchItemResults" extends="changeItem">
 		<put-attribute name="title"  value="Searched Items"/>
-		<put-attribute name="searchItem" value="/admin/SearchItem.jsp"/>
-		<put-attribute name="modifiableItem" value="/admin/SearchResultItems.jsp"/>
+		<put-attribute name="result" value="/admin/SearchResultItems.jsp"/>
  	</definition>
-	
+ 	
+ 	<definition name="itemSuccess" extends="changeItem">
+		<put-attribute name="title"  value="Item Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateItem" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/CreateItem.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- User -->
+ 	
+ 	<definition name="changeUser" extends="adminLayout">
+		<put-attribute name="title"  value="Change User"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchUser.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchUserResults" extends="changeUser">
+		<put-attribute name="title"  value="Searched Users"/>
+		<put-attribute name="result" value="/admin/SearchResultUsers.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="userSuccess" extends="changeUser">
+		<put-attribute name="title"  value="User Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- Permission -->
+
+ 	<definition name="changePermissions" extends="adminLayout">
+		<put-attribute name="title"  value="Change Permission"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchUserPermission.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchPermissionResults" extends="changePermissions">
+		<put-attribute name="title"  value="Searched Users"/>
+		<put-attribute name="result" value="/admin/SearchResultUserPermissions.jsp"/>
+ 	</definition>
+
+    <definition name="permissionSuccess" extends="changePermissions">
+		<put-attribute name="title"  value="Permission Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- Groups -->
+ 	
+ 	<definition name="changeGroup" extends="adminLayout">
+		<put-attribute name="title"  value="Change Group"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchGroup.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchGroupResults" extends="changeGroup">
+		<put-attribute name="title"  value="Searched Groups"/>
+		<put-attribute name="result" value="/admin/SearchResultGroups.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateGroup" extends="changeGroup">
+		<put-attribute name="title"  value="Create Groups"/>
+		<put-attribute name="result" value="/admin/CreateGroup.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="groupSuccess" extends="changeGroup">
+		<put-attribute name="title"  value="Group Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
 	
 	<!-- Content actions -->
 	

@@ -14,10 +14,10 @@
 <body>
 	<div style="margin : 5px 0px 0px 10px">
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Search</h1>
+
 	
 	<s:form action="SearchGroup" theme="xhtml" accept-charset="UTF-8">
-	    
-	    <sj:textfield name="groupSearchBean.searchedName" label="Group Name" maxlength="100" placeholder="Enter Group Name" />
+	    <sj:textfield name="groupSearchBean.searchedName"  label="Group Name" maxlength="100" placeholder="Enter Group Name" />
 	    
 	    <sj:datepicker name="groupSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
 
