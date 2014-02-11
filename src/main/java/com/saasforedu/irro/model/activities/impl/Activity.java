@@ -19,8 +19,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.activities.IActivity;
-import com.saasforedu.irro.model.certifications.impl.Employee;
-import com.saasforedu.irro.model.certifications.impl.Graduate;
 import com.saasforedu.irro.model.impl.MainContent;
 
 

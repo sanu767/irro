@@ -18,8 +18,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Target;
 
-import com.saasforedu.irro.model.activities.impl.Contest;
-import com.saasforedu.irro.model.activities.impl.EducationalActivity;
 import com.saasforedu.irro.model.impl.MainContent;
 import com.saasforedu.irro.model.institute.IInstitute;
 

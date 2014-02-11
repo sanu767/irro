@@ -4,7 +4,6 @@
 package com.saasforedu.irro.model.institute.impl;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,9 +11,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Target;
-
-import com.saasforedu.irro.model.impl.MainContent;
 import com.saasforedu.irro.model.institute.IBranchOffice;
 
 /**

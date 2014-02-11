@@ -16,7 +16,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.activities.IEducationalActivity;
-import com.saasforedu.irro.model.certifications.impl.Certificate;
 import com.saasforedu.irro.model.impl.MainContent;
 
 /**
