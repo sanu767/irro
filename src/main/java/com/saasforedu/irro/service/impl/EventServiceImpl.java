@@ -16,6 +16,7 @@ public class EventServiceImpl implements EventService {
 		this.eventDAO = eventDAO;
 	}
 
+	
 	@Override
 	public void create(List<EventElement> elements) {
 		List<Event> events = new ArrayList<Event>(elements.size());
@@ -34,4 +35,12 @@ public class EventServiceImpl implements EventService {
 		event.setType(element.getType());
 		event.setUrl(element.getUrl());
 	}
+
+
+	@Override
+	public List<Event> getEventsForPeriod(int numberOfMonths) {
+		return eventDAO.findEventsForPeriod(6);
+	}
+	
+
 }
