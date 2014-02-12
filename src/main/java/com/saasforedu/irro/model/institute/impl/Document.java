@@ -6,12 +6,15 @@ package com.saasforedu.irro.model.institute.impl;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.impl.MainContent;
@@ -53,13 +56,28 @@ public class Document implements IDocument {
 	@Column(name = "MEASURES")
 	String controlMeasures;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	Institute institute;
+	
+	@GenericGenerator(name = "generator", strategy = "foreign", 
+			parameters = @Parameter(name = "property", value = "institute"))
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "INST_ID", unique = true, nullable = false)
+	private Long instId;
 	
 	@Override
 	public Long getId() {
 		return id;
+	}
+
+	public Long getInstId() {
+		return instId;
+	}
+
+	public void setInstId(Long instId) {
+		this.instId = instId;
 	}
 
 	public MainContent getContent() {

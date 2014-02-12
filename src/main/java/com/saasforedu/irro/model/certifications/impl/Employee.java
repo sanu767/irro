@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.certifications.IEmployee;
@@ -48,9 +50,24 @@ public class Employee implements IEmployee {
 	@PrimaryKeyJoinColumn
 	Certificate cert;
 	
+	@GenericGenerator(name = "generator", strategy = "foreign", 
+			parameters = @Parameter(name = "property", value = "cert"))
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "CE_ID", unique = true, nullable = false)
+	private Long certId;
+	
 	@Override
 	public Long getId() {
 		return id;
+	}
+
+	public Long getCertId() {
+		return certId;
+	}
+
+	public void setCertId(Long certId) {
+		this.certId = certId;
 	}
 
 	public MainContent getContent() {

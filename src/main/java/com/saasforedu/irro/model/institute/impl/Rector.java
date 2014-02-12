@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.impl.MainContent;
@@ -25,32 +27,47 @@ import com.saasforedu.irro.model.institute.IRector;
 @Entity
 @Table(name = "RECTOR")
 public class Rector implements IRector {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "RECT_ID")
 	private Long id;
-	
+
 	@Embedded
 	@Target(value = MainContent.class)
 	MainContent content;
-	
+
 	@Column(name = "MEDIA_REPO")
 	String mediaReport;
-	
+
 	@Column(name = "PUBLIC")
 	String publications;
-	
+
 	@Column(name = "PHOTO_GAL")
 	String photoGallery;
-	
+
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	Institute institute;
+
+	@GenericGenerator(name = "generator", strategy = "foreign", 
+			parameters = @Parameter(name = "property", value = "institute"))
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "INST_ID", unique = true, nullable = false)
+	private Long instId;
 	
 	@Override
 	public Long getId() {
 		return id;
+	}
+
+	public Long getInstId() {
+		return instId;
+	}
+
+	public void setInstId(Long instId) {
+		this.instId = instId;
 	}
 
 	public MainContent getContent() {

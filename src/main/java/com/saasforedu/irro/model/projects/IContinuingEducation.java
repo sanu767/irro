@@ -6,6 +6,10 @@ import com.saasforedu.irro.model.projects.impl.Project;
 
 public interface IContinuingEducation extends IBaseEntity {
 
+	public Long getProjectId();
+
+	public void setProjectId(Long projectId);
+	
 	public MainContent getContent();
 
 	public void setContent(MainContent content);

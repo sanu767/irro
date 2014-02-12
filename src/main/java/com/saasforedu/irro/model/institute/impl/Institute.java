@@ -51,16 +51,16 @@ public class Institute implements IInstitute {
 	@Column(name = "CONTACT")
 	String contacts;
 
-	@OneToOne(targetEntity = Rector.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = Rector.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Rector rector;
 
-	@OneToOne(targetEntity = Document.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = Document.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Document document;
 
-	@OneToOne(targetEntity = BranchOffice.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = BranchOffice.class, mappedBy = "institute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	BranchOffice branchOffice;
 
-	@OneToMany(targetEntity = InstituteDetails.class, mappedBy = "institute", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = InstituteDetails.class, mappedBy = "institute", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	List<InstituteDetails> instituteDetails;
 
 	@Override

@@ -6,6 +6,10 @@ import com.saasforedu.irro.model.impl.MainContent;
 
 public interface IOlympic extends IBaseEntity {
 
+	public Long getActivityId();
+
+	public void setActivityId(Long activityId);
+	
 	public MainContent getContent();
 
 	public void setContent(MainContent content);

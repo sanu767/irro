@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Target;
 
 import com.saasforedu.irro.model.activities.IContest;
@@ -51,9 +53,24 @@ public class Contest implements IContest {
 	@PrimaryKeyJoinColumn
 	Activity activity;
 
+	@GenericGenerator(name = "generator", strategy = "foreign", 
+			parameters = @Parameter(name = "property", value = "activity"))
+	@Id
+	@GeneratedValue(generator = "generator")
+	@Column(name = "ACTIVITY_ID", unique = true, nullable = false)
+	private Long activityId;
+	
 	@Override
 	public Long getId() {
 		return id;
+	}
+
+	public Long getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Long activityId) {
+		this.activityId = activityId;
 	}
 
 	public MainContent getContent() {

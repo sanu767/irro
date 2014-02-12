@@ -6,6 +6,10 @@ import com.saasforedu.irro.model.institute.impl.Institute;
 
 public interface IRector extends IBaseEntity {
 
+	public Long getInstId();
+
+	public void setInstId(Long instId);
+
 	public MainContent getContent();
 
 	public void setContent(MainContent content);

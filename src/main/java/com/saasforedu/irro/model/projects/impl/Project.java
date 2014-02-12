@@ -37,13 +37,13 @@ public class Project implements IProject {
 	@Target(value = MainContent.class)
 	MainContent content;
 	
-	@OneToOne(targetEntity = Basic.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = Basic.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	Basic basic;
 	
-	@OneToOne(targetEntity = ContinuingEducation.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = ContinuingEducation.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	ContinuingEducation continuingEducation;
 	
-	@OneToOne(targetEntity = Sverdlovsk.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = Sverdlovsk.class, mappedBy="project", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	Sverdlovsk sv;
 
 	@Override

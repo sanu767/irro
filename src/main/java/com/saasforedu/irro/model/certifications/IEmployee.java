@@ -6,6 +6,10 @@ import com.saasforedu.irro.model.impl.MainContent;
 
 public interface IEmployee extends IBaseEntity {
 
+	public Long getCertId();
+
+	public void setCertId(Long certId);
+
 	public MainContent getContent();
 
 	public void setContent(MainContent content);

@@ -5,6 +5,7 @@ import com.saasforedu.irro.model.impl.MainContent;
 import com.saasforedu.irro.model.institute.impl.Institute;
 
 public interface IInstituteDetails extends IBaseEntity {
+	
 	public MainContent getContent();
 
 	public void setContent(MainContent content);
