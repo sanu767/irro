@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.projects.impl.ContinuingEducation;
 
 public interface IContinuingEducationDAO  extends IBaseDAO<ContinuingEducation> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

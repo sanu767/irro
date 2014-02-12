@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.projects.impl.Sverdlovsk;
 
 public interface ISverdlovskDAO extends IBaseDAO<Sverdlovsk> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

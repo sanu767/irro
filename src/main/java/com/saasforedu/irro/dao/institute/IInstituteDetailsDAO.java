@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.institute.impl.InstituteDetails;
 
 public interface IInstituteDetailsDAO extends IBaseDAO<InstituteDetails> {
 
+	public String getMainContent();
+
+	public Long findMax();
 }

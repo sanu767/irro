@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.news.impl.News;
 
 public interface INewsDAO extends IBaseDAO<News> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

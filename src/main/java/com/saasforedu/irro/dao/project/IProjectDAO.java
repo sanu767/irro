@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.projects.impl.Project;
 
 public interface IProjectDAO extends IBaseDAO<Project> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }
