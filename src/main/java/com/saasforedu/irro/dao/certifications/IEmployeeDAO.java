@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.certifications.impl.Employee;
 
 public interface IEmployeeDAO extends IBaseDAO<Employee> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.activities.impl.Contest;
 
 public interface IContestDAO extends IBaseDAO<Contest> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

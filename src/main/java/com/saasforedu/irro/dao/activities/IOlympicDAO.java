@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.activities.impl.Olympic;
 
 public interface IOlympicDAO extends IBaseDAO<Olympic> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

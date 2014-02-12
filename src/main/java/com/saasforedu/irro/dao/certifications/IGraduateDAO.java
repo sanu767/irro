@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.certifications.impl.Graduate;
 
 public interface IGraduateDAO extends IBaseDAO<Graduate> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }

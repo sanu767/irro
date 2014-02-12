@@ -5,4 +5,7 @@ import com.saasforedu.irro.model.activities.impl.EducationalActivity;
 
 public interface IEducationalActivityDAO extends IBaseDAO<EducationalActivity> {
 
+	public String getMainContent();
+	
+	public Long findMax();
 }
