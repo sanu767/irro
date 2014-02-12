@@ -46,6 +46,7 @@
 		<property name="itemService" ref="itemService" /> 
 	</bean>
 
+
 	<bean id="eventDAO" class="com.saasforedu.irro.dao.impl.EventDAO"  scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -57,7 +58,6 @@
 	<bean id="eventAction" class="com.saasforedu.irro.action.EventAction" scope="prototype">
 		<property name="eventService" ref="eventService" /> 
 	</bean>
-	
 	
 	<!-- User dependencies -->
 	<bean id="userDAO" class="com.saasforedu.irro.dao.impl.UserDAOImpl" >
@@ -87,8 +87,156 @@
 	</bean>
 	
 	<bean id="userAdminAction" class="com.saasforedu.irro.action.UserAdminAction" scope="prototype">
-		<property name="userService" ref="userService" /> 
-		
+		<property name="userService" ref="userService" />		
 	</bean>
+	
+	<!-- institute -->
+	<bean id="rectorDAO" class="com.saasforedu.irro.dao.institute.impl.RectorDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="rectorService" class="com.saasforedu.irro.service.institute.impl.RectorServiceImpl">
+		<property name="rectorDAO" ref="rectorDAO" />
+	</bean>	
+	
+	<bean id="institutionAction" class="com.saasforedu.irro.action.InstitutionAction">
+		<property name="rectorService" ref="rectorService" /> 
+	</bean>
+	
+	<bean id="branchOfficeDAO" class="com.saasforedu.irro.dao.institute.impl.BranchOfficeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="branchOfficeService" class="com.saasforedu.irro.service.institute.impl.BranchOfficeServiceImpl">
+		<property name="branchOfficeDAO" ref="branchOfficeDAO" />
+	</bean>
+	
+	<bean id="documentDAO" class="com.saasforedu.irro.dao.institute.impl.DocumentDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="documentService" class="com.saasforedu.irro.service.institute.impl.DocumentServiceImpl">
+		<property name="documentDAO" ref="documentDAO" />	
+	</bean>
+
+	<bean id="instituteDetailsDAO" class="com.saasforedu.irro.dao.institute.impl.InstituteDetailsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="instituteDetailsService" class="com.saasforedu.irro.service.institute.impl.InstituteDetailsServiceImpl">
+		<property name="instituteDetailsDAO" ref="instituteDetailsDAO" />	
+	</bean>
+	
+	<bean id="instituteDAO" class="com.saasforedu.irro.dao.institute.impl.InstituteDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="instituteService" class="com.saasforedu.irro.service.institute.impl.InstituteServiceImpl">
+		<property name="instituteDAO" ref="instituteDAO" />	
+	</bean>
+				
+	<!-- activities -->
+
+	<bean id="activityDAO" class="com.saasforedu.irro.dao.activities.impl.ActivityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="newsService" class="com.saasforedu.irro.service.activities.impl.ActivityServiceImpl">
+		<property name="activityDAO" ref="activityDAO" />	
+	</bean>	
+	
+	<bean id="contestDAO" class="com.saasforedu.irro.dao.activities.impl.ContestDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="contestService" class="com.saasforedu.irro.service.activities.impl.ContestServiceImpl">
+		<property name="contestDAO" ref="contestDAO" />	
+	</bean>	
+
+	<bean id="educationalActivityDAO" class="com.saasforedu.irro.dao.activities.impl.EducationalActivityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="educationalActivityService" class="com.saasforedu.irro.service.activities.impl.EducationalActivityServiceImpl">
+		<property name="educationalActivityDAO" ref="educationalActivityDAO" />	
+	</bean>	
+
+	<bean id="olympicDAO" class="com.saasforedu.irro.dao.activities.impl.OlympicDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="olympicService" class="com.saasforedu.irro.service.activities.impl.OlympicServiceImpl">
+		<property name="olympicDAO" ref="olympicDAO" />	
+	</bean>	
+			
+	<!-- certifications -->
+
+	<bean id="certificateDAO" class="com.saasforedu.irro.dao.certifications.impl.CertificateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="certificateService" class="com.saasforedu.irro.service.certifications.impl.CertificateServiceImpl">
+		<property name="certificateDAO" ref="certificateDAO" />	
+	</bean>	
+
+	<bean id="employeeDAO" class="com.saasforedu.irro.dao.certifications.impl.EmployeeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="employeeService" class="com.saasforedu.irro.service.certifications.impl.EmployeeServiceImpl">
+		<property name="employeeDAO" ref="employeeDAO" />	
+	</bean>	
+
+	<bean id="graduateDAO" class="com.saasforedu.irro.dao.certifications.impl.GraduateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="graduateService" class="com.saasforedu.irro.service.certifications.impl.GraduateServiceImpl">
+		<property name="graduateDAO" ref="graduateDAO" />	
+	</bean>	
+				
+	<!-- news -->
+
+	<bean id="newsDAO" class="com.saasforedu.irro.dao.news.impl.NewsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="newsEventService" class="com.saasforedu.irro.service.news.impl.NewsServiceImpl">
+		<property name="newsDAO" ref="newsDAO" />	
+	</bean>	
+	
+	<!-- project -->
+	<bean id="basicDAO" class="com.saasforedu.irro.dao.project.impl.BasicDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="basicService" class="com.saasforedu.irro.service.project.impl.BasicServiceImpl">
+		<property name="basicDAO" ref="basicDAO" />	
+	</bean>		
+
+	<bean id="continuingEducationDAO" class="com.saasforedu.irro.dao.project.impl.ContinuingEducationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="continuingEducationService" class="com.saasforedu.irro.service.project.impl.ContinuingEducationServiceImpl">
+		<property name="continuingEducationDAO" ref="continuingEducationDAO" />	
+	</bean>			
+	
+	<bean id="projectDAO" class="com.saasforedu.irro.dao.project.impl.ProjectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="projectService" class="com.saasforedu.irro.service.project.impl.ProjectServiceImpl">
+		<property name="projectDAO" ref="projectDAO" />	
+	</bean>	
+
+	<bean id="sverdlovskDAO" class="com.saasforedu.irro.dao.project.impl.SverdlovskDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sverdlovskService" class="com.saasforedu.irro.service.project.impl.SverdlovskServiceImpl">
+		<property name="sverdlovskDAO" ref="sverdlovskDAO" />	
+	</bean>		
+	
 	
 </beans>
