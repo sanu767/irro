@@ -41,7 +41,7 @@ a div.sliderShortDescription {
 </style>
 </head>
 
-<%-- <div id="sliderFrame">
+<div id="sliderFrame">
     <div id="slider">
 		<s:iterator value="sliderItems" id="eachSliderItem">
 			<a href="#" class="remove-under">
@@ -51,13 +51,13 @@ a div.sliderShortDescription {
 					<s:property value="#eachSliderItem.endDate" />
 				</div>
 				<div class="sliderShortDescription"><s:property value="#eachSliderItem.shortDescription" /></div>
-				<img src="slider/ '<s:property value="#eachSliderItem.image"'" /> alt="Welcome to New Generation" />
+				<img src="slider/<s:property value="#eachSliderItem.image" />" alt="Welcome to New Generation" />
 			</a>
 		</s:iterator>
 	</div>
-</div> --%>
+</div>
 
-<div id="sliderFrame">
+<!-- <div id="sliderFrame">
         <div id="slider">
             <a href="#" class="remove-under">
 			    <div class="sliderTitle">This is Title </div>
@@ -130,4 +130,4 @@ a div.sliderShortDescription {
                 <img src="slider/P4190076.png" alt="Welcome to New ERA" />
             </a>
 		</div>
- </div>
+ </div> -->

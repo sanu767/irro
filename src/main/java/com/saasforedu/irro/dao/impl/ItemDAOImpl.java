@@ -63,7 +63,7 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 		queryBuilder.append("select i from Item i where i.sliderSelected = ?");
 		queryBuilder.append(" order by i.startDate DESC");
 		queryBuilder.append(" LIMIT " + Integer.toString(numberOfItems));
-		return getHibernateTemplate().find(queryBuilder.toString(), Boolean.TRUE.toString());
+		return getHibernateTemplate().find(queryBuilder.toString(), true);
 	}
 
 	@SuppressWarnings("unchecked")

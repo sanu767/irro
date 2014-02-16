@@ -2,10 +2,6 @@ package com.saasforedu.irro.bean;
 
 import java.util.Date;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.saasforedu.irro.enums.CheckOption;
-
 public class ItemBean {
 
 	Long itemId;
@@ -15,7 +11,7 @@ public class ItemBean {
 	Date endDate;
 	String shortDescription;
 	String longDescription;
-	String sliderSelected;
+	boolean sliderSelected;
 	String image;
 	String filePath;
 	
@@ -95,13 +91,12 @@ public class ItemBean {
 		this.longDescription = longDescription;
 	}
 
-	public String getSliderSelected() {
+	public boolean getSliderSelected() {
 		return sliderSelected;
 	}
 
-	public void setSliderSelected(String sliderSelected) {
-		this.sliderSelected = StringUtils.isEmpty(sliderSelected) ? 
-				CheckOption.FALSE.getChecked() : CheckOption.TRUE.getChecked();
+	public void setSliderSelected(boolean sliderSelected) {
+		this.sliderSelected = sliderSelected;
 	}
 
 	public String getImage() {

@@ -6,7 +6,7 @@ CREATE  TABLE `irronew`.`ITEM` (
   `END_DATE` date DEFAULT NULL,
   `SHORT_DESC` tinytext,
   `LONG_DESC` text,
-  `IS_SLIDER` varchar(1) DEFAULT NULL,
+  `IS_SLIDER` boolean default False,
   `SLIDER_IMG_NAME` tinytext,
   `FILE_PATH` tinytext,
   PRIMARY KEY (`ITEM_TYPE`,`TITLE`),

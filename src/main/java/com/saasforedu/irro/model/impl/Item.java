@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 import com.saasforedu.irro.model.IItem;
 
 @Entity
@@ -38,7 +41,7 @@ public class Item implements IItem {
 	String longDescription;
 
 	@Column(name = "IS_SLIDER")
-	String sliderSelected;
+	boolean sliderSelected;
 
 	@Column(name = "SLIDER_IMG_NAME")
 	String image;
@@ -98,11 +101,11 @@ public class Item implements IItem {
 		this.longDescription = longDescription;
 	}
 
-	public String getSliderSelected() {
+	public boolean getSliderSelected() {
 		return sliderSelected;
 	}
 
-	public void setSliderSelected(String sliderSelected) {
+	public void setSliderSelected(boolean sliderSelected) {
 		this.sliderSelected = sliderSelected;
 	}
 
@@ -131,4 +134,15 @@ public class Item implements IItem {
 				+ ", image=" + image + ", filePath=" + filePath + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	
 }

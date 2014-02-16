@@ -33,7 +33,7 @@
 		<sj:textarea name="itemBean.longDescription" label="Long Description "
 			rows="4" cols="50" placeholder="Write here..." />
 
-		<sj:checkboxlist name="itemBean.sliderSelected" label="Show in slider " list="#{'True'}" />
+		<s:checkbox name="itemBean.sliderSelected" label="Show in slider " />
 
 		<sj:textfield name="itemBean.image" label="Image "
 			placeholder="Copy from slider..." />

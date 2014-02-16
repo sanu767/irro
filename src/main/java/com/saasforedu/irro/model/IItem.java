@@ -24,8 +24,8 @@ public interface IItem {
 	public String getLongDescription();
 	public void setLongDescription(String longDescription) ;
 
-	public String getSliderSelected();
-	public void setSliderSelected(String sliderSelected);
+	public boolean getSliderSelected();
+	public void setSliderSelected(boolean sliderSelected);
 
 	public String getImage();
 	public void setImage(String image);
