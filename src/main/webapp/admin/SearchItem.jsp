@@ -47,12 +47,12 @@ $(document).ready(function(){
 		
 		<s:radio name="itemBean.searchType" label=" Select Item  "
 			list="#{'1':'News', '2':'Events', '3':'Others'}"
-			value="1" />
+			/>
 
-		<sj:datepicker name="itemBean.beforeSearchDate" label="Before "
+		<sj:datepicker name="itemBean.beforeSearchDate" displayFormat="dd/mm/yy" label="Before "
 			changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="itemBean.afterSearchDate" label="After " 
+		<sj:datepicker name="itemBean.afterSearchDate" displayFormat="dd/mm/yy" label="After " 
 			changeYear="true" changeMonth="true" showOn="focus" />
 				
 		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>	

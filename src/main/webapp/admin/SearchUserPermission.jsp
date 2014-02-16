@@ -16,21 +16,20 @@
 	<div style="margin : 5px 0px 0px 10px">
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Search</h1>
 	
-	<s:form action="SearchPermissions" theme="xhtml" accept-charset="UTF-8">
+	<s:form action="SearchUserPermission" theme="xhtml" accept-charset="UTF-8">
 	    
 	    <sj:textfield name="userSearchBean.searchedName" label="User Name " maxlength="100" placeholder="Enter User Name" />
 		
 		<s:label title="User Registered" label="User Registered"/>
-		<sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
+		
+		<sj:datepicker name="userSearchBean.beforeSearchDate" displayFormat="dd/mm/yy" label="Before " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
    
-		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="userSearchBean.afterSearchDate" displayFormat="dd/mm/yy" label="After " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
 		
-		
-		<s:checkboxlist name="userSearchBean.searchedpermissionNames" label="Select Permissions" list="allPermissions"/>
+		<s:checkboxlist name="userSearchBean.searchedpermissionNames" label="Select Permissions" list="allPermissions"  />
 			
 		<s:checkboxlist name="userSearchBean.searchedpermissionIds" label="Select Permission types" list="#{'2':'Pending Approval', '0':'Rejected', '1':'Approved'}" />	
-        	
-				
+        
 		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>
 		
 	</s:form>

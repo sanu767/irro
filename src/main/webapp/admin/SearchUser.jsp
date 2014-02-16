@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+	<sj:head jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -46,9 +46,9 @@ $(document).ready(function() {
 	    
 	    <sj:textfield name="userSearchBean.searchedName" label="User Name" maxlength="100" placeholder="Enter User Name" />
 	    
-	    <sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
+	    <sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" showOn="focus" />
 		
 		<sj:textfield name="userSearchBean.searchedEmailId" label="Email " maxlength="100" placeholder="Enter title" />
 		

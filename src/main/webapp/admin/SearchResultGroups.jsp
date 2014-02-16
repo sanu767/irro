@@ -29,8 +29,8 @@
 			  <display:column property="groupName" title="Name" sortable="true" style="width : 15px" />
 			  <display:column property="active" title="Is Active" sortable="true" style="width : 15px" />
 		 </display:table>
-		 <sj:submit button="Activate" value="Activate" name="redirectAction:ActivateGroups" />
-		 <sj:submit button="DeActivate" value="DeActivate" name="redirectAction:DeActivateGroups" />
+		 <a  href="<%=request.getContextPath() %>/ActivateGroups">Activate</a>
+		 <a  href="<%=request.getContextPath() %>/DeActivateGroups">DeActivate</a>
 		  <sj:submit button="Delete" value="Delete" onClick="return confirm('Do you want to delete these Groups?');" />
 	 </s:form>
 </body>

@@ -20,10 +20,10 @@
 </head> 
 
 <body>
-     <s:form action="DeleteUser" theme="xhtml" accept-charset="UTF-8">
+     <s:form theme="xhtml" accept-charset="UTF-8">
 		 <display:table name="searchedUsers"  defaultsort="2" pagesize="10" sort="list" requestURI="" uid="eachSearchedUser" id="eachSearchedUser">
 			  <display:column title="Select">
-			     <input type="checkbox" name="selectedUserIds" id="selectedUserIds" value="${eachSearchedUser.id}">
+			    <input type="checkbox" name="selectedUserIds" id="selectedUserIds" value="${eachSearchedUser.id}">
 			  </display:column>
 			  <display:column property="userCode" title="Code" sortable="true" style="width : 15px" />
 			  <display:column property="userName" title="Name" sortable="true" style="width : 15px" />
@@ -33,18 +33,10 @@
 			  <display:column property="phoneNumber" title="Phone number" style="width : 15px"  />
 			  <display:column property="active" title="Enabled" sortable="true" style="width : 15px"  />
 			  <display:column property="maxUploadFileSize" title="Maximum File Upload Size" sortable="true" style="width : 15px"  />
-			  <display:column title="Edit Properties">
-			   <s:url id="editUrl" action="LoadUser">
-			      <s:param name="selectedUserIdToModify" value="%{#attr.eachSearchedUser.id}" />
-			    </s:url>
-			    <s:a href="%{editUrl}">
-			         Edit Properties
-			    </s:a>
-          	  </display:column>
 		 </display:table>
-		  <sj:submit button="Activate" value="Activate" name="redirectAction:ActivateUsers" />
-		  <sj:submit button="DeActivate" value="DeActivate" name="redirectAction:DeActivateUsers" />
-		  <sj:submit button="Delete" value="Delete" onClick="return confirm('Do you want to delete these Users?');" />
+		  <s:submit button="Activate" value="Activate" name="redirectAction:ActivateUsers"  />
+		  <s:submit button="DeActivate" value="DeActivate" name="redirectAction:DeActivateUsers" />
+		  <s:submit button="Delete" value="Delete"  name="redirectAction:DeleteUser" onClick="return confirm('Do you want to delete these Users?');" />
 	 </s:form>
 </body>
 </html>

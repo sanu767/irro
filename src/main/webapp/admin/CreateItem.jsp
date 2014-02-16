@@ -23,9 +23,9 @@
 		<sj:textfield name="itemBean.title" label="Title " maxlength="100"
 			required="true" placeholder="Enter title" />
 
-		<sj:datepicker name="itemBean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="itemBean.startDate" displayFormat="dd/mm/yy" label="Start date " changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="itemBean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="itemBean.endDate" displayFormat="dd/mm/yy" label="Last date " changeYear="true" changeMonth="true" showOn="focus" />
 
 		<sj:textarea name="itemBean.shortDescription" label="Short Description "
 			rows="2" cols="25" placeholder="Write here..." />

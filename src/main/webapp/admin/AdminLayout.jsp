@@ -1,25 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
-<script src="/content/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-$(function() {
+	<script src="../content/jquery-1.10.2.js"></script>
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap-multiselect.css" type="text/css"/>
+	
+	<!-- Include Twitter Bootstrap and jQuery: -->
+	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+	 
+	<!-- Include the plugin's CSS and JS: -->
+	<script type="text/javascript" src="../bootstrap/js/bootstrap-multiselect.js"></script>
 
-$('li').hover(
-       function(){ $(this).addClass('showlinks') },
-       function(){ $(this).removeClass('showlinks') }
-)
-
-}); 
-
-</script>
 <style>
 #wrapper {
 	margin: 0px auto; width: 1150px;

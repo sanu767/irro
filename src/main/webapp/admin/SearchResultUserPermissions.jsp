@@ -20,19 +20,18 @@
 </head>
 
 <body>
-     <s:form action="DoChangePermission" theme="xhtml" accept-charset="UTF-8">
-		 <display:table name="searchedUserPermissions"  defaultsort="2" pagesize="10" sort="list" requestURI="" uid="eachSearchedUserPermissions" id="eachSearchedUserPermissions">
+<s:form action="welcomeIrro" theme="xhtml" accept-charset="UTF-8">
+		 <display:table name="searchedUsers"  defaultsort="2" pagesize="10" sort="list" requestURI="" uid="eachSearchedUserPermissions" id="eachSearchedUserPermissions">
 			  <display:column property="userName" title="Name" sortable="true" style="width : 15px" />
-			  <display:column title="Edit Properties">
-			   <s:iterator value="eachSearchedUserPermissions.permissions" id="eachUserPermission">
-					<s:property value="#eachUserPermission.permissionName" />  - 
-					<s:property value="#eachUserPermission.permissionType" />
-				</s:iterator>
-          	  </display:column>
+			  <display:column title="Permisions" style="width : 100px" >
+				  <s:iterator value="%{#attr.eachSearchedUserPermissions.permissionBeans}" id="eachSearchedUserPermission">
+ 	<s:property value="#eachSearchedUserPermission.permissionType" />
+				   </s:iterator>
+			   </display:column>			   
 		 </display:table>
-		 <sj:submit button="Approve" value="Approve" name="redirectAction:approveAll" />
-		 <sj:submit button="Reject" value="Reject" name="redirectAction:rejectAll" />
-		 <sj:submit button="Submit" value="Submit" />
-	 </s:form>
+		 <s:a value="Approve" href="Grant">Grant</s:a>
+		 <s:a value="Revoke" href="Revoke" >Revoke</s:a>
+		 <s:submit button="Cancel" value="Cancel"/>
+</s:form>
 </body>
 </html>

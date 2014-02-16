@@ -17,8 +17,10 @@
 <div style="height : 300 px">
 
 	<s:form action="ModifyItem" theme="xhtml" accept-charset="UTF-8">
-	   
-        <s:hidden name="itemBean.itemId" value="1"></s:hidden>
+	   <s:hidden name="itemBean.itemId" value="%{itemBean.itemId}"/>
+       <sj:textfield name="itemBean.itemId" label="Item Id " maxlength="100"
+			disabled="true" />
+			
 		<s:radio name="itemBean.type" label="Select Items to save "
 			required="true" list="#{'1':'News', '2':'Events', '3':'Others'}"
 			value="itemBean.type" />
@@ -26,10 +28,10 @@
 		<sj:textfield name="itemBean.title" label="Title " maxlength="100"
 			required="true" placeholder="Enter title" />
 
-		<sj:datepicker name="itemBean.startDate" label="Start date " changeYear="true" changeMonth="true"
+		<sj:datepicker name="itemBean.startDate" displayFormat="dd/mm/yy" label="Start date " changeYear="true" changeMonth="true"
 			showOn="focus" />
 
-		<sj:datepicker name="itemBean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="itemBean.endDate" displayFormat="dd/mm/yy" label="Last date " changeYear="true" changeMonth="true" showOn="focus" />
 
 		<sj:textarea name="itemBean.shortDescription" label="Short Description "
 			rows="2" cols="25" placeholder="Write here..." />

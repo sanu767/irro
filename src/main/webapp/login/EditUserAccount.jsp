@@ -10,14 +10,14 @@
 </head>
 <body>
 
-<s:form action="/EditUserAccount" theme="xhtml" accept-charset="UTF-8">	   
+<s:form action="ModifyUser" theme="xhtml" accept-charset="UTF-8">	   
 		<p><s:label>User Modification</s:label></p>
 		 	<s:textfield name="userBean.userCode" value="" label="Code" size="40" />
 		    <s:textfield name="userBean.userName" value="" label="Name" size="40" /> 
 		    <s:textfield name="userBean.userSurname" value="" label="Sur Name" size="40" />    
 		    <s:textfield name="userBean.email" value="" label="Email" size="60" />
 		    <s:textfield name="userBean.address" value="" label="Address" size="60" />
-		    <s:select multiple="true" label="Choose Article permission" list="allPermissionsForUpdate" name="userBean.selectedPermissions"></s:select>
+		    <s:select multiple="true" label="Choose Article permission" list="allPermissions" name="userBean.selectedPermissions"></s:select>
 		    <s:submit value="Edit" label="Edit"/>
 		    <s:submit value="Cancel" label="Cancel" action="redirectAction:welcomeIrro" />
 	</s:form>
