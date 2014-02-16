@@ -82,8 +82,9 @@
 		<property name="userGroupService" ref="userGroupService" />
 	</bean>
 	
-	<bean id="userSupportAction" class="com.saasforedu.irro.action.UserSupportAction" scope="prototype">
-		<property name="userGroupService" ref="userGroupService" /> 
+	<bean id="userAdminPermissionAction" class="com.saasforedu.irro.action.UserAdminPermissionAction" scope="prototype">
+		<property name="userService" ref="userService" /> 
+		<property name="userGroupService" ref="userGroupService" />
 	</bean>
 	
 	<bean id="userAdminAction" class="com.saasforedu.irro.action.UserAdminAction" scope="prototype">

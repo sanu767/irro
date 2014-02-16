@@ -23,4 +23,5 @@ public interface UserDAO {
 	public boolean isUserCodeOrEmailExists(String userCode, String email);
 	
 	public void deletePermissionsByGroupNames(List<String> groupNames);
+	public void changePermissionType(List<Long> permissionIds, int permissionType);
 }

@@ -70,17 +70,15 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 	@Override
 	public List<IItem> searchItems(String itemSearchText) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select i from Item i where i.title like ? ");
-		queryBuilder.append(" or i.shortDescription like ? ");
-		queryBuilder.append(" or i.longDescription like ? ");
+		queryBuilder.append("select i from Item i where i.title like  ");
+		queryBuilder.append(" '%" + itemSearchText +"%' ");
+		queryBuilder.append(" or i.shortDescription like  ");
+		queryBuilder.append(" '%" + itemSearchText +"%' ");
+		queryBuilder.append(" or i.longDescription like  ");
+		queryBuilder.append(" '%" + itemSearchText +"%' ");
 		queryBuilder.append(" order by i.startDate DESC");
 		
-		StringBuilder searchTextBuilder = new StringBuilder("'%");
-		searchTextBuilder.append(itemSearchText);
-		searchTextBuilder.append("%'");
-		
-		List<IItem> resultItems = getHibernateTemplate().find(queryBuilder.toString(), 
-				new Object[]{searchTextBuilder.toString(), searchTextBuilder.toString(), searchTextBuilder.toString()} );
+		List<IItem> resultItems = getHibernateTemplate().find(queryBuilder.toString());
 		return resultItems;
 	}
 
@@ -98,20 +96,17 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 		queryBuilder.append(" i.type = ? ");
 		paramList.add(EventType.getTypeValue(itemBean.getSearchType()));
 		
-		if(StringUtils.isNotBlank(itemBean.getSearchText())) {
+		String searchText = itemBean.getSearchText();
+		if(StringUtils.isNotBlank(searchText)) {
 			queryBuilder.append(" and ");
-			queryBuilder.append(" i.title like ? ");
-			queryBuilder.append(" or i.shortDescription like  ? ");
-			queryBuilder.append(" or i.longDescription like ? ");
+			queryBuilder.append(" i.title like  ");
+			queryBuilder.append(" '%" + searchText +"%' ");
+			queryBuilder.append(" or i.shortDescription like   ");
+			queryBuilder.append(" '%" + searchText +"%' ");
+			queryBuilder.append(" or i.longDescription like  ");
+			queryBuilder.append(" '%" + searchText +"%' ");
 
-			StringBuilder searchTextBuilder = new StringBuilder("%");
-			searchTextBuilder.append(itemBean.getSearchText());
-			searchTextBuilder.append("%");
-			paramList.add(searchTextBuilder.toString());
-			paramList.add(searchTextBuilder.toString());
-			paramList.add(searchTextBuilder.toString());
 		}
-
 
 		if(itemBean.getBeforeSearchDate() != null) {
 			queryBuilder.append(" and ");

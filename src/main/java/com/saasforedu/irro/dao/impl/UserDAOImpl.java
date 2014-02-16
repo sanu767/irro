@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.saasforedu.irro.bean.UserSearchBean;
@@ -69,7 +70,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 		boolean permissionNamesSearched = CollectionUtils.isNotEmpty(searchedPermissionNames);
 		
 		String searchedName = userSearchBean.getSearchedName();
-		boolean isSearchedName = searchedName != null;
+		boolean isSearchedName = StringUtils.isNotEmpty(searchedName);
 		
 		Date beforeSearchDate = userSearchBean.getBeforeSearchDate();
 		boolean beforeSearchDateSet = beforeSearchDate != null;
@@ -207,10 +208,18 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	@Override
 	public void deletePermissionsByGroupNames(List<String> groupNames) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select u UserPermission u where permissionName in ? ");
-		List<IUserPermission> permissions = getHibernateTemplate().find(queryBuilder.toString(), groupNames.toArray());
+		queryBuilder.append("select u UserPermission u where permissionName in (:groupNames)");
+		List<IUserPermission> permissions = getHibernateTemplate().findByNamedParam(
+				queryBuilder.toString(), "groupNames", new Object[]{groupNames});
 		if(CollectionUtils.isNotEmpty(permissions)) {
 			getHibernateTemplate().deleteAll(permissions);
 		}
+	}
+	
+	@Override
+	public void changePermissionType(List<Long> permissionIds, int permissionType) {
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append("update UserPermission u set permissionType = ? where id in ? ");
+		getHibernateTemplate().bulkUpdate(queryBuilder.toString(), new Object[]{permissionType, permissionIds});
 	}
 }

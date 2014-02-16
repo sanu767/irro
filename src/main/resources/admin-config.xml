@@ -49,7 +49,7 @@
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="LoadItem" class="com.saasforedu.irro.action.ItemSearchAction" method="loadItem">
+	<action name="LoadItem" class="com.saasforedu.irro.action.ItemAction" method="loadItem">
 		<result name="input" type="tiles">searchItemResults</result>
 		<result name="success">/admin/ModifyItem.jsp</result>
 	</action>
@@ -95,18 +95,23 @@
 	
 	<!-- Permission -->
 	
-	<action name="ChangePermissions" class="com.saasforedu.irro.action.UserAdminAction" method="searchPermissionWL">
+	<action name="ChangePermissions" class="com.saasforedu.irro.action.UserAdminPermissionAction" method="searchPermissionWL">
 		<result name="success" type="tiles">changePermissions</result>
 	</action>
 	
-	<action name="SearchPermission" class="com.saasforedu.irro.action.UserAdminAction" method="searchUsers">
+	<action name="SearchUserPermission" class="com.saasforedu.irro.action.UserAdminPermissionAction" method="searchUsers">
 		<result name="input" type="tiles">changePermission</result>
 		<result name="success" type="tiles">searchPermissionResults</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
 	
-	<action name="EditPermissions" class="com.saasforedu.irro.action.UserAdminAction" method="editPermission">
+	<action name="Grant" class="com.saasforedu.irro.action.UserAdminPermissionAction" method="grant">
+		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="Revoke" class="com.saasforedu.irro.action.UserAdminPermissionAction" method="revoke">
 		<result name="success" type="tiles">permissionSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
@@ -146,12 +151,12 @@
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="DeActivateGroups" class="com.saasforedu.irro.action.UserAdminAction" method="deActivateGroups">
+	<action name="DeActivateGroups" class="com.saasforedu.irro.action.UserGroupAction" method="deActivateGroups">
 		<result name="success" type="tiles">groupSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="ActivateGroups" class="com.saasforedu.irro.action.UserAdminAction" method="activateGroups">
+	<action name="ActivateGroups" class="com.saasforedu.irro.action.UserGroupAction" method="activateGroups">
 		<result name="success" type="tiles">groupSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
