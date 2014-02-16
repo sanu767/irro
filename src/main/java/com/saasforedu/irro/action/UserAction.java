@@ -130,6 +130,7 @@ public class UserAction extends ActionSupport implements SessionAware {
 	
 	public String doLogOut() throws Exception {
 		sessionAttributes.remove("userId");
+		sessionAttributes.remove("permissionMap");
 		return SUCCESS;
 	}
 	
