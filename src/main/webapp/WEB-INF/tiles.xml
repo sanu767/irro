@@ -51,6 +51,8 @@
 		<put-attribute name="body" value="/login/EditUserAccount.jsp"/>
  	</definition>
  	
+ 	
+ 	
  	<definition name="registrationSuccess" extends="baseLayout">
  		<put-attribute name="title"  value="Registration Successful"/>
  		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
