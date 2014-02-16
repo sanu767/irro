@@ -38,10 +38,6 @@
 			<result name="success" />
 		</action>
 		
-		<!-- <action name="RectorContent" class="com.saasforedu.irro.action.InstitutionAction" method="saveContent">
-			<result name="success">/DivTagTest.jsp</result>
-		</action> -->
-
 	</package>
 
 	<package name="maincontent" namespace="/content" extends="struts-default">
@@ -68,12 +64,12 @@
 			<result name="success" type="tiles">institute</result>
 		</action>
 
-		<action name="Rector" class="com.saasforedu.irro.action.ExampleSupport">
+		<action name="Rector" class="com.saasforedu.irro.action.InstitutionAction" method="loadContent">
 			<result name="success" type="tiles">rector</result>
 		</action>
-		 <action name="EditRector" class="com.skmm.app.example.action.ExampleSupport">
-        <result name="success" type="tiles">editrector</result>
-        </action>
+		<action name="RectorSave" class="com.saasforedu.irro.action.InstitutionAction" method="saveContent">
+				<result name="success" type="tiles">rector</result>
+		</action>
 		<action name="Documents" class="com.saasforedu.irro.action.ExampleSupport">
 			<result name="success" type="tiles">documents</result>
 		</action>
