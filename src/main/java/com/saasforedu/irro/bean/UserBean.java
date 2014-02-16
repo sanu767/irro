@@ -18,8 +18,8 @@ public class UserBean {
 	boolean active;
 	Long maxUploadFileSize;
 	
+	List<UserPermissionBean> permissionBeans;
 	List<String> selectedPermissions;
-	
 	
 	public Long getId() {
 		return id;
@@ -115,6 +115,14 @@ public class UserBean {
 
 	public void setSelectedPermissions(List<String> selectedPermissions) {
 		this.selectedPermissions = selectedPermissions;
+	}
+	
+	public List<UserPermissionBean> getPermissionBeans() {
+		return permissionBeans;
+	}
+
+	public void setPermissionBeans(List<UserPermissionBean> permissionBeans) {
+		this.permissionBeans = permissionBeans;
 	}
 
 }

@@ -1,11 +1,9 @@
 package com.saasforedu.irro.action;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.service.ItemService;
+import com.saasforedu.irro.util.IrroUtils;
 
 public class ItemAction extends ActionSupport {
 	
@@ -20,6 +18,16 @@ public class ItemAction extends ActionSupport {
 	
 	private String [] deletedItemIds;
 	
+	private Long selectedItemIdToModify;
+	
+	public Long getSelectedItemIdToModify() {
+		return selectedItemIdToModify;
+	}
+
+	public void setSelectedItemIdToModify(Long selectedItemIdToModify) {
+		this.selectedItemIdToModify = selectedItemIdToModify;
+	}
+
 	public void setItemService(ItemService itemService) {
 		this.itemService = itemService;
 	}
@@ -42,7 +50,14 @@ public class ItemAction extends ActionSupport {
 
 	public String createItem() throws Exception {
 		Long newItemId = itemService.create(itemBean);
-		return newItemId > 1 ? SUCCESS : ERROR;
+		return newItemId > 0 ? SUCCESS : ERROR;
+	}
+	
+	public String loadItem() {		
+		ItemBean bean = 
+				itemService.findItem(selectedItemIdToModify);
+		this.itemBean = bean;		
+		return SUCCESS;
 	}
 	
 	public String modifyItem() throws Exception {
@@ -51,11 +66,7 @@ public class ItemAction extends ActionSupport {
 	}
 	
 	public String deleteItem() throws Exception {
-		List<Long> itemIdsToDelete = new ArrayList<Long>();
-		for (String code : deletedItemIds) {
-			itemIdsToDelete.add(Long.parseLong(code));
-		}
-		itemService.deleteItem(itemIdsToDelete);
+		itemService.deleteItem(IrroUtils.getLongListFromStringArray(deletedItemIds));
 		return SUCCESS;
 	}
 	

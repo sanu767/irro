@@ -1,12 +1,12 @@
 package com.saasforedu.irro.action;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.bean.GroupSearchBean;
 import com.saasforedu.irro.bean.UserGroupBean;
 import com.saasforedu.irro.service.UserGroupService;
+import com.saasforedu.irro.util.IrroUtils;
 
 public class UserGroupAction extends ActionSupport {
 
@@ -20,7 +20,7 @@ public class UserGroupAction extends ActionSupport {
     
     private List<UserGroupBean> searchedUserGroups;
     
-    private Integer [] selectedGroupIds;
+    private String [] selectedGroupIds;
     
 	public void setUserGroupService(UserGroupService userGroupService) {
 		this.userGroupService = userGroupService;
@@ -34,11 +34,11 @@ public class UserGroupAction extends ActionSupport {
 		this.userGroupBean = userGroupBean;
 	}
 
-	public Integer[] getSelectedGroupIds() {
+	public String[] getSelectedGroupIds() {
 		return selectedGroupIds;
 	}
 
-	public void setSelectedGroupIds(Integer[] selectedGroupIds) {
+	public void setSelectedGroupIds(String[] selectedGroupIds) {
 		this.selectedGroupIds = selectedGroupIds;
 	}
 
@@ -69,8 +69,7 @@ public class UserGroupAction extends ActionSupport {
 	}
 	
 	public String deleteGroups() throws Exception {
-		List<Integer> selectedGroups = Arrays.asList(selectedGroupIds);
-		userGroupService.delete(selectedGroups);
+		userGroupService.delete(IrroUtils.getIntegerListFromStringArray(selectedGroupIds));
 		return SUCCESS;
 	}
 	
@@ -81,12 +80,12 @@ public class UserGroupAction extends ActionSupport {
 	}
 	
 	public String activateGroups() throws Exception{
-		userGroupService.changeActivation(Arrays.asList(selectedGroupIds), true);
+		userGroupService.changeActivation(IrroUtils.getIntegerListFromStringArray(selectedGroupIds), true);
 		return SUCCESS;
 	}
 	
 	public String deActivateGroups() throws Exception {
-		userGroupService.changeActivation(Arrays.asList(selectedGroupIds), false);
+		userGroupService.changeActivation(IrroUtils.getIntegerListFromStringArray(selectedGroupIds), false);
 		return SUCCESS;
 	}
 }

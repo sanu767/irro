@@ -11,8 +11,10 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.bean.UserBean;
 import com.saasforedu.irro.bean.UserGroupBean;
+import com.saasforedu.irro.bean.UserPermissionBean;
 import com.saasforedu.irro.service.UserGroupService;
 import com.saasforedu.irro.service.UserService;
+import com.saasforedu.irro.util.IrroUtils;
 
 public class UserAction extends ActionSupport implements SessionAware {
 	
@@ -33,7 +35,6 @@ public class UserAction extends ActionSupport implements SessionAware {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
 	
 	public void setUserGroupService(UserGroupService userGroupService) {
 		this.userGroupService = userGroupService;
@@ -116,9 +117,14 @@ public class UserAction extends ActionSupport implements SessionAware {
 		UserBean bean = userService.authenticate(userBean.getUserCode(), userBean.getPassword());
 		if(bean != null) {
 			sessionAttributes.put("userId", bean.getId());
+			
+			/** Could be done in more efficient way **/
+			List<UserPermissionBean> permissionBeans = bean.getPermissionBeans();
+			List<String> allGroupNames = findAllGroups();
+			Map<String, Boolean> permissionMap = IrroUtils.getPermissionMap(allGroupNames, permissionBeans);
+			sessionAttributes.put("permissionMap", permissionMap);
 			return SUCCESS;
 		}
-		
 		return ERROR;
 	}
 	

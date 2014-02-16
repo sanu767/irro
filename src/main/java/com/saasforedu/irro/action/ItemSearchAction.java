@@ -9,9 +9,6 @@ import com.saasforedu.irro.service.ItemService;
 
 public class ItemSearchAction extends ActionSupport {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6994364128717519786L;
 
 	private ItemService itemService;
@@ -23,9 +20,6 @@ public class ItemSearchAction extends ActionSupport {
 	private List<ItemBean> sliderItems = new ArrayList<ItemBean>();
 	private List<ItemBean> searchedItems = new ArrayList<ItemBean>();
 	
-	private String selectedItemIdToModify;
-
-
 	public List<ItemBean> getSearchedItems() {
 		return searchedItems;
 	}
@@ -44,15 +38,6 @@ public class ItemSearchAction extends ActionSupport {
 		this.itemService = itemService;
 	}
 	
-	
-	public String getSelectedItemIdToModify() {
-		return selectedItemIdToModify;
-	}
-
-	public void setSelectedItemIdToModify(String selectedItemIdToModify) {
-		this.selectedItemIdToModify = selectedItemIdToModify;
-	}
-
 	public List<ItemBean> getNews() {
 		return news;
 	}
@@ -90,13 +75,6 @@ public class ItemSearchAction extends ActionSupport {
 	
 	public String loadSliderItems() {
 		sliderItems.addAll(itemService.getItems(5));
-		return SUCCESS;
-	}
-	
-	public String loadItem() {		
-		ItemBean bean = 
-				itemService.findItem(Long.parseLong(selectedItemIdToModify));
-		this.itemBean = bean;		
 		return SUCCESS;
 	}	
 }
