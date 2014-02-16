@@ -4,7 +4,7 @@ CREATE  TABLE `irronew`.`ITEM` (
   `TITLE` varchar(100) NOT NULL DEFAULT '',
   `START_DATE` date DEFAULT NULL,
   `END_DATE` date DEFAULT NULL,
-  `SHORT_DESC` tinytext,
+  `SHORT_DESC` text,
   `LONG_DESC` text,
   `IS_SLIDER` boolean default False,
   `SLIDER_IMG_NAME` tinytext,

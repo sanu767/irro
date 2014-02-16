@@ -43,7 +43,7 @@ a div.sliderShortDescription {
 
 <div id="sliderFrame">
     <div id="slider">
-		<s:iterator value="sliderItems" id="eachSliderItem">
+		<s:iterator value="#application['SliderItems']" id="eachSliderItem">
 			<a href="#" class="remove-under">
 				<div class="sliderTitle"><s:property value="#eachSliderItem.title" /></div>
 				<div class="sliderDate">

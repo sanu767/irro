@@ -105,7 +105,7 @@ public class IrroUtils {
 		for (UserPermissionBean userPermissionBean : permissionBeans) {
 			String permissionName = userPermissionBean.getPermissionName();
 			if(StringUtils.equals(groupName, permissionName) && 
-					userPermissionBean.getPermissionType().equals(PermissionType.APPROVED)) {
+					userPermissionBean.getPermissionType().equals(PermissionType.APPROVED.getTypeId())) {
 				return true;
 			}
 		}

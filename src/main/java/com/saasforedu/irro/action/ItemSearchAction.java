@@ -2,7 +2,9 @@ package com.saasforedu.irro.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.service.ItemService;
@@ -65,16 +67,22 @@ public class ItemSearchAction extends ActionSupport {
 	
 	public String loadNews() {
 		news.addAll(itemService.getNews());
+		Map<String, Object> application = ActionContext.getContext().getApplication();
+		application.put("News", this.news);
 		return SUCCESS;
 	}
 	
 	public String loadEvents() {
 		events.addAll(itemService.getEvents());
+		Map<String, Object> application = ActionContext.getContext().getApplication();
+		application.put("Events", this.events);
 		return SUCCESS;
 	}
 	
 	public String loadSliderItems() {
 		sliderItems.addAll(itemService.getItems(5));
+		Map<String, Object> application = ActionContext.getContext().getApplication();
+		application.put("SliderItems", this.sliderItems);
 		return SUCCESS;
 	}	
 }

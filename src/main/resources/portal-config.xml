@@ -162,7 +162,7 @@
 	    </action>
 	    
 	    <action method="modifyWL" class="com.saasforedu.irro.action.UserAction" name="modifyWL">
-			<result name="modify" type="tiles">modifyUser</result>
+			<result name="modify" type="tiles">editUserAccount</result>
 	    </action>
 	    
 	    <action method="forgotPasswordWL" class="com.saasforedu.irro.action.UserAction" name="forgotPasswordWL">
