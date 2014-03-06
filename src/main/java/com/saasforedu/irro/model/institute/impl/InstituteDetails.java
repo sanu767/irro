@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -42,9 +43,11 @@ public class InstituteDetails implements IInstituteDetails {
 	@Column(name = "TYP_NAME")
 	String typeName;
 	
+	@Lob
 	@Column(name = "CONSTI")
 	String constitution;
 	
+	@Lob
 	@Column(name = "NEWS")
 	String news;
 	
@@ -81,8 +84,9 @@ public class InstituteDetails implements IInstituteDetails {
 	@Column(name = "PARENT_ID")
 	Integer instituteParentId;
 	
+	/** Making Nullable as true Temporarily But we need to think to make connection or not**/
 	@ManyToOne(targetEntity = Institute.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "INST_ID", nullable = false)
+	@JoinColumn(name = "INST_ID", nullable = true)
 	Institute institute;
 	
 	@Override

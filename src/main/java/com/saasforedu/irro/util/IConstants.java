@@ -16,5 +16,6 @@ public interface IConstants {
 	public static final String MAIL_SMTP_HOST = "mail.smtp.host";
 	public static final String MAIL_CONTENT_TYPE = "text/html";
 	public static final boolean FALSE = Boolean.FALSE;
+	public static final String SLIDER = "/slider";
 
 }

@@ -197,7 +197,7 @@ public class UserServiceImpl implements UserService {
 			for (IUserPermission permissionInDB : permissionsInDB) {
 				if(selectedPermissions.contains(permissionInDB.getPermissionName())) {
 					if(!permissionInDB.getPermissionType().equals(PermissionType.APPROVED)) {
-						permissionInDB.setPermissionType(PermissionType.REQUEST_APPROVAL.getTypeId());
+						permissionInDB.setPermissionType(PermissionType.APPROVED.getTypeId());
 					}
 					updatedPermissionsInDB.add(permissionInDB);
 					selectedPermissions.remove(permissionInDB.getPermissionName());
@@ -210,7 +210,7 @@ public class UserServiceImpl implements UserService {
 			for (String selectedPermission : selectedPermissions) {
 				IUserPermission userPermission = new UserPermission();
 				userPermission.setPermissionName(selectedPermission);
-				userPermission.setPermissionType(PermissionType.REQUEST_APPROVAL.getTypeId());
+				userPermission.setPermissionType(PermissionType.APPROVED.getTypeId());
 				userPermission.setUser(user);
 				updatedPermissionsInDB.add(userPermission);
 			}
