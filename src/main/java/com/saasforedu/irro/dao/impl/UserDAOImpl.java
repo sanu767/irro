@@ -19,6 +19,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public Long create(IUser user) {
+		user.setActive(true);
 		return (Long)getHibernateTemplate().save(user);
 	}
 	
