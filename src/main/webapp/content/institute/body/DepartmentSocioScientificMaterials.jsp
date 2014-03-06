@@ -1,18 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра общественно-научных дисциплин']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsSocioScientificMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра общественно-научных дисциплин']}">
+<a id="canceltp" href="DepartmentsSocioScientificMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Проект Историко-культурного стандарта<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-•	1 прикреплённый файл<br>
-Семинар-совещание «Роль методических объединений учителей общественно-научных дисциплин в обеспечении качества образования в соответствии с требованиями ФГОС основного и среднего общего образования»<br>
-
-
-<p><br>
-•	2 прикреплённых файла<br>
-Полевой практикум, как форма активизации познавательного интереса и формирования исследовательской компетенции школьников<br>
-
-
-<p><br>
-•	1 прикреплённый файл<br>
-График образовательной деятельности кафедры на 2 полугодие 2013<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsSocioScientificMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

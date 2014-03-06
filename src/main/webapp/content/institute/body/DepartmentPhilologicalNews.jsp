@@ -1,38 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Новости</h1>
-<p><br>
--Учебно-методическая продукция кафедры<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPhilosophyNewsSave" method="POST">
+	<s:hidden name="departmentBean.news" value="%{departmentBean.news}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+<a id="canceltp" href="DepartmentsPhilosophyNews" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.news}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Методическая продукция кафедры ориентирована на решение следующих задач:<br>
-•	Подробнее<br>
-- Кафедра реализует образовательные программы и семинары<br>
-
-
-<p><br>
-Кафедра реализует дополнительные профессиональные программы<br>
-•	Подробнее<br>
-- 5-6 апреля Всероссийская научно-практическая конференция «Школьное филологическое образование в условиях реализации ФГОС».<br>
-
-<p><br>
-Научно-практическая конференция<br>
-5 апреля 2013 - 6 апреля 2013<br>
-
-<p><br>
-Контакты:  8 (343) 369-29-85, 369-29-73 (дополнительный 157)<br>
-Ответственный:  Юшкова Наталия Анатольевна<br>
-•	Подробнее<br>
-•	1 прикреплённый файл<br>
-- VIII региональная научно-практическая конференция<br>
-
-<p><br>
-В 2012 году кафедра предлагает филологам принять участие в VIII региональной научно-практической конференции «Результативность обучения предметам филологического цикла в условиях реализации ФГОС». На конференции предлагается обсудить следующие вопросы:<br>
-1. Содержательный потенциал предметов филологического цикла как состовляющяя духовно-нравственного воспитания школьников.<br>
-2.<br>
-•	Подробнее<br>
-- Летняя школа для талантливых детей Свердловской области "Шаги к успеху"<br>
-
-<p><br>
-Кафедра филологического образования ИРО 6-8 июня 2011 г. участвовала в работе 1-й Областной школы талантливых детей "Шаги к успеху". Школа раполается в 30 км. от Нижнего Тагила, в пос. Леневка, в ДОК "Звездный".<br>
-Кафедра участвовала в работе школы в полном составе: Долинина Тамара Альбертовна, зав.<br>
-
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsPhilosophyNewsSave_departmentBean_news").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

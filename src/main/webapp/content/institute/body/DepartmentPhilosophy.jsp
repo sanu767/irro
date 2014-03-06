@@ -1,18 +1,47 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Кафедра философии и управления образованием</h1>
-<p>
-Кафедра философии и управления образованием<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра философии и управления образованием']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPhilosophySave" method="POST">
+	<s:hidden name="departmentBean.mainContent" value="%{departmentBean.mainContent}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра философии и управления образованием']}">
+<a id="canceltp" href="DepartmentsPhilosophy" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Е-mail:  iro-kf@yandex.ru<br>
-Тел.: (343) 369-29-86, (доб.171)<br>
+<div id="editor" >
+</div>
 
-<p> 
-Цель деятельности кафедры:<br>
-Формирование информационных, программных, методологических, научно-исследовательских, научно-методических, образовательных условий для<br> развития потенциала руководящих и педагогических работников, формирование стратегического управленческого и образовательного мышления на<br> основе интегративного взаимодействия теоретико-методологического знания и обобщения практики образования.<br>
 
-<p>
-Задачи кафедры:<br>
-•	Реализация образовательной деятельности в соответствии с приоритетами государственной политики в сфере образования. <br>
-•	Методическое обеспечение образовательного процесса, ориентированного на вопросы управления образованием, развития инновационного<br> потенциала образования.<br>
-•	Методическое обеспечение образовательной деятельности кафедры.<br>
-•	Научно-исследовательская деятельность, реализуемая на основе теоретико-методологического знания и обобщения практики образования.<br>
+<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.mainContent}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
+
+    window.onload = function() {
+    	document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+    	document.getElementById("savetp").style.display="none";
+    	document.getElementById("canceltp").style.display="none";      
+    };
+
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+
+	};
+
+	function save()	{
+		document.getElementById("DepartmentsPhilosophySave_departmentBean_mainContent").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

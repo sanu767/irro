@@ -1,32 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра педагогики и психологии']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPsychologyMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра педагогики и психологии']}">
+<a id="canceltp" href="DepartmentsPsychologyMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
--	Методические рекомендации ПРОФЕССИНАЛЬНОЕ МАСТЕРСТВО ПЕДАГОГА<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p>
-- Для слушателей ОП "ФГОС ОО: идеология, содержание, технологии введения"<br>
-
-<p>
-Выставка<br>
-14 октября 2013 - 30 октября 2013<br>
-Для занятий необходим текст ФГОС основного общего образования. В предлагаемых материалах он есть и вы можете скачать и распечатать текст документа.<br>
-
-<p>
-- Для слушателей ОП «Управление введением Федеральных государственных образовательных стандартов общего образования» В.м.: «Управление введением Федеральных государственных образовательных стандартов основного общего образования» (108 час.)<br>
-
-<p>
-Дата проведения: <br>
-Пнд, 14/10/2013 - Втр, 29/10/2013<br>
-Вид мероприятия: <br>
-Образовательная программа<br>
-Набор в группу закрыт. Вы можете выбрать другую дату или посетить мероприятие платно.<br>
-
-<p>
-- Для слушателей ОП «Профессиональное мастерство современного учителя как основа успешной реализации Федерального государственного образовательного стандарта общего образования» (120 час.)<br>
-
-<p>
-Дата проведения: <br>
-Пнд, 21/10/2013 - Чтв, 24/10/2013<br> 
-Вид мероприятия: <br>
-Образовательная программа<br>
-Набор в группу закрыт. Вы можете выбрать другую дату или посетить мероприятие платно.<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsPsychologyMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

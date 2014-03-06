@@ -1,21 +1,47 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Кафедра профессионального образования</h1>
-<p><br>
-Кафедра профессионального образования<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsVocationalSave" method="POST">
+	<s:hidden name="departmentBean.mainContent" value="%{departmentBean.mainContent}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+<a id="canceltp" href="DepartmentsVocational" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Кафедра профессионального образования<br>
-Деятельность кафедры организуется в соответствии с приоритетными направлениями модернизации профессионального образования:<br>
-- разработка методологической основы  развития профессионального образования в русле усиления связи образования, науки  и промышленности;<br>
-- обеспечение готовности  системы профессионального образования  к структурным сдвигам в экономике, технологическим изменениям, необходимым в отечественном производстве;<br>
-- модернизация системы начального и среднего профессионального образования в соответствии с Федеральными государственными образовательными стандартами.<br>
-Основные направления деятельности кафедры:<br>
-1. Обеспечивается комплексное сопровождение введения Федеральных государственных образовательных стандартов начального и среднего профессионального образования: организационное, информационное, методическое:<br>
-– осуществляется развитие методических и технологических компетенций педагогов учреждений начального и среднего профессионального образования к реализации федеральных государственных образовательных стандартов профессионального образования;<br>
-–  создаются информационно-методические условия для введения федеральных государственных образовательных стандартов профессионального образования в учреждениях НПО и СПО Свердловской области;<br>
-– обеспечивается развитие управленческих компетенций руководителей учреждений начального и среднего профессионального образования для реализации федеральных государственных образовательных стандартов профессионального образования;<br>
-- создаются организационно-методическое обеспечение мониторинга введения федеральных государственных образовательных стандартов профессионального образования в учреждениях НПО и СПО Свердловской области.<br>
-2. Осуществляется повышение квалификации работников профессионального образования.<br>
-3. Сопровождаются аттестационные процессы в учреждениях начального и среднего профессионального образования.<br>
-4. Осуществляется методическое сопровождение образовательной деятельности учреждений начального и среднего профессионального образования.<br>
-5. Осуществляется организация и сопровождение конкурсной деятельности в системе начального и среднего профессионального образования.<br>
-6.	Организуется исследовательская деятельность в научно-образовательных проектах.<br>
+<div id="editor" >
+</div>
+
+
+<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.mainContent}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
+
+    window.onload = function() {
+    	document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+    	document.getElementById("savetp").style.display="none";
+    	document.getElementById("canceltp").style.display="none";      
+    };
+
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+
+	};
+
+	function save()	{
+		document.getElementById("DepartmentsVocationalSave_departmentBean_mainContent").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

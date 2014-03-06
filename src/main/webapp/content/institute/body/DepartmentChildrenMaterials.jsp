@@ -1,45 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра методологии и методики образования детей с ОВЗ и детей, оставшихся без попечения родителей']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsChildrenMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра методологии и методики образования детей с ОВЗ и детей, оставшихся без попечения родителей']}">
+<a id="canceltp" href="DepartmentsChildrenMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
--	Методические рекомендации по разработке образовательной программы и программы развития СКОУ<br>
--	Методические рекомендации по профилактике нарушений поведения умственно отсталых учащихся<br>
--	Методические рекомендации по организации внеурочной деятельности обучающихся с ограниченными возможностями здоровья<br>
--	Методические рекомендации по организации обучения на дому<br>
--	Методические рекомендации по проектированию индивидуальных образовательных программ<br>
--	Методические рекомендации для учителей-логопедов дошкольных образовательных учреждений<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p>
-Уважаемые коллеги!<br>
-
-<p>
-Предлагаем Вам познакомиться с методическими рекомендациями для учителей-логопедов дошкольных образовательных учреждений.<br>
-
-<p>
-Надеемся, что данные материалы будут для Вас полезны.<br>
-
-<p>
-- Методические рекомендации по организации работы психолого-медико-педагогического консилиума в общеобразовательных учреждениях<br>
-
-<p>
-Уважаемые коллеги!<br>
-
-<p>
-Предлагаем Вам к использованию в работе методические рекомендации по организационно-содержательным аспектам деятельности психолого-медико-педагогического консилиума в общеобразовательных учреждениях.<br>
-
-<p>
-- Методические материалы по профессионально-трудовой подготовке обучающихся с нарушением интеллекта<br>
-
-<p>
-Уважаемые коллеги!<br>
-
-<p>
-Предлагаем Вам к использованию в профессиональной деятельности методические материалы по вопросам профессионально-трудовой подготовки умственно отсталых учащихся.<br>
-
-<p>
-- Методические рекомендации для слушателей образовательной программы профессиональной переподготовки "Специальная педагогика и психология"<br>
-
-<p>
-Уважаемые слушатели дополнительной профессиональной программы профессиональной переподготовки "Специальная педагогика и психология"!<br>
-
-<p>
-Предлагаем Вам при подготовке выпускной аттестационной работы использовать представленные методические рекомендации.<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsChildrenMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

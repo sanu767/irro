@@ -1,19 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsScienceMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+<a id="canceltp" href="DepartmentsScienceMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
--	Новый подход в обучении математике<br>
--	Школьные математические олимпиады<br>
--	Математическое образование в современной школе<br>
--	Анализ результатов ГИА 2013 г. в Свердловской области<br>
--	Методическое пособие: «Биология. Методические рекомендации по оцениванию выполнения заданий с развернутым ответом»<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Овсянникова Н.П. предлагает учителям биологии методическое пособие: «Биология. Методические рекомендации по оцениванию выполнения заданий с развернутым ответом». Пособие адресовано экспертам по проверке работ учащихся в Части С (заданий с развернутым ответом) и педагогам, подготавливающим выпускников к итоговой аттестации по биологии в форме ЕГЭ; учащимся старших классов, методистам и членам предметных комиссий вузов по биологии. Его цель – ознакомить заинтересованных лиц со структурой и содержанием экзаменационной работы по биологии в форме ЕГЭ, с критериями оценки заданий Части С, с особенностями их проверки.<br>
-В брошюру включены характеристика заданий Части С, общие подходы к оценке их решений, разбор типичных ошибок при оценивании. Приводятся задания одного из вариантов экзамена в форме ЕГЭ, проводившегося в мае 2011 года в Свердловской области, а также демонстрационный вариант 2012 гг. с критериями их оценивания.<br>
-- Учебно-методические рекомендации для слушателей программы «Проектирование деятельности учителя физики в соответствии с Федеральным государственным образовательным стандартом общего образования»<br>
-
-<p><br>
- Предложенные учебно-методические рекомендации предназначены слушателям программы «Проектирование деятельности учителя физики в соответствии с ФГОС».  Цель рекомендаций – помочь освоить содержание концепции ФГОС. Рекомендации послужат основанием для рефлексии слушателей по вопросам, раскрываемым на программе, а также окажут необходимую помощь в работе над выпускным проектом<br>
-
-<p><br>
--	О диагностике УУД<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsScienceMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

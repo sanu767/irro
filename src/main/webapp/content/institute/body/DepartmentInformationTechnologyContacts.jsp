@@ -1,28 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Контакты</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра информационных технологий']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsITContactsSave" method="POST">
+	<s:hidden name="departmentBean.contacts" value="%{departmentBean.contacts}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра информационных технологий']}">
+<a id="canceltp" href="DepartmentsITContacts" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Контакты сотрудников кафедры ИТ ИРО:<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.contacts}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Долинер Леонид Исаевич  - зав. кафедрой<br>
-email: dolis13@rambler.ru <br>
-Шпарута Надежда Владимировна - доцент кафедры<br>
-email: shparuta@gmail.com<br>
-Рыжкова Наталия Геннадьевна – доцент<br> 
-email: ryzhkova-umc@yandex.ru<br>
-Сероштанова Наталья Юрьевна - старший преподаватель<br>
-email: seroshtanova@gmail.com<br>
-Волкова Ирина Александровна - старший преподаватель<br>
-email: via170@gmail.com<br>
-Тюгаева Елена Валерьевна - старший преподаватель<br>
-email: tugaeva@gmail.com<br>
-Глинских Юлия Владимировна - методист<br>
-email: glinskich@gmail.com—запись на курсы<br>
-Дементьева Мария Андреевна - методист<br>
-email: marydementyeva@gmail.com<br>
-
-<p><br>
-Записаться на образовательные программы Кафедры информационных технологий, получить информацию по курсам или другую информацию о деятельности Кафедры, вы можете у  методиста Юлии Владимировны Глинских, используя следующие контакты:<br>
-  Тел.: 8(343) 369-29-86, доб. 163<br>
-e-mail: glinskich@gmail.com<br>
-адрес: г. Екатеринбург, ул. Академическая, 16, ауд.409<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsITContactsSave_departmentBean_contacts").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

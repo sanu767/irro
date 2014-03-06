@@ -1,62 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
-<p><br>
-- Об олимпиаде по литературе<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPhilologicalMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+<a id="canceltp" href="DepartmentsPhilologicalMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-В этом году изменено содержание олимпиадных заданий по литературе и критерии оценки работ. Поэтому представляем вашему вниманию пояснительные записки, которые использовались при организации и проведении муниципального этапа Всероссийской олимпиады школьников по литературе в 2013-2014 учебном году.<br> 
-•	Подробнее<br>
-•	2 прикреплённых файла<br>
-- Областной межведомственный культурный проект «Открытая книга»<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-В Свердловской области в соответствии с приказом Министерства культуры Свердловской области и Министерства общего и профессионального образования Свердловской области от 19.07.2013 №225/507-и в период с сентября 2013 года по декабрь 2014 года реализуется областной межведомственный культурный проект «Открытая книга». В рамках реализации проекта и разработаны предлагаемые вашему вниманию методические рекомендации для образовательных учреждений по проведению мероприятий.<br>
-•	Подробнее<br>
-•	1 прикреплённый файл<br>
-- О детской литературе и литературе для подростков
-
-<p><br>
-Проблема детского, подросткового и юношеского чтения в современном мире за последние 3 - 4 года явно выдвинулась на первые позиции при обсуждении проблем воспитания и образования детей в XXI веке.
-Всем известна истина: квалифицированными читателями становятся лишь те люди, кто в детстве увлекался детской литературой, а в старшем подростковом и юношеском возрасте - литературой подростковой.
-•	Подробнее
-•	2 прикреплённых файла
-- Анализ результатов ЕГЭ 2011
-
-<p><br>
-Анализ результатов ЕГЭ по русскому языку и литературе
-Методические рекомендации
- 
- <p><br>
-Основные результаты экзамена по русскому языку 2011 г.
-
-<p><br>
-•	Подробнее
-- Функции языковых явлений. Таблица
-
-
-<p><br>
-•	1 прикреплённый файл<br>
-- Рекомендации для экспертов ГИА-9<br>
-
-
-<p><br>
-•	1 прикреплённый файл<br>
-- Сопоставительный анализ результатов репетиционного экзамена<br>
-
-<p><br>
-•	1 прикреплённый файл<br>
-- Презентация. Пособие Долининой<br>
-
-<p><br>
-•	1 прикреплённый файл<br>
-- Анализ части В, ГИА 2010<br>
-
-<p><br>
-•	1 прикреплённый файл<br>
-- Речевые, грамматические ошибки - тренинг<br>
-
-<p><br>
-- Анализ репетиционного ЕГЭ и ГИА<br>
-
-<p><br>
-•	3 прикреплённых файла<br>
-- Информация для педагогов<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsPhilologicalMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

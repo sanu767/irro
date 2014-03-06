@@ -1,92 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделения</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsVocationalConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+<a id="canceltp" href="DepartmentsVocationalConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Герасимова Марина Анатольевна<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p>
- 
- 
- 
-  
-к. п. н., заведующий кафедрой<br>
-
-<p> 
-Сфера научных интересов:<br>
- - методическая деятельность в учреждениях начального и среднего профессионального образования;<br>
- - региональная модель развития содержания среднего профессионального педагогического образования;<br>
- - методическое сопровождение профориентационной работы Свердловской области.<br>
- 
-
-<p>
-•	Подробнее<br>
-Малышкина Анна Александровна<br>
-
- 
- 
- 
- 
- 
- 
-<p>
-методист<br>
-
-<p>
-Сфера научных интересов:<br>
-
-<p>
-- организационно-информационное обеспечение образовательного процесса;<br>
-- диагностика, прогнозирование и планирование образовательного процесса.<br>
-
-<p>
-•	Подробнее<br>
-Беспалова Елена Павловна<br>
-
- 
- 
- 
- 
- 
-<p> 
-к. п. н., доцент кафедры<br>
-
-<p>
-Сфера научных интересов:<br>
-
-<p>
-- развитие профессиональной компетентности учителя технологии;<br>
-- современные педагогические технологии в процессе технологического образования.<br> 
- 
-<p>
-•	Подробнее<br>
-Пакалина Елена Николаевна<br>
-
- 
- 
- 
- 
- 
- 
-<p>
-к. п. н., доцент кафедры<br>
-
-<p>
-Сфера научных интересов:<br>
-- профессиональная подготовка и педагогическая поддержка обучающихся с ограниченными возможностями здоровья в системе НПО и СПО;<br>
-- психолого-педагогическое сопровождение профессионального самоопределения учащихся общеобразовательных школ и профессионального становления обучающихся  учреждений НПО и СПО.<br> 
-
-<p>
-•	Подробнее<br>
-Темняткина Ольга Владимировна<br>
-
- 
- 
- 
- 
- 
- 
-<p>
-к.п.н., доцент кафедры<br>
-Сфера научных интересов:<br>
- - мониторинг качества профессионального образования;<br>
- - технологии реализации компетентностного подхода в образовательном процессе ОУ НПО, СПО в соответствии с ФГОС;<br>
--	формирование общих и профессиональных компетенций обучающихся в соответствии с ФГОС. <br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsVocationalConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

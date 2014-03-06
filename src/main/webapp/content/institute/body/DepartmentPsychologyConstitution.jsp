@@ -1,74 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделения</h1>
-<p>
-Некрасова Ольга Александровна<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра педагогики и психологии']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPsychologyConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра педагогики и психологии']}">
+<a id="canceltp" href="DepartmentsPsychologyConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Фотография: <br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p> 
-Должность: <br>
-заведующий кафедры педагогики и психологии, кандидат педагогических наук, доцент<br>
-Рычкова Наталья Викторовна<br>
-
-<p>
-Фотография: <br>
-
-<p> 
-Должность: <br>
-методист кафедры педагогики и психологии<br>
-Парамонова Анна Евгеньевна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-доцент кафедры педагогики и психологии, кандидат педагогических наук<br>
-Спирина Алена Вадимовна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-доцент кафедры педагогики и психологии, кандидат психологических наук<br>
-Толстикова Ольга Викторовна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-доцент кафедры педагогики и психологии<br>
-Неганова Марина Борисовна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-преподаватель кафедры педагогики и психологии<br>
-Ткачева Лариса Николаевна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-преподаватель кафедры педагогики и психологии<br>
-Лукоянова Людмила Андреевна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-преподаватель кафедры педагогики и психологии<br>
-Савельева Ольга Валерьевна<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: <br>
-преподаватель кафедры педагогики и психологии<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsPsychologyConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

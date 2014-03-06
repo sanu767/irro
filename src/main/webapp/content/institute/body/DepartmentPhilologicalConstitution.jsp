@@ -1,56 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделений</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsPhilologicalConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра филологического образования']}">
+<a id="canceltp" href="DepartmentsPhilologicalConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Долинина Тамара Альбертовна<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-зав. кафедрой<br>
-Электронный адрес:<br> 
-iro-kfo@mail.ru<br>
-Образование высшее, Курганский государственный педагогический институт<br>
-Стаж педагогической работы:   40 лет<br>
-Ученая степень, ученое звание, квалификационная категория<br> 
-(для преподавателей) преподаватель-методист <br>
-
-<p><br>
-•	Подробнее<br>
-Архарова Дина Ивановна<br>
-
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-Доцент каферы<br>
-Электронный адрес:<br> 
-iro-kfo@mail.ru<br>
-Образование высшее, Уральский госуниверситет им. М.Горького<br>
-Ученая степень, ученое звание, квалификационная категория <br>
-(для преподавателей) кандидат филол.<br>
-•	Подробнее<br>
-Машарова Ирина Сергеевна<br>
-
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-доцент<br>
-Электронный адрес:<br> 
-mairs@yandex.ru<br>
-Образование высшее, Уральский государственный университет им. А.М.<br>
-•	Подробнее<br>
-Юшкова Наталия Анатольевна<br>
-
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-доцент<br>
-Электронный адрес:<br> 
-yushkova-n@yandex.ru<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsPhilologicalConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

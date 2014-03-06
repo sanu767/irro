@@ -1,32 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра информационных технологий']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsITMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра информационных технологий']}">
+<a id="canceltp" href="DepartmentsITMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Секция 3. ИКТ в преподавании школьных предметов 17 мая 2013 ИКТ-Екатеринбург- 2013<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Уважаемые коллеги, заполните лист, пожалуйста, ссылка.<br>
-https://bubbl.us/<br>
-https://bubbl.us/<br>
-График кафедры информационных технологий на 1 полугодие 2013<br>
-
-<p><br> 
-Уважаемые коллеги, в приложении к сообщению можно познакомиться с графиком кафедры информационных технологий на 1 полугодие 2013.<br>
- 
- <p><br>
-•	Подробнее<br>
-•	1 прикреплённый файл<br>
-График кафедры информационных технологий на 1 полугодие 2012<br>
-
-<p><br>
-Уважаемые коллеги, в приложении к сообщению можно познакомиться с графиком кафедры информационных технологий на 1 полугодие 2012.<br>
- 
- <p><br>
-Заявки на курсы можно отправлять методисту кафедры Глинских Юлии Владимировне по эл.адресу glinskich@gmail.com.  В заявке необходимо указывать ФИО, должность, ОУ, контактные данные слушателя.<br>
-•	1 прикреплённый файл<br>
-Список образовательных программ Кафедры ИТ реализуемых в 2012 год<br>
-
-<p><br>
-Уважаемые коллеги!<br>
-
-<p><br>
-Кафедра информационных технологий ИРО проводит ряд актуальных образовательных программ, связанных с использованием ИКТ в образовательном процессе для руководителей образовательных учреждений, преподавателей НПО и СПО, учителей начальных классов, учителей-предметников, учителей - информатиков, педагогов дополнительного образования, воспитателей.<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsITMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

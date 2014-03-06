@@ -1,48 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Материалы</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsVocationalMaterialsSave" method="POST">
+	<s:hidden name="departmentBean.materials" value="%{departmentBean.materials}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра профессионального образования']}">
+<a id="canceltp" href="DepartmentsVocationalMaterials" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-- "Развитие независимой системы оценки качества образования в России"<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.materials}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-- Методика разработки профессиональных стандартов<br>
-
-
-<p><br>
-- Концепция развития системы подготовки рабочих кадров и формирования прикладных квалификаций<br>
-
-
-<p><br>
-- Стратегия развития системы подготовки рабочих кадров и формирования прикладных квалификаций<br>
-
-
-<p><br>
-- Проект «Славим человека труда!»<br>
-
-
-<p><br>
-- План мероприятий ("дорожная карта") "Изменения в отраслях социальной сферы, направленные на повышение эффективности образования и науки"<br>
-
-
-<p><br>
-- Концепция и программа профориентационной работы в системе образования Свердловской области<br>
-
-
-<p><br>
-- Научно-методическое сопровождение реализации ФГОС профессионального образования<br>
-
-
-<p><br>
-- Приказ от 21.01.2011 №02-Д "О введении ФГОС НПО / СПО в ГОУ НПО / СПО Свердловской области<br>
-
-
-<p><br>
-- О результатах деятельности по введению федеральных государственных образовательных стандартов начального профессионального / среднего профессионального образования<br>
-
-
- 
-
-1.7.5.5. Контакты
-
-Heading: Контакты
-
-
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsVocationalMaterialsSave_departmentBean_materials").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

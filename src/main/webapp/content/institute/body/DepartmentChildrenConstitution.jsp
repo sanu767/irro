@@ -1,37 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделения</h1>
-<p>
-Якупова Альбина Фанилевна<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра методологии и методики образования детей с ОВЗ и детей, оставшихся без попечения родителей']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsChildrenConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра методологии и методики образования детей с ОВЗ и детей, оставшихся без попечения родителей']}">
+<a id="canceltp" href="DepartmentsChildrenConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Должность: <br>
-доцент кафедры, кандидат педагогических наук<br>
-Сфера научных интересов: логопедическое сопровождение воспитанников и обучающихся дошкольных образовательных учреждений, общеобразовательных учреждений, психолого-педагогическое сопровождение детей с умственной отсталостью в общеобразовательных учреждениях<br>
-Семенова Елена Владимировна<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p>
-Должность: <br>
-доцент кафедры, кандидат психологических наук<br>
-Телефон: <br>
-369-29-86 (доб. 159)<br>
-Электронный адрес: <br>
-irrokafedrasp@inbox.ru<br>
-Сфера научных интересов: содержание психолого-педагогической работы с учащимися с умеренной и тяжелой умственной отсталостью, психолого-педагогическое сопровождение детей со сложным дефектом в условиях специального (коррекционного) общеобразовательного учреждения.<br>
-Поташникова Алла Шиковна<br>
-
-<p>
-Должность: <br>
-методист<br>
-Телефон: <br>
-369-29-86 (доб. 159)<br>
-Электронный адрес: <br>
-irrokafedrasp@inbox.ru<br>
-Соловьева Светлана Викторовна<br>
-
-<p>
-Должность: <br>
-заведующий кафедрой, доцент, кандидат педагогических наук<br>
-Телефон: <br>
-369-29-86 (доб. 159)<br>
-Электронный адрес: <br>
-irrokafedrasp@inbox.ru<br>
-Сфера научных интересов: введение федеральных государственных образовательных стандартов общего образования в специальном (коррекционном) образовании; проектирование программно-планирующей документации, регламентирующей образовательный процесс в специальных (коррекционных) общеобразовательных учреждениях.<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsChildrenConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

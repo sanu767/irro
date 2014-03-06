@@ -1,19 +1,47 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Кафедра естественнонаучного и математического образования</h1>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsScienceSave" method="POST">
+	<s:hidden name="departmentBean.mainContent" value="%{departmentBean.mainContent}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+<a id="canceltp" href="DepartmentsScience" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Кафедра естественнонаучного и математического образования<br>
+<div id="editor" >
+</div>
 
-<p>
-  Миссия: устойчивое развитие естественнонаучного и математического образования на основе профессионально-личностного роста педагога новой школы<br> 
-О подразделении<br>
-Кафедра естественнонаучного и математического образования<br>
 
-<p>
-•	 Кафедра реализует образовательные программы, в которых раскрывается широкий круг теоретических и практических вопросов, связанных с преподаванием дисциплин естественнонаучного цикла: современные технологии, способы формирования компетенций и универсальных учебных действий учащихся согласно ФГОС, общепедагогические задачи, частные методики преподавания отдельных разделов и дисциплин естественнонаучного цикла, вопросы образовательной политики государства и региона, организация и содержание исследовательской деятельности учащихся, работа с одаренными детьми.<br>
-•	Преподаватели кафедры руководят работой стажировочных базовых площадок, по реализации ФГОС основной школы;<br>
-•	Сотрудниками кафедры организуют и проводят конференции по вопросам, развития естественно-научного образования в ОУ.  По материалам конференций на кафедре ежегодно издаются сборники научных трудов профессорско-преподавательского состава кафедры, института в целом и педагогов области.<br>
-•	Преподаватели кафедры регулярно повышают свой профессиональный уровень через курсы повышения квалификации, участие в конференциях различного уровня, круглых столах, семинарах, а так же через самообразование, используя дистантные формы обучения;<br>
-•	Профессорско-преподавательский состав кафедры регулярно приглашается для рецензирования различных школьных учебников;<br>
-•	Преподаватели кафедры являются экспертами ЕГЭ, проводя экспертизу работ учащихся и, одновременно, обучая учителей этой непростой работе;<br>
-•	Работники кафедры принимаю активное участие в аттестации учителей естественнонаучных дисциплин школ области;<br>
-Такой широкий круг вопросов кафедра способна решать потому, что в ней работают профессионалы высокого уровня, на кафедре царит творческая, уважительная атмосфера и тесное социальное партнерство с ведущими ВУЗами города Екатеринбурга.<br>
+<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.mainContent}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
+
+    window.onload = function() {
+    	document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+    	document.getElementById("savetp").style.display="none";
+    	document.getElementById("canceltp").style.display="none";      
+    };
+
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+
+	};
+
+	function save()	{
+		document.getElementById("DepartmentsScienceSave_departmentBean_mainContent").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

@@ -1,108 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделения</h1>
-<p>
-Осинцева Ирина Михайловна<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsScienceConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра естественнонаучного и математического образования']}">
+<a id="canceltp" href="DepartmentsScienceConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p>
-Фотография: <br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p>
-Должность: <br>
-заведующая кафедрой естественнонаучного и математического образования, кандидат педагогических наук<br>
-Телефон: <br>
-8(343)3692986 (доб.140)<br>
-Электронный адрес: <br>
-kesto66@yandex.ru<br>
-Консультирование педагогов по вопросам:<br> 
-- использование технологий деятельностного и аксиологического типа в образовательном процессе;<br>
-- развитие культуры учения у учащихся.<br>
- 
-<p>
- <br><br><br><br>
- 
- 
-•	Подробнее<br>
-Овсянникова Наталья Павловна<br>
-
-<p>
-Фотография: <br>
- 
-<p>
-Должность: <br>
-доцент, кандидат педагогических наук<br>
-Телефон: <br>
-8(343)3692986 (доб. 129)<br>
-Электронный адрес: <br>
-kesto66@yandex.ru<br>
- Консультирование педагогов по вопросам: - преподавание биологии в школе;- итоговая аттестация обучающихся в форме ГИА и ЕГЭ по биологии;<br>
-•	Подробнее<br>
-Гофенберг Ирина Валентиновна<br>
-
-<p>
-Фотография: <br>
- 
-<p>
-Должность: <br>
-доцент, кандидат химических наук<br>
-Телефон: <br>
-8(343)3692986 (доб.129)<br>
-Электронный адрес: <br>
-kesto66@yandex.ru<br>
-Консультирование педагогов по вопросам:<br>
-•	Подробнее<br>
-Альперин Михаил Исаакович<br>
-
-<p>
-Фотография: <br>
-
-<p>
-Должность: 
-доцент, кандидат физико-математических наук
-Телефон: 
-8(343)3692986 (доб. 142)
-Электронный адрес: 
-kesto66@yandex.ru
-Нохрин Сергей Эрнестович
-
-<p>
-Фотография: 
- 
-<p>
-Должность: 
-доцент, кандидат физико-математических наук
-Телефон: 
-8(343)3692986(доб. 142)
-Электронный адрес: 
-kesto66@yandex.ru
-Консультирование педагогов по вопросам: 
-•	Подробнее
-Миниханова Софья Алексеевна
-
-<p>
-Фотография: 
- 
-<p>
-Должность: 
-доцент, кандидат педагогических наук
-Телефон: 
-8 (343) 3692986 (доб.129)
-Электронный адрес: 
-kesto66@yandex.ru
-Циовкин Юрий Юрьевич
-
-<p>
-Должность: 
-доцент, кандидат физико-математических наук
-Телефон: 
-8(343)3692986 (доб.142)
-Козлова Елена Борисовна
-
-<p>
-Фотография: 
-
-<p>
-Должность: 
-методист
-Телефон: 
-8(343)3692986 (доб141)
-Электронный адрес: 
-kesto66@yandex.ru
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsScienceConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>

@@ -1,39 +1,45 @@
-﻿<h1 style="font-size: 18px;padding-top:50px;">Состав подразделения</h1>
-<p><br>
-Сегеда Татьяна Александровна<br>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<body>
+<s:if test="%{#session.permissionMap['Кафедра общественно-научных дисциплин']}">
+  <a id="edittp" ><button class="btn btn-primary" type="button" value="Edit" onclick="edit()">Edit</button></a>
+  </s:if>
+<div id="savetp" >
+<s:form cssStyle="width:1px;height: 1px;" action="DepartmentsSocioScientificConstitutionSave" method="POST">
+	<s:hidden name="departmentBean.constitution" value="%{departmentBean.constitution}"/>
+<s:submit cssClass="btn btn-primary" value="Submit" onclick="save()"/> 
+</s:form>
+</div>
+<s:if test="%{#session.permissionMap['Кафедра общественно-научных дисциплин']}">
+<a id="canceltp" href="DepartmentsSocioScientificConstitution" ><button class="btn btn-link" type="button" value="Cancel">Cancel</button></a>
+</s:if>
 
-<p><br>
-Должность: <br>
-Зав. кафедрой<br>
-Телефон: <br>
-(343)3692986 (доб. 104)<br>
-Электронный адрес: <br>
-segeda_ta@mail.ru<br>
-Уколова Ольга Сергеевна<br>
+<div id="editor" >
+</div>
+	<s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{departmentBean.constitution}"/>
+<script src="../editor/ckeditor.js"></script>
+<link href="../editor/sample.css" rel="stylesheet"/>
+<script>
 
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-Старший преподаватель<br>
-Телефон: <br>
-(343)3692986 (доб. 144)<br>
-Электронный адрес: <br>
-olsu2009@gmail.com<br>
- 
- <p><br>
-         Учитель истории и обществознания гимназии № 37 г. Екатеринбурга, председатель Свердловского регионального отделения «Ассоциации учителей истории и обществознания».<br> 
-•	Подробнее<br>
-Титаренко Анастасия Сергеевна<br>
-
-<p><br>
-Фотография: <br>
- 
- <p><br>
-Должность: <br>
-Методист<br>
-Телефон: <br>
-(343)3692986 (доб. 144)<br>
-Электронный адрес: <br>
-kafedra.obsh.nauk@mail.ru<br>
+	window.onload = function() {
+		document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
+		document.getElementById("savetp").style.display="none";
+		document.getElementById("canceltp").style.display="none";      
+	};
+	
+	function edit () {
+	   	document.getElementById("edittp").style.display="none";
+		document.getElementById("savetp").style.display="inline";
+		document.getElementById("canceltp").style.display="inline-block";
+		CKEDITOR.replace( 'editor' );
+	
+	};
+	
+	function save()	{
+		document.getElementById("DepartmentsSocioScientificConstitutionSave_departmentBean_constitution").value=CKEDITOR.instances.editor.getData();
+	};
+</script>
+</body>
+</html>
