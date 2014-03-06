@@ -4,16 +4,20 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
- <package name="AdminActions" namespace="/" extends="struts-default">
+ <package name="AdminActions" namespace="/admin" extends="struts-default">
  <result-types>
             <result-type name="tiles"
                 class="org.apache.struts2.views.tiles.TilesResult" />
   </result-types> 
   
+  		<action name="Login" class="com.saasforedu.irro.action.AdminLogin">
+			<result name="success" type="tiles">changeMenus</result>
+		</action>
+  
 	<!-- Item -->
 	<action name="ChangeItem" class="com.saasforedu.irro.action.ItemAction">
 		<result name="success" type="tiles">changeItem</result>
-	</action>	
+	</action>
 	
 	<action name="SearchItem" class="com.saasforedu.irro.action.ItemSearchAction" method="searchItems">
 	    <result name="input" type="tiles">changeItem</result>
@@ -54,6 +58,21 @@
 		<result name="success">/admin/ModifyItem.jsp</result>
 	</action>
 	
+	<action name="UploadFile" class="com.saasforedu.irro.action.FileUploadAction">
+			<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,
+                video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+				</param>  
+            </interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>  
+		<result name="input">/admin/FileUpload.jsp</result>
+		<result name="success" type="tiles">loadCreateItem</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
 	<!-- User -->
 	
 	<action name="ChangeUser" class="com.saasforedu.irro.action.UserAdminAction">
@@ -67,8 +86,14 @@
 	</action>
 
 	<action name="EditUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
-	    <result name="input">/admin/ModifyUser.jsp</result>
-		<result name="success" type="tiles">userSuccess</result>
+		    <result name="input">/admin/ModifyUser.jsp</result>
+			<result name="success" type="tiles">userSuccess</result>
+			<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="LoadCreateUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
+	   <result name="input" type="tiles">changeUser</result>
+		<result name="success" type="tiles">createUser</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
@@ -80,7 +105,7 @@
 	
 	<action name="LoadUser" class="com.saasforedu.irro.action.UserAdminAction" method="loadUser">
 		<result name="input" type="tiles">searchUserResults</result>
-		<result name="success">/admin/ModifyUser.jsp</result>
+		<result name="success" type="tiles">loadUser</result>
 	</action>
 	
 	<action name="DeActivateUsers" class="com.saasforedu.irro.action.UserAdminAction" method="deActivateUsers">
