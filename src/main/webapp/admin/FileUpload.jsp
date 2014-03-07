@@ -23,10 +23,57 @@
 
 <body>
 
+<s:a href="FindFiles">Find All</s:a>
 
 
-<s:file name="upload" label="Name of downloadable file"  cssErrorClass="errors" />
-<s:a href="<%=request.getContextPath() %>/admin/UploadFile"> </s:a>
+<table>
+     <thead>
+         <tr>
+             <th>Name</th>
+             <th>Delete</th>
+             <th>De Activate</th>             
+         </tr>
+     </thead>
+     <tbody>
+         <s:iterator value="fileArticles">
+                 <tr>
+                     <td><s:property value="fileName"/></td>
+                     <td>
+	                    <s:url id="editUrl" action="ChangeFileActivation">
+				      		<s:param name="deleteFileId" value="id" />
+				    	</s:url>
+					    <s:a href="%{editUrl}">
+					    	 <!-- In client just play around the text we show below..
+					    	 If Active true show Activate else Deactivate..
+					    	 In server I am checking if activated in DB, I deactivate and vice versa -->
+					    	 <s:if test="active">DeActivate</s:if>
+					    	 <s:else>Activate</s:else>
+					    </s:a>
+					 </td>
+					 <td>
+					    <s:url id="editUrl" action="DeleteFile">
+				      		<s:param name="deleteFileId" value="id" />
+				    	</s:url>
+					    <s:a href="%{editUrl}">
+					         Delete
+					    </s:a>
+					 </td>
+                 </tr>
+                 <tr>
+	                 <td>
+	                 	URL : <s:property value="location"/> <s:property value="fileName"/>
+	                 </td>
+                 </tr>                 
+         </s:iterator>
+     </tbody>
+</table>
+
+<!--  Add new files -->
+Add New Files
+<s:form action="UploadFile" method="post" enctype="multipart/form-data">
+    <s:file name="upload" label="File"/>
+    <s:submit/>
+</s:form>
 	
 </body>
 </html>
