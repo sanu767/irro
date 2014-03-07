@@ -40,6 +40,9 @@
         <mapping class="com.saasforedu.irro.model.impl.UserGroup" />
         <mapping class="com.saasforedu.irro.model.impl.UserPermission" />
         
+        <!-- File -->
+        <mapping class="com.saasforedu.irro.model.impl.FileArticle" />
+        
     </session-factory>
     
 </hibernate-configuration>

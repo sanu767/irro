@@ -257,6 +257,16 @@ CREATE TABLE `irronew`.`event` (
 ) DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
+CREATE  TABLE `irronew`.`FILE_ARTICLE` (
+  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
+  `FILE_NAME` varchar(255) NOT NULL,
+  `FILE_TYPE` varchar(255) NOT NULL,
+  `LOCATION`  varchar(255) DEFAULT NULL,
+  `IS_ACTIVE` boolean default False,  
+  PRIMARY KEY (`FILE_ID`)
+)DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
 
 ALTER TABLE `irronew`.`document` ADD COLUMN `INST_ID` BIGINT(20) NOT NULL  AFTER `SUP_BOARD` 
 , ADD UNIQUE INDEX `INST_ID_UNIQUE` (`INST_ID` ASC) ;

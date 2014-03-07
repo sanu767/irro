@@ -240,4 +240,17 @@
 	</bean>		
 	
 	
+	<!--  File Upload  -->
+	<bean id="fileArticleDAO" class="com.saasforedu.irro.dao.impl.FileArticleDAOImpl" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="fileArticleService" class="com.saasforedu.irro.service.impl.FileArticleServiceImpl">
+		<property name="fileArticleDAO" ref="fileArticleDAO" />
+	</bean>	
+	
+	<bean id="fileUploadAction" class="com.saasforedu.irro.action.FileUploadAction" scope="prototype">
+		<property name="fileArticleService" ref="fileArticleService" /> 
+	</bean>
+	
 </beans>

@@ -58,6 +58,8 @@
 		<result name="success">/admin/ModifyItem.jsp</result>
 	</action>
 	
+	<!-- File Upload -->
+	
 	<action name="UploadFile" class="com.saasforedu.irro.action.FileUploadAction">
 			<interceptor-ref name="fileUpload">  
                 <param name="maximumSize">2097152</param>
@@ -69,7 +71,25 @@
             </interceptor-ref>  
             <interceptor-ref name="defaultStack"></interceptor-ref>  
 		<result name="input">/admin/FileUpload.jsp</result>
-		<result name="success" type="tiles">loadCreateItem</result>
+		<result name="success">/admin/FileUpload.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="FindFiles" class="com.saasforedu.irro.action.FileUploadAction" method="findAll">
+		<result name="input">/admin/FileUpload.jsp</result>
+		<result name="success">/admin/FileUpload.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="DeleteFile" class="com.saasforedu.irro.action.FileUploadAction" method="deleteFile">
+		<result name="input">/admin/FileUpload.jsp</result>
+		<result name="success">/admin/FileUpload.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ChangeFileActivation" class="com.saasforedu.irro.action.FileUploadAction" method="changeFileActivation">
+		<result name="input">/admin/FileUpload.jsp</result>
+		<result name="success">/admin/FileUpload.jsp</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
