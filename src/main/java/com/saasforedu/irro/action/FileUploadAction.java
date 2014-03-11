@@ -62,6 +62,7 @@ public class FileUploadAction extends ActionSupport implements ServletRequestAwa
 	}
 	
 	public String findAll() throws Exception {
+		httpServletRequest.getContextPath();
 		List<IFileArticle> allFiles = fileArticleService.findAll();
 		this.fileArticles = allFiles;
 		return SUCCESS;
@@ -70,7 +71,10 @@ public class FileUploadAction extends ActionSupport implements ServletRequestAwa
 	public String execute() throws Exception {
 		
 		//Save the File in Server
-		String destinationPath = getSliderPath();		
+		StringBuilder sliderStrBuilder = new StringBuilder(getServerPath());
+		sliderStrBuilder.append(getSliderPath());
+		
+		String destinationPath = sliderStrBuilder.toString();
 		createSliderDirectory(destinationPath);
 		File destFile  = new File(destinationPath, this.fileName);
    	 	FileUtils.copyFile(file, destFile);
@@ -80,7 +84,8 @@ public class FileUploadAction extends ActionSupport implements ServletRequestAwa
    	 	fileArticle.setActive(true);
    	 	fileArticle.setFileName(this.fileName);
    	 	fileArticle.setFileType(this.contentType);
-   	 	fileArticle.setLocation(destinationPath);
+   	    //Change location as per hierachy
+   	 	fileArticle.setLocation(getSliderPath());
    	 	fileArticleService.create(fileArticle);
 		return SUCCESS;
 	}
@@ -137,15 +142,13 @@ public class FileUploadAction extends ActionSupport implements ServletRequestAwa
 		}
 	}
 	
-	private String getSliderPath() {
-		StringBuilder sliderStrBuilder = new StringBuilder(getServerPath());
-		sliderStrBuilder.append(IConstants.SLIDER);
-		return sliderStrBuilder.toString();
-	}
-	
 	@SuppressWarnings("deprecation")
 	private String getServerPath() {
 		return httpServletRequest.getRealPath("/");
+	}
+	
+	private String getSliderPath() {
+		return IConstants.SLIDER;
 	}
 	
 	@Override

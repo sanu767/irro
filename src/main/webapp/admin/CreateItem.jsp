@@ -8,6 +8,25 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+
+<script type="text/javascript">
+function validateDate()
+{
+	var start = document.getElementById('start').value;
+	var end = document.getElementById('end').value; 
+	
+	var sdate = new Date(start);
+	var edate = new Date(end);
+	
+	if(sdate > edate)
+    {
+        alert('Start date should be less than End date');
+        return false; 
+    }
+	return true;
+}
+</script>
+
 </head> 
 
 <body>
@@ -23,9 +42,9 @@
 		<sj:textfield name="itemBean.title" label="Title " maxlength="100"
 			required="true" placeholder="Enter title" />
 
-		<sj:datepicker name="itemBean.startDate" displayFormat="dd/mm/yy" label="Start date " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker id="start" name="itemBean.startDate" displayFormat="dd/mm/yy" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker name="itemBean.endDate" displayFormat="dd/mm/yy" label="Last date " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker id="end" name="itemBean.endDate" displayFormat="dd/mm/yy" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 
 		<sj:textarea name="itemBean.shortDescription" label="Short Description "
 			rows="2" cols="25" placeholder="Write here..." />
@@ -40,7 +59,7 @@
 
 		<sj:textfield name="itemBean.filePath" label="Name of downloadable file " />
 
-		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Create" value="Create" />
+		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Create" value="Create"  onclick="return validateDate();"/>
 		
 	</s:form>
 </div>
