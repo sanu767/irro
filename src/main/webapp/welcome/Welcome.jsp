@@ -51,7 +51,7 @@ a div.sliderShortDescription {
 					<s:property value="#eachSliderItem.endDate" />
 				</div>
 				<div class="sliderShortDescription"><s:property value="#eachSliderItem.shortDescription" /></div>
-				<img src="slider/<s:property value="#eachSliderItem.image" />" alt="Welcome to New Generation" />
+				<img src="slider/<s:property value="#eachSliderItem.image" />" />
 			</a>
 		</s:iterator>
 	</div>

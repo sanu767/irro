@@ -12,15 +12,7 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
 	<script src="../content/jquery-1.10.2.js"></script>
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css" />
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap-multiselect.css" type="text/css"/>
 	
-	<!-- Include Twitter Bootstrap and jQuery: -->
-	<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
-	 
-	<!-- Include the plugin's CSS and JS: -->
-	<script type="text/javascript" src="../bootstrap/js/bootstrap-multiselect.js"></script>
-
 <style>
 #wrapper {
 	margin: 0px auto; width: 1150px;
