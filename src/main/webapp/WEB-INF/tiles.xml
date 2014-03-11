@@ -195,13 +195,14 @@
 		<definition name="rector" extends="contentLayout">
 			<put-attribute name="title"  value="Rector"/>
 			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
-			<put-attribute name="content" value="/content/institute/body/Rector.jsp"/>
+			<put-attribute name="content" value="/article/articles.jsp"/>
 		</definition>
-		<definition name="editrector" extends="contentLayout">
+		<definition name="rectorarticle" extends="contentLayout">
 			<put-attribute name="title"  value="Rector"/>
 			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>
-			<put-attribute name="content" value="/content/institute/body/EditRector.jsp"/>
+			<put-attribute name="content" value="/article/article.jsp"/>
 		</definition>
+		
 		<definition name="rector.mediaReports" extends="contentLayout">
 			<put-attribute name="title"  value="Rector MediaReports"/>
 			<put-attribute name="tree" value="/content/institute/tree/RectorTree.jsp"/>

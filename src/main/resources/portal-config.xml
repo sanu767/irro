@@ -67,6 +67,9 @@
 		<action name="Rector" class="com.saasforedu.irro.action.InstitutionAction" method="loadContent">
 			<result name="success" type="tiles">rector</result>
 		</action>
+		<action name="RectorArticle" class="com.saasforedu.irro.action.InstitutionAction" method="loadArticle">
+			<result name="success" type="tiles">rectorarticle</result>
+		</action>
 		<action name="RectorSave" class="com.saasforedu.irro.action.InstitutionAction" method="saveContent">
 				<result name="success" type="tiles">rector</result>
 		</action>
