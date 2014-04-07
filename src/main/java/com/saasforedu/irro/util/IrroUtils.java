@@ -1,10 +1,13 @@
 package com.saasforedu.irro.util;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -15,12 +18,13 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.saasforedu.irro.bean.FeedBackBean;
+import com.saasforedu.irro.bean.UserGroupBean;
 import com.saasforedu.irro.bean.UserPermissionBean;
 import com.saasforedu.irro.enums.PermissionType;
 import com.saasforedu.irro.model.IUser;
 
 public class IrroUtils {
-	
 	
 	public static Mail getMail(IUser user) {
 		StringBuilder content = getContent(user);
@@ -29,6 +33,15 @@ public class IrroUtils {
 		mail.setTo(user.getEmail());
 		mail.setSubject(IConstants.MAIL_SUBJECT_FOR_LOGIN_CREDENTIALS);
 		mail.setContent(content.toString());
+		return mail;
+	}
+	
+	public static Mail getMail(FeedBackBean feedBackBean) {
+		Mail mail = new Mail();
+		mail.setFrom(feedBackBean.getEmail());
+		mail.setTo(IConstants.FEEDBACK_TO_EMAIL);
+		mail.setSubject(feedBackBean.getSubject());
+		mail.setContent(getContent(feedBackBean).toString());
 		return mail;
 	}
 	
@@ -54,7 +67,7 @@ public class IrroUtils {
 			// Set To: header field of the header.
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			// Set Subject: header field
-			message.setSubject(IConstants.MAIL_SUBJECT_FOR_LOGIN_CREDENTIALS);
+			message.setSubject(mail.getSubject());
 			// Send the actual HTML message, as big as you like
 
 			message.setContent(mail.getContent(), IConstants.MAIL_CONTENT_TYPE );
@@ -91,14 +104,32 @@ public class IrroUtils {
 		return userIds;
 	}
 	
-	public static Map<String, Boolean> getPermissionMap(List<String> allGroupNames, 
-			List<UserPermissionBean> permissionBeans) {
-		Map<String, Boolean> permissionMapsForUser = new HashMap<String, Boolean>();
-		for (String groupName : allGroupNames) {			
-			boolean groupExists = IrroUtils.isGroupExists(permissionBeans, groupName);
-			permissionMapsForUser.put(groupName, groupExists);
+	public static List<String> getPermissionMap(List<UserGroupBean> allGroups, List<UserPermissionBean> permissionBeans) {
+		List<String> permissionCodeList = new ArrayList<String>();
+		for (UserGroupBean group : allGroups) {			
+			boolean groupExists = IrroUtils.isGroupExists(permissionBeans, group.getGroupName());
+			if(groupExists) {
+				permissionCodeList.add(group.getGroupCode());
+			}
 		}
-		return permissionMapsForUser;
+		return permissionCodeList;
+	}
+	
+	public static String getDocumentLocation(String menu, String parentMenu) {
+		
+		StringBuilder locationBuilder = new StringBuilder();
+		if(StringUtils.isNotBlank(parentMenu))  {
+			locationBuilder.append("/");
+			locationBuilder.append(parentMenu);			
+		}
+		
+		if(StringUtils.isNotBlank(menu))  {
+			locationBuilder.append("/");
+			locationBuilder.append(menu);
+			locationBuilder.append("/");
+		}
+		
+		return locationBuilder.toString();
 	}
 	
 	private static boolean isGroupExists(List<UserPermissionBean> permissionBeans, String groupName) {
@@ -120,5 +151,38 @@ public class IrroUtils {
 		content.append("<h2>This is your Password : </h2>");
 		content.append(user.getPassword());
 		return content;
+	}
+	
+	private static StringBuilder getContent(FeedBackBean feedBackBean) {
+		StringBuilder content = new StringBuilder("<h2>Hi Admin </h2>");
+		content.append("<br>");
+		content.append(feedBackBean.getName());
+		content.append("send a feedback request");
+		content.append("<br>");
+		content.append("<br>");
+		content.append(feedBackBean.getMessage());
+		return content;
+	}
+	
+	public static String getResourceString(String value) {
+		try {
+			//TODO : Could be done better
+			ResourceBundle resourceBundle = ResourceBundle.getBundle(IConstants.IRRO_BUNDLE, Locale.ENGLISH);
+			String encodedValue = new String(value.getBytes(IConstants.UTF_8), IConstants.ISO_8859_1);
+			Enumeration<String> enumeration = resourceBundle.getKeys();
+			while (enumeration.hasMoreElements()) {
+				String resourceKey = enumeration.nextElement();
+				String resourceValue = resourceBundle.getString(resourceKey);
+				if(encodedValue.equals(resourceValue)) {
+					return resourceKey;
+				}
+			}
+			return null;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (MissingResourceException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

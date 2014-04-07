@@ -45,7 +45,7 @@ function validate()
 
 <body>
 <div id="registration">
- <s:form cssClass="registrationwrap" method="POST" id="register-form" action="/Registration" cssStyle="background : white">
+ <s:form cssClass="registrationwrap" method="POST" id="register-form" action="Registration" cssStyle="background : white">
  	<p><s:label>User Registration</s:label></p>
  	<sj:textfield name="userBean.userCode" label="Code" size="40" required="true"  id="code"/>
  	<s:password name="userBean.password" label="Password" size="40" required="true" id="password"/>
@@ -55,7 +55,6 @@ function validate()
     <sj:textfield name="userBean.address" label="Address" size="60" />
     <s:select multiple="true" label="Choose Article permission" list="allPermissions" name="userBean.selectedPermissions"></s:select>
     <s:submit value="Register" onclick="return validate();"/>
-    <s:submit value="Cancel" name="redirectAction:welcomeWL"/>
  </s:form>
  </div>
  </body>

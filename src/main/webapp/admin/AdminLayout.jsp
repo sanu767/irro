@@ -36,25 +36,25 @@ padding-top:5px;
 #first {
     float: left;
     width: 150px;
-	height : 500px;
+	height : 1000px;
 	border-right: 1px solid rgb(6, 85, 117);
-	border-bottom: 1px solid rgb(6, 85, 117);
+	
 }
 
 #second {
 	width: 400px;
-	height : 500px;
+	height : 1000px;
 	float: left;
     margin: 0 0 0 0; /* considering the border you need to use a margin so the content does not float under the first div*/
 	border-right: 1px solid rgb(6, 85, 117);
-	border-bottom: 1px solid rgb(6, 85, 117);
+	
 }
 
 #third {
 	width: 595px;
-    height : 500px;
+    height : 1000px;
 	float: left;
-	border-bottom: 1px solid rgb(6, 85, 117);
+	
 }
 
 </style>

@@ -1,4 +1,8 @@
-﻿<head>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<head>
 <script type="text/javascript">
 window.onload = function () {     
 	//Getting First Level children	
@@ -36,10 +40,19 @@ a {
 </head>
 <body>
 <ul>
-<li id="News"><a href="News">Новости</a>
+<li id="News"><a href='<s:url action="../content/LoadNews">
+					<s:param name="menuName">News</s:param>
+				</s:url>'>Новости</a>
      <ul>
-      <li><a href="NewsAnnouncements">Анонсы</a></li>
-	  <li><a href="NewsArchive">Архив</a></li>
+      <li><a href='<s:url action="../content/LoadNews">
+      				<s:param name="menuName">NewsAnnouncements</s:param>
+					<s:param name="parentMenuName">News</s:param>
+				</s:url>'>Анонсы</a></li>
+				
+	  <li><a href='<s:url action="../content/LoadNews">
+					<s:param name="menuName">NewsArchive</s:param>
+					<s:param name="parentMenuName">News</s:param>
+				</s:url>'>Архив</a></li>
      </ul>
 </li>
 </ul>

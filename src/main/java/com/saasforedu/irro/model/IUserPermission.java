@@ -1,7 +1,7 @@
 package com.saasforedu.irro.model;
 
 
-public interface IUserPermission {
+public interface IUserPermission extends IBaseEntity {
 	
 	public IUser getUser();
 	public void setUser(IUser user);

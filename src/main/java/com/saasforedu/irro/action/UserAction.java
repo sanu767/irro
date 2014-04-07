@@ -14,6 +14,7 @@ import com.saasforedu.irro.bean.UserGroupBean;
 import com.saasforedu.irro.bean.UserPermissionBean;
 import com.saasforedu.irro.service.UserGroupService;
 import com.saasforedu.irro.service.UserService;
+import com.saasforedu.irro.util.IConstants;
 import com.saasforedu.irro.util.IrroUtils;
 
 public class UserAction extends ActionSupport implements SessionAware {
@@ -29,6 +30,8 @@ public class UserAction extends ActionSupport implements SessionAware {
 	Map<String, Object> sessionAttributes;
 	
 	List<String> allPermissions;
+	
+	private Long selectedUserIdToModify;
 	
 	private String emailOfForgotUser;
 	
@@ -103,8 +106,16 @@ public class UserAction extends ActionSupport implements SessionAware {
 		if(isUserCodeOrEmailExists()) {
 			return ERROR;
 		}
-		Long userId = (Long)sessionAttributes.get("userId");
+		Long userId = (Long)sessionAttributes.get(IConstants.USER_ID_SESSION_ATTRIBUTE_NAME);
 		userService.update(userBean, userId);
+		return SUCCESS;
+	}
+	
+	public String loadUser() throws Exception {
+		List<String> allGroups = findAllGroups();
+		this.allPermissions = allGroups;
+		UserBean user = userService.findById(selectedUserIdToModify);
+		this.userBean = user;
 		return SUCCESS;
 	}
 	
@@ -116,21 +127,23 @@ public class UserAction extends ActionSupport implements SessionAware {
 	public String doLogin() throws Exception {
 		UserBean bean = userService.authenticate(userBean.getUserCode(), userBean.getPassword());
 		if(bean != null) {
-			sessionAttributes.put("userId", bean.getId());
+			sessionAttributes.put(IConstants.USER_ID_SESSION_ATTRIBUTE_NAME, bean.getId());
 			
 			/** Could be done in more efficient way **/
 			List<UserPermissionBean> permissionBeans = bean.getPermissionBeans();
-			List<String> allGroupNames = findAllGroups();
-			Map<String, Boolean> permissionMap = IrroUtils.getPermissionMap(allGroupNames, permissionBeans);
-			sessionAttributes.put("permissionMap", permissionMap);
+			List<UserGroupBean> allGroups = userGroupService.findAll();;
+			if(CollectionUtils.isNotEmpty(allGroups) && CollectionUtils.isNotEmpty(permissionBeans) ) {
+				List<String> permissionList = IrroUtils.getPermissionMap(allGroups, permissionBeans);
+				sessionAttributes.put(IConstants.PERMISSION_LIST_SESSION_ATTRIBUTE_NAME, permissionList);
+			}
 			return SUCCESS;
 		}
 		return ERROR;
 	}
 	
 	public String doLogOut() throws Exception {
-		sessionAttributes.remove("userId");
-		sessionAttributes.remove("permissionMap");
+		sessionAttributes.remove(IConstants.USER_ID_SESSION_ATTRIBUTE_NAME);
+		sessionAttributes.remove(IConstants.PERMISSION_LIST_SESSION_ATTRIBUTE_NAME);
 		return SUCCESS;
 	}
 	
@@ -149,5 +162,16 @@ public class UserAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> sessionAttributes) {
 		this.sessionAttributes = sessionAttributes;
 	}
-	
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public Long getSelectedUserIdToModify() {
+		return selectedUserIdToModify;
+	}
+
+	public void setSelectedUserIdToModify(Long selectedUserIdToModify) {
+		this.selectedUserIdToModify = selectedUserIdToModify;
+	}
 }

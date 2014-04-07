@@ -143,3 +143,14 @@ color:rgb(0,0,0);
 .required {
 	color: red;
 }
+.irrolabel {
+  
+  color:rgb(0,0,0);
+  
+}
+
+.irrolabel[href]:hover,
+.irrolabel[href]:focus {
+  color:rgb(0,0,0);
+  text-decoration: none;
+  }

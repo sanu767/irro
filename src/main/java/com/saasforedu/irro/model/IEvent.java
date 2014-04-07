@@ -1,26 +1,41 @@
 package com.saasforedu.irro.model;
 
 import java.util.Date;
+import java.util.List;
+
 
 public interface IEvent extends IBaseEntity {
+	
+	public String getTitle() ;
+	public void setTitle(String title);
+	
+	public Date getStartDate();
+	public void setStartDate(Date startDate);
+	
+	public Date getEndDate();
+	public void setEndDate(Date endDate);
+	
+	public String getMainContent() ;
+	public void setMainContent(String content);
 
-	public Date getDate();
+	public String getShortDescription();
+	public void setShortDescription(String description) ;
 
-	public void setDate(Date date);
+	public boolean isSliderItem();
+	public void setSliderItem(boolean sliderItem);
 
-	public String getType();
+	public String getSliderImage() ;
+	public void setSliderImage(String sliderImage);
 
-	public void setType(String type);
+	public boolean isShowInHomePage();
+	public void setShowInHomePage(boolean showInHomePage);
 
 	public String getUrl();
-
 	public void setUrl(String url);
 
-	public String getTitle();
+	public Long getId();
+	
+	public List<IEventAttachment> getEventAttachments();
+	public void setEventAttachments(List<IEventAttachment> eventAttachments);
 
-	public void setTitle(String title);
-
-	public String getDescription();
-
-	public void setDescription(String description);
 }

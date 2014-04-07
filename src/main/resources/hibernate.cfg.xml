@@ -5,43 +5,26 @@
  
 <hibernate-configuration>
     <session-factory>
+    
+        <!-- Article -->
+        
+        <mapping class="com.saasforedu.irro.article.entity.impl.Article" />
+        <mapping class="com.saasforedu.irro.article.entity.impl.News" />
         <mapping class="com.saasforedu.irro.model.impl.Item" />
         <mapping class="com.saasforedu.irro.model.impl.Event" />
+        <mapping class="com.saasforedu.irro.model.impl.MenuMetadata" />
         
-        <!-- activities -->
-        <mapping class="com.saasforedu.irro.model.activities.impl.Activity" />
-        <mapping class="com.saasforedu.irro.model.activities.impl.Contest" />
-        <mapping class="com.saasforedu.irro.model.activities.impl.EducationalActivity" />
-        <mapping class="com.saasforedu.irro.model.activities.impl.Olympic" />
-        
-        <!-- certifications -->
-        <mapping class="com.saasforedu.irro.model.certifications.impl.Certificate" />
-        <mapping class="com.saasforedu.irro.model.certifications.impl.Employee" />
-        <mapping class="com.saasforedu.irro.model.certifications.impl.Graduate" />
-        
-        <!-- institute -->
-        <mapping class="com.saasforedu.irro.model.institute.impl.BranchOffice" />
-        <mapping class="com.saasforedu.irro.model.institute.impl.Document" />
-        <mapping class="com.saasforedu.irro.model.institute.impl.Institute" />
-        <mapping class="com.saasforedu.irro.model.institute.impl.InstituteDetails" />
-        <mapping class="com.saasforedu.irro.model.institute.impl.Rector" />
-        
-        <!-- news -->
-        <mapping class="com.saasforedu.irro.model.news.impl.News" />
-        
-        <!-- projects -->
-        <mapping class="com.saasforedu.irro.model.projects.impl.Basic" />
-        <mapping class="com.saasforedu.irro.model.projects.impl.ContinuingEducation" />
-        <mapping class="com.saasforedu.irro.model.projects.impl.Project" />
-        <mapping class="com.saasforedu.irro.model.projects.impl.Sverdlovsk" />
+        <mapping class="com.saasforedu.irro.model.impl.ArticleAttachment" />
+        <mapping class="com.saasforedu.irro.model.impl.ItemAttachment" />
+        <mapping class="com.saasforedu.irro.model.impl.EventAttachment" />
+        <mapping class="com.saasforedu.irro.model.impl.NewsAttachment" />
         
         <!-- User -->
         <mapping class="com.saasforedu.irro.model.impl.User" />
         <mapping class="com.saasforedu.irro.model.impl.UserGroup" />
         <mapping class="com.saasforedu.irro.model.impl.UserPermission" />
         
-        <!-- File -->
-        <mapping class="com.saasforedu.irro.model.impl.FileArticle" />
+       
         
     </session-factory>
     

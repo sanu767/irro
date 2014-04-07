@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -127,10 +128,20 @@ public class UserGroupDAOImpl extends HibernateDaoSupport implements UserGroupDA
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void changeActivation(List<Integer> groupIds, boolean activate) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("update UserGroup u set active = ? where groupId in ? ");
-		getHibernateTemplate().bulkUpdate(queryBuilder.toString(), new Object[]{activate, groupIds});
+		queryBuilder.append("select u from UserGroup u where u.groupId in  (:listParam) ");
+		String[] params = { "listParam" };
+		Object [] values = {groupIds};
+		List<IUserGroup> groups = getHibernateTemplate().findByNamedParam(queryBuilder.toString(), 
+				params, values);
+		if(CollectionUtils.isNotEmpty(groups)) {
+			for (IUserGroup userGroup : groups) {
+				userGroup.setActive(activate);
+			}
+			getHibernateTemplate().saveOrUpdateAll(groups);
+		}	
 	}
 }

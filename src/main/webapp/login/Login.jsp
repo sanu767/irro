@@ -52,7 +52,7 @@ function validate()
 </s:if> 
 --%>
 
-<div class="container">
+<div class="container" id="login">
       <form class="form-signin" role="form" action="<%=request.getContextPath() %>/Login" cssStyle="background : white" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
         <sj:textfield id="code" name="userBean.userCode"  class="form-control" placeholder="User Code" required="True" />

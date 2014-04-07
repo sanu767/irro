@@ -15,14 +15,16 @@
 <script src="../themes/slider/mcVideoPlugin.js" type="text/javascript"></script>
 <script src="../themes/slider/js-image-slider.js" type="text/javascript"></script>
 <link href="../generic.css" rel="stylesheet" type="text/css" />
-<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="../themes/content/Tree.js" type="text/javascript"></script> 
+<link href="welcomepagecontent.css" rel="stylesheet" type="text/css" />
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="jquery-1.10.2.js"></script>
 <script type="text/javascript"> 
 window.onload = function () {     
 	window.location.hash = 'tree';
 };
 </script>
-<script src="jquery-1.10.2.js"></script>
+
 <script type="text/javascript">
 $(function(){
 
@@ -94,10 +96,10 @@ ul li a {
 		
 		<div id="mainContentwrapper">
            <div id="tree">		
-			<tiles:insertAttribute name="tree" />
+				<tiles:insertAttribute name="tree"></tiles:insertAttribute>
 			</div>
 			<div id="mainContent">
-			<tiles:insertAttribute name="content" />
+				<tiles:insertAttribute name="content" />
 			</div>
 		</div>
        

@@ -2,6 +2,7 @@ package com.saasforedu.irro.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
@@ -32,14 +33,16 @@ public class UserServiceImpl implements UserService {
 	public Long create(UserBean userBean) {
 		IUser newUser = new User();
 		copyProperties(userBean, newUser);
-		return userDAO.create(newUser);
+		setUpdatedPermissions(userBean, newUser);
+		return (Long)userDAO.create((User)newUser);
 	}
 
 	@Override
 	public void update(UserBean userBean, Long userId) {
-		IUser user = userDAO.findById(userId);
+		IUser user = userDAO.findById(User.class, userId);
 		copyProperties(userBean, user);
-		userDAO.update(user);
+		List<IUserPermission> removedPermissions = setUpdatedPermissions(userBean, user);
+		userDAO.update(user, removedPermissions);
 	}
 
 	@Override
@@ -50,7 +53,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserBean findById(Long userId) {
-		IUser user = userDAO.findById(userId);
+		IUser user = userDAO.findById(User.class, userId);
 		UserBean userBean = new UserBean();
 		copyProperties(user, userBean);
 		return userBean;
@@ -105,30 +108,6 @@ public class UserServiceImpl implements UserService {
 		userDAO.deletePermissionsByGroupNames(groupNames);
 	}
 
-	@Override
-	public void changePermissions(List<Long> permissionIds, PermissionType permissionType) {
-		userDAO.changePermissionType(permissionIds, permissionType.getTypeId());		
-	}
-	
-	@Override
-	public void addNewPermissions(UserBean userBean, List<String> selectedPermissions) {
-		Long userId = userBean.getId();
-		IUser user = userDAO.findById(userId);
-		//Fetch Existing permissions
-		List<IUserPermission> permissions = new ArrayList<IUserPermission>();
-		permissions.addAll(user.getPermissions());
-		
-		//Add new permissions
-		for (String selectedPermission : selectedPermissions) {
-			IUserPermission userPermission = new UserPermission();
-			userPermission.setPermissionName(selectedPermission);
-			userPermission.setPermissionType(PermissionType.REQUEST_APPROVAL.getTypeId());
-			userPermission.setUser(user);
-			permissions.add(userPermission);
-		}
-		userDAO.update(user);
-	}
-	
 	private void copyProperties(IUser user, UserBean userBean) {
 		userBean.setId(user.getId());
 		userBean.setUserCode(user.getUserCode());
@@ -185,43 +164,52 @@ public class UserServiceImpl implements UserService {
 			user.setUserSurname(userSurName);
 		}
 		
-		List<IUserPermission> updatedPermissions = getUpdatedPermissions(userBean, user);
-		user.setPermissions(updatedPermissions);
 	}
 	
-	private List<IUserPermission> getUpdatedPermissions(UserBean userBean, IUser user) {
+	private List<IUserPermission> setUpdatedPermissions(UserBean userBean, IUser user) {
+
 		List<String> selectedPermissions = userBean.getSelectedPermissions();
+		
+		List<IUserPermission> newPermissionsInDB =  new ArrayList<IUserPermission>();
+		List<IUserPermission> removedPermissionsInDB =  new ArrayList<IUserPermission>();
+		
 		List<IUserPermission> permissionsInDB = user.getPermissions();
-		List<IUserPermission> updatedPermissionsInDB =  new ArrayList<IUserPermission>();
-		if(CollectionUtils.isNotEmpty(permissionsInDB)) {
-			for (IUserPermission permissionInDB : permissionsInDB) {
-				if(selectedPermissions.contains(permissionInDB.getPermissionName())) {
-					if(!permissionInDB.getPermissionType().equals(PermissionType.APPROVED)) {
-						permissionInDB.setPermissionType(PermissionType.APPROVED.getTypeId());
-					}
-					updatedPermissionsInDB.add(permissionInDB);
-					selectedPermissions.remove(permissionInDB.getPermissionName());
-				}
+		
+		Iterator<IUserPermission> permissionIter = permissionsInDB.iterator();
+		while(permissionIter.hasNext()) {
+			IUserPermission userPermissionInDB = permissionIter.next();
+			if(!selectedPermissions.contains(userPermissionInDB.getPermissionName())) {
+				removedPermissionsInDB.add(userPermissionInDB);
 			}
 		}
 		
 		//New Permissions
 		if(CollectionUtils.isNotEmpty(selectedPermissions)) {
 			for (String selectedPermission : selectedPermissions) {
-				IUserPermission userPermission = new UserPermission();
-				userPermission.setPermissionName(selectedPermission);
-				userPermission.setPermissionType(PermissionType.APPROVED.getTypeId());
-				userPermission.setUser(user);
-				updatedPermissionsInDB.add(userPermission);
+				IUserPermission newUserPermission = new UserPermission();
+				newUserPermission.setPermissionName(selectedPermission);
+				newUserPermission.setPermissionType(PermissionType.APPROVED.getTypeId());
+				newUserPermission.setUser(user);
+				newPermissionsInDB.add(newUserPermission);
 			}
 		}
-		return updatedPermissionsInDB;
+		
+		if(CollectionUtils.isNotEmpty(removedPermissionsInDB))  {
+			permissionsInDB.removeAll(removedPermissionsInDB);
+		}
+		
+		if(CollectionUtils.isNotEmpty(newPermissionsInDB))  {
+			permissionsInDB.addAll(newPermissionsInDB);
+		}
+		user.setPermissions(permissionsInDB);
+		return removedPermissionsInDB;
 	}
 	
 	private List<UserPermissionBean> getPermissionBeans(IUser user, UserBean userBean)  {
 		List<IUserPermission> permissionsInDB = user.getPermissions();
 		if(CollectionUtils.isNotEmpty(permissionsInDB)) {
 			List<UserPermissionBean> userPermissionBeans = new ArrayList<UserPermissionBean>();
+			List<String> selectedPermissions = new ArrayList<String>();
 			for (IUserPermission permissionInDB : permissionsInDB) {
 				UserPermissionBean userPermissionBean = new UserPermissionBean();
 				userPermissionBean.setPermissionName(permissionInDB.getPermissionName());
@@ -229,7 +217,9 @@ public class UserServiceImpl implements UserService {
 				userPermissionBean.setPermissionId(permissionInDB.getId());
 				userPermissionBean.setUserId(permissionInDB.getUser().getId());
 				userPermissionBeans.add(userPermissionBean);
+				selectedPermissions.add(permissionInDB.getPermissionName());
 			}
+			userBean.setSelectedPermissions(selectedPermissions);
 			return userPermissionBeans;
 		}
 		return null;

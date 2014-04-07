@@ -1,4 +1,8 @@
-﻿<head>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<head>
 <script type="text/javascript">
 window.onload = function () {     
 	//Getting First Level children	
@@ -36,29 +40,70 @@ a {
 </head>
 <body>
 <ul>
-<li id="Certification"><a href="Certification">Аттестация</a>
+<li id="Certification"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Certification</s:param>
+				</s:url>'>Аттестация</a>
      <ul>
-      <li id="Employees"><a href="Employees">Аттестация педагогических <br>работников</a>
+      <li id="Employees"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Employees</s:param>
+					<s:param name="parentMenuName">Certification</s:param>
+				</s:url>'>Аттестация педагогических <br>работников</a>
 		<ul>
-			<li><a href="EmployeesRegulatoryDocument">Нормативные документы</a></li>
-			<li><a href="EmployeesInformation">Информационно-аналитические материалы (файлы)</a></li>
-			<li><a href="EmployeesMaterial">Методические материалы (файлы)</a></li>			
+			<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EmployeesRegulatoryDocument</s:param>
+					<s:param name="parentMenuName">Employees</s:param>
+				</s:url>'>Нормативные документы</a></li>
+			<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EmployeesInformation</s:param>
+					<s:param name="parentMenuName">Employees</s:param>
+				</s:url>'>Информационно-аналитические материалы (файлы)</a></li>
+			<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EmployeesMaterial</s:param>
+					<s:param name="parentMenuName">Employees</s:param>
+				</s:url>'>Методические материалы (файлы)</a></li>			
 		</ul>
       </li>
-	  <li id="Graduates"><a href="Graduates">Государственная итоговая <br>аттестация выпускников</a>
+	  <li id="Graduates"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Graduates</s:param>
+					<s:param name="parentMenuName">Certification</s:param>
+				</s:url>'>Государственная итоговая <br>аттестация выпускников</a>
        <ul>
-        <li id="JEG"><a href="GraduatesJEG">ОГЭ</a>
+        <li id="JEG"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesJEG</s:param>
+					<s:param name="parentMenuName">Graduates</s:param>
+				</s:url>'>ОГЭ</a>
 			<ul>
-				 <li><a href="GraduatesJEGRegulatoryDocument">Нормативные документы (файлы, ссылки, например: http://www.rustest.ru/ege/docs/)</a></li>
-				 <li><a href="GraduatesJEGStatistics">Статистика (текст на странице, файлы, ссылки, например: http://ege.midural.ru/)</a></li>
-				 <li><a href="GraduatesJEGAnalytics">Аналитика (файлы, ссылки, например: http://ege.midural.ru/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesJEGRegulatoryDocument</s:param>
+					<s:param name="parentMenuName">GraduatesJEG</s:param>
+				</s:url>'>Нормативные документы (файлы, ссылки, например: http://www.rustest.ru/ege/docs/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesJEGStatistics</s:param>
+					<s:param name="parentMenuName">GraduatesJEG</s:param>
+				</s:url>'>Статистика (текст на странице, файлы, ссылки, например: http://ege.midural.ru/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesJEGAnalytics</s:param>
+					<s:param name="parentMenuName">GraduatesJEG</s:param>
+				</s:url>'>Аналитика (файлы, ссылки, например: http://ege.midural.ru/)</a></li>
 		   </ul>
 		</li>
-        <li id="EGE"><a href="GraduatesEGE">ЕГЭ</a>
+        <li id="EGE"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesEGE</s:param>
+					<s:param name="parentMenuName">Graduates</s:param>
+				</s:url>'>ЕГЭ</a>
 			<ul>
-				 <li><a href="GraduatesEGERegulatoryDocument">Нормативные документы (файлы, ссылки, например: http://www.rustest.ru/ege/docs/)</a></li>
-				 <li><a href="GraduatesEGEStatistics">Статистика (текст на странице, файлы, ссылки, например: http://ege.midural.ru/)</a></li>
-				 <li><a href="GraduatesEGEAnalytics">Аналитика (файлы, ссылки, например: http://ege.midural.ru/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesEGERegulatoryDocument</s:param>
+					<s:param name="parentMenuName">GraduatesEGE</s:param>
+				</s:url>'>Нормативные документы (файлы, ссылки, например: http://www.rustest.ru/ege/docs/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesEGEStatistics</s:param>
+					<s:param name="parentMenuName">GraduatesEGE</s:param>
+				</s:url>'>Статистика (текст на странице, файлы, ссылки, например: http://ege.midural.ru/)</a></li>
+				 <li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesEGEAnalytics</s:param>
+					<s:param name="parentMenuName">GraduatesEGE</s:param>
+				</s:url>'>Аналитика (файлы, ссылки, например: http://ege.midural.ru/)</a></li>
 		   </ul>
 		</li>
        </ul>

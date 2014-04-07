@@ -1,5 +1,6 @@
 package com.saasforedu.irro.model.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class User implements IUser {
 	Long maxUploadFileSize;
 	
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=UserPermission.class, mappedBy="user")
-	List<IUserPermission> permissions;
+	List<IUserPermission> permissions = new ArrayList<IUserPermission>();
 
 	public Long getId() {
 		return id;
@@ -150,21 +151,32 @@ public class User implements IUser {
 	}
 
 	@Override
-	public String toString() {
-		return "User [id=" + id + ", userCode=" + userCode + ", userName="
-				+ userName + ", userSurname=" + userSurname + ", email="
-				+ email + ", password=" + password + ", address=" + address
-				+ ", phoneNumber=" + phoneNumber + ", registrationDate="
-				+ registrationDate + ", active=" + active
-				+ ", maxUploadFileSize=" + maxUploadFileSize + ", permissions="
-				+ permissions + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (active ? 1231 : 1237);
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime
+				* result
+				+ ((maxUploadFileSize == null) ? 0 : maxUploadFileSize
+						.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((permissions == null) ? 0 : permissions.hashCode());
+		result = prime * result
+				+ ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
+		result = prime
+				* result
+				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
+		result = prime * result
+				+ ((userCode == null) ? 0 : userCode.hashCode());
+		result = prime * result
+				+ ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result
+				+ ((userSurname == null) ? 0 : userSurname.hashCode());
 		return result;
 	}
 
@@ -177,12 +189,75 @@ public class User implements IUser {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (active != other.active)
+			return false;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (maxUploadFileSize == null) {
+			if (other.maxUploadFileSize != null)
+				return false;
+		} else if (!maxUploadFileSize.equals(other.maxUploadFileSize))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (permissions == null) {
+			if (other.permissions != null)
+				return false;
+		} else if (!permissions.equals(other.permissions))
+			return false;
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
+			return false;
+		if (registrationDate == null) {
+			if (other.registrationDate != null)
+				return false;
+		} else if (!registrationDate.equals(other.registrationDate))
+			return false;
+		if (userCode == null) {
+			if (other.userCode != null)
+				return false;
+		} else if (!userCode.equals(other.userCode))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		if (userSurname == null) {
+			if (other.userSurname != null)
+				return false;
+		} else if (!userSurname.equals(other.userSurname))
+			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", userCode=" + userCode + ", userName="
+				+ userName + ", userSurname=" + userSurname + ", email="
+				+ email + ", password=" + password + ", address=" + address
+				+ ", phoneNumber=" + phoneNumber + ", registrationDate="
+				+ registrationDate + ", active=" + active
+				+ ", maxUploadFileSize=" + maxUploadFileSize + ", permissions="
+				+ permissions + "]";
+	}
+
 }

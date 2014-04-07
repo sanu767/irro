@@ -46,17 +46,19 @@ $(document).ready(function() {
 	    
 	    <sj:textfield name="userSearchBean.searchedName" label="User Name" maxlength="100" placeholder="Enter User Name" />
 	    
-	    <sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" showOn="focus" />
+	    <sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" />
 		
 		<sj:textfield name="userSearchBean.searchedEmailId" label="Email " maxlength="100" placeholder="Enter title" />
-		
-		<sj:textfield name="userSearchBean.maxUploadFileSize" label="Upload Size Less to " maxlength="100" placeholder="Allowed Size Less" />
 		
 		<sj:submit style="float:right;margin: 5px 0px 0px 0px;height : 25px;" button="Search" value="Search"/>
 		
 	</s:form>
+	</div>
+	
+	<div style="padding : 20px 0px 0px 0px">
+	  <a href="registerWL" style="text-decoration:none;color : rgb(6,85,117);font-size: 16px;font-family: 'Open Sans';">Create User</a>
 	</div>
 	
 </div>

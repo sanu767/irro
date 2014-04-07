@@ -12,6 +12,7 @@ import com.saasforedu.irro.model.IUserGroup;
 import com.saasforedu.irro.model.impl.UserGroup;
 import com.saasforedu.irro.service.UserGroupService;
 import com.saasforedu.irro.service.UserService;
+import com.saasforedu.irro.util.IrroUtils;
 
 public class UserGroupServiceImpl implements UserGroupService {
 	
@@ -118,7 +119,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	private void copyPropeties(UserGroupBean userGroupBean, IUserGroup userGroup) {
 		userGroup.setActive(userGroupBean.isActive());
 		userGroup.setGroupId(userGroupBean.getGroupId());
-		userGroup.setGroupCode(userGroupBean.getGroupCode());
+		userGroup.setGroupCode(IrroUtils.getResourceString(userGroupBean.getGroupName()));
 		userGroup.setGroupName(userGroupBean.getGroupName());
 		userGroup.setCreationDate(userGroupBean.getCreationDate());
 	}

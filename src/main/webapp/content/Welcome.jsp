@@ -44,15 +44,34 @@ a div.sliderShortDescription {
 <div id="sliderFrame">
     <div id="slider">
 		<s:iterator value="#application['SliderItems']" id="eachSliderItem">
-			<a href="#" class="remove-under">
+		
+		    <s:if test='%{#eachSliderItem.eventType.typeId == "N"}'>
+		         <s:url id="editUrl" action="../content/LoadSelectedNews">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:if>
+		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "E"}'>
+		    	<s:url id="editUrl" action="LoadSelectedEvent">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:elseif>
+		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "O"}'>
+		    	<s:url id="editUrl" action="LoadSelectedItem">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:elseif>
+		    
+		    
+			<s:a href="%{editUrl}" class="remove-under">
 				<div class="sliderTitle"><s:property value="#eachSliderItem.title" /></div>
 				<div class="sliderDate">
-					<s:property value="#eachSliderItem.startDate" />  - 
-					<s:property value="#eachSliderItem.endDate" />
+					<s:date name="#eachSliderItem.startDate" format="dd/MM/yyyy"/>  - 
+					<s:date name="#eachSliderItem.endDate" format="dd/MM/yyyy" />
 				</div>
-				<div class="sliderShortDescription"><s:property value="#eachSliderItem.shortDescription" /></div>
-				<img src="../slider/<s:property value="#eachSliderItem.image" />" />
-			</a>
+				<div class="sliderShortDescription"><s:property value="#eachSliderItem.description" /></div>
+				<img src="<%=request.getContextPath() %>/slider/<s:property value="#eachSliderItem.sliderImage" />" />
+			</s:a>
+			
 		</s:iterator>
 	</div>
 </div>

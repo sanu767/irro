@@ -1,6 +1,6 @@
 package com.saasforedu.irro.article.entity.impl;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,21 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.saasforedu.irro.article.entity.IArticle;
-import com.saasforedu.irro.article.entity.IBranchOffice;
-import com.saasforedu.irro.article.entity.ICenter;
-import com.saasforedu.irro.article.entity.ICertification;
-import com.saasforedu.irro.article.entity.IConference;
-import com.saasforedu.irro.article.entity.IContest;
-import com.saasforedu.irro.article.entity.IDepartment;
-import com.saasforedu.irro.article.entity.IEducationalActivity;
-import com.saasforedu.irro.article.entity.IInstitute;
-import com.saasforedu.irro.article.entity.INews;
-import com.saasforedu.irro.article.entity.IOlympics;
-import com.saasforedu.irro.article.entity.IProjects;
+import com.saasforedu.irro.model.IArticleAttachment;
+import com.saasforedu.irro.model.impl.ArticleAttachment;
 
 @Entity
 @Table(name = "ARTICLE")
@@ -45,43 +35,16 @@ public class Article implements IArticle {
 	@Lob
 	@Column(name = "CONTENT")
 	private String mainContent;
+	
+	@Column(name = "REF_ARTICLE_ID")
+	private Long referenceArticleId;
+	
+	@Column(name = "MODIFICATION_DATE")
+	private Date modificationDate;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=ArticleAttachment.class, mappedBy="article")
+	List<IArticleAttachment> articleAttachments;
 
-	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Attachments> attachments = new ArrayList<Attachments>();
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IDepartment department;
-
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private ICenter center;	
-
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IBranchOffice branchOffice;	
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IInstitute institute; 
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IEducationalActivity eduActivity;
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IConference conference;
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IContest contest; 
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IOlympics olympics; 
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private ICertification certification;
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private IProjects projects; 
-	
-	@OneToOne(mappedBy="article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private INews news; 
-	
 	@Override
 	public String getTitle() {
 		return title;
@@ -113,129 +76,108 @@ public class Article implements IArticle {
 	}
 
 	@Override
-	public List<Attachments> getAttachments() {
-		return attachments;
-	}
-
-	@Override
-	public void setAttachments(List<Attachments> attachments) {
-		this.attachments = attachments;
-	}
-
-	@Override
 	public Long getId() {
 		return id;
 	}
 
-	@Override
-	public IDepartment getDepartment() {
-		return department;
+	public Long getReferenceArticleId() {
+		return referenceArticleId;
+	}
+
+	public void setReferenceArticleId(Long referenceArticleId) {
+		this.referenceArticleId = referenceArticleId;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getModificationDate() {
+		return modificationDate;
+	}
+
+	public void setModificationDate(Date modificationDate) {
+		this.modificationDate = modificationDate;
+	}
+
+	public List<IArticleAttachment> getArticleAttachments() {
+		return articleAttachments;
+	}
+
+	public void setArticleAttachments(List<IArticleAttachment> articleAttachments) {
+		this.articleAttachments = articleAttachments;
 	}
 
 	@Override
-	public void setDepartment(IDepartment department) {
-		this.department = department;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((articleAttachments == null) ? 0 : articleAttachments
+						.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((mainContent == null) ? 0 : mainContent.hashCode());
+		result = prime
+				* result
+				+ ((modificationDate == null) ? 0 : modificationDate.hashCode());
+		result = prime
+				* result
+				+ ((referenceArticleId == null) ? 0 : referenceArticleId
+						.hashCode());
+		result = prime
+				* result
+				+ ((shortDescription == null) ? 0 : shortDescription.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
 	}
 
 	@Override
-	public ICenter getCenter() {
-		return center;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Article other = (Article) obj;
+		if (articleAttachments == null) {
+			if (other.articleAttachments != null)
+				return false;
+		} else if (!articleAttachments.equals(other.articleAttachments))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (mainContent == null) {
+			if (other.mainContent != null)
+				return false;
+		} else if (!mainContent.equals(other.mainContent))
+			return false;
+		if (modificationDate == null) {
+			if (other.modificationDate != null)
+				return false;
+		} else if (!modificationDate.equals(other.modificationDate))
+			return false;
+		if (referenceArticleId == null) {
+			if (other.referenceArticleId != null)
+				return false;
+		} else if (!referenceArticleId.equals(other.referenceArticleId))
+			return false;
+		if (shortDescription == null) {
+			if (other.shortDescription != null)
+				return false;
+		} else if (!shortDescription.equals(other.shortDescription))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
 	}
-
-	@Override
-	public void setCenter(ICenter center) {
-		this.center = center;
-	}
-
-	@Override
-	public IBranchOffice getBranchOffice() {
-		return branchOffice;
-	}
-
-	@Override
-	public void setBranchOffice(IBranchOffice branchOffice) {
-		this.branchOffice = branchOffice;
-	}
-
-	@Override
-	public IInstitute getInstitute() {
-		return institute;
-	}
-
-	@Override
-	public void setInstitute(IInstitute institute) {
-		this.institute = institute;
-	}
-
-	@Override
-	public IEducationalActivity getEduActivity() {
-		return eduActivity;
-	}
-
-	@Override
-	public void setEduActivity(IEducationalActivity eduActivity) {
-		this.eduActivity = eduActivity;
-	}
-
-	@Override
-	public IConference getConference() {
-		return conference;
-	}
-
-	@Override
-	public void setConference(IConference conference) {
-		this.conference = conference;
-	}
-
-	@Override
-	public IContest getContest() {
-		return contest;
-	}
-
-	@Override
-	public void setContest(IContest contest) {
-		this.contest = contest;
-	}
-
-	@Override
-	public IOlympics getOlympics() {
-		return olympics;
-	}
-
-	@Override
-	public void setOlympics(IOlympics olympics) {
-		this.olympics = olympics;
-	}
-
-	@Override
-	public ICertification getCertification() {
-		return certification;
-	}
-
-	@Override
-	public void setCertification(ICertification certification) {
-		this.certification = certification;
-	}
-
-	@Override
-	public IProjects getProjects() {
-		return projects;
-	}
-
-	@Override
-	public void setProjects(IProjects projects) {
-		this.projects = projects;
-	}
-
-	@Override
-	public INews getNews() {
-		return news;
-	}
-
-	@Override
-	public void setNews(INews news) {
-		this.news = news;
-	}
-
 	
 }

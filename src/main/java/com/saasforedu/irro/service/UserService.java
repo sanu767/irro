@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.saasforedu.irro.bean.UserBean;
 import com.saasforedu.irro.bean.UserSearchBean;
-import com.saasforedu.irro.enums.PermissionType;
 
 public interface UserService {
 	
@@ -23,7 +22,5 @@ public interface UserService {
 	
 	//Business methods related to Permission
 	public void deletePermissionsByGroupNames(List<String> groupNames);
-	public void changePermissions(List<Long> permissionIds, PermissionType permissionType);
-	public void addNewPermissions(UserBean userBean, List<String> selectedPermissions);
 	
 }

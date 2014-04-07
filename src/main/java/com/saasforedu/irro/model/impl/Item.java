@@ -1,17 +1,28 @@
+/**
+ * 
+ */
 package com.saasforedu.irro.model.impl;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-
 import com.saasforedu.irro.model.IItem;
+import com.saasforedu.irro.model.IItemAttachment;
+
+/**
+ * @author sanket
+ * 
+ */
 
 @Entity
 @Table(name = "ITEM")
@@ -20,46 +31,38 @@ public class Item implements IItem {
 	@Id
 	@GeneratedValue
 	@Column(name = "ITEM_ID")
-	Long itemId;
-
-	@Column(name = "ITEM_TYPE", length = 1)
-	String type;
-
-	@Column(name = "TITLE", length = 10)
-	String title;
-
+	private Long id;
+	
+	@Column(name = "TITLE")
+	private String title;
+	
 	@Column(name = "START_DATE")
-	Date startDate;
-
+	private Date startDate;
+	
 	@Column(name = "END_DATE")
-	Date endDate;
-
-	@Column(name = "SHORT_DESC")
-	String shortDescription;
-
-	@Column(name = "LONG_DESC")
-	String longDescription;
-
+	private Date endDate;
+	
+	@Lob
+	@Column(name = "CONTENT")
+	private String mainContent;
+	
+	@Column(name = "DESCRIPTION")
+	private String shortDescription;
+	
 	@Column(name = "IS_SLIDER")
-	boolean sliderSelected;
-
-	@Column(name = "SLIDER_IMG_NAME")
-	String image;
-
-	@Column(name = "FILE_PATH")
-	String filePath;
-
-	public Long getItemId() {
-		return itemId;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	private boolean sliderItem;
+	
+	@Column(name = "SLIDER_IMAGE")
+	private String sliderImage;
+	
+	@Column(name = "IS_SHOW_HOME")
+	private boolean showInHomePage;
+	
+	@Column(name = "URL")
+	private String url;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=ItemAttachment.class, mappedBy="item")
+	List<IItemAttachment> itemAttachments;
 
 	public String getTitle() {
 		return title;
@@ -67,6 +70,22 @@ public class Item implements IItem {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+	
+	public String getMainContent() {
+		return mainContent;
+	}
+
+	public void setMainContent(String mainContent) {
+		this.mainContent = mainContent;
 	}
 
 	public Date getStartDate() {
@@ -85,64 +104,130 @@ public class Item implements IItem {
 		this.endDate = endDate;
 	}
 
-	public String getShortDescription() {
-		return shortDescription;
+	public boolean isSliderItem() {
+		return sliderItem;
 	}
 
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
+	public void setSliderItem(boolean sliderItem) {
+		this.sliderItem = sliderItem;
 	}
 
-	public String getLongDescription() {
-		return longDescription;
+	public String getSliderImage() {
+		return sliderImage;
 	}
 
-	public void setLongDescription(String longDescription) {
-		this.longDescription = longDescription;
+	public void setSliderImage(String sliderImage) {
+		this.sliderImage = sliderImage;
 	}
 
-	public boolean getSliderSelected() {
-		return sliderSelected;
+	public boolean isShowInHomePage() {
+		return showInHomePage;
 	}
 
-	public void setSliderSelected(boolean sliderSelected) {
-		this.sliderSelected = sliderSelected;
+	public void setShowInHomePage(boolean showInHomePage) {
+		this.showInHomePage = showInHomePage;
 	}
 
-	public String getImage() {
-		return image;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public String getFilePath() {
-		return filePath;
+	public Long getId() {
+		return id;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public List<IItemAttachment> getItemAttachments() {
+		return itemAttachments;
 	}
 
-	@Override
-	public String toString() {
-		return "Item [itemId=" + itemId + ", type=" + type + ", title=" + title
-				+ ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", shortDescription=" + shortDescription + ", longDescription="
-				+ longDescription + ", sliderSelected=" + sliderSelected
-				+ ", image=" + image + ", filePath=" + filePath + "]";
+	public void setItemAttachments(List<IItemAttachment> itemAttachments) {
+		this.itemAttachments = itemAttachments;
 	}
 
 	@Override
 	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((mainContent == null) ? 0 : mainContent.hashCode());
+		result = prime * result
+				+ ((shortDescription == null) ? 0 : shortDescription.hashCode());
+		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((itemAttachments == null) ? 0 : itemAttachments.hashCode());
+		result = prime * result + (showInHomePage ? 1231 : 1237);
+		result = prime * result
+				+ ((sliderImage == null) ? 0 : sliderImage.hashCode());
+		result = prime * result + (sliderItem ? 1231 : 1237);
+		result = prime * result
+				+ ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
-	}
-
-	
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (mainContent == null) {
+			if (other.mainContent != null)
+				return false;
+		} else if (!mainContent.equals(other.mainContent))
+			return false;
+		if (shortDescription == null) {
+			if (other.shortDescription != null)
+				return false;
+		} else if (!shortDescription.equals(other.shortDescription))
+			return false;
+		if (endDate == null) {
+			if (other.endDate != null)
+				return false;
+		} else if (!endDate.equals(other.endDate))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (itemAttachments == null) {
+			if (other.itemAttachments != null)
+				return false;
+		} else if (!itemAttachments.equals(other.itemAttachments))
+			return false;
+		if (showInHomePage != other.showInHomePage)
+			return false;
+		if (sliderImage == null) {
+			if (other.sliderImage != null)
+				return false;
+		} else if (!sliderImage.equals(other.sliderImage))
+			return false;
+		if (sliderItem != other.sliderItem)
+			return false;
+		if (startDate == null) {
+			if (other.startDate != null)
+				return false;
+		} else if (!startDate.equals(other.startDate))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}	
 }

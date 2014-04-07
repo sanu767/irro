@@ -1,15 +1,16 @@
 package com.saasforedu.irro.article.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleBean {
 
-	private Long articleId;
-	private String title;
-	private String description;
-	private String content;
+	Long id;
+	String title;
+	String description;
+	String content;
 	
-	private List<AttachmentBean> attachmentBeans;
+	List<AttachmentBean> attachmentBeans = new ArrayList<AttachmentBean>();
 	
 	public String getTitle() {
 		return title;
@@ -35,12 +36,12 @@ public class ArticleBean {
 		this.content = content;
 	}
 
-	public Long getArticleId() {
-		return articleId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setArticleId(Long articleId) {
-		this.articleId = articleId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public List<AttachmentBean> getAttachmentBeans() {
@@ -50,5 +51,4 @@ public class ArticleBean {
 	public void setAttachmentBeans(List<AttachmentBean> attachmentBeans) {
 		this.attachmentBeans = attachmentBeans;
 	}
-
 }

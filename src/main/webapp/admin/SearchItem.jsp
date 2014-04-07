@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+	<sj:head jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	 
@@ -32,7 +32,7 @@ $(document).ready(function(){
     <div style="margin : 10px 0px 0px 10px">
        <h1 style="font-size: 18px;font-family: 'Open Sans';">Search</h1>
 		 <s:form action="SearchItem" theme="xhtml" accept-charset="UTF-8" cssClass="myClass">
-			<sj:textfield name="itemBean.searchText" label="Title " maxlength="100" required="true" placeholder="Enter title" />
+			<sj:textfield name="itemSearchBean.searchText" label="Title " maxlength="100" required="true" placeholder="Enter title" />
 			<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search" />		
 		</s:form>
 		
@@ -43,16 +43,16 @@ $(document).ready(function(){
 	<div id="advancedSearchForm" style="margin : 5px 0px 0px 0px;">
 	<s:form action="AdvancedSearchItem" theme="xhtml" accept-charset="UTF-8">
 	    
-	    <sj:textfield name="itemBean.searchText" label="Title " maxlength="100" placeholder="Enter title" />
+	    <sj:textfield name="itemSearchBean.searchText" label="Title " maxlength="100" placeholder="Enter title" />
 		
-		<s:radio name="itemBean.searchType" label=" Select Item  "
+		<s:radio name="itemSearchBean.eventType" label=" Select Item  "
 			list="#{'1':'News', '2':'Events', '3':'Others'}"
 			/>
 
-		<sj:datepicker name="itemBean.beforeSearchDate" displayFormat="dd/mm/yy" label="Before "
+		<sj:datepicker name="itemSearchBean.beforeSearchDate" label="Before "
 			changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="itemBean.afterSearchDate" displayFormat="dd/mm/yy" label="After " 
+		<sj:datepicker name="itemSearchBean.afterSearchDate" label="After " 
 			changeYear="true" changeMonth="true" showOn="focus" />
 				
 		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>	
@@ -62,6 +62,14 @@ $(document).ready(function(){
 	
 	<div style="padding : 20px 0px 0px 0px">
 	  <a href="LoadCreateItem" style="text-decoration:none;color : rgb(6,85,117);font-size: 16px;font-family: 'Open Sans';">Create Item</a>
+	</div>
+	
+	<div style="padding : 25px 0px 0px 0px">
+	  <a href="LoadCreateEvent" style="text-decoration:none;color : rgb(6,85,117);font-size: 16px;font-family: 'Open Sans';">Create Event</a>
+	</div>
+	
+	<div style="padding : 30px 0px 0px 0px">
+	  <a href="LoadCreateNews" style="text-decoration:none;color : rgb(6,85,117);font-size: 16px;font-family: 'Open Sans';">Create News</a>
 	</div>
 	
 	

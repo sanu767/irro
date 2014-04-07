@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+	<sj:head jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 
 </head> 
@@ -22,9 +22,9 @@
 		
 		<s:label title="User Registered" label="User Registered"/>
 		
-		<sj:datepicker name="userSearchBean.beforeSearchDate" displayFormat="dd/mm/yy" label="Before " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="userSearchBean.beforeSearchDate" label="Before " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
    
-		<sj:datepicker name="userSearchBean.afterSearchDate" displayFormat="dd/mm/yy" label="After " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker name="userSearchBean.afterSearchDate" label="After " labelposition="right" changeYear="true" changeMonth="true" showOn="focus" />
 		
 		<s:checkboxlist name="userSearchBean.searchedpermissionNames" label="Select Permissions" list="allPermissions"  />
 			

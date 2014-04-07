@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.saasforedu.irro.bean.UserSearchBean;
 import com.saasforedu.irro.dao.UserDAO;
@@ -15,30 +14,13 @@ import com.saasforedu.irro.model.IUserPermission;
 import com.saasforedu.irro.model.impl.User;
 import com.saasforedu.irro.util.IrroUtils;
 
-public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
-
-	@Override
-	public Long create(IUser user) {
-		user.setActive(true);
-		return (Long)getHibernateTemplate().save(user);
-	}
-	
-	@Override
-	public void update(IUser user) {
-		getHibernateTemplate().update(user);
-	}
+public class UserDAOImpl extends BaseDAOimpl<User> implements UserDAO {
 
 	@Override
 	public void delete(List<IUser> usersToDelete) {
 		getHibernateTemplate().deleteAll(usersToDelete);
 	}
 	
-	@Override
-	public IUser findById(Long userId) {
-		IUser user = (IUser)getHibernateTemplate().get(User.class, userId);
-		return user;
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<IUser> findAll(List<Long> userIds) {
@@ -55,7 +37,7 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	@Override
 	public IUser findbyEmailId(String emailId) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select u from User u where u.email is  ? ");
+		queryBuilder.append("select u from User u where u.email =  ? ");
 		List<IUser> resultUsers = getHibernateTemplate().find(queryBuilder.toString(), emailId);
 		return resultUsers.get(0);
 	}
@@ -188,9 +170,11 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	@Override
 	public void changeActivation(List<Long> userIds, boolean activate) {
-		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("update User u set active = ? where id in ? ");
-		getHibernateTemplate().bulkUpdate(queryBuilder.toString(), new Object[]{activate, userIds});
+		List<IUser> users = findAll(userIds);
+		for (IUser user : users) {
+			user.setActive(activate);
+		}
+		getHibernateTemplate().saveOrUpdateAll(users);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -209,18 +193,24 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 	@Override
 	public void deletePermissionsByGroupNames(List<String> groupNames) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select u UserPermission u where permissionName in (:groupNames)");
-		List<IUserPermission> permissions = getHibernateTemplate().findByNamedParam(
-				queryBuilder.toString(), "groupNames", new Object[]{groupNames});
+		queryBuilder.append("select u from UserPermission u where u.permissionName in (:listParam)");
+		String[] params = { "listParam" };
+		Object [] values = {groupNames};
+		List<IUserPermission> permissions = getHibernateTemplate().findByNamedParam(queryBuilder.toString(), params, values);
 		if(CollectionUtils.isNotEmpty(permissions)) {
 			getHibernateTemplate().deleteAll(permissions);
 		}
 	}
 	
 	@Override
-	public void changePermissionType(List<Long> permissionIds, int permissionType) {
-		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("update UserPermission u set permissionType = ? where id in ? ");
-		getHibernateTemplate().bulkUpdate(queryBuilder.toString(), new Object[]{permissionType, permissionIds});
+	public void update(IUser user, List<IUserPermission> removedPermissions) {
+		deletePermissions(removedPermissions);
+		super.update((User)user);
+	}
+	
+	private void deletePermissions(List<IUserPermission> removedPermissions) {
+		if(CollectionUtils.isNotEmpty(removedPermissions)) {
+			getHibernateTemplate().deleteAll(removedPermissions);
+		}
 	}
 }

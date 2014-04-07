@@ -1,19 +1,27 @@
 package com.saasforedu.irro.bean;
 
+import java.io.File;
 import java.util.Date;
 
-public class ItemBean {
+import com.saasforedu.irro.article.bean.ArticleBean;
+import com.saasforedu.irro.enums.EventType;
 
-	Long itemId;
-	int type;
-	String title;
+public class ItemBean extends ArticleBean {
+
+	Long rowId;
 	Date startDate;
 	Date endDate;
-	String shortDescription;
-	String longDescription;
+	boolean showInHomePage;
+	String url;
+	
+	EventType eventType;
+	
+	/** Slider Attributes **/
 	boolean sliderSelected;
-	String image;
-	String filePath;
+	String sliderImage;
+	File sliderFile;
+	String sliderPath;
+	
 	
 	/* Search Properties */
 	int searchType;
@@ -21,44 +29,6 @@ public class ItemBean {
 	Date beforeSearchDate;
 	Date afterSearchDate;	
 	
-	public ItemBean() {
-		super();
-	}
-
-	public ItemBean(Long itemId, String title, Date startDate,
-			Date endDate, String shortDescription) {
-		super();
-		this.itemId = itemId;
-		this.title = title;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.shortDescription = shortDescription;
-	}
-
-	public Long getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(Long itemId) {
-		this.itemId = itemId;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = Integer.parseInt(type);
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -75,45 +45,16 @@ public class ItemBean {
 		this.endDate = endDate;
 	}
 
-	public String getShortDescription() {
-		return shortDescription;
+
+	
+	public String getSliderImage() {
+		return sliderImage;
 	}
 
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
+	public void setSliderImage(String sliderImage) {
+		this.sliderImage = sliderImage;
 	}
 
-	public String getLongDescription() {
-		return longDescription;
-	}
-
-	public void setLongDescription(String longDescription) {
-		this.longDescription = longDescription;
-	}
-
-	public boolean getSliderSelected() {
-		return sliderSelected;
-	}
-
-	public void setSliderSelected(boolean sliderSelected) {
-		this.sliderSelected = sliderSelected;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
 
 	public String getSearchText() {
 		return searchText;
@@ -147,4 +88,63 @@ public class ItemBean {
 		this.afterSearchDate = afterSearchDate;
 	}
 
+	public boolean isShowInHomePage() {
+		return showInHomePage;
+	}
+
+	public void setShowInHomePage(boolean showInHomePage) {
+		this.showInHomePage = showInHomePage;
+	}
+
+	public void setSearchType(int searchType) {
+		this.searchType = searchType;
+	}
+
+	public EventType getEventType() {
+		return eventType;
+	}
+
+	public void setEventType(EventType eventType) {
+		this.eventType = eventType;
+	}
+
+	public boolean isSliderSelected() {
+		return sliderSelected;
+	}
+
+	public void setSliderSelected(boolean sliderSelected) {
+		this.sliderSelected = sliderSelected;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public File getSliderFile() {
+		return sliderFile;
+	}
+
+	public void setSliderFile(File sliderFile) {
+		this.sliderFile = sliderFile;
+	}
+
+	public String getSliderPath() {
+		return sliderPath;
+	}
+
+	public void setSliderPath(String sliderPath) {
+		this.sliderPath = sliderPath;
+	}
+
+	public Long getRowId() {
+		return rowId;
+	}
+
+	public void setRowId(Long rowId) {
+		this.rowId = rowId;
+	}
 }

@@ -1,21 +1,119 @@
+CREATE  TABLE `irronew`.`MENU_INFO` (
+  `MENU_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) NOT NULL,
+  `PARENT_ID` int(10),
+  `REF_ARTICLE_ID` int(10), 
+  `DOC_LOCATION` varchar(100) NOT NULL, 
+  PRIMARY KEY (`MENU_ID`)
+)DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
 CREATE  TABLE `irronew`.`ITEM` (
   `ITEM_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ITEM_TYPE` varchar(1) NOT NULL,
-  `TITLE` varchar(100) NOT NULL DEFAULT '',
+  `TITLE` varchar(100) NOT NULL,
   `START_DATE` date DEFAULT NULL,
   `END_DATE` date DEFAULT NULL,
-  `SHORT_DESC` text,
-  `LONG_DESC` text,
+  `DESCRIPTION` varchar(100) DEFAULT '',
+  `CONTENT` longtext,
   `IS_SLIDER` boolean default False,
-  `SLIDER_IMG_NAME` tinytext,
-  `FILE_PATH` tinytext,
-  PRIMARY KEY (`ITEM_TYPE`,`TITLE`),
-  UNIQUE KEY `ITEM_ID_UNIQUE` (`ITEM_ID`))
+  `SLIDER_IMAGE` varchar(100),
+  `IS_SHOW_HOME` boolean default False,
+  `URL` varchar(100) DEFAULT '', 
+   PRIMARY KEY (`ITEM_ID`))
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
-  
-   
- CREATE  TABLE `irronew`.`user` ( 
+
+CREATE  TABLE `irronew`.`NEWS` (
+  `NEWS_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(100) NOT NULL,
+  `START_DATE` date DEFAULT NULL,
+  `END_DATE` date DEFAULT NULL,
+  `DESCRIPTION` varchar(100) DEFAULT '',
+  `CONTENT` longtext,
+  `IS_SLIDER` boolean default False,
+  `SLIDER_IMAGE` varchar(100),
+  `IS_SHOW_HOME` boolean default False,
+  `REF_ARTICLE_ID` int(10) DEFAULT NULL,
+  `URL` varchar(100) DEFAULT '', 
+   PRIMARY KEY (`NEWS_ID`))
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`EVENT` (
+  `EVENT_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(100) NOT NULL,
+  `START_DATE` date DEFAULT NULL,
+  `END_DATE` date DEFAULT NULL,
+  `DESCRIPTION` varchar(100) DEFAULT '',
+  `CONTENT` longtext,
+  `IS_SLIDER` boolean default False,
+  `SLIDER_IMAGE` varchar(100),
+  `IS_SHOW_HOME` boolean default False,
+  `URL` varchar(100) DEFAULT '', 
+   PRIMARY KEY (`EVENT_ID`))
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`ARTICLE` ( 
+  `ARTICLE_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(100) NOT NULL,
+  `DESCRIPTION` varchar(100) NOT NULL DEFAULT '',
+  `CONTENT` longtext,
+  `MODIFICATION_DATE` date DEFAULT NULL,
+  `REF_ARTICLE_ID` int(10) DEFAULT NULL,
+  PRIMARY KEY (`ARTICLE_ID`)
+)DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`ARTICLE_ATTACHMENT` (
+  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
+  `FILE_NAME` varchar(255) NOT NULL,
+  `FILE_TYPE` varchar(255) NOT NULL,
+  `LOCATION`  varchar(255) DEFAULT NULL,
+  `IS_ACTIVE` boolean default False,  
+  `ARTICLE_ID` int(11) unsigned NOT NULL,  
+  PRIMARY KEY (`FILE_ID`),  
+  FOREIGN KEY (ARTICLE_ID) REFERENCES ARTICLE(ARTICLE_ID))
+  DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`NEWS_ATTACHMENT` (
+  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
+  `FILE_NAME` varchar(255) NOT NULL,
+  `FILE_TYPE` varchar(255) NOT NULL,
+  `LOCATION`  varchar(255) DEFAULT NULL,
+  `IS_ACTIVE` boolean default False,  
+  `NEWS_ID` int(11) unsigned NOT NULL,  
+  PRIMARY KEY (`FILE_ID`),  
+  FOREIGN KEY (NEWS_ID) REFERENCES NEWS(NEWS_ID))
+  DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`EVENT_ATTACHMENT` (
+  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
+  `FILE_NAME` varchar(255) NOT NULL,
+  `FILE_TYPE` varchar(255) NOT NULL,
+  `LOCATION`  varchar(255) DEFAULT NULL,
+  `IS_ACTIVE` boolean default False,  
+  `EVENT_ID` int(11) unsigned NOT NULL,  
+  PRIMARY KEY (`FILE_ID`),  
+  FOREIGN KEY (EVENT_ID) REFERENCES EVENT(EVENT_ID))
+  DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`ITEM_ATTACHMENT` (
+  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
+  `FILE_NAME` varchar(255) NOT NULL,
+  `FILE_TYPE` varchar(255) NOT NULL,
+  `LOCATION`  varchar(255) DEFAULT NULL,
+  `IS_ACTIVE` boolean default False,  
+  `ITEM_ID` int(11) unsigned NOT NULL,  
+  PRIMARY KEY (`FILE_ID`),  
+  FOREIGN KEY (ITEM_ID) REFERENCES ITEM(ITEM_ID))
+  DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_unicode_ci;
+
+CREATE  TABLE `irronew`.`user` ( 
   `USR_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `USR_CODE` varchar(100) NOT NULL,
   `USR_NAME` varchar(100) NOT NULL DEFAULT '',
@@ -201,14 +299,6 @@ CREATE TABLE `irronew`.`rector` (
 ) DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
-CREATE TABLE `irronew`.`news` (
-  `NEWS_ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ANNOUNCEMENT` varchar(255) DEFAULT NULL,
-  `ARCHIVE` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`NEWS_ID`)
-) DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci;
-
 CREATE TABLE `irronew`.`basic` (
   `BASIC_ID` bigint(20) NOT NULL AUTO_INCREMENT,
   `CONTENT` varchar(255) DEFAULT NULL,
@@ -246,26 +336,7 @@ CREATE TABLE `irronew`.`sverdlovsl` (
 ) DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
 
-CREATE TABLE `irronew`.`event` (
-  `DATE` datetime DEFAULT NULL,
-  `TYPE` varchar(45) DEFAULT NULL,
-  `URL` varchar(255) DEFAULT NULL,
-  `TITLE` varchar(255) DEFAULT NULL,
-  `DESCRIPTION` varchar(255) DEFAULT NULL,
-  `EVENT_ID` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`EVENT_ID`)
-) DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci;
 
-CREATE  TABLE `irronew`.`FILE_ARTICLE` (
-  `FILE_ID`   bigint(20) NOT NULL AUTO_INCREMENT,
-  `FILE_NAME` varchar(255) NOT NULL,
-  `FILE_TYPE` varchar(255) NOT NULL,
-  `LOCATION`  varchar(255) DEFAULT NULL,
-  `IS_ACTIVE` boolean default False,  
-  PRIMARY KEY (`FILE_ID`)
-)DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_unicode_ci;
 
 
 ALTER TABLE `irronew`.`document` ADD COLUMN `INST_ID` BIGINT(20) NOT NULL  AFTER `SUP_BOARD` 
@@ -298,9 +369,6 @@ ALTER TABLE `irronew`.`olympics` ADD COLUMN `ACTIVITY_ID` BIGINT(20) NOT NULL  A
 
 ALTER TABLE `irronew`.`branch_office` ADD COLUMN `CONTENT` VARCHAR(255) NULL  AFTER `INST_ID` ;
 
-ALTER TABLE `irronew`.`news` ADD COLUMN `CONTENT` VARCHAR(255) NULL  AFTER `ARCHIVE` ;
-
-
 ALTER TABLE `irronew`.`activity` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL;
 
 ALTER TABLE `irronew`.`basic` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
@@ -325,8 +393,6 @@ ALTER TABLE `irronew`.`institute` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT C
 
 ALTER TABLE `irronew`.`institute_details` CHANGE COLUMN `CONTENT` `CONTENT`  MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
 
-ALTER TABLE `irronew`.`news` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
-
 ALTER TABLE `irronew`.`olympics` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
 
 ALTER TABLE `irronew`.`project` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
@@ -334,9 +400,6 @@ ALTER TABLE `irronew`.`project` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHA
 ALTER TABLE `irronew`.`rector` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
 
 ALTER TABLE `irronew`.`sverdlovsl` CHANGE COLUMN `CONTENT` `CONTENT` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
-
-
-
 
 ALTER TABLE `irronew`.`institute_details` CHANGE COLUMN `CONSTI` `CONSTI` MEDIUMTEXT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;
 

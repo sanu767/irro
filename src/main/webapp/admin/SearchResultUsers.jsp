@@ -5,10 +5,9 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <html>
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+	<sj:head jquerytheme="lightness" jqueryui="true"/>
 <style type="text/css">
 .deleteCheckBox{
   width : 10px;
@@ -20,23 +19,26 @@
 </head> 
 
 <body>
-     <s:form theme="xhtml" accept-charset="UTF-8">
+     <s:form theme="xhtml" accept-charset="UTF-8" action="DeleteUser">
 		 <display:table name="searchedUsers"  defaultsort="2" pagesize="10" sort="list" requestURI="" uid="eachSearchedUser" id="eachSearchedUser">
 			  <display:column title="Select">
-			    <input type="checkbox" name="selectedUserIds" id="selectedUserIds" value="${eachSearchedUser.id}">
+			    <input type="checkbox" name="selectedUserIds" value="${eachSearchedUser.id}">
 			  </display:column>
 			  <display:column property="userCode" title="Code" sortable="true" style="width : 15px" />
 			  <display:column property="userName" title="Name" sortable="true" style="width : 15px" />
 			  <display:column property="userSurname" title="Sur Name" sortable="true" style="width : 15px" />
 			  <display:column property="email" title="Email" sortable="true" style="width : 15px" />
 			  <display:column property="address" title="Address" style="width : 15px" />
-			  <display:column property="phoneNumber" title="Phone number" style="width : 15px"  />
 			  <display:column property="active" title="Enabled" sortable="true" style="width : 15px"  />
-			  <display:column property="maxUploadFileSize" title="Maximum File Upload Size" sortable="true" style="width : 15px"  />
+			  <display:column title="Update"><a href="<s:url action="LoadUser">
+		     		<s:param name="selectedUserIdToModify" value="%{#attr.eachSearchedUser.id}"></s:param>
+		     		</s:url>"> Edit </a>
+		     </display:column>
 		 </display:table>
-		  <s:submit button="Activate" value="Activate" name="redirectAction:ActivateUsers"  />
-		  <s:submit button="DeActivate" value="DeActivate" name="redirectAction:DeActivateUsers" />
-		  <s:submit button="Delete" value="Delete"  name="redirectAction:DeleteUser" onClick="return confirm('Do you want to delete these Users?');" />
+		 
+		  <input type="submit" value="Activate" onclick="form.action='ActivateUsers';">
+		  <input type="submit" value="DeActivate" onclick="form.action='DeActivateUsers';">
+		  <s:submit button="Delete" value="Delete"  name="DeleteUser" onClick="return confirm('Do you want to delete these Users?');" />
 	 </s:form>
 </body>
 </html>

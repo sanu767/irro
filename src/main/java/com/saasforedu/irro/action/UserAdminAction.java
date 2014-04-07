@@ -20,9 +20,7 @@ public class UserAdminAction extends ActionSupport {
 
 	private UserBean userBean;
 	
-	private Long [] selectedUserIds;
-	
-	private Long selectedUserIdToModify;
+	Long[] selectedUserIds;
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -52,22 +50,6 @@ public class UserAdminAction extends ActionSupport {
 		this.userBean = userBean;
 	}
 
-	public Long[] getSelectedUserIds() {
-		return selectedUserIds;
-	}
-
-	public void setSelectedUserIds(Long[] selectedUserIds) {
-		this.selectedUserIds = selectedUserIds;
-	}
-
-	public Long getSelectedUserIdToModify() {
-		return selectedUserIdToModify;
-	}
-
-	public void setSelectedUserIdToModify(Long selectedUserIdToModify) {
-		this.selectedUserIdToModify = selectedUserIdToModify;
-	}
-
 	public String searchUsers() throws Exception{
 		List<UserBean> searchUsers = userService.searchUsers(userSearchBean);
 		this.searchedUsers = searchUsers;
@@ -75,19 +57,14 @@ public class UserAdminAction extends ActionSupport {
 	}
 	
 	public String activateUsers() throws Exception{
-		userService.changeActivation(Arrays.asList(getSelectedUserIds()), true);
+		List<Long> userIds = Arrays.asList(selectedUserIds);
+		userService.changeActivation(userIds, true);
 		return SUCCESS;
 	}
 	
 	public String deActivateUsers() throws Exception {
-		userService.changeActivation(Arrays.asList(getSelectedUserIds()), false);
-		return SUCCESS;
-	}
-	
-	public String loadUser() throws Exception {
-		UserBean user = 
-				userService.findById(selectedUserIdToModify);
-		this.userBean = user;
+		List<Long> userIds = Arrays.asList(selectedUserIds);
+		userService.changeActivation(userIds, false);
 		return SUCCESS;
 	}
 	
@@ -97,7 +74,17 @@ public class UserAdminAction extends ActionSupport {
 	}
 	
 	public String deleteUser() throws Exception {
-		userService.delete(Arrays.asList(getSelectedUserIds()));
+		List<Long> userIds = Arrays.asList(selectedUserIds);
+		userService.delete(userIds);
 		return SUCCESS;
 	}
+
+	public Long[] getSelectedUserIds() {
+		return selectedUserIds;
+	}
+
+	public void setSelectedUserIds(Long[] selectedUserIds) {
+		this.selectedUserIds = selectedUserIds;
+	}
+	
 }

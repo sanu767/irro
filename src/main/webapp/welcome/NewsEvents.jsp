@@ -17,7 +17,6 @@ div div div h6 {
 
   <link rel="stylesheet" href="../welcome/eventnnews.css">
   <script src="../welcome/js/irroeventslider.js"></script>
-  <link rel="stylesheet" href="../welcome/css/paragridma.css">
 
 	<!-- Core CSS File. The CSS code needed to make eventCalendar works -->
   <link rel="stylesheet" href="../welcome/css/eventCalendar.css">
@@ -46,7 +45,9 @@ div div div h6 {
 					          	 	 	<s:property value="#eachNews.title" />
 								      </p>
 					              
-					             <s:property value="#eachNews.shortDescription" /> <a href="content/News">ПОДРОБНЕЕ >>></a>
+					             <s:property value="#eachNews.description" /> 
+					             <a href='<s:url action="content/LoadSelectedNews">
+					             <s:param name="selectedItemId" value="#eachNews.id"></s:param></s:url>'>ПОДРОБНЕЕ >>></a>
 					            </div>
 		         			</li>
 				         </s:iterator>
@@ -66,8 +67,10 @@ div div div h6 {
 					              	<p>	
 					          	 	 	<s:property value="#eachEvent.title" />
 								      </p>
-					              <s:property value="#eachEvent.shortDescription" />
-					              <a href="content/News">ПОДРОБНЕЕ >>></a>
+					              <s:property value="#eachEvent.description" />
+					              <a href='<s:url action="LoadSelectedEvent"><s:param name="selectedItemId" value="#eachEvent.id"></s:param></s:url>'>
+					              ПОДРОБНЕЕ >>>
+					              </a>
 		         			   </div>	
 		         			</li>
 		         		</s:iterator>

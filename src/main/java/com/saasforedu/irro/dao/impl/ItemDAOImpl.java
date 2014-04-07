@@ -1,46 +1,30 @@
 package com.saasforedu.irro.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.dao.ItemDAO;
-import com.saasforedu.irro.enums.EventType;
 import com.saasforedu.irro.model.IItem;
+import com.saasforedu.irro.model.IItemAttachment;
 import com.saasforedu.irro.model.impl.Item;
 
-public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
-
-	@Override
-	public Long create(IItem item) {
-		//User should be able to insert duplicate title
-		return (Long)getHibernateTemplate().save(item);
-	}
-	
-	@Override
-	public void updateItem(IItem item) {
-		getHibernateTemplate().update(item);
-	}
+public class ItemDAOImpl extends BaseDAOimpl<Item> implements ItemDAO {
 
 	@Override
 	public void deleteItem(List<IItem> itemsToDelete) {
 		getHibernateTemplate().deleteAll(itemsToDelete);
 	}
 
-	@Override
-	public IItem findById(Long itemId) {
-		IItem item = (IItem)getHibernateTemplate().get(Item.class, itemId);
-		return item;
-	}
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<IItem> findAll(List<Long> itemIds) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select i from Item i where i.itemId in  (:listParam) ");
+		queryBuilder.append("select i from Item i where i.id in  (:listParam) ");
 		String[] params = { "listParam" };
 		Object [] values = {itemIds};
 		List<IItem> resultItems = getHibernateTemplate().findByNamedParam(queryBuilder.toString(), params, values);
@@ -49,18 +33,9 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<IItem> getItemsByEventType(String eventType) {
+	public List<IItem> getSliderItems(int numberOfItems) {
 		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select i from Item i where i.type = ? order by i.startDate DESC");
-		List<IItem> resultItems = getHibernateTemplate().find(queryBuilder.toString(), eventType);
-		return resultItems;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<IItem> getItems(int numberOfItems) {
-		StringBuilder queryBuilder = new StringBuilder();
-		queryBuilder.append("select i from Item i where i.sliderSelected = ?");
+		queryBuilder.append("select i from Item i where i.sliderItem = ?");
 		queryBuilder.append(" order by i.startDate DESC");
 		queryBuilder.append(" LIMIT " + Integer.toString(numberOfItems));
 		return getHibernateTemplate().find(queryBuilder.toString(), true);
@@ -74,7 +49,7 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 		queryBuilder.append(" '%" + itemSearchText +"%' ");
 		queryBuilder.append(" or i.shortDescription like  ");
 		queryBuilder.append(" '%" + itemSearchText +"%' ");
-		queryBuilder.append(" or i.longDescription like  ");
+		queryBuilder.append(" or i.mainContent like  ");
 		queryBuilder.append(" '%" + itemSearchText +"%' ");
 		queryBuilder.append(" order by i.startDate DESC");
 		
@@ -85,43 +60,67 @@ public class ItemDAOImpl extends HibernateDaoSupport implements ItemDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<IItem> searchItems(ItemBean itemBean) {
-
 		List<IItem> resultItems = new ArrayList<IItem>();
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append(" select i from Item i ");
 
 		List<Object> paramList = new ArrayList<Object>();
 
-		queryBuilder.append(" where ");
-		queryBuilder.append(" i.type = ? ");
-		paramList.add(EventType.getTypeValue(itemBean.getSearchType()));
-		
 		String searchText = itemBean.getSearchText();
-		if(StringUtils.isNotBlank(searchText)) {
-			queryBuilder.append(" and ");
+		Date beforeSearchDate = itemBean.getBeforeSearchDate();
+		Date afterSearchDate = itemBean.getAfterSearchDate();
+		
+		boolean isSearchTextNotBlank = StringUtils.isNotBlank(searchText);
+		boolean beforeSearchDateIsNotNull = beforeSearchDate != null;
+		boolean afterSearchDateIsNotNull = afterSearchDate != null;
+		
+		if(isSearchTextNotBlank || 
+				beforeSearchDateIsNotNull || 
+				afterSearchDateIsNotNull) {
+			queryBuilder.append(" where ");
+		}
+		
+		if(isSearchTextNotBlank) {
 			queryBuilder.append(" i.title like  ");
 			queryBuilder.append(" '%" + searchText +"%' ");
 			queryBuilder.append(" or i.shortDescription like   ");
 			queryBuilder.append(" '%" + searchText +"%' ");
-			queryBuilder.append(" or i.longDescription like  ");
+			queryBuilder.append(" or i.mainContent like  ");
 			queryBuilder.append(" '%" + searchText +"%' ");
 
 		}
 
-		if(itemBean.getBeforeSearchDate() != null) {
-			queryBuilder.append(" and ");
+		if(beforeSearchDateIsNotNull) {
+			if(isSearchTextNotBlank) {
+				queryBuilder.append(" and ");
+			}
 			queryBuilder.append(" i.endDate <= ? ");
-			paramList.add(itemBean.getBeforeSearchDate());
+			paramList.add(beforeSearchDate);
 		}
 
-		if(itemBean.getAfterSearchDate() != null) {
-			queryBuilder.append(" and ");
+		if(afterSearchDateIsNotNull) {
+			if(isSearchTextNotBlank || beforeSearchDateIsNotNull) {
+				queryBuilder.append(" and ");
+			}
 			queryBuilder.append(" i.startDate >= ? ");
-			paramList.add(itemBean.getAfterSearchDate());
+			paramList.add(afterSearchDate);
 		}
 
 		queryBuilder.append(" order by i.startDate DESC");			
 		resultItems = getHibernateTemplate().find(queryBuilder.toString(), paramList.toArray());
 		return resultItems;
 	}
+	
+	@Override
+	public void update(IItem item, List<IItemAttachment> removedAttachments) {
+		deleteAttachments(removedAttachments);
+		super.update((Item)item);
+	}
+	
+	private void deleteAttachments(List<IItemAttachment> removedAttachments) {
+		if(CollectionUtils.isNotEmpty(removedAttachments)) {
+			getHibernateTemplate().deleteAll(removedAttachments);
+		}
+	}
+	
 }

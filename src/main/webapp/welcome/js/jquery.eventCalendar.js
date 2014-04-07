@@ -249,7 +249,7 @@
 		} else if (!eventsOpts.cacheJson || !direction) {
 			// first load: load json and save it to future filters
 			//eventsOpts.eventsjson + "?limit="+limit+"&year="+year+"&month="+month+"&day="+day
-			$.getJSON("http://localhost:8080/rest/EventService/events/", function(data) {
+			$.getJSON("http://irro-new.irro.ru/rest/EventService/events/", function(data) {
 				//alert("data" + data);
 				flags.eventsJson = data; // save data to future filters
 				getEventsData(flags.eventsJson, limit, year, month, day, direction);

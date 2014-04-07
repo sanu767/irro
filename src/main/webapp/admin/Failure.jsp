@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Failed to Log In !!! Try again !!!
+Failed  !!! Try again !!!
 </body>
 </html>

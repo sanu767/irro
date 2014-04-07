@@ -6,6 +6,7 @@ public class AttachmentBean {
 	private String name;
 	private String type;
 	private boolean active;
+	private String location;
 
 	public String getName() {
 		return name;
@@ -37,6 +38,14 @@ public class AttachmentBean {
 
 	public void setAttachmentId(Long attachmentId) {
 		this.attachmentId = attachmentId;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 	

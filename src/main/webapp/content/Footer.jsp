@@ -82,50 +82,88 @@ color:rgb(0,0,0);
   </tr>
  
  <tr >
-    <td style="font-size:10px">Ректор</td>
-    <td style="font-size:10px">Образовательная деятельность </td>
-    <td style="font-size:10px">Базовые площадки</td>
-    <td style="font-size:10px">Библиотечно-информационный центр</td>
-    <td style="font-size:10px">Филиал и Представительства</td>
+    <td style="font-size:10px">
+      <a href="../content/LoadArticles?menuName=Rector&&parentMenuName=Institute">Ректорат</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Образовательная деятельность</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Базовые площадки</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Библиотечно-информационный центр</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Филиал и Представительства</a>
+      </td>
     <td>&nbsp;</td>
   </tr>
   
  <tr>
-   <td style="font-size:10px">Вехи истории</td>
-    <td style="font-size:10px">Аттестация</td>
-    <td style="font-size:10px">Методические материалы</td>
-    <td style="font-size:10px">Издания и публикации ИРО</td>
+   <td style="font-size:10px">
+      <a href="">Вехи истории</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Аттестация</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Методические материалы</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Издания и публикации ИРО</a>
+    </td>
     <td style="font-size:10px">&nbsp;</td>
   </tr>
   
  <tr>
-    <td style="font-size:10px">Администрация</td>
-    <td style="font-size:10px">ЕГЭ</td>
-    <td style="font-size:10px">Документы</td>
-	<td style="font-size:10px">Методическая копилка</td>
+    <td style="font-size:10px">
+      <a href="">Администрация</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">ЕГЭ</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Документы</a>
+      </td>
+	<td style="font-size:10px">
+    <a href="">Методическая копилка</a>
+  </td>
 	<td>&nbsp;</td>
     
   </tr>
   
    <tr>
-    <td style="font-size:10px">Структура</td>
-    <td style="font-size:10px">ГИА-9</td>
+    <td style="font-size:10px">
+      <a href="">Структура</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">ГИА-9</a>
+    </td>
     <td>&nbsp;</td>
 	<td/>&nbsp;</td>
 	<td/>&nbsp;</td>
     
   </tr>
     <tr>
-    <td style="font-size:10px">Филиал и Представительства</td>
-    <td style="font-size:10px">Конкурсы, олимпиады</td>
+    <td style="font-size:10px">
+      <a href="">Филиал и Представительства</a>
+      </td>
+    <td style="font-size:10px">
+      <a href="">Конкурсы, олимпиады</a>
+    </td>
     <td>&nbsp;</td>
 	<td/>&nbsp;</td>
 	<td/>&nbsp;</td>
   </tr>
   
   <tr>
-    <td style="font-size:10px">Контакты</td>
-    <td style="font-size:10px">Конференции</td>
+    <td style="font-size:10px">
+      <a href="">Контакты</a>
+    </td>
+    <td style="font-size:10px">
+      <a href="">Конференции</a>
+    </td>
     <td>&nbsp;</td>
 	<td/>&nbsp;</td>
 	<td/>&nbsp;</td>  
@@ -133,7 +171,9 @@ color:rgb(0,0,0);
   
   <tr>
     <td>&nbsp;</td>
-    <td style="font-size:10px">Издательская деятельность</td>
+    <td style="font-size:10px">
+      <a href="">Издательская деятельность</a>
+      </td>
     <td>&nbsp;</td>
 	<td/>&nbsp;</td>
 	<td/>&nbsp;</td>
@@ -141,7 +181,9 @@ color:rgb(0,0,0);
   
   <tr>
     <td>&nbsp;</td>
-    <td style="font-size:10px">Научные исследования</td>
+    <td style="font-size:10px">
+      <a href="">Научные исследования</a>
+    </td>
     <td>&nbsp;</td>
 	<td/>&nbsp;</td>
 	<td/>&nbsp;</td>

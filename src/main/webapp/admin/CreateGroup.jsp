@@ -16,10 +16,7 @@
 
 	<s:form action="CreateGroup" theme="xhtml" accept-charset="UTF-8">
 
-		<sj:textfield name="userGroupBean.groupCode" label="Group Code " maxlength="50"
-			required="true" placeholder="Enter title" />
-			
-		<sj:textfield name="userGroupBean.groupName" label="Group Name " maxlength="100"
+		<sj:textfield cssClass="irrolabel" name="userGroupBean.groupName" label="Group Name " maxlength="100"
 			required="true" placeholder="Enter Group Name" />
 
 		<sj:submit button="Create" value="Create" />

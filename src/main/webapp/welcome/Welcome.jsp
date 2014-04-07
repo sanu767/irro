@@ -44,90 +44,34 @@ a div.sliderShortDescription {
 <div id="sliderFrame">
     <div id="slider">
 		<s:iterator value="#application['SliderItems']" id="eachSliderItem">
-			<a href="#" class="remove-under">
+		
+		    <s:if test='%{#eachSliderItem.eventType.typeId == "N"}'>
+		         <s:url id="editUrl" action="content/LoadSelectedNews">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:if>
+		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "E"}'>
+		    	<s:url id="editUrl" action="content/LoadSelectedEvent">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:elseif>
+		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "O"}'>
+		    	<s:url id="editUrl" action="content/LoadSelectedItem">
+			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
+			    </s:url>
+		    </s:elseif>
+		    
+		    
+			<s:a href="%{editUrl}" class="remove-under">
 				<div class="sliderTitle"><s:property value="#eachSliderItem.title" /></div>
 				<div class="sliderDate">
-					<s:property value="#eachSliderItem.startDate" />  - 
-					<s:property value="#eachSliderItem.endDate" />
+					<s:date name="#eachSliderItem.startDate" format="dd/MM/yyyy"/>  - 
+					<s:date name="#eachSliderItem.endDate" format="dd/MM/yyyy" />
 				</div>
-				<div class="sliderShortDescription"><s:property value="#eachSliderItem.shortDescription" /></div>
-				<img src="slider/<s:property value="#eachSliderItem.image" />" />
-			</a>
+				<div class="sliderShortDescription"><s:property value="#eachSliderItem.description" /></div>
+				<img src="<%=request.getContextPath() %>/slider/<s:property value="#eachSliderItem.sliderImage" />" />
+			</s:a>
+			
 		</s:iterator>
 	</div>
 </div>
-
-<!-- <div id="sliderFrame">
-        <div id="slider">
-            <a href="#" class="remove-under">
-			    <div class="sliderTitle">This is Title </div>
-                <img src="slider/DSC_5569.png" alt="Welcome to New Generation" />
-            </a>
-            <a href="#">
-                <img src="slider/DSC_6335.png" alt="Welcome to the new world of education" />
-            </a>
-			<a href="#">
-                <img src="slider/DSC_6345.png" alt="Welcome to the new world of education" />
-            </a>
-			<a href="#">
-                <img src="slider/DSC_6500.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/DSC_6660.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/DSC_6668.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0226.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0249.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0351.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0365.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0392.png" alt="Welcome to New ERA" />
-            </a>	
-			<a href="#">NO
-                <img src="../slider/IMG_0411.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_0973.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_1468.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_2235.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_8106.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_8112.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_8845.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_8949.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_8977.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">NO
-                <img src="../slider/IMG_9449.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/IMG_9673.png" alt="Welcome to New ERA" />
-            </a>
-			<a href="#">
-                <img src="slider/P4190076.png" alt="Welcome to New ERA" />
-            </a>
-		</div>
- </div> -->

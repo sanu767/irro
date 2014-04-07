@@ -1,12 +1,12 @@
 package com.saasforedu.irro.action;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.bean.GroupSearchBean;
 import com.saasforedu.irro.bean.UserGroupBean;
 import com.saasforedu.irro.service.UserGroupService;
-import com.saasforedu.irro.util.IrroUtils;
 
 public class UserGroupAction extends ActionSupport {
 
@@ -20,7 +20,7 @@ public class UserGroupAction extends ActionSupport {
     
     private List<UserGroupBean> searchedUserGroups;
     
-    private String [] selectedGroupIds;
+    private Integer [] selectedGroupIds;
     
 	public void setUserGroupService(UserGroupService userGroupService) {
 		this.userGroupService = userGroupService;
@@ -32,14 +32,6 @@ public class UserGroupAction extends ActionSupport {
 
 	public void setUserGroupBean(UserGroupBean userGroupBean) {
 		this.userGroupBean = userGroupBean;
-	}
-
-	public String[] getSelectedGroupIds() {
-		return selectedGroupIds;
-	}
-
-	public void setSelectedGroupIds(String[] selectedGroupIds) {
-		this.selectedGroupIds = selectedGroupIds;
 	}
 
 	public GroupSearchBean getGroupSearchBean() {
@@ -69,7 +61,8 @@ public class UserGroupAction extends ActionSupport {
 	}
 	
 	public String deleteGroups() throws Exception {
-		userGroupService.delete(IrroUtils.getIntegerListFromStringArray(selectedGroupIds));
+		List<Integer> selectedGroups = Arrays.asList(selectedGroupIds);
+		userGroupService.delete(selectedGroups);
 		return SUCCESS;
 	}
 	
@@ -80,12 +73,24 @@ public class UserGroupAction extends ActionSupport {
 	}
 	
 	public String activateGroups() throws Exception{
-		userGroupService.changeActivation(IrroUtils.getIntegerListFromStringArray(selectedGroupIds), true);
+		List<Integer> selectedGroups = Arrays.asList(selectedGroupIds);
+		userGroupService.changeActivation(selectedGroups, true);
 		return SUCCESS;
 	}
 	
 	public String deActivateGroups() throws Exception {
-		userGroupService.changeActivation(IrroUtils.getIntegerListFromStringArray(selectedGroupIds), false);
+		List<Integer> selectedGroups = Arrays.asList(selectedGroupIds);
+		userGroupService.changeActivation(selectedGroups, false);
 		return SUCCESS;
 	}
+
+	public Integer[] getSelectedGroupIds() {
+		return selectedGroupIds;
+	}
+
+	public void setSelectedGroupIds(Integer[] selectedGroupIds) {
+		this.selectedGroupIds = selectedGroupIds;
+	}
+	
+	
 }

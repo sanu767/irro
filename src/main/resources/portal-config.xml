@@ -26,7 +26,9 @@
 			method="welcome">
 			<result name="success" type="tiles">welcome</result>
 		</action>
-
+		
+		<!-- Slider/News/Events -->
+		
 		<action name="adminLogin" class="com.saasforedu.irro.action.AdminLogin">
 			<result name="success" type="tiles">changeMenus</result>
 		</action>
@@ -34,8 +36,17 @@
 		<action name="administrator">
 			<result>/AdminLogin.jsp</result>
 		</action>
-		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createEvent">
+		
+		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">
 			<result name="success" />
+		</action>
+		
+		<action name="LoadSelectedEvent" class="com.saasforedu.irro.action.EventAction" method="loadEvent">
+			<result name="success" type="tiles">loadSelectedEvent</result>
+		</action>
+		
+		<action name="LoadSelectedItem" class="com.saasforedu.irro.action.ItemAction" method="loadItem">
+			<result name="success" type="tiles">loadSelectedItem</result>
 		</action>
 		
 	</package>
@@ -47,107 +58,206 @@
 		</result-types>
 
 		<!-- Content actions -->
+		
+		<!-- Article Starts -->
+		<action name="LoadArticles" class="com.saasforedu.irro.article.action.ArticleAction" method="loadArticles">
+			<result name="success" type="tiles">articles</result>
+		</action>
+		
+		<action name="LoadSelectedArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="loadSelectedArticle">
+			<result name="success" type="tiles">loadSelectedArticle</result>
+		</action>
+		
+		<action name="AddArticle" class="com.saasforedu.irro.article.action.ArticleAction">
+			<result name="success" type="tiles">addArticle</result>
+		</action>
+		
+		<action name="CreateArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="createArticle">
+			<result name="input" type="tiles">addArticle</result>
+			<result name="success" type="tiles">articleSuccess</result>
+		</action>
+		
+		<action name="UploadArticleFile" class="com.saasforedu.irro.article.action.ArticleAction" method="doUploadArticleFile">
+			<interceptor-ref name="fileUpload">  
+	                <param name="maximumSize">2097152</param>
+	                <param name="allowedTypes">
+	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+					</param>
+	            </interceptor-ref>  
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input" type="tiles">addArticle</result>
+			<result name="success" type="tiles">addArticle</result>
+			<result name="error" type="tiles">addArticle</result>
+		</action>
+		
+		<action name="ActivateAttachment" class="com.saasforedu.irro.article.action.ArticleAction" method="activateAttachment">
+			<result name="input" type="tiles">addArticle</result>
+			<result name="success" type="tiles">addArticle</result>
+		</action>
+		
+		<action name="DeActivateAttachment" class="com.saasforedu.irro.article.action.ArticleAction" method="deActivateAttachment">
+			<result name="input" type="tiles">addArticle</result>
+			<result name="success" type="tiles">addArticle</result>
+		</action>
+		
+		<action name="DeleteFile" class="com.saasforedu.irro.article.action.ArticleAction" method="removeAttachment">
+			<result name="input" type="tiles">addArticle</result>
+			<result name="success" type="tiles">addArticle</result>
+		</action>
+		
+		<action name="EditArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="loadSelectedArticle">
+			<result name="success" type="tiles">editArticle</result>
+		</action>
+		
+		<action name="SaveArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="saveArticle">
+			<result name="input" type="tiles">editArticle</result>
+			<result name="success" type="tiles">articleSuccess</result>
+		</action>
+		
+		<action name="UploadFileForSavedArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="doUploadArticleFile">
+			<interceptor-ref name="fileUpload">  
+		                <param name="maximumSize">2097152</param>
+		                <param name="allowedTypes">
+		                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+		                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+		                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+						</param>
+		    </interceptor-ref>  
+		    <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input" type="tiles">editArticle</result>
+			<result name="success" type="tiles">editArticle</result>
+			<result name="error" type="tiles">editArticle</result>
+		</action>
+		
+		<action name="ActivateAttachmentForSavedArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="activateAttachment">
+			<result name="input" type="tiles">editArticle</result>
+			<result name="success" type="tiles">editArticle</result>
+		</action>
+		
+		<action name="DeActivateAttachmentForSavedArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="deActivateAttachment">
+			<result name="input" type="tiles">editArticle</result>
+			<result name="success" type="tiles">editArticle</result>
+		</action>
+		
+		<action name="DeleteFileForSavedArticle" class="com.saasforedu.irro.article.action.ArticleAction" method="removeAttachment">
+			<result name="input" type="tiles">editArticle</result>
+			<result name="success" type="tiles">editArticle</result>
+		</action>
+		
+		<!-- Article Ends -->
 
-		<action name="OnlineResources" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">onlineResources</result>
-		</action>
-
-		<action name="Hotel" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">hotel</result>
-		</action>
-
-		<action name="MainContacts" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">mainContacts</result>
-		</action>
-
-		<action name="Institute" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">institute</result>
-		</action>
-
-		<action name="Rector" class="com.saasforedu.irro.action.InstitutionAction" method="loadContent">
-			<result name="success" type="tiles">rector</result>
-		</action>
-		<action name="RectorArticle" class="com.saasforedu.irro.action.InstitutionAction" method="loadArticle">
-			<result name="success" type="tiles">rectorarticle</result>
-		</action>
-		<action name="RectorSave" class="com.saasforedu.irro.action.InstitutionAction" method="saveContent">
-				<result name="success" type="tiles">rector</result>
-		</action>
-		<action name="Documents" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">documents</result>
-		</action>
-		<action name="History" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">history</result>
-		</action>
-		<action name="Logistics" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">logistics</result>
-		</action>
-		<action name="Contacts" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">contacts</result>
-		</action>
-
-		<action name="Jobs" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">jobs</result>
-		</action>
-
-		<action name="Departments" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">departments</result>
-		</action>
-
-		<action name="Centers" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">centers</result>
-		</action>
-		<action name="Divisions" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">divisions</result>
-		</action>
-
-		<action name="BranchOffice" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">branchOffice</result>
-		</action>
-
-		<action name="Activities" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">activities</result>
-		</action>
-		<action name="EducationalActivities" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">educationalActivities</result>
-		</action>
-
-		<action name="Conference" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">conference</result>
-		</action>
-
-		<action name="Contests" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">contests</result>
-		</action>
-
-		<action name="Olympics" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">olympics</result>
-		</action>
-
-		<action name="Certification" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">certification</result>
-		</action>
-		<action name="Employees" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">employees</result>
-		</action>
-		<action name="Graduates" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">graduates</result>
-		</action>
-		<action name="Projects" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">projects</result>
-		</action>
-		<action name="Sverdlovsk" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">sverdlovsk</result>
-		</action>
-		<action name="Basic" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">basic</result>
-		</action>
-		<action name="ContinuingEducation" class="com.saasforedu.irro.action.ExampleSupport">
-			<result name="success" type="tiles">continuingEducation</result>
-		</action>
-		<action name="News" class="com.saasforedu.irro.action.ExampleSupport">
+		<!--  News Starts -->
+		
+		<action name="LoadNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadAllNews" >
 			<result name="success" type="tiles">news</result>
 		</action>
+		
+		<action name="AddNews" class="com.saasforedu.irro.article.action.NewsAction">
+			<result name="success" type="tiles">addNews</result>
+		</action>
+		
+		<action name="LoadSelectedNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadSelectedNews">
+			<result name="success" type="tiles">loadSelectedNews</result>
+		</action>
+		
+		<action name="CreateNews" class="com.saasforedu.irro.article.action.NewsAction" method="createNews">
+		    <result name="input" type="tiles">addNews</result>
+			<result name="success" type="tiles">newsSuccess</result>
+		</action>
+	
+		<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
+			<interceptor-ref name="fileUpload">  
+	                <param name="maximumSize">2097152</param>
+	               <param name="allowedTypes">
+	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+					</param>
+	        </interceptor-ref>  
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="input" type="tiles">addNews</result>
+			<result name="success" type="tiles">addNews</result>
+		</action>
+		
+		
+		<action name="ActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+			<result name="input" type="tiles">addNews</result>
+			<result name="success" type="tiles">addNews</result>
+		</action>
+		
+		<action name="DeActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+			<result name="input" type="tiles">addNews</result>
+			<result name="success" type="tiles">addNews</result>
+		</action>
+		
+		<action name="DeleteNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+			<result name="input" type="tiles">addNews</result>
+			<result name="success" type="tiles">addNews</result>
+		</action>
+		
+		<action name="EditNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadSelectedNews">
+			<result name="success" type="tiles">editNews</result>
+		</action>
+		
+		<action name="SaveNews" class="com.saasforedu.irro.article.action.NewsAction" method="saveNews">
+			<result name="input" type="tiles">editNews</result>
+			<result name="success" type="tiles">newsSuccess</result>
+		</action>
+		
+		<action name="UploadFileForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
+			<result name="input" type="tiles">editNews</result>
+			<result name="success" type="tiles">editNews</result>
+		</action>
+		
+		<action name="ActivateAttachmentForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+			<result name="input" type="tiles">editNews</result>
+			<result name="success" type="tiles">editNews</result>
+		</action>
+		
+		<action name="DeActivateAttachmentForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+			<result name="input" type="tiles">editNews</result>
+			<result name="success" type="tiles">editNews</result>
+		</action>
+		
+		<action name="DeleteFileForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+			<result name="input" type="tiles">editNews</result>
+			<result name="success" type="tiles">editNews</result>
+		</action>
+		
+		<!--  News Ends -->
+		
+		<!-- Event Starts -->
+		<action name="LoadCreateDepartmentEvent" class="com.saasforedu.irro.action.EventAction">
+			<result name="input" type="tiles">articles</result>
+			<result name="success" type="tiles">loadCreateDepartmentEvent</result>
+		</action>
+		
+		
+		<action name="UploadEventFile" class="com.saasforedu.irro.action.EventAction" method="doUploadEventFile">
+			<interceptor-ref name="fileUpload">  
+	                <param name="maximumSize">2097152</param>
+	                <param name="allowedTypes">
+	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+					</param> 
+	            </interceptor-ref>  
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input" type="tiles">loadCreateDepartmentEvent</result>
+			<result name="success" type="tiles">loadCreateDepartmentEvent</result>
+			<result name="error" type="tiles">loadCreateDepartmentEvent</result>
+		</action>
+		
+		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">
+			<result name="input" type="tiles">loadCreateDepartmentEvent</result>
+			<result name="success" type="tiles">eventSuccess</result>
+		</action>
+		
+		
+		<!-- Event Ends -->
+		
 	</package>
 	
 	<package name="userAdministration" namespace="/" extends="struts-default" >
@@ -160,22 +270,12 @@
 			<result name="login" type="tiles">login</result>
 		</action>
 	
-		<action method="registerWL" class="com.saasforedu.irro.action.UserAction" name="registerWL">
-			<result name="register" type="tiles">registration</result>
-	    </action>
-	    
 	    <action method="modifyWL" class="com.saasforedu.irro.action.UserAction" name="modifyWL">
 			<result name="modify" type="tiles">editUserAccount</result>
 	    </action>
 	    
 	    <action method="forgotPasswordWL" class="com.saasforedu.irro.action.UserAction" name="forgotPasswordWL">
 			<result name="forgotPassword" type="tiles">forgotPassword</result>
-	    </action>
-	    
-	    <action name="Registration" class="com.saasforedu.irro.action.UserAction" method="doRegister">
-			<result name="input" type="tiles">registration</result>
-		    <result name="error" type="tiles">registrationFailed</result>
-		    <result name="success" type="tiles">registrationSuccess</result>
 	    </action>
 	    
 	    <action name="Login" class="com.saasforedu.irro.action.UserAction" method="doLogin">

@@ -13,7 +13,123 @@
   		<action name="Login" class="com.saasforedu.irro.action.AdminLogin">
 			<result name="success" type="tiles">changeMenus</result>
 		</action>
+		
+	<action name="CreateMenuMetadata" class="com.saasforedu.irro.action.MenuMetadataAction" method="createMenuMetadata">
+	    <result name="input">/admin/MenuMetadata.jsp</result>
+		<result name="success">/admin/MenuMetadata.jsp</result>
+	</action>
+		
+	<!-- News -->
+  	
+  	<action name="LoadCreateNews" class="com.saasforedu.irro.action.ItemSearchAction">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">loadCreateNews</result>
+	</action>
+	
+	
+  	<action name="CreateNews" class="com.saasforedu.irro.article.action.NewsAction" method="createNews">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error" type="tiles">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
+		<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">2097152</param>
+               <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+				</param>
+        </interceptor-ref>  
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+	     <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">loadCreateNews</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+			<result name="input" type="tiles">loadCreateNews</result>
+			<result name="success" type="tiles">loadCreateNews</result>
+		</action>
+		
+	<action name="DeActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+		<result name="input" type="tiles">loadCreateNews</result>
+		<result name="success" type="tiles">loadCreateNews</result>
+	</action>
+	
+	<action name="DeleteNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+		<result name="input" type="tiles">loadCreateNews</result>
+		<result name="success" type="tiles">loadCreateNews</result>
+	</action>
+	
+	<action name="LoadSelectedNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadSelectedNews">
+		<result name="input" type="tiles">searchItemResults</result>
+		<result name="success" type="tiles">loadModifyNews</result>
+	</action>
+	
+	<action name="ModifyNews" class="com.saasforedu.irro.article.action.NewsAction" method="saveNews">
+	    <result name="input" type="tiles">loadModifyNews</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
   
+  
+  	<!-- Event -->
+  	
+  	<action name="LoadCreateEvent" class="com.saasforedu.irro.action.EventAction">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">loadCreateEvent</result>
+	</action>
+	
+	
+  	<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">
+	   <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="UploadEventFile" class="com.saasforedu.irro.action.EventAction" method="doUploadEventFile">
+		<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">2097152</param>
+               <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+				</param>
+        </interceptor-ref>  
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success" type="tiles">loadCreateEvent</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateEventAttachment" class="com.saasforedu.irro.action.EventAction" method="activateAttachment">
+			<result name="input" type="tiles">loadCreateEvent</result>
+			<result name="success" type="tiles">loadCreateEvent</result>
+		</action>
+		
+	<action name="DeActivateEventAttachment" class="com.saasforedu.irro.action.EventAction" method="deActivateAttachment">
+		<result name="input" type="tiles">loadCreateEvent</result>
+		<result name="success" type="tiles">loadCreateEvent</result>
+	</action>
+	
+	<action name="DeleteEventFile" class="com.saasforedu.irro.action.EventAction" method="removeAttachment">
+		<result name="input" type="tiles">loadCreateEvent</result>
+		<result name="success" type="tiles">loadCreateEvent</result>
+	</action>
+	
+	<action name="LoadSelectedEvent" class="com.saasforedu.irro.action.EventAction" method="loadEvent">
+		<result name="input" type="tiles">searchItemResults</result>
+		<result name="success" type="tiles">loadModifyEvent</result>
+	</action>
+	
+	<action name="ModifyEvent" class="com.saasforedu.irro.action.EventAction" method="modifyItem">
+	    <result name="input" type="tiles">loadModifyEvent</result>
+		<result name="success" type="tiles">itemSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+  	
 	<!-- Item -->
 	<action name="ChangeItem" class="com.saasforedu.irro.action.ItemAction">
 		<result name="success" type="tiles">changeItem</result>
@@ -36,6 +152,36 @@
 		<result name="success" type="tiles">loadCreateItem</result>
 	</action>
 	
+	<action name="UploadItemFile" class="com.saasforedu.irro.action.ItemAction" method="doUploadItemFile">
+		<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">2097152</param>
+               <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+				</param>
+        </interceptor-ref>  
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+	    <result name="input" type="tiles">loadCreateItem</result>
+		<result name="success" type="tiles">loadCreateItem</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateItemAttachment" class="com.saasforedu.irro.action.ItemAction" method="activateAttachment">
+			<result name="input" type="tiles">loadCreateItem</result>
+			<result name="success" type="tiles">loadCreateItem</result>
+	</action>
+		
+	<action name="DeActivateItemAttachment" class="com.saasforedu.irro.action.ItemAction" method="deActivateAttachment">
+		<result name="input" type="tiles">loadCreateItem</result>
+		<result name="success" type="tiles">loadCreateItem</result>
+	</action>
+	
+	<action name="DeleteItemFile" class="com.saasforedu.irro.action.ItemAction" method="removeAttachment">
+		<result name="input" type="tiles">loadCreateItem</result>
+		<result name="success" type="tiles">loadCreateItem</result>
+	</action>
+	
 	<action name="CreateItem" class="com.saasforedu.irro.action.ItemAction" method="createItem">
 	    <result name="input" type="tiles">changeItem</result>
 		<result name="success" type="tiles">itemSuccess</result>
@@ -43,19 +189,19 @@
 	</action>
 		
 	<action name="ModifyItem" class="com.saasforedu.irro.action.ItemAction" method="modifyItem">
-	    <result name="input">/admin/ModifyItem.jsp</result>
+	    <result name="input" type="tiles">loadModifyItem</result>
 		<result name="success" type="tiles">itemSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="DeleteItem" class="com.saasforedu.irro.action.ItemAction" method="deleteItem">
-		<result name="success" type="tiles">itemSuccess</result>
-		<result name="error">/admin/Failure.jsp</result>
-	</action>
-	
-	<action name="LoadItem" class="com.saasforedu.irro.action.ItemAction" method="loadItem">
+	<action name="LoadSelectedItem" class="com.saasforedu.irro.action.ItemAction" method="loadItem">
 		<result name="input" type="tiles">searchItemResults</result>
-		<result name="success">/admin/ModifyItem.jsp</result>
+		<result name="success" type="tiles">loadModifyItem</result>
+	</action>
+	
+	<action name="DeleteItems" class="com.saasforedu.irro.action.ItemSearchAction" method="deleteItems">
+	    <result name="input" type="tiles">searchItemResults</result>
+		<result name="success" type="tiles">itemSuccess</result>
 	</action>
 	
 	<!-- File Upload -->
@@ -69,7 +215,7 @@
                 video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
 				</param>  
             </interceptor-ref>  
-            <interceptor-ref name="defaultStack"></interceptor-ref>  
+            <interceptor-ref name="defaultStack"></interceptor-ref>
 		<result name="input">/admin/FileUpload.jsp</result>
 		<result name="success">/admin/FileUpload.jsp</result>
 		<result name="error">/admin/Failure.jsp</result>
@@ -104,16 +250,27 @@
 		<result name="success" type="tiles">searchUserResults</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
-
-	<action name="EditUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
-		    <result name="input">/admin/ModifyUser.jsp</result>
-			<result name="success" type="tiles">userSuccess</result>
-			<result name="error">/admin/Failure.jsp</result>
+	
+	<action name="registerWL" class="com.saasforedu.irro.action.UserAction"  method="registerWL">
+	    <result name="input" type="tiles">changeUser</result>
+		<result name="register" type="tiles">registration</result>
+		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="LoadCreateUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
-	   <result name="input" type="tiles">changeUser</result>
-		<result name="success" type="tiles">createUser</result>
+	<action name="Registration" class="com.saasforedu.irro.action.UserAction" method="doRegister">
+		<result name="input" type="tiles">changeUser</result>
+	    <result name="success" type="tiles">userSuccess</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="LoadUser" class="com.saasforedu.irro.action.UserAction" method="loadUser">
+		<result name="input" type="tiles">searchUserResults</result>
+		<result name="success" type="tiles">loadUser</result>
+	</action>
+	
+	<action name="EditUser" class="com.saasforedu.irro.action.UserAdminAction" method="editUser">
+	    <result name="input" type="tiles">loadUser</result>
+		<result name="success" type="tiles">userSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
@@ -122,19 +279,13 @@
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	
-	<action name="LoadUser" class="com.saasforedu.irro.action.UserAdminAction" method="loadUser">
-		<result name="input" type="tiles">searchUserResults</result>
-		<result name="success" type="tiles">loadUser</result>
-	</action>
-	
 	<action name="DeActivateUsers" class="com.saasforedu.irro.action.UserAdminAction" method="deActivateUsers">
-		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="success" type="tiles">userSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
 	<action name="ActivateUsers" class="com.saasforedu.irro.action.UserAdminAction" method="activateUsers">
-		<result name="success" type="tiles">permissionSuccess</result>
+		<result name="success" type="tiles">userSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
@@ -149,7 +300,6 @@
 		<result name="success" type="tiles">searchPermissionResults</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
-	
 	
 	<action name="Grant" class="com.saasforedu.irro.action.UserAdminPermissionAction" method="grant">
 		<result name="success" type="tiles">permissionSuccess</result>

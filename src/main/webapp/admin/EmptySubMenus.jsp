@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
+	<sj:head jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 
 </head> 

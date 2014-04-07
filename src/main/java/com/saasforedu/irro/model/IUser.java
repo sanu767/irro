@@ -3,7 +3,7 @@ package com.saasforedu.irro.model;
 import java.util.Date;
 import java.util.List;
 
-public interface IUser {
+public interface IUser extends IBaseEntity {
 	
 	public Long getId();
 	

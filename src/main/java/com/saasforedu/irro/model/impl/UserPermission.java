@@ -28,7 +28,6 @@ public class UserPermission implements IUserPermission {
 	@JoinColumn(name="USR_ID")
 	User user;
 	
-	
 	@Column(name = "PERMISSION_NAME")
 	String permissionName;
 	
@@ -69,10 +68,54 @@ public class UserPermission implements IUserPermission {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((permissionName == null) ? 0 : permissionName.hashCode());
+		result = prime * result
+				+ ((permissionType == null) ? 0 : permissionType.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserPermission other = (UserPermission) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (permissionName == null) {
+			if (other.permissionName != null)
+				return false;
+		} else if (!permissionName.equals(other.permissionName))
+			return false;
+		if (permissionType == null) {
+			if (other.permissionType != null)
+				return false;
+		} else if (!permissionType.equals(other.permissionType))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "UserPermission [id=" + id + ", user=" + user
 				+ ", permissionName=" + permissionName + ", permissionType="
 				+ permissionType + "]";
 	}
-	
 }

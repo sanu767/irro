@@ -1,4 +1,7 @@
-﻿<head>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<head>
 <script type="text/javascript">
 window.onload = function () {     
 	//Getting First Level children	
@@ -36,44 +39,107 @@ a {
 </head>
 <body>
 <ul>
-<li id="Activities"><a href="Activities">Деятельность</a>
+<li id="Activities"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Activities</s:param>
+				</s:url>'>Деятельность</a>
      <ul>
-      <li id="EducationalActivities"><a href="EducationalActivities">Образовательная деятельность</a>
+      <li id="EducationalActivities"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivities</s:param>
+					<s:param name="parentMenuName">Activities</s:param>
+				</s:url>'>Образовательная деятельность</a>
        <ul>
-        <li id="Development"><a href="EducationalActivitiesDevelopment">Повышение квалификации</a>
+        <li id="Development"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDevelopment</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Повышение квалификации</a>
 			<ul>
-				<li><a href="EducationalActivitiesDevelopmentYearlySchedule">График  на год</a></li>
-				<li><a href="EducationalActivitiesDevelopmentMonthlyPlan">План на месяц</a></li>
-				<li><a href="EducationalActivitiesDevelopmentCatalog">Аннотированный каталог</a></li>
+				<li><a  href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDevelopmentYearlySchedule</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+				</s:url>'>График  на год</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDevelopmentMonthlyPlan</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+				</s:url>'>План на месяц</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDevelopmentCatalog</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
-        <li id="Retraining"><a href="EducationalActivitiesRetraining">Профессиональная переподготовка</a>
+        <li id="Retraining"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesRetraining</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Профессиональная переподготовка</a>
 			<ul>
-				<li><a href="EducationalActivitiesRetrainingYearlySchedule">График  на год</a></li>
-				<li><a href="EducationalActivitiesRetrainingMonthlyPlan">План на месяц</a></li>
-				<li><a href="EducationalActivitiesRetrainingCatalog">Аннотированный каталог</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesRetrainingYearlySchedule</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+				</s:url>'>График  на год</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesRetrainingMonthlyPlan</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+				</s:url>'>План на месяц</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesRetrainingCatalog</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
-		<li id="Internship"><a href="EducationalActivitiesInternship">Стажировка</a>
+		<li id="Internship"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesInternship</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Стажировка</a>
 			<ul>
-				<li><a href="EducationalActivitiesInternshipYearlySchedule">График  на год</a></li>
-				<li><a href="EducationalActivitiesInternshipMonthlyPlan">План на месяц</a></li>
-				<li><a href="EducationalActivitiesInternshipCatalog">Аннотированный каталог</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesInternshipYearlySchedule</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+				</s:url>'>График  на год</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesInternshipMonthlyPlan</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+				</s:url>'>План на месяц</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesInternshipCatalog</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
-		<li id="DistanceLearning"><a href="EducationalActivitiesDistanceLearning">Дистанционное обучение</a>
+		<li id="DistanceLearning"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDistanceLearning</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Дистанционное обучение</a>
 			<ul>
-				<li><a href="EducationalActivitiesDistanceLearningContract">Договор оферты</a></li>
-				<li><a href="EducationalActivitiesDistanceLearningCatalog">Аннотированный каталог (Описание и ссылка для перехода на http://elearn.irro.ru/)</a></li>			
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDistanceLearningContract</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesDistanceLearning</s:param>
+				</s:url>' href="EducationalActivitiesDistanceLearningContract">Договор оферты</a></li>
+				
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesDistanceLearningCatalog</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesDistanceLearning</s:param>
+				</s:url>'>Аннотированный каталог (Описание и ссылка для перехода на http://elearn.irro.ru/)</a></li>			
 		   </ul>
 		</li>	
-		<li id="Extrabudgetary"><a href="EducationalActivitiesExtrabudgetary">Внебюджетная деятельность</a>
+		<li id="Extrabudgetary"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesExtrabudgetary</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Внебюджетная деятельность</a>
 		   <ul>
-				<li><a href="EducationalActivitiesExtrabudgetaryContract">Договор</a></li>
-				<li><a href="EducationalActivitiesExtrabudgetaryCatalog">Аннотированный каталог</a></li>			
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesExtrabudgetaryContract</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesExtrabudgetary</s:param>
+				</s:url>'>Договор</a></li>
+				<li><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesExtrabudgetaryCatalog</s:param>
+					<s:param name="parentMenuName">EducationalActivitiesExtrabudgetary</s:param>
+				</s:url>'>Аннотированный каталог</a></li>			
 		   </ul>
 		</li>
-		<li id="Seminar"><a href="EducationalActivitiesSeminar">Семинары</a></li>
+		<li id="Seminar"><a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesSeminar</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Семинары</a></li>
        </ul>
        </li>
      </ul>
