@@ -35,11 +35,14 @@
 	
 	<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
 		<interceptor-ref name="fileUpload">  
-                <param name="maximumSize">2097152</param>
+                <param name="maximumSize">50097152</param>
                <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
                     application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
-                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,
+                application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -62,6 +65,28 @@
 		<result name="input" type="tiles">loadCreateNews</result>
 		<result name="success" type="tiles">loadCreateNews</result>
 	</action>
+	
+	
+	<action name="UploadSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
+			<result name="input" type="tiles">loadModifyNews</result>
+			<result name="success" type="tiles">loadModifyNews</result>
+		</action>
+		
+	<action name="ActivateSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+		<result name="input" type="tiles">loadModifyNews</result>
+		<result name="success" type="tiles">loadModifyNews</result>
+	</action>
+	
+	<action name="DeActivateSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+		<result name="input" type="tiles">loadModifyNews</result>
+		<result name="success" type="tiles">loadModifyNews</result>
+	</action>
+	
+	<action name="DeleteSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+		<result name="input" type="tiles">loadModifyNews</result>
+		<result name="success" type="tiles">loadModifyNews</result>
+	</action>
+	
 	
 	<action name="LoadSelectedNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadSelectedNews">
 		<result name="input" type="tiles">searchItemResults</result>
@@ -91,11 +116,14 @@
 	
 	<action name="UploadEventFile" class="com.saasforedu.irro.action.EventAction" method="doUploadEventFile">
 		<interceptor-ref name="fileUpload">  
-                <param name="maximumSize">2097152</param>
+                <param name="maximumSize">50097152</param>
                <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
                     application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
-                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,
+                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -154,11 +182,12 @@
 	
 	<action name="UploadItemFile" class="com.saasforedu.irro.action.ItemAction" method="doUploadItemFile">
 		<interceptor-ref name="fileUpload">  
-                <param name="maximumSize">2097152</param>
+                <param name="maximumSize">50097152</param>
                <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
                     application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
-                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -208,11 +237,12 @@
 	
 	<action name="UploadFile" class="com.saasforedu.irro.action.FileUploadAction">
 			<interceptor-ref name="fileUpload">  
-                <param name="maximumSize">2097152</param>
+                <param name="maximumSize">50097152</param>
                 <param name="allowedTypes">
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,
                 video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
-                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
 				</param>  
             </interceptor-ref>  
             <interceptor-ref name="defaultStack"></interceptor-ref>

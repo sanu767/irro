@@ -18,6 +18,7 @@
 <link href="generic.css" rel="stylesheet" type="text/css" />
 <link href="welcomepagecontent.css" rel="stylesheet" type="text/css" />
 <script src="content/jquery-1.10.2.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 $(function(){
 

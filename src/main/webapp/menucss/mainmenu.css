@@ -2,7 +2,7 @@
  margin: 0px 0px 0px 100px;
     height: 50px;
     background-color: white;
-    width: 1000px;
+    width: 950px;
     list-style: none;
 }
 .top ul li {
@@ -83,7 +83,7 @@ font-size:12px;
 }
 
 .overlayer-menu.menu-5c .cont nav{
- height:450px;
+ height:500px;
 width:189px;
 border-left-style:solid;
 border-left-width:1px;

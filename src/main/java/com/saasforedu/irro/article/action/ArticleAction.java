@@ -14,7 +14,9 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.article.bean.ArticleBean;
 import com.saasforedu.irro.article.bean.AttachmentBean;
+import com.saasforedu.irro.article.bean.MenuAttachmentBean;
 import com.saasforedu.irro.article.service.IArticleService;
+import com.saasforedu.irro.article.service.IMenuAttachmentService;
 import com.saasforedu.irro.util.IConstants;
 
 public class ArticleAction extends ActionSupport implements ServletRequestAware {
@@ -24,6 +26,7 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	/** Service Injection **/
 	
 	private IArticleService articleService;
+	private IMenuAttachmentService menuAttachmentService;
 	
 	private HttpServletRequest httpServletRequest;
 	
@@ -33,6 +36,10 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	private ArticleBean bean = new ArticleBean();
 	
 	private List<ArticleBean> beans = new ArrayList<ArticleBean>();
+	
+	List<MenuAttachmentBean> menuImages = new ArrayList<MenuAttachmentBean>();
+	List<MenuAttachmentBean> menuVideos = new ArrayList<MenuAttachmentBean>();
+	List<MenuAttachmentBean> menuOtherDocs = new ArrayList<MenuAttachmentBean>();
 	
 	private String menuName;
 	private String parentMenuName;
@@ -62,13 +69,17 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 
 	public String loadArticles() {
 		this.beans = articleService.findArticles(menuName, parentMenuName);
+		loadAttachments(menuName, parentMenuName);
 		return SUCCESS;
 	}
-	
+
 	public String loadSelectedArticle() throws Exception {
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		bean = articleService.findById(id);
 		getSession().setAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME, bean.getAttachmentBeans());
+		
+		loadAttachments(menuName, parentMenuName);
+		
 		return SUCCESS;
 	}
 	
@@ -90,7 +101,7 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 	
 	public String deleteArticle()  throws Exception {
-		bean.setAttachmentBeans(getUploadedFilesInSession());
+		bean = articleService.findById(id);
 		articleService.deleteArticle(bean, menuName, parentMenuName, getServerPath());
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		return SUCCESS;
@@ -178,12 +189,14 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 			addActionError("Please choose file to upload");
 			return false;
 		}
-		if(StringUtils.contains(fileName, " ")) {
-			addActionError("File Name can not spaces.");
-			return false;
-		}
 		//TODO Check this file already exists
 		return true;
+	}
+	
+	private void loadAttachments(String menuName, String parentMenuName) {
+		this.menuImages = menuAttachmentService.getImages(menuName, parentMenuName);
+		this.menuVideos = menuAttachmentService.getVideos(menuName, parentMenuName);
+		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuName, parentMenuName);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -267,6 +280,35 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	
 	public void setArticleService(IArticleService articleService) {
 		this.articleService = articleService;
+	}
+
+	public List<MenuAttachmentBean> getMenuImages() {
+		return menuImages;
+	}
+
+	public void setMenuImages(List<MenuAttachmentBean> menuImages) {
+		this.menuImages = menuImages;
+	}
+
+	public List<MenuAttachmentBean> getMenuVideos() {
+		return menuVideos;
+	}
+
+	public void setMenuVideos(List<MenuAttachmentBean> menuVideos) {
+		this.menuVideos = menuVideos;
+	}
+
+	public List<MenuAttachmentBean> getMenuOtherDocs() {
+		return menuOtherDocs;
+	}
+
+	public void setMenuOtherDocs(List<MenuAttachmentBean> menuOtherDocs) {
+		this.menuOtherDocs = menuOtherDocs;
+	}
+
+	public void setMenuAttachmentService(
+			IMenuAttachmentService menuAttachmentService) {
+		this.menuAttachmentService = menuAttachmentService;
 	}
 	
 }

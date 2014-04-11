@@ -3,13 +3,13 @@
 #sliderFrame 
 {
     position:relative;
-    width:1000px;
+    width:950px;
 	height:350px
     margin: 0 auto; /*center-aligned*/
 }
   
 #slider, #slider div.sliderInner {
-    width:1000px;height:350px;/* Must be the same size as the slider images */
+    width:950px;height:350px;/* Must be the same size as the slider images */
     border-radius: 8px;
 }
 

@@ -26,6 +26,7 @@ public interface IConstants {
 	public static final String ITEMS_DOCUMENT_PATH = "/Docs/Items/";
 	public static final String NEWS_DOCUMENT_PATH = "/Docs/News/";
 	public static final String ARTICLES = "/Docs/Articles";
+	public static final String MENU_ATTACHMENTS = "/Docs/Attachments";
 	
 	/** Bundle Properties **/
 	public static final String IRRO_BUNDLE = "IrroBundle";

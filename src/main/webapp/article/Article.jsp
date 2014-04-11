@@ -18,6 +18,11 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 		     		<s:param name="menuName" value="%{menuName}"></s:param>
 					<s:param name="parentMenuName" value="%{parentMenuName}"></s:param>
 					</s:url>'>Edit</a>
+		<a id="deletetp" href='<s:url action="DeleteArticle">
+		     		<s:param name="id" value="%{bean.id}"></s:param>
+		     		<s:param name="menuName" value="%{menuName}"></s:param>
+					<s:param name="parentMenuName" value="%{parentMenuName}"></s:param>
+					</s:url>' onClick="return confirm('Do you want to delete these Article?');">Delete</a>
 <%}%>
 
 <div id="main" onmouseover="editButton()"  onmouseout="removeEditButton()">	

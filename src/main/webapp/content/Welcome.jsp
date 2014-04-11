@@ -51,12 +51,12 @@ a div.sliderShortDescription {
 			    </s:url>
 		    </s:if>
 		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "E"}'>
-		    	<s:url id="editUrl" action="LoadSelectedEvent">
+		    	<s:url id="editUrl" action="../LoadSelectedEvent">
 			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
 			    </s:url>
 		    </s:elseif>
 		    <s:elseif test='%{#eachSliderItem.eventType.typeId == "O"}'>
-		    	<s:url id="editUrl" action="LoadSelectedItem">
+		    	<s:url id="editUrl" action="../LoadSelectedItem">
 			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
 			    </s:url>
 		    </s:elseif>

@@ -23,20 +23,20 @@ function save()	{
 function deActivate(attachmentName)	{
 	setBeanValue();
 	document.getElementById("selectedFileAttachmentName").value=attachmentName;
-	document.getElementById("ModifyNews").action = "DeActivateNewsAttachment.action";
+	document.getElementById("ModifyNews").action = "DeActivateSavedNewsFile.action";
 	document.getElementById("ModifyNews").submit();
 };
 function activate(attachmentName)	{
 	setBeanValue();
 	document.getElementById("selectedFileAttachmentName").value=attachmentName;
-	document.getElementById("ModifyNews").action = "ActivateNewsAttachment.action";
+	document.getElementById("ModifyNews").action = "ActivateSavedNewsFile.action";
 	document.getElementById("ModifyNews").submit();
 };
 
 function deleteAttachment(attachmentName)	{
 	setBeanValue();
 	document.getElementById("selectedFileAttachmentName").value=attachmentName;
-	document.getElementById("ModifyNews").action = "DeleteNewsFile.action";
+	document.getElementById("ModifyNews").action = "DeleteSavedNewsFile.action";
 	document.getElementById("ModifyNews").submit();
 };
 
@@ -48,7 +48,7 @@ function setBeanValue()	{
 	
 	document.getElementById("bean.startDate").value=document.getElementById("startDate").value;
 	document.getElementById("bean.endDate").value=document.getElementById("endDate").value;
-	document.getElementById("bean.showInHomePage").value=document.getElementById("showInHomePage").value;
+	
 };
 
 function validateDate()
@@ -96,8 +96,7 @@ if(path != null) {
 
 	<s:form action="ModifyNews" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
 	
-	<s:hidden id="menuName" name="menuName" value="%{menuName}"/>
-	<s:hidden id="parentMenuName" name="parentMenuName" value="%{parentMenuName}"/>
+	<s:hidden name="menuName" value="News"/>
 	<s:hidden id="id" name="bean.id" value="%{bean.id}"/>	
 	<s:hidden name="bean.content" value="%{bean.content}"/>
 
@@ -113,9 +112,9 @@ if(path != null) {
 		
 		</div>
 
-		<sj:datepicker id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="startDate" name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 		
 		<s:checkbox id="sliderSelected" name="bean.sliderSelected" label="Show in slider " />
 		
@@ -164,9 +163,8 @@ if(path != null) {
 	<!--  Add new files -->
 	
 	Add New Files
-	<s:form action="UploadNewsFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-	    <s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
+	<s:form action="UploadSavedNewsFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
+	   <s:hidden name="menuName" value="News"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

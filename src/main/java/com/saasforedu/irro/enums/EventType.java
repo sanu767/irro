@@ -29,6 +29,18 @@ public enum EventType {
 		return StringUtils.EMPTY;
 	}
 	
+	public static EventType getType(int id) {
+		switch (id) {
+		case 1:
+			return NEWS;
+		case 2:
+			return EVENTS;
+		case 3:
+			return OTHERS;
+		}
+		return OTHERS;
+	}
+	
 	public static int getTypeId(String typeId) {
 		if(StringUtils.equals(EventType.NEWS.typeId, typeId)) {
 			return 1;

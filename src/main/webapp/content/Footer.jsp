@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <head>
+
 <style>
 table
 {
@@ -65,11 +67,29 @@ color:rgb(0,0,0);
 <div style="padding-top:10px;padding-left:100px">
 <table style="width:1000px">
   <tr style="padding-bottom:10px">
-    <th style="font-weight:bold;font-size:14px">Об Институте</th>
-    <th style="font-weight:bold;font-size:14px">Деятельность</th>
-    <th style="font-weight:bold;font-size:14px">Стажировочная площадка</th>
-    <th style="font-weight:bold;font-size:14px">Информационные ресурсы</th>
-    <th style="font-weight:bold;font-size:14px">Мероприятия</th>   
+  
+    <th style="font-weight:bold;font-size:14px" ><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Institute</s:param>
+				</s:url>' >Об Институте</a></th>
+				
+    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Activities</s:param>
+				</s:url>'> Деятельность</a></th>
+				
+    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivitiesInternship</s:param>
+					<s:param name="parentMenuName">EducationalActivities</s:param>
+				</s:url>'>Стажировочная площадка</a></th>
+				
+	<th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Centers</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Центры</a></th>
+				
+    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">BranchOffice</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Мероприятия</a></th>   
   </tr>
   
   <tr>
@@ -83,100 +103,160 @@ color:rgb(0,0,0);
  
  <tr >
     <td style="font-size:10px">
-      <a href="../content/LoadArticles?menuName=Rector&&parentMenuName=Institute">Ректорат</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Rector</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Ректорат</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Образовательная деятельность</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">EducationalActivities</s:param>
+					<s:param name="parentMenuName">Activities</s:param>
+				</s:url>'>Образовательная деятельность</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Базовые площадки</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Basic</s:param>
+					<s:param name="parentMenuName">Projects</s:param>
+				</s:url>'>Базовые площадки</a>
     </td>
+    
     <td style="font-size:10px">
-      <a href="">Библиотечно-информационный центр</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">CentersLibrary</s:param>
+					<s:param name="parentMenuName">Centers</s:param>
+							</s:url>'>Библиотечно-информационный центр</a>
     </td>
+    
     <td style="font-size:10px">
-      <a href="">Филиал и Представительства</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">BranchOffice</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Филиал и Представительства</a>
       </td>
+    
     <td>&nbsp;</td>
   </tr>
   
  <tr>
    <td style="font-size:10px">
-      <a href="">Вехи истории</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">History</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Вехи истории</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Аттестация</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Certification</s:param>
+				</s:url>'>Аттестация</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Методические материалы</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">CentersAdministrationMaterials</s:param>
+					<s:param name="parentMenuName">CentersAdministration</s:param>
+							</s:url>'>Методические материалы</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Издания и публикации ИРО</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">CentersLibraryPublications</s:param>
+					<s:param name="parentMenuName">CentersLibrary</s:param>
+							</s:url>'>Издания и публикации ИРО</a>
     </td>
     <td style="font-size:10px">&nbsp;</td>
   </tr>
   
  <tr>
     <td style="font-size:10px">
-      <a href="">Администрация</a>
+      <a href='http://irro-new.irro.ru/welcomeIrro'>Администрация</a>
     </td>
+    
     <td style="font-size:10px">
-      <a href="">ЕГЭ</a>
+    	<a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">GraduatesEGE</s:param>
+					<s:param name="parentMenuName">Graduates</s:param>
+							</s:url>'>ЕГЭ</a>
     </td>
+    
     <td style="font-size:10px">
-      <a href="">Документы</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Documents</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Документы</a>
       </td>
+      
 	<td style="font-size:10px">
-    <a href="">Методическая копилка</a>
+    <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">DepartmentsVocationalService</s:param>
+					<s:param name="parentMenuName">DepartmentsVocational</s:param>
+							</s:url>'>Методическая копилка</a>
   </td>
+  
 	<td>&nbsp;</td>
     
   </tr>
   
    <tr>
     <td style="font-size:10px">
-      <a href="">Структура</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Contacts</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Структура</a>
     </td>
     <td style="font-size:10px">
       <a href="">ГИА-9</a>
     </td>
     <td>&nbsp;</td>
-	<td/>&nbsp;</td>
-	<td/>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
     
   </tr>
     <tr>
     <td style="font-size:10px">
-      <a href="">Филиал и Представительства</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">BranchOffice</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Филиал и Представительства</a>
       </td>
     <td style="font-size:10px">
-      <a href="">Конкурсы, олимпиады</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Contests</s:param>
+					<s:param name="parentMenuName">Activities</s:param>
+				</s:url>'>Конкурсы, олимпиады</a>
     </td>
     <td>&nbsp;</td>
-	<td/>&nbsp;</td>
-	<td/>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
   </tr>
   
   <tr>
     <td style="font-size:10px">
-      <a href="">Контакты</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Contacts</s:param>
+					<s:param name="parentMenuName">Institute</s:param>
+				</s:url>'>Контакты</a>
     </td>
     <td style="font-size:10px">
-      <a href="">Конференции</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">Conference</s:param>
+					<s:param name="parentMenuName">Activities</s:param>
+				</s:url>'>Конференции</a>
     </td>
     <td>&nbsp;</td>
-	<td/>&nbsp;</td>
-	<td/>&nbsp;</td>  
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>  
   </tr>
   
   <tr>
     <td>&nbsp;</td>
     <td style="font-size:10px">
-      <a href="">Издательская деятельность</a>
+      <a href='<s:url action="../content/LoadArticles">
+					<s:param name="menuName">CentersLibraryEducationalPublishing</s:param>
+					<s:param name="parentMenuName">CentersLibrary</s:param>
+							</s:url>'>Издательская деятельность</a>
       </td>
     <td>&nbsp;</td>
-	<td/>&nbsp;</td>
-	<td/>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
   </tr>
   
   <tr>
@@ -185,8 +265,8 @@ color:rgb(0,0,0);
       <a href="">Научные исследования</a>
     </td>
     <td>&nbsp;</td>
-	<td/>&nbsp;</td>
-	<td/>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
   </tr>
   <tr style="background-color:rgb(6,85,117);">
     <td>&nbsp;</td> 
@@ -194,7 +274,7 @@ color:rgb(0,0,0);
 	<td>&nbsp;</td> 
 	<td>&nbsp;</td> 
 	<td></td> 	
-  </td>
+  </tr>
   
 </table>
 </div>

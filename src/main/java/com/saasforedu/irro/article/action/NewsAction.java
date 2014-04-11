@@ -16,6 +16,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.article.bean.AttachmentBean;
+import com.saasforedu.irro.article.bean.MenuAttachmentBean;
+import com.saasforedu.irro.article.service.IMenuAttachmentService;
 import com.saasforedu.irro.article.service.INewsService;
 import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.util.IConstants;
@@ -25,6 +27,7 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 	private static final long serialVersionUID = 161255011804368764L;
 	
 	private INewsService newsService;
+	private IMenuAttachmentService menuAttachmentService;
 	
 	private HttpServletRequest httpServletRequest;
 	
@@ -33,6 +36,10 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 	private ItemBean bean = new ItemBean();
 	
 	private List<ItemBean> beans = new ArrayList<ItemBean>();
+	
+	List<MenuAttachmentBean> menuImages = new ArrayList<MenuAttachmentBean>();
+	List<MenuAttachmentBean> menuVideos = new ArrayList<MenuAttachmentBean>();
+	List<MenuAttachmentBean> menuOtherDocs = new ArrayList<MenuAttachmentBean>();
 	
 	private String selectedFileAttachmentName;
 	
@@ -104,6 +111,7 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 
 	public String loadAllNews() {
 		this.beans = newsService.findNews(menuName, parentMenuName);
+		loadAttachments(menuName, parentMenuName);
 		return SUCCESS;
 	}
 	
@@ -111,6 +119,7 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 		getSession().removeAttribute(IConstants.UPLOADED_NEWS_FILES_SESSION_ATTRIBUTE_NAME);
 		bean = newsService.findById(selectedItemId);
 		getSession().setAttribute(IConstants.UPLOADED_NEWS_FILES_SESSION_ATTRIBUTE_NAME, bean.getAttachmentBeans());
+		loadAttachments(menuName, parentMenuName);
 		return SUCCESS;
 	}
 	
@@ -197,6 +206,12 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 		return SUCCESS;
 	}
 	
+	private void loadAttachments(String menuName, String parentMenuName) {
+		this.menuImages = menuAttachmentService.getImages(menuName, parentMenuName);
+		this.menuVideos = menuAttachmentService.getVideos(menuName, parentMenuName);
+		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuName, parentMenuName);
+	}
+	
 	public boolean validateSlider(ItemBean bean) {
 		if(bean.isSliderSelected()) {
 			if(sliderFile == null || sliderFileName == null) {
@@ -229,10 +244,6 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 	public boolean validateUploadFiles(String fileName, String menuName, String parentMenuName, String serverPath) {
 		if(StringUtils.isEmpty(fileName)) {
 			addActionError("Please choose file to upload");
-			return false;
-		}
-		if(StringUtils.contains(fileName, " ")) {
-			addActionError("File Name can not spaces.");
 			return false;
 		}
 		//TODO Check this file already exists
@@ -338,6 +349,35 @@ public class NewsAction extends ActionSupport implements ServletRequestAware {
 
 	public void setSelectedItemId(Long selectedItemId) {
 		this.selectedItemId = selectedItemId;
+	}
+
+	public List<MenuAttachmentBean> getMenuImages() {
+		return menuImages;
+	}
+
+	public void setMenuImages(List<MenuAttachmentBean> menuImages) {
+		this.menuImages = menuImages;
+	}
+
+	public List<MenuAttachmentBean> getMenuVideos() {
+		return menuVideos;
+	}
+
+	public void setMenuVideos(List<MenuAttachmentBean> menuVideos) {
+		this.menuVideos = menuVideos;
+	}
+
+	public List<MenuAttachmentBean> getMenuOtherDocs() {
+		return menuOtherDocs;
+	}
+
+	public void setMenuOtherDocs(List<MenuAttachmentBean> menuOtherDocs) {
+		this.menuOtherDocs = menuOtherDocs;
+	}
+
+	public void setMenuAttachmentService(
+			IMenuAttachmentService menuAttachmentService) {
+		this.menuAttachmentService = menuAttachmentService;
 	}
 	
 	

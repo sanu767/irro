@@ -41,14 +41,27 @@ color:rgb(0,0,0);
 	height:100%
     overflow: auto; 
 }
+
 #tree {
     float: left;
-    width: 400px;
+    width: 225px;
     margin: 0 0 0 0	px;	
 }
+
 #mainContent {    
-	width: 500px;
-    margin: 0 0 0 450px; /* considering the border you need to use a margin so the content does not float under the first div*/
+	width: 690px;
+	float: left;
+	
+}
+
+#editableContent {    
+	width: 770px;
+    margin: 0 0 0 275px; /* considering the border you need to use a margin so the content does not float under the first div*/
+}
+
+#attachmentContent {    
+	width: 225px;
+	float: right;	
 }
 
 .underline {
@@ -78,7 +91,7 @@ color:rgb(0,0,0);
 	margin: 0px auto; width: 1150px;
 }
 #navigation {
-	margin: 50px 50px 3px 50px; height: 50px;background-color: white;
+	margin: 50px 100px 3px 50px; height: 50px;background-color: white;
 }
 #mainMenu {
 	margin: 0px 0px 0px 100px; height: 50px;background-color: white;width:1000px;list-style: none;
@@ -99,13 +112,13 @@ color:rgb(0,0,0);
 	width: 1150px; height: 100%; float: left;
 }
 #footerwrap {
-	width: 1150px; bottom: 5px; clear: both; float: left; padding-top :10px; 
+	width: 1050px; bottom: 5px; clear: both; float: left; padding-top :10px; 
 }
 #footer{
 	background: rgb(255, 255, 255); margin: 3px 0px 3px 0px;  height: 120px; text-align: right; color: rgb(255, 255, 255);
 }
 #followus {
-  border-color:rgb(102,102,255); border-top-style:groove; border-right-style:hidden; border-bottom-style:groove; border-left-style:hidden; padding-top :10px; border-width:2px; height:25px; width:1000px;margin-left:100px;
+  border-color:rgb(102,102,255); border-top-style:groove; border-right-style:hidden; border-bottom-style:groove; border-left-style:hidden; padding-top :10px; border-width:2px; height:25px; width:950px;margin-left:100px;
 }
 #leftcolumn {
 	margin: 3px; border-radius: 10px; border: 1px solid rgb(209, 192, 235); height: 472px; opacity: 1;

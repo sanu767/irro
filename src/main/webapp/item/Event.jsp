@@ -47,7 +47,6 @@ if(path != null) {
 	  </s:if>
 	 </s:iterator>
 
-</div>
 
 <s:hidden id="hiddenMainContent" name="hiddenMainContent" value="%{bean.content}"/>
 

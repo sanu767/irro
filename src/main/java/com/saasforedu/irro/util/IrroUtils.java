@@ -26,6 +26,9 @@ import com.saasforedu.irro.model.IUser;
 
 public class IrroUtils {
 	
+	private static final String MIME_VIDEO = "video";
+	private static final String MIME_IMAGE = "image";
+
 	public static Mail getMail(IUser user) {
 		StringBuilder content = getContent(user);
 		Mail mail = new Mail();
@@ -130,6 +133,31 @@ public class IrroUtils {
 		}
 		
 		return locationBuilder.toString();
+	}
+	
+	public static boolean isImage(String fileType) {
+		String type = getMIMEType(fileType);
+		return StringUtils.equals(MIME_IMAGE, type);
+	}
+
+	public static boolean isVideo(String fileType) {
+		String type = getMIMEType(fileType);
+		return StringUtils.equals(MIME_VIDEO, type);
+	}
+	
+	public static boolean isOtherThanVideoAndImage(String fileType) {
+		String type = getMIMEType(fileType);
+		return !(StringUtils.equals(MIME_VIDEO, type) || 
+				StringUtils.equals(MIME_IMAGE, type));
+		
+	}
+	
+	private static String getMIMEType(String fileType) {
+		if(fileType.contains("/")) {
+			String type = fileType.split("/")[0];
+			return type;
+		}
+		return null;
 	}
 	
 	private static boolean isGroupExists(List<UserPermissionBean> permissionBeans, String groupName) {

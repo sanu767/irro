@@ -22,20 +22,20 @@ function save()	{
 
 function deActivate(attachmentId)	{
     setBeanValue();
-	document.getElementById("selectedFileAttachmentId").value=attachmentId;
+	document.getElementById("selectedFileAttachmentName").value=attachmentId;
 	document.getElementById("CreateNews").action = "DeActivateNewsAttachment.action";
 	document.getElementById("CreateNews").submit();
 };
 function activate(attachmentId)	{
     setBeanValue();
-	document.getElementById("selectedFileAttachmentId").value=attachmentId;
+	document.getElementById("selectedFileAttachmentName").value=attachmentId;
 	document.getElementById("CreateNews").action = "ActivateNewsAttachment.action";
 	document.getElementById("CreateNews").submit();
 };
 
 function deleteAttachment(attachmentId)	{
     setBeanValue();
-	document.getElementById("selectedFileAttachmentId").value=attachmentId;
+	document.getElementById("selectedFileAttachmentName").value=attachmentId;
 	document.getElementById("CreateNews").action = "DeleteNewsFile.action";
 	document.getElementById("CreateNews").submit();
 };
@@ -48,7 +48,7 @@ function setBeanValue()	{
 	
 	document.getElementById("bean.startDate").value=document.getElementById("startDate").value;
 	document.getElementById("bean.endDate").value=document.getElementById("endDate").value;
-	document.getElementById("bean.showInHomePage").value=document.getElementById("showInHomePage").value;
+	
 	
 };
 
@@ -112,9 +112,9 @@ if(path != null) {
 		</div>
 		
 		
-		<sj:datepicker id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 		
 		
 		<s:checkbox id="sliderSelected" name="bean.sliderSelected" label="Show in slider " />
@@ -137,14 +137,14 @@ if(path != null) {
 		                    <td><s:property value="name"/></td>
 							<td>
 							   <s:if test="active">
-							       <input type="button" value="DeActivate"  onclick='deActivate(<s:property value="attachmentId" />)' />
+							       <input type="button" value="DeActivate"  onclick='deActivate("<s:property value="name" />")' />
 							   </s:if>
 							   <s:else>
-									<input type="button" value="Activate"  onclick='activate(<s:property value="attachmentId" />)' />
+									<input type="button" value="Activate"  onclick='activate("<s:property value="name" />")' />
 							   </s:else>
 							</td>
 							 <td>
-							    <input type="button" value="Delete"  onclick='deleteAttachment(<s:property value="attachmentId" />)' />
+							    <input type="button" value="Delete"  onclick='deleteAttachment("<s:property value="name" />")' />
 							 </td>
 		                 </tr>
 						 <tr>
@@ -156,7 +156,7 @@ if(path != null) {
 		</tbody>
 		</table>
 		
-		<s:hidden id="selectedFileAttachmentId" name="selectedFileAttachmentId" />
+		<s:hidden id="selectedFileAttachmentName" name="selectedFileAttachmentName" />
 		
 		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Create" value="Create" onclick="save()" />
 		
@@ -166,8 +166,7 @@ if(path != null) {
 	
 	Add New Files
 	<s:form action="UploadNewsFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-		<s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
+		<s:hidden name="menuName" value="News"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

@@ -4,7 +4,7 @@
 
 .irro-wl-context-div {
    float: left;
-    width: 300px;
+    width: 265px;
     margin: 0 0 0 100px;
     display: inline;
     background-color: #FFFFFF; 
@@ -16,7 +16,7 @@
 
 .irro-wl-newseventswrapper {
 
-    width: 1250px;
+    width: 1050px;
 	height:100%
     overflow: auto; 
 }

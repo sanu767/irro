@@ -11,6 +11,14 @@
 background: none;
 
 }
+
+.pagination-table input{
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+}
 </style>
 <script type="text/javascript">
 function validate()
@@ -67,16 +75,16 @@ Let's talk
 
 <s:form action="SendFeedBack" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" cssClass="pagination-table">
 
-		<s:textfield name="feedBackBean.name" label="Name " maxlength="100"
+		<s:textfield name="feedBackBean.name" maxlength="100"
 			required="true" placeholder="Enter Name" id="name" />
 			
-		<s:textfield name="feedBackBean.email" label="Email " maxlength="100"
+		<s:textfield name="feedBackBean.email" maxlength="100"
 			required="true" placeholder="Enter Email" id="mail" />
 			
-		<s:textfield name="feedBackBean.subject" label="Subject " maxlength="100"
+		<s:textfield name="feedBackBean.subject"  maxlength="100"
 			required="true" placeholder="Enter Subject" />
 			
-		<s:textarea name="feedBackBean.message" label="Message " placeholder="Enter Message"></s:textarea>
+		<s:textarea name="feedBackBean.message" placeholder="Enter Message" cssStyle="min-height: 130px;"></s:textarea>
 
 		<s:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Send" 
 		value="Send"  onclick="return validate();"/>

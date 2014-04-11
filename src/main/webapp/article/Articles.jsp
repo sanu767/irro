@@ -57,6 +57,7 @@ background: none;
 </head> 
 
 <body>
+<div class="pagination">
 <% List<String> permissions = (List<String>)request.getSession().getAttribute("PermissionList");
 String menuName = request.getParameter("menuName");
 String parentMenuName = request.getParameter("parentMenuName");
@@ -67,7 +68,6 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 				<button class="btn btn-primary" type="button" value="Add New" >Add New</button>
 	</a>
 <%}%>
-<div class="pagination">
 <display:table name="beans" defaultsort="2" pagesize="5" sort="list" requestURI="" uid="bean" id="bean" class="pagination-table">
 	<display:column>
 		<div class="result-document">

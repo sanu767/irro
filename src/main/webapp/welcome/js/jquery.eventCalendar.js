@@ -365,7 +365,7 @@
 									} else {
 										var eventTitle = '<span class="eventTitle">'+event.title+'</span>';
 									}
-									events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small>'+eventHour+":"+eventMinute+'</small></time>'+eventTitle+'<p class="eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
+									events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small></small></time>'+eventTitle+'<p class="eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
 									i++;
 								}
 						}
@@ -436,20 +436,20 @@
 
 // define the parameters with the default values of the function
 $.fn.eventCalendar.defaults = {
-    eventsjson: 'js/events.json',
+    eventsjson: 'Не удается подключиться к серверу',
 	eventsLimit: 4,
 	monthNames: [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
 		"Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ],
 	dayNames: [ 'Sunday','Monday','Tuesday','Wednesday',
 		'Thursday','Friday','Saturday' ],
 	dayNamesShort: [ 'ВСК','ПНД','ВТР','СРД', 'ЧТВ','ПТН','СБТ' ],
-	txt_noEvents: "There are no events in this period",
+	txt_noEvents: "Нет Анонсы в этот период",
 	txt_SpecificEvents_prev: "",
 	txt_SpecificEvents_after: "События:",
 	txt_next: "next",
 	txt_prev: "prev",
 	txt_NextEvents: "следующий События:",
-	txt_GoToEventUrl: "See the event",
+	txt_GoToEventUrl: "Видеть Анонсы",
 	showDayAsWeeks: true,
 	startWeekOnMonday: true,
 	showDayNameInCalendar: true,

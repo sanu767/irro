@@ -51,7 +51,7 @@ a {
 #parameters.menuName[0]	== 'Jobs' || 
 #parameters.parentMenuName[0]	== 'Rector' || 
 #parameters.parentMenuName[0]	== 'Documents' }">
-	<jsp:include page="/content/institute/tree/RectorTree.jsp"></jsp:include>
+  	<jsp:include page="/content/institute/tree/RectorTree.jsp"></jsp:include>
 </s:if>
 
 <s:elseif test="%{#parameters.menuName[0]	== 'Conference' || 
@@ -102,12 +102,14 @@ a {
 #parameters.menuName[0]	== 'CentersEducationSystem' || 
 #parameters.menuName[0]	== 'CentersLibrary' ||
 #parameters.menuName[0]	== 'CentersAdministration' ||
+#parameters.menuName[0]	== 'CentersRobotics' ||
 #parameters.parentMenuName[0]	== 'Centers' || 
 #parameters.parentMenuName[0]	== 'CentersInformation' || 
 #parameters.parentMenuName[0]	== 'CentersRegional' || 
 #parameters.parentMenuName[0]	== 'CentersEducationSystem' || 
 #parameters.parentMenuName[0]	== 'CentersLibrary' ||
-#parameters.parentMenuName[0]	== 'CentersAdministration' }">
+#parameters.parentMenuName[0]	== 'CentersAdministration' ||
+#parameters.menuName[0]	== 'CentersRobotics' }">
 	<jsp:include page="/content/institute/tree/CentersTree.jsp"></jsp:include>
 
 </s:elseif>
@@ -167,7 +169,7 @@ a {
 #parameters.menuName[0]	== 'SverdlovskRuralSchool' ||
 #parameters.menuName[0]	== 'SverdlovskModernEducation' ||
 #parameters.menuName[0]	== 'Basic' ||
-#parameters.menuName[0]	== 'ContinuingEducation'
+#parameters.menuName[0]	== 'ContinuingEducation' ||
 #parameters.parentMenuName[0]	== 'Projects' || 
 #parameters.parentMenuName[0]	== 'Sverdlovsk' ||
 #parameters.parentMenuName[0]	== 'SverdlovskOptional' ||
@@ -176,7 +178,7 @@ a {
 #parameters.parentMenuName[0]	== 'SverdlovskRuralSchool' ||
 #parameters.parentMenuName[0]	== 'SverdlovskModernEducation' ||
 #parameters.parentMenuName[0]	== 'Basic' ||
-#parameters.parentMenuName[0]	== 'ContinuingEducation'}">
+#parameters.parentMenuName[0]	== 'ContinuingEducation' }">
 	<jsp:include page="/content/projects/tree/ProjectsTree.jsp"></jsp:include>
 </s:elseif>
 
@@ -184,9 +186,6 @@ a {
 #parameters.parentMenuName[0]	== 'News' }">
 	<jsp:include page="/content/news/tree/NewsTree.jsp"></jsp:include>
 </s:elseif>
-
-
-
 
 <s:else>
 	<jsp:include page="/content/institute/tree/RectorTree.jsp"></jsp:include>	

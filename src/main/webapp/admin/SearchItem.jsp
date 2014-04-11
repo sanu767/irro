@@ -45,14 +45,13 @@ $(document).ready(function(){
 	    
 	    <sj:textfield name="itemSearchBean.searchText" label="Title " maxlength="100" placeholder="Enter title" />
 		
-		<s:radio name="itemSearchBean.eventType" label=" Select Item  "
-			list="#{'1':'News', '2':'Events', '3':'Others'}"
+		<s:radio name="itemSearchBean.searchType" label=" Select Item  "  value="1"	list="#{'1':'News', '2':'Events', '3':'Others'}"
 			/>
 
-		<sj:datepicker name="itemSearchBean.beforeSearchDate" label="Before "
+		<sj:datepicker displayFormat="mm/dd/yy" name="itemSearchBean.beforeSearchDate" label="Before "
 			changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="itemSearchBean.afterSearchDate" label="After " 
+		<sj:datepicker displayFormat="mm/dd/yy" name="itemSearchBean.afterSearchDate" label="After " 
 			changeYear="true" changeMonth="true" showOn="focus" />
 				
 		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>	

@@ -112,9 +112,25 @@
 	
 	<bean id="newsAction" class="com.saasforedu.irro.article.action.NewsAction" scope="prototype">
 		<property name="newsService" ref="newsService" />
+		<property name="menuAttachmentService" ref="menuAttachmentService" />
 	</bean>
 	
 	
+	<!-- Menu File Attachment Action -->
+	
+	<bean id="menuAttachmentDAO" class="com.saasforedu.irro.article.dao.impl.MenuAttachmentDAOImpl"  scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="menuAttachmentService" class="com.saasforedu.irro.article.service.impl.MenuAttachmentServiceImpl"  scope="prototype">
+		<property name="menuAttachmentDAO" ref="menuAttachmentDAO" />
+		<property name="menuMetadataService" ref="menuMetadataService" />
+		<property name="fileUploadService" ref="fileUploadService" />
+	</bean>	
+	
+	<bean id="menuAttachmentAction" class="com.saasforedu.irro.article.action.MenuAttachmentAction" scope="prototype">
+		<property name="menuAttachmentService" ref="menuAttachmentService" />
+	</bean>
 	
 	<!-- User dependencies -->
 	<bean id="userDAO" class="com.saasforedu.irro.dao.impl.UserDAOImpl" >
@@ -147,6 +163,5 @@
 	<bean id="userAdminAction" class="com.saasforedu.irro.action.UserAdminAction" scope="prototype">
 		<property name="userService" ref="userService" />		
 	</bean>
-	
 	
 </beans>

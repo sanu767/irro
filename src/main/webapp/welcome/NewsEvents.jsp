@@ -30,10 +30,9 @@ div div div h6 {
 
 <div class="irro-wl-newseventswrapper">
 	<div class="irro-wl-context-div">
-		<p class="irro-wl-context-header" >Новости<div class="underline"></div></p>
+		<p class="irro-wl-context-header">Новости</p><div class="underline"></div>
 			<div id="news-slider">
-				<ul class="bjqs">
-	          			          			 
+				<ul class="bjqs">	          			          			 
 	          			 <s:iterator value="#application['News']" id="eachNews">
 	          			 	<li>
 	          			 		<div style="font-size:14px;">
@@ -51,11 +50,12 @@ div div div h6 {
 					            </div>
 		         			</li>
 				         </s:iterator>
+				         </ul>
 			</div>
 	</div>
 
 	<div class="irro-wl-context-div">
-		<p class="irro-wl-context-header">Анонсы<div class="underline"></div></p>
+		<p class="irro-wl-context-header">Анонсы</p><div class="underline"></div>
 
 			<div id="event-slider">
 					<ul class="bjqs">
@@ -74,6 +74,7 @@ div div div h6 {
 		         			   </div>	
 		         			</li>
 		         		</s:iterator>
+		         		 </ul>
 
 			</div>
 	</div>

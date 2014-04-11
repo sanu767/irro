@@ -6,5 +6,4 @@
 <br>Register again
   <a href="<%=request.getContextPath() %>/registerWL" >"Register"</a> 
 <br>
-</p>
 </html>

@@ -4,16 +4,35 @@
 
 <head>
 <style type="text/css">
+
 .myClass{
  background-colour : white
 }
 .pagination-table {
 background: none;
+/*width: auto;*/
 
 }
 
-.pagination-table {
-background: none;
+.pagination-table td {
+font-size: 10px;
+width: auto;
+}
+
+.pagination-table input{
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 3px;
+
+}
+.pagination-table textarea{
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 3px;
 
 }
 </style>
@@ -75,22 +94,17 @@ http://hotel.irro.ru/
 Let's talk<p><p><p>
 ​​Thanks for your interest in our services. Please fill out the email form, submit and we will get back to you soon.
 <p><p><p>
-<div style="width : 100px">
+<div>
 <s:form action="SendFeedBack" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" cssClass="pagination-table">
+		<s:textfield  name="feedBackBean.name"  required="true" placeholder="Enter Name" id="name" />
+			
+		<s:textfield name="feedBackBean.email"  required="true" placeholder="Enter Email" id="mail" />
+			
+		<s:textfield name="feedBackBean.subject" required="true" placeholder="Enter Subject" />
+			
+		<s:textarea name="feedBackBean.message" cssStyle="min-height: 130px;" placeholder="Enter Message"></s:textarea>
 
-		<s:textfield cssClass="textFieldClass" name="feedBackBean.name" label="Name " maxlength="100"
-			required="true" placeholder="Enter Name" id="name" />
-			
-		<s:textfield name="feedBackBean.email" label="Email " maxlength="100"
-			required="true" placeholder="Enter Email" id="mail" />
-			
-		<s:textfield name="feedBackBean.subject" label="Subject " maxlength="100"
-			required="true" placeholder="Enter Subject" />
-			
-		<s:textarea name="feedBackBean.message" label="Message " placeholder="Enter Message"></s:textarea>
-
-		<s:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Send" 
-		value="Send"  onclick="return validate();"/>
+		<s:submit cssClass="btn btn-primary"  button="Send" value="Send"  cssStyle="width:20%;" onclick="return validate();"/>
 		
 </s:form>
 </div>

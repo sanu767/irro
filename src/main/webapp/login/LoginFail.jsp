@@ -7,6 +7,6 @@
 	<a href="<%=request.getContextPath() %>/forgotPasswordWL" >"Forgot Password"</a> 
 	<br>
 	We will send you password in your registration mail Id.
-</p>
+
 <jsp:include page="/login/Login.jsp"></jsp:include>
 </html>

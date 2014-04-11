@@ -19,9 +19,9 @@
 	
 	    <sj:textfield name="groupSearchBean.searchedName"  label="Group Name" maxlength="100" placeholder="Enter Group Name" />
 	    
-	    <sj:datepicker name="groupSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
+	    <sj:datepicker displayFormat="mm/dd/yy" name="groupSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker name="groupSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" language="English" />
+		<sj:datepicker displayFormat="mm/dd/yy" name="groupSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" language="English" />
 		
 		<sj:submit button="Search" style="float:right;height : 25px;margin: 5px 0px 0px 0px;" value="Search"/>
 		

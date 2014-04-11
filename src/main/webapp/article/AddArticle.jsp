@@ -104,7 +104,7 @@ if(path != null) {
 	<div id="editor" style="margin : 50px 0px 0px 10px">
 	
 	</div>
-	
+		<s:if test="%{bean.attachmentBeans.size() > 0}">
 		<table class="pagination-table">
 		     <thead>
 		         <tr>
@@ -137,6 +137,7 @@ if(path != null) {
 				</s:iterator>
 		</tbody>
 		</table>
+		</s:if>
 		<s:hidden id="selectedFileAttachmentName" name="selectedFileAttachmentName" />
 		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Create" value="Create" onclick="save()" />
 		

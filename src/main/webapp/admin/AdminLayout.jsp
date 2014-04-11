@@ -7,11 +7,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
-	<script src="../content/jquery-1.10.2.js"></script>
+<script src="../content/jquery-1.10.2.js"></script>
+<link href="../datepicker.css" rel="stylesheet" type="text/css"/>
 	
 <style>
 #wrapper {
@@ -64,7 +64,7 @@ padding-top:5px;
 		
      <div id="navigationwrap">
 	   <a href="ChangeMenus"  title="IRRO">
-			<img class="logo" src="images/logo/irrologo.png" border="0" alt="Home" />
+			<img class="logo" src="<%=request.getContextPath() %>/images/logo/irrologo.png" border="0" alt="Home" />
 	   </a> 
 	   <h1 style="text-align : center">Welcome to Irro Administrator</h1>
      </div>

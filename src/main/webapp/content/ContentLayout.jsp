@@ -96,10 +96,13 @@ ul li a {
 		
 		<div id="mainContentwrapper">
            <div id="tree">		
-				<tiles:insertAttribute name="tree"></tiles:insertAttribute>
+				<tiles:insertAttribute name="tree" />
 			</div>
 			<div id="mainContent">
 				<tiles:insertAttribute name="content" />
+			</div>
+			<div id="attachmentContent">
+				<tiles:insertAttribute name="attachmentContent" />
 			</div>
 		</div>
        

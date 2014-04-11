@@ -257,10 +257,6 @@ public class EventAction extends ActionSupport implements ServletRequestAware {
 			addActionError("Please choose file to upload");
 			return false;
 		}
-		if(StringUtils.contains(fileName, " ")) {
-			addActionError("File Name can not spaces.");
-			return false;
-		}
 		//TODO Check this file already exists
 		return true;
 	}

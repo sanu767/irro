@@ -7,7 +7,6 @@
     <session-factory>
     
         <!-- Article -->
-        
         <mapping class="com.saasforedu.irro.article.entity.impl.Article" />
         <mapping class="com.saasforedu.irro.article.entity.impl.News" />
         <mapping class="com.saasforedu.irro.model.impl.Item" />
@@ -19,12 +18,12 @@
         <mapping class="com.saasforedu.irro.model.impl.EventAttachment" />
         <mapping class="com.saasforedu.irro.model.impl.NewsAttachment" />
         
+        <mapping class="com.saasforedu.irro.model.impl.MenuAttachment" />
+        
         <!-- User -->
         <mapping class="com.saasforedu.irro.model.impl.User" />
         <mapping class="com.saasforedu.irro.model.impl.UserGroup" />
         <mapping class="com.saasforedu.irro.model.impl.UserPermission" />
-        
-       
         
     </session-factory>
     

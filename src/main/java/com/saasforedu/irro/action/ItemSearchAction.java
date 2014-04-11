@@ -82,8 +82,9 @@ public class ItemSearchAction extends ActionSupport implements ServletRequestAwa
 		List<ItemBean> searchNews = new ArrayList<ItemBean>();
 		List<ItemBean> searchEvents = new ArrayList<ItemBean>();
 		List<ItemBean> searchItems = new ArrayList<ItemBean>();
-		if(itemSearchBean.getEventType() != null ) {
-			switch (itemSearchBean.getEventType()) {
+		EventType searchEventType = EventType.getType(itemSearchBean.getSearchType());
+		if(searchEventType != null ) {
+			switch (searchEventType) {
 			case NEWS:
 				searchNews.addAll(newsService.searchItems(itemSearchBean));
 				break;
