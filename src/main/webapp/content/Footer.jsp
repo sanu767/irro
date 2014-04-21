@@ -7,7 +7,7 @@
 .footer-table
 {
 border-collapse:collapse;
-background-color: rgb(88,103,168);
+
 width:100%;
 height:80px;
 float:left;
@@ -70,216 +70,86 @@ color:rgb(0,0,0);
 </div>
 
 <div style="padding-top:10px;padding-left:100px">
-<table class="footer-table" style="width:950px">
+ <table class="footer-table" style="width:950px">
   <tr style="padding-bottom:10px">
   
-    <th class="footer-th" style="font-weight:bold;font-size:14px" ><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Institute</s:param>
-				</s:url>' >Об Институте</a></th>
-				
-    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Activities</s:param>
-				</s:url>'> Деятельность</a></th>
-				
-    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">EducationalActivitiesInternship</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
-				</s:url>'>Стажировочная площадка</a></th>
-				
-	<th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Centers</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Центры</a></th>
-				
-    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">BranchOffice</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Мероприятия</a></th>   
-  </tr>
-  
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
- 
- <tr >
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Rector</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Ректорат</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">EducationalActivities</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
-				</s:url>'>Образовательная деятельность</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Basic</s:param>
-					<s:param name="parentMenuName">Projects</s:param>
-				</s:url>'>Базовые площадки</a>
+    <td style="width : 10%;text-align:center">
+    <a href="http://ege.edu.ru/" target="_blank">
+    <img src="../images/portal-ege2.jpg" alt="portal-ege" width="100" height="49" />   
+    </a>
     </td>
     
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">CentersLibrary</s:param>
-					<s:param name="parentMenuName">Centers</s:param>
-							</s:url>'>Библиотечно-информационный центр</a>
+    <td style="width : 10%;text-align:center">
+    <a href="http://gia.edu.ru/" target="_blank">
+    <img src="../images/portal-gia9.jpg" width="100" height="43" />    
+    </a>
     </td>
     
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">BranchOffice</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Филиал и Представительства</a>
-      </td>
-    
-    <td>&nbsp;</td>
-  </tr>
-  
- <tr>
-   <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">History</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Вехи истории</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Certification</s:param>
-				</s:url>'>Аттестация</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">CentersAdministrationMaterials</s:param>
-					<s:param name="parentMenuName">CentersAdministration</s:param>
-							</s:url>'>Методические материалы</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">CentersLibraryPublications</s:param>
-					<s:param name="parentMenuName">CentersLibrary</s:param>
-							</s:url>'>Издания и публикации ИРО</a>
-    </td>
-    <td style="font-size:10px">&nbsp;</td>
-  </tr>
-  
- <tr>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='http://irro-new.irro.ru/welcomeIrro'>Администрация</a>
+    <td style="width : 10%;text-align:center">
+    <a href="http://xn--80abucjiibhv9a.xn--p1ai/">
+    <img src="../images/minobr.jpg" alt="minobr" width="40" height="44" />    
+    </a>
     </td>
     
-    <td class="footer-td" style="font-size:10px">
-    	<a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">GraduatesEGE</s:param>
-					<s:param name="parentMenuName">Graduates</s:param>
-							</s:url>'>ЕГЭ</a>
+    <td style="width : 10%;text-align:center">
+    <a href="http://www.minobraz.ru/">
+    <img src="../images/minobr-so.jpg" alt="minobr-so" width="50" height="36" />    
+    </a>
     </td>
     
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Documents</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Документы</a>
-      </td>
-      
-	<td class="footer-td" style="font-size:10px">
-    <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">DepartmentsVocationalService</s:param>
-					<s:param name="parentMenuName">DepartmentsVocational</s:param>
-							</s:url>'>Методическая копилка</a>
-  </td>
-  
-	<td>&nbsp;</td>
+    <td style="width : 10%;text-align:center">
+    <a href="http://obrnadzor.gov.ru/">
+    <img src="../images/rospotreb.jpg" alt="rospotreb" width="53" height="48" />   
+    </a>
+    </td>
+    
+    <td style="width : 10%;text-align:center">
+    <a href="http://www.irro.ru/">
+    <img src="../images/iro.jpg" alt="iro" width="50" height="45" />    
+    </a>
+    </td>
     
   </tr>
   
-   <tr>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Contacts</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Структура</a>
+  <tr style="padding-bottom:10px">
+  
+    <td style="width : 10%;text-align:center">
+    <a href="http://ege.edu.ru/" target="_blank">    
+    Официальный информ портал ЕГЭ
+    </a>
     </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor"  href="">ГИА-9</a>
-    </td>
-    <td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
     
-  </tr>
-    <tr>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">BranchOffice</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Филиал и Представительства</a>
-      </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Contests</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
-				</s:url>'>Конкурсы, олимпиады</a>
+    <td style="width : 10%;text-align:center">
+    <a href="http://gia.edu.ru/" target="_blank">   
+    Официальный  информ  портал  ГИА9
+    </a>
     </td>
-    <td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
+    
+    <td style="width : 10%;text-align:center">
+    <a href="http://xn--80abucjiibhv9a.xn--p1ai/">    
+    Министерство  образования и науки РФ
+    </a>
+    </td>
+    
+    <td style="width : 10%;text-align:center">
+    <a href="http://www.minobraz.ru/">   
+    Министерство  общего и  профессионального  образования  Свердловской области
+    </a>
+    </td>
+    
+    <td style="width : 10%;text-align:center">
+    <a href="http://obrnadzor.gov.ru/">    
+    Федеральная  служба по  надзору в сфере образования
+    </a>
+    </td>
+    
+    <td style="width : 10%;text-align:center">
+    <a href="http://www.irro.ru/">    
+    Институт развития образования
+    </a>
+    </td>
   </tr>
   
-  <tr>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Contacts</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
-				</s:url>'>Контакты</a>
-    </td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">Conference</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
-				</s:url>'>Конференции</a>
-    </td>
-    <td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>  
-  </tr>
-  
-  <tr>
-    <td>&nbsp;</td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
-					<s:param name="menuName">CentersLibraryEducationalPublishing</s:param>
-					<s:param name="parentMenuName">CentersLibrary</s:param>
-							</s:url>'>Издательская деятельность</a>
-      </td>
-    <td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
-  </tr>
-  
-  <tr>
-    <td>&nbsp;</td>
-    <td class="footer-td" style="font-size:10px">
-      <a class="footer-td-anchor" href="">Научные исследования</a>
-    </td>
-    <td>&nbsp;</td>
-	<td>&nbsp;</td>
-	<td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td> 
-	<td>&nbsp;</td> 
-	<td>&nbsp;</td> 
-	<td>&nbsp;</td> 
-	<td></td> 	
-  </tr>
   
 </table>
 </div>
