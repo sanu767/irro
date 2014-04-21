@@ -1,6 +1,7 @@
 package com.saasforedu.irro.article.dao.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -141,6 +142,16 @@ public class NewsDAO extends BaseDAOimpl<News> implements INewsDAO {
 	public void update(INews news, List<INewsAttachment> removedAttachments) {
 		deleteAttachments(removedAttachments);
 		super.update((News)news);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<INews> findNewsForPeriod(int numberOfMonths) {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.MONTH, -numberOfMonths);
+		Date previousDate = cal.getTime();
+		String query = "select e from News e where e.startDate > ? order by e.startDate";
+		return getHibernateTemplate().find(query, new Object[] { previousDate });
 	}
 	
 	private void deleteAttachments(List<INewsAttachment> removedAttachments) {

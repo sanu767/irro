@@ -47,6 +47,4 @@ public class AttachmentBean {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	
 }

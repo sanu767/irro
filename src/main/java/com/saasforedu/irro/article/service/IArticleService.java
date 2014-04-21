@@ -8,16 +8,16 @@ import com.saasforedu.irro.article.bean.ArticleBean;
 import com.saasforedu.irro.article.bean.AttachmentBean;
 
 public interface IArticleService {
-	public Long createArticle(ArticleBean article, String menuName, String parentName);
+	public Long createArticle(ArticleBean article, Long menuId, Long parentName);
 	public void updateArticle(ArticleBean article);
-	public void deleteArticle(ArticleBean article, String menuName, String parentMenuName, String serverPath);
-	public List<ArticleBean> findArticles(String menuName, String parentMenuName);
+	public void deleteArticle(ArticleBean article, Long menuId, Long parentMenuId, String serverPath);
+	public List<ArticleBean> findArticles(Long menuId, Long parentMenuId);
 	public ArticleBean findById(Long articleId);
 	
 	/** Attachment Methods */
-	public AttachmentBean doUploadArticleFile(String fileName, String contentType, String menuName, String parentMenuName, 
+	public AttachmentBean doUploadArticleFile(String fileName, String contentType, Long menuId, Long parentMenuId, 
 			File file, String serverPath) throws IOException;	
-	public void removeAttachment(AttachmentBean selectedFileAttachmentId, String serverPath, String menuName, String parentMenuName);
+	public void removeAttachment(AttachmentBean selectedFileAttachmentId, String serverPath, Long menuId, Long parentMenuId);
 	
 	
 }

@@ -9,6 +9,7 @@ public class ArticleBean {
 	String title;
 	String description;
 	String content;
+	Long referenceArticleId;
 	
 	List<AttachmentBean> attachmentBeans = new ArrayList<AttachmentBean>();
 	
@@ -50,5 +51,13 @@ public class ArticleBean {
 
 	public void setAttachmentBeans(List<AttachmentBean> attachmentBeans) {
 		this.attachmentBeans = attachmentBeans;
+	}
+
+	public Long getReferenceArticleId() {
+		return referenceArticleId;
+	}
+
+	public void setReferenceArticleId(Long referenceArticleId) {
+		this.referenceArticleId = referenceArticleId;
 	}
 }

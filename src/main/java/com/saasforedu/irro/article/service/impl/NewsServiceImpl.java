@@ -55,19 +55,19 @@ public class NewsServiceImpl implements INewsService {
 	}
 
 	@Override
-	public List<ItemBean> findNews(String menuName, String parentMenuName) {
-		Long referenceArticleId = getReferenceArticleId(menuName, parentMenuName);
+	public List<ItemBean> findNews(Long menuId, Long parentMenuId) {
+		Long referenceArticleId = getReferenceArticleId(menuId, parentMenuId);
 		List<INews> news = newsDAO.findByRefereceArticleId(referenceArticleId);
 		List<ItemBean> itemBeans = convertToItemBeans(news);
 		return itemBeans;
 	}
 
 	@Override
-	public Long createNews(ItemBean newsBean, String menuName, String parentName) {
+	public Long createNews(ItemBean newsBean, Long menuId, Long parentName) {
 		if(newsBean.isSliderSelected()) {
 			uploadSliderImageInServer(newsBean);
 		}
-		Long referenceArticleId = getReferenceArticleId(menuName, parentName);
+		Long referenceArticleId = getReferenceArticleId(menuId, parentName);
 		INews newNews = new News();
 		copyProperties(newsBean, newNews);
 		newNews.setReferenceArticleId(referenceArticleId);
@@ -80,7 +80,7 @@ public class NewsServiceImpl implements INewsService {
 	@Override
 	public void updateNews(ItemBean newsBean) {
 		INews news = newsDAO.findById(News.class, newsBean.getId());
-		if(newsBean.isSliderSelected()) {
+		if(newsBean.isSliderSelected() && newsBean.getSliderFile() != null) {
 			uploadSliderImageInServer(newsBean);
 		}
 		copyProperties(newsBean, news);
@@ -89,17 +89,17 @@ public class NewsServiceImpl implements INewsService {
 	}
 
 	@Override
-	public void deleteNews(ItemBean newsBean, String menuName, String parentMenuName, String serverPath) {
+	public void deleteNews(ItemBean newsBean, Long menuId, Long parentMenuId, String serverPath) {
 		INews news =  newsDAO.findById(News.class, newsBean.getId());
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		String fullArticlePath = getFullArticlePath(serverPath, menuMetadata.getDocumentLocation());
 		fileUploadService.deleteFiles(newsBean.getAttachmentBeans(), fullArticlePath);
 		newsDAO.deleteNews(news);
 	}
 	
 	@Override
-	public void removeAttachment(AttachmentBean attachmentBean, String serverPath, String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+	public void removeAttachment(AttachmentBean attachmentBean, String serverPath, Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		String fullArticlePath = getFullArticlePath(serverPath, menuMetadata.getDocumentLocation());
 		fileUploadService.removeAttachment(attachmentBean, fullArticlePath);
 	}
@@ -113,10 +113,10 @@ public class NewsServiceImpl implements INewsService {
 	}
 	
 	@Override
-	public AttachmentBean doUploadNewsFile(String fileName, String contentType, String menuName, String parentMenuName, 
+	public AttachmentBean doUploadNewsFile(String fileName, String contentType, Long menuId, Long parentMenuId, 
 			File file, String serverPath) throws IOException {
 		
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		
 		String documentLocation = menuMetadata.getDocumentLocation();
 		AttachmentBean fileArticle = getFileAttachment(fileName, contentType, documentLocation);
@@ -216,13 +216,13 @@ public class NewsServiceImpl implements INewsService {
 		return fileArticle;
 	}
 
-	private IMenuMetadata getMenuMetadata(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	private IMenuMetadata getMenuMetadata(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		return menuMetadata;
 	}
 	
-	private Long getReferenceArticleId(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+	private Long getReferenceArticleId(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		if(menuMetadata == null) {
 			return 0L;
 		}
@@ -249,6 +249,7 @@ public class NewsServiceImpl implements INewsService {
 		newItem.setSliderItem(itemBean.isSliderSelected());
 		newItem.setStartDate(itemBean.getStartDate());
 		newItem.setTitle(itemBean.getTitle());
+		newItem.setUrl(itemBean.getUrl());
 	}
 	
 	private List<ItemBean> convertToItemBeans(List<INews> news) {
@@ -283,7 +284,9 @@ public class NewsServiceImpl implements INewsService {
 		itemBean.setStartDate(item.getStartDate());
 		itemBean.setTitle(item.getTitle());
 		itemBean.setId(item.getId());
+		itemBean.setUrl(item.getUrl());
 		itemBean.setEventType(EventType.NEWS);
+		itemBean.setReferenceArticleId(item.getReferenceArticleId());
 	}
 
 	@Override
@@ -330,5 +333,8 @@ public class NewsServiceImpl implements INewsService {
 		newsDAO.deleteAllNews(itemsToDelete);
 	}
 	
-	
+	@Override
+	public List<INews> findNewsForPeriod(int numberOfMonths) {
+		return newsDAO.findNewsForPeriod(numberOfMonths);
+	}
 }

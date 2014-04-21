@@ -7,17 +7,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.article.bean.MenuAttachmentBean;
 import com.saasforedu.irro.article.service.IMenuAttachmentService;
 
-public class MenuAttachmentAction extends ActionSupport implements ServletRequestAware {
+public class MenuAttachmentAction extends MenuBaseAction implements ServletRequestAware {
 
 	private static final long serialVersionUID = 2669886630825011186L;
-	private String menuName;
-	private String parentMenuName;
 	
 	private Long [] checkedId;
 	
@@ -27,6 +26,7 @@ public class MenuAttachmentAction extends ActionSupport implements ServletReques
 	private List<File> uploads = new ArrayList<File>();
 	private List<String> uploadFileNames = new ArrayList<String>();
 	private List<String> uploadContentTypes = new ArrayList<String>();
+	private List<String> externalUrl = new ArrayList<String>();
 	
 	List<MenuAttachmentBean> menuImages = new ArrayList<MenuAttachmentBean>();
 	List<MenuAttachmentBean> menuVideos = new ArrayList<MenuAttachmentBean>();
@@ -34,56 +34,67 @@ public class MenuAttachmentAction extends ActionSupport implements ServletReques
 	
 
 	public String upload() throws Exception {
+		super.loadMenus();
 		String serverPath = getServerPath();
-		menuAttachmentService.createAttachments(menuName, parentMenuName, uploads, uploadFileNames, uploadContentTypes, serverPath);
+		if(CollectionUtils.isNotEmpty(uploads) || CollectionUtils.isNotEmpty(externalUrl) ) {
+			menuAttachmentService.createAttachments(menuId, parentMenuId, uploads, uploadFileNames, uploadContentTypes, externalUrl, serverPath);
+		}
 		return SUCCESS;
 	}
 	
 	public String removeMenuAttachments() throws Exception {
-		List<Long> deletedIds = Arrays.asList(checkedId);
-		menuAttachmentService.deleteMenuAttachments(deletedIds, menuName, parentMenuName, getServerPath());
+		super.loadMenus();
+		if(ArrayUtils.isNotEmpty(checkedId)) {
+			List<Long> deletedIds = Arrays.asList(checkedId);
+			menuAttachmentService.deleteMenuAttachments(deletedIds, menuId, parentMenuId, getServerPath());
+		}
 		return SUCCESS;
 	}
 	
 	public String activateMenuAttachments() throws Exception {
-		List<Long> deletedIds = Arrays.asList(checkedId);
-		menuAttachmentService.changeActivation(deletedIds, true);
+		super.loadMenus();
+		if(ArrayUtils.isNotEmpty(checkedId)) {
+			List<Long> deletedIds = Arrays.asList(checkedId);
+			menuAttachmentService.changeActivation(deletedIds, true);
+		}
 		return SUCCESS;
 	}
 	
 	public String deActivateMenuAttachments() throws Exception {
-		List<Long> deletedIds = Arrays.asList(checkedId);
-		menuAttachmentService.changeActivation(deletedIds, false);
+		super.loadMenus();
+		if(ArrayUtils.isNotEmpty(checkedId)) {
+			List<Long> deletedIds = Arrays.asList(checkedId);
+			menuAttachmentService.changeActivation(deletedIds, false);
+		}
 		return SUCCESS;
 	}
 	
 	public String loadAllAttachments() throws Exception {
-		loadAttachments(menuName, parentMenuName);
+		super.loadMenus();
+		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
 
 	public String showImages() throws Exception {
-		List<MenuAttachmentBean> images = menuAttachmentService.getImages(menuName, parentMenuName);
-		this.menuImages = images;
+		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
 	
 	public String showVideos() throws Exception {
-		List<MenuAttachmentBean> videos = menuAttachmentService.getVideos(menuName, parentMenuName);
-		this.menuVideos = videos;
+		loadAttachments(menuId, parentMenuId);
+		super.loadMenus();
 		return SUCCESS;
 	}
 	
 	public String showOtherDocs() throws Exception {
-		List<MenuAttachmentBean> otherDocs = menuAttachmentService.getOtherDocs(menuName, parentMenuName);
-		this.menuOtherDocs = otherDocs;
+		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
 	
-	private void loadAttachments(String menuName, String parentMenuName) {
-		this.menuImages = menuAttachmentService.getImages(menuName, parentMenuName);
-		this.menuVideos = menuAttachmentService.getVideos(menuName, parentMenuName);
-		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuName, parentMenuName);
+	private void loadAttachments(Long menuId, Long parentMenuId) {
+		this.menuImages = menuAttachmentService.getImages(menuId, parentMenuId);
+		this.menuVideos = menuAttachmentService.getVideos(menuId, parentMenuId);
+		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuId, parentMenuId);
 	}
 	
 	@Override
@@ -113,22 +124,6 @@ public class MenuAttachmentAction extends ActionSupport implements ServletReques
 	
 	public void setUploadContentType(List<String> contentTypes) {
 		this.uploadContentTypes = contentTypes;
-	}
-
-	public String getMenuName() {
-		return menuName;
-	}
-
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
-
-	public String getParentMenuName() {
-		return parentMenuName;
-	}
-
-	public void setParentMenuName(String parentMenuName) {
-		this.parentMenuName = parentMenuName;
 	}
 
 	public void setMenuAttachmentService(IMenuAttachmentService menuAttachmentService) {
@@ -170,5 +165,13 @@ public class MenuAttachmentAction extends ActionSupport implements ServletReques
 
 	public void setMenuOtherDocs(List<MenuAttachmentBean> menuOtherDocs) {
 		this.menuOtherDocs = menuOtherDocs;
+	}
+
+	public List<String> getExternalUrl() {
+		return externalUrl;
+	}
+
+	public void setExternalUrl(List<String> externalUrl) {
+		this.externalUrl = externalUrl;
 	}
 }

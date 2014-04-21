@@ -2,11 +2,15 @@ package com.saasforedu.irro.article.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 import com.saasforedu.irro.article.bean.MenuAttachmentBean;
 import com.saasforedu.irro.article.dao.IMenuAttachmentDAO;
@@ -26,19 +30,19 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 	private IFileUploadService fileUploadService;
 	
 	@Override
-	public void createAttachments(String menuName, String parentMenuName, 
+	public void createAttachments(Long menuId, Long parentMenuId, 
 			List<File> sourceFiles, 
 			List<String> fileNames,
 			List<String> uploadContentTypes,
-		    String serverPath) {
+		    List<String> externalUrl, String serverPath) {
 		
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		String documentLocation = menuMetadata.getDocumentLocation();
 		String directoryPath = getFullAttachmentPath(serverPath, documentLocation);
 		
+		List<IMenuAttachment> newMenuAttachments = new ArrayList<IMenuAttachment>();
 		if(CollectionUtils.isNotEmpty(sourceFiles))  {
 			uploadFilesInServer(fileNames, sourceFiles, directoryPath);
-			List<IMenuAttachment> newMenuAttachments = new ArrayList<IMenuAttachment>();
 			for (int i = 0; i < sourceFiles.size(); i++) {
 				IMenuAttachment newMenuAttachment = new MenuAttachment();
 				newMenuAttachment.setReferenceMenuId(menuMetadata.getId());
@@ -49,14 +53,33 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 				newMenuAttachment.setExternal(false);
 				newMenuAttachment.setModificationDate(new Date());
 				newMenuAttachments.add(newMenuAttachment);
+			}			
+		}
+		
+		if(CollectionUtils.isNotEmpty(externalUrl))  {
+			for (String eachExternalUrl : externalUrl) {
+				if(StringUtils.isNotBlank(eachExternalUrl)) {
+					IMenuAttachment newMenuAttachment = new MenuAttachment();
+					newMenuAttachment.setReferenceMenuId(menuMetadata.getId());
+					newMenuAttachment.setFileName(getNameExternalURL(eachExternalUrl));
+					newMenuAttachment.setFileType(getContentOfExternalURL(eachExternalUrl));
+					newMenuAttachment.setLocation(eachExternalUrl);
+					newMenuAttachment.setActive(true);
+					newMenuAttachment.setExternal(true);
+					newMenuAttachment.setModificationDate(new Date());
+					newMenuAttachments.add(newMenuAttachment);
+				}
 			}
+		}
+		
+		if(CollectionUtils.isNotEmpty(newMenuAttachments)) {
 			menuAttachmentDAO.createAttachments(newMenuAttachments);
 		}
 	}
-
+	
 	@Override
-	public List<MenuAttachmentBean> findAll(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	public List<MenuAttachmentBean> findAll(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		List<IMenuAttachment> menuAttachments = menuAttachmentDAO.findByReferenceMenuId(menuMetadata.getId());
 		List<MenuAttachmentBean> newMenuAttachments = new ArrayList<MenuAttachmentBean>();
 		if(CollectionUtils.isNotEmpty(menuAttachments)) {
@@ -71,27 +94,36 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 	}
 	
 	@Override
-	public void deleteMenuAttachments(List<Long> itemIdsToDelete, String menuName, String parentMenuName, String serverPath) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	public void deleteMenuAttachments(List<Long> itemIdsToDelete, Long menuId, Long parentMenuId, String serverPath) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		String documentLocation = menuMetadata.getDocumentLocation();
 		String fullPath = getFullAttachmentPath(serverPath, documentLocation);
 		
 		List<IMenuAttachment> removedAttachments = menuAttachmentDAO.findAll(itemIdsToDelete);
+		List<MenuAttachmentBean> removeUploadedAttachmentBeans = new ArrayList<MenuAttachmentBean>();
+		
 		if(CollectionUtils.isNotEmpty(removedAttachments)) {
-			List<MenuAttachmentBean> removedAttachmentBeans = new ArrayList<MenuAttachmentBean>();
 			for (IMenuAttachment removedAttachment : removedAttachments) {
-				MenuAttachmentBean menuAttachmentBean = new MenuAttachmentBean();
-				copyAttachmentProperties(removedAttachment, menuAttachmentBean);
-				removedAttachmentBeans.add(menuAttachmentBean);
+				if(!removedAttachment.isExternal()) {
+					MenuAttachmentBean menuAttachmentBean = new MenuAttachmentBean();
+					copyAttachmentProperties(removedAttachment, menuAttachmentBean);
+					removeUploadedAttachmentBeans.add(menuAttachmentBean);
+				}
 			}
-			fileUploadService.deleteMenuAttachmentFiles(removedAttachmentBeans, fullPath);			
+		}
+		
+		if(CollectionUtils.isNotEmpty(removeUploadedAttachmentBeans)) {
+			fileUploadService.deleteMenuAttachmentFiles(removeUploadedAttachmentBeans, fullPath);
+		}
+		
+		if(CollectionUtils.isNotEmpty(removedAttachments)) {
 			menuAttachmentDAO.deleteAll(removedAttachments);
 		}
 	}
 	
 	@Override
-	public List<MenuAttachmentBean> getImages(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	public List<MenuAttachmentBean> getImages(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		List<IMenuAttachment> menuAttachments = menuAttachmentDAO.findByReferenceMenuId(menuMetadata.getId());
 		List<MenuAttachmentBean> imageDocs = new ArrayList<MenuAttachmentBean>();
 		if(CollectionUtils.isNotEmpty(menuAttachments)) {
@@ -108,8 +140,8 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 	}
 
 	@Override
-	public List<MenuAttachmentBean> getVideos(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	public List<MenuAttachmentBean> getVideos(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		List<IMenuAttachment> menuAttachments = menuAttachmentDAO.findByReferenceMenuId(menuMetadata.getId());
 		List<MenuAttachmentBean> videoAttachments = new ArrayList<MenuAttachmentBean>();
 		if(CollectionUtils.isNotEmpty(menuAttachments)) {
@@ -126,9 +158,9 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 	}
 
 	@Override
-	public List<MenuAttachmentBean> getOtherDocs(String menuName,
-			String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	public List<MenuAttachmentBean> getOtherDocs(Long menuId,
+			Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		List<IMenuAttachment> menuAttachments = menuAttachmentDAO.findByReferenceMenuId(menuMetadata.getId());
 		List<MenuAttachmentBean> otherDocs = new ArrayList<MenuAttachmentBean>();
 		if(CollectionUtils.isNotEmpty(menuAttachments)) {
@@ -137,6 +169,7 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 				if(IrroUtils.isOtherThanVideoAndImage(fileType)) {
 					MenuAttachmentBean otherDocument = new MenuAttachmentBean();
 					copyAttachmentProperties(menuAttachment, otherDocument);
+					otherDocument.setDisplayName(IrroUtils.getDisplayNameForOtherDocs(otherDocument.getName()));
 					otherDocs.add(otherDocument);
 				}
 			}
@@ -170,6 +203,52 @@ public class MenuAttachmentServiceImpl implements IMenuAttachmentService {
 		directoryPath.append(IConstants.MENU_ATTACHMENTS);
 		directoryPath.append(documentLocation);
 		return directoryPath.toString();
+	}
+	
+	private String getContentOfExternalURL(String externalURL) {
+		try {
+			//Embed URL starts from iframe
+			if(StringUtils.isNotBlank(externalURL) && 
+					( externalURL.contains("youtube") )
+					|| ( externalURL.contains("vimeo")) 
+					|| ( externalURL.contains("video.mail.ru") ) ) {
+				return "video/mp4";
+			} 
+			
+			URL url = new URL(externalURL);
+			HttpURLConnection connection = (HttpURLConnection)  url.openConnection();
+			connection.setRequestMethod("HEAD");
+			connection.connect();
+			return connection.getContentType();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "OTHER_MIME";
+	}
+	
+	private String getNameExternalURL(String externalURL) {
+		//Embed URL starts from iframe
+		if(StringUtils.isNotBlank(externalURL)) {
+			if(externalURL.contains("iframe")) {
+				int index = externalURL.indexOf("src=");
+				if(index > 0 ) {
+					String substring = externalURL.substring(index+5);
+					String[] split = substring.split("\"");
+					return split[0];
+				}
+
+			} 
+			
+			if(externalURL.contains("youtube")) {
+				String[] split = externalURL.split("v=");
+				String youtubeVideoId = split[1];
+				StringBuilder stringBuilder = new StringBuilder("http://www.youtube.com/v/");
+				return stringBuilder.append(youtubeVideoId).toString();
+			}
+		}
+		return externalURL;
 	}
 	
 	private void uploadFilesInServer(List<String> fileNames, List<File> sourceFiles, String documentLocation) {

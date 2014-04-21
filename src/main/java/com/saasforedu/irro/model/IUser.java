@@ -39,5 +39,8 @@ public interface IUser extends IBaseEntity {
 	
 	public Long getMaxUploadFileSize();
 	public void setMaxUploadFileSize(Long maxUploadFileSize);
+	
+	public boolean isSuperAdmin();
+	public void setSuperAdmin(boolean superAdmin);
 
 }

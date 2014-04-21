@@ -18,6 +18,8 @@ public class UserBean {
 	boolean active;
 	Long maxUploadFileSize;
 	
+	boolean superAdmin;
+	
 	List<UserPermissionBean> permissionBeans;
 	List<String> selectedPermissions;
 	
@@ -123,6 +125,14 @@ public class UserBean {
 
 	public void setPermissionBeans(List<UserPermissionBean> permissionBeans) {
 		this.permissionBeans = permissionBeans;
+	}
+
+	public boolean isSuperAdmin() {
+		return superAdmin;
+	}
+
+	public void setSuperAdmin(boolean superAdmin) {
+		this.superAdmin = superAdmin;
 	}
 
 }

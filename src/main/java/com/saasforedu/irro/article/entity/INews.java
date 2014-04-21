@@ -41,4 +41,7 @@ public interface INews extends IBaseEntity {
 	
 	public List<INewsAttachment> getNewsAttachments();
 	public void setNewsAttachments(List<INewsAttachment> newsAttachments);
+	
+	public String getUrl();
+	public void setUrl(String url);
 }

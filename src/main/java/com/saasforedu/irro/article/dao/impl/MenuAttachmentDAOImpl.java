@@ -47,6 +47,7 @@ public class MenuAttachmentDAOImpl extends BaseDAOimpl<MenuAttachment> implement
 	public List<IMenuAttachment> findAll(List<Long> itemIds) {
 		StringBuilder queryBuilder = new StringBuilder();
 		queryBuilder.append("select i from MenuAttachment i where i.id in  (:listParam) ");
+		queryBuilder.append(" order by i.modificationDate DESC");
 		String[] params = { "listParam" };
 		Object [] values = {itemIds};
 		List<IMenuAttachment> resultItems = getHibernateTemplate().findByNamedParam(queryBuilder.toString(), params, values);

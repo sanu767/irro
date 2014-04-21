@@ -42,9 +42,9 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 	
 	@Override
-	public List<ArticleBean> findArticles(String menuName, String parentMenuName) {
+	public List<ArticleBean> findArticles(Long menuId, Long parentMenuId) {
 		List<ArticleBean> articleBeans = new ArrayList<ArticleBean>();
-		Long referenceArticleId = getReferenceArticleId(menuName, parentMenuName);
+		Long referenceArticleId = getReferenceArticleId(menuId, parentMenuId);
 		if(referenceArticleId.longValue() != 0) {
 			List<IArticle> articles = articleDAO.findByRefereceArticleId(referenceArticleId);
 			articleBeans = convertToItemBeans(articles);
@@ -53,8 +53,8 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 
 	@Override
-	public Long createArticle(ArticleBean articleBean, String menuName, String parentName) {
-		Long referenceArticleId = getReferenceArticleId(menuName, parentName);
+	public Long createArticle(ArticleBean articleBean, Long menuId, Long parentName) {
+		Long referenceArticleId = getReferenceArticleId(menuId, parentName);
 		IArticle article = new Article();
 		copyProperties(articleBean, article);
 		article.setReferenceArticleId(referenceArticleId);
@@ -75,17 +75,17 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 
 	@Override
-	public void deleteArticle(ArticleBean articleBean, String menuName, String parentMenuName, String serverPath) {
+	public void deleteArticle(ArticleBean articleBean, Long menuId, Long parentMenuId, String serverPath) {
 		IArticle article =  articleDAO.findById(Article.class, articleBean.getId());
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		String fullArticlePath = getFullArticlePath(serverPath, menuMetadata.getDocumentLocation());
 		fileUploadService.deleteFiles(articleBean.getAttachmentBeans(), fullArticlePath);
 		articleDAO.deleteArticle(article);
 	}
 	
 	@Override
-	public void removeAttachment(AttachmentBean selectedFileAttachment, String serverPath, String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+	public void removeAttachment(AttachmentBean selectedFileAttachment, String serverPath, Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		String fullArticlePath = getFullArticlePath(serverPath, menuMetadata.getDocumentLocation());
 		fileUploadService.removeAttachment(selectedFileAttachment, fullArticlePath);
 	}
@@ -99,10 +99,10 @@ public class ArticleServiceImpl implements IArticleService {
 	}
 
 	@Override
-	public AttachmentBean doUploadArticleFile(String fileName, String contentType, String menuName, String parentMenuName, 
+	public AttachmentBean doUploadArticleFile(String fileName, String contentType, Long menuId, Long parentMenuId, 
 			File file, String serverPath) throws IOException {
 		
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		String documentLocation = menuMetadata.getDocumentLocation();
 		AttachmentBean fileArticle = getFileAttachment(fileName, contentType, documentLocation);
 		String directoryPath = getFullArticlePath(serverPath, documentLocation);
@@ -215,13 +215,13 @@ public class ArticleServiceImpl implements IArticleService {
 		return fileArticle;
 	}
 
-	private IMenuMetadata getMenuMetadata(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuName, parentMenuName);
+	private IMenuMetadata getMenuMetadata(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
 		return menuMetadata;
 	}
 	
-	private Long getReferenceArticleId(String menuName, String parentMenuName) {
-		IMenuMetadata menuMetadata = getMenuMetadata(menuName, parentMenuName);
+	private Long getReferenceArticleId(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
 		if(menuMetadata == null) {
 			return 0L;
 		}
@@ -249,4 +249,5 @@ public class ArticleServiceImpl implements IArticleService {
 		}
 		articleBean.setAttachmentBeans(articleAttachmentBeans);
 	}
+
 }

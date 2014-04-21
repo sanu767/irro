@@ -62,6 +62,9 @@ public class News implements INews {
 	@Column(name = "REF_ARTICLE_ID")
 	private Long referenceArticleId;
 
+	@Column(name = "URL")
+	private String url;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=NewsAttachment.class, mappedBy="news")
 	List<INewsAttachment> newsAttachments;
 	
@@ -153,6 +156,14 @@ public class News implements INews {
 		this.newsAttachments = newsAttachments;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -177,6 +188,7 @@ public class News implements INews {
 		result = prime * result
 				+ ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
 		return result;
 	}
 
@@ -238,6 +250,13 @@ public class News implements INews {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
 		return true;
 	}
+	
+	
 }

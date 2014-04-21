@@ -15,13 +15,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import com.opensymphony.xwork2.ActionSupport;
+import com.saasforedu.irro.article.action.MenuBaseAction;
 import com.saasforedu.irro.article.bean.AttachmentBean;
 import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.service.ItemService;
 import com.saasforedu.irro.util.IConstants;
 
-public class ItemAction extends ActionSupport implements ServletRequestAware {
+public class ItemAction extends MenuBaseAction implements ServletRequestAware {
 	
 	private static final long serialVersionUID = -6994364128717519786L;
 
@@ -98,6 +98,8 @@ public class ItemAction extends ActionSupport implements ServletRequestAware {
 
 	public String createItem() throws Exception {
 		if(!validateSlider(bean)) {
+			List<AttachmentBean> uploadedFilesInSession = getUploadedFilesInSession();
+			bean.setAttachmentBeans(uploadedFilesInSession);
 			return ERROR;
 		}
 		
@@ -110,6 +112,7 @@ public class ItemAction extends ActionSupport implements ServletRequestAware {
 	}
 	
 	public String loadItem() {
+		super.loadTopMenu();
 		getSession().removeAttribute(IConstants.UPLOADED_ITEMS_FILES_SESSION_ATTRIBUTE_NAME);
 		ItemBean bean = 
 				itemService.findItem(selectedItemId);
@@ -119,7 +122,12 @@ public class ItemAction extends ActionSupport implements ServletRequestAware {
 	}
 	
 	public String modifyItem() throws Exception {
-		setSliderAttributes(bean);
+		if(!validateSliderForSavedItem(bean)) {
+			List<AttachmentBean> uploadedFiles = getUploadedFilesInSession();
+			bean.setAttachmentBeans(uploadedFiles);
+			return ERROR;
+		}
+		setSliderAttributesForSavedItem(bean);
 		List<AttachmentBean> uploadedFilesInSession = getUploadedFilesInSession();
 		bean.setAttachmentBeans(uploadedFilesInSession);
 		itemService.updateItem(bean);
@@ -172,6 +180,39 @@ public class ItemAction extends ActionSupport implements ServletRequestAware {
 		List<AttachmentBean> files = getUploadedFilesInSession();
 		bean.setAttachmentBeans(files);
 		return SUCCESS;
+	}
+	
+	public boolean validateSliderForSavedItem(ItemBean bean) {
+		if(bean.isSliderSelected()) {
+			//New Slider selected
+			if(sliderFile != null) {
+				BufferedImage bufferedImage;
+				try {
+					bufferedImage = ImageIO.read(sliderFile);
+					int height = bufferedImage.getHeight();
+					int width = bufferedImage.getWidth();
+					if(height < 350 ) {
+						addActionError(getText("errors.image.height"));
+						return false;
+					}
+					if(width < 1000 ) {
+						addActionError(getText("errors.image.width"));
+						return false;
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
+	}
+	
+	private void setSliderAttributesForSavedItem(ItemBean bean) {
+		if(bean.isSliderSelected() && this.sliderFileName != null && sliderFile != null) {
+			bean.setSliderImage(this.sliderFileName);
+			bean.setSliderFile(sliderFile);
+			bean.setSliderPath(getSliderPath());
+		}
 	}
 	
 	private void replaceAttachmentBean(AttachmentBean newAttachmentBean) {
@@ -299,6 +340,7 @@ public class ItemAction extends ActionSupport implements ServletRequestAware {
 	
 	@Override
 	public String execute() throws Exception {
+		super.loadTopMenu();
 		getSession().removeAttribute(IConstants.UPLOADED_ITEMS_FILES_SESSION_ATTRIBUTE_NAME);
 		return SUCCESS;
 	}

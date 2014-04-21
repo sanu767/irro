@@ -26,4 +26,6 @@ public interface INewsDAO extends IBaseDAO<News> {
 	public List<INews> findAll(List<Long> itemIds);
 	
 	public void update(INews news, List<INewsAttachment> removedAttachments);
+	
+	public List<INews> findNewsForPeriod(int numberOfMonths);
 }
