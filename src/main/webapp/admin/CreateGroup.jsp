@@ -22,6 +22,8 @@
 		<sj:submit button="Create" value="Create" />
 		
 	</s:form>
+	
+	
 </div>
 	
 </body>

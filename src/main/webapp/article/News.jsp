@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="org.apache.commons.collections.CollectionUtils"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -41,6 +42,7 @@
 
 .pagination-table {
 background: none;
+width : 600px;
 
 }
 
@@ -59,13 +61,15 @@ background: none;
 </head> 
 
 <body>
-<% List<String> permissions = (List<String>)request.getSession().getAttribute("PermissionList");
-String menuName = request.getParameter("menuName");
-String parentMenuName = request.getParameter("parentMenuName");
+<div class="pagination">
+
+<% List<Long> permissions = (List<Long>)request.getSession().getAttribute("PermissionList");
+Long menuId = StringUtils.isNotBlank(request.getParameter("menuId")) ? Long.parseLong(request.getParameter("menuId")) : null;
+Long parentMenuId = StringUtils.isNotBlank(request.getParameter("parentMenuId")) ? Long.parseLong(request.getParameter("parentMenuId")) : null;
 if(CollectionUtils.isNotEmpty(permissions) && 
-		(permissions.contains(menuName) || permissions.contains(parentMenuName))) {%>
-<a id="add" href='<s:url action="AddNews"><s:param name="menuName" value="%{menuName}"></s:param>
-			<s:param name="parentMenuName" value="%{parentMenuName}"></s:param></s:url>'>
+		(permissions.contains(menuId) || permissions.contains(parentMenuId))) {%>
+<a id="add" href='<s:url action="AddNews"><s:param name="menuId" value="%{menuId}"></s:param>
+			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param></s:url>'>
 <button class="btn btn-primary" type="button" value="Add New" >Add New</button>
 </a>
 <%}%>
@@ -75,8 +79,8 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 		<div class="result-document">
 		<h4>
 	      <a href='<s:url action="LoadSelectedNews">
-	     		<s:param name="menuName" value="%{menuName}"></s:param>
-				<s:param name="parentMenuName" value="%{parentMenuName}"></s:param>
+	     		<s:param name="menuId" value="%{menuId}"></s:param>
+				<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
 				<s:param name="selectedItemId" value="%{#attr.bean.id}"></s:param></s:url>'>
 				<p>
 					<s:property value="%{#attr.bean.title}"/>
@@ -106,6 +110,6 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 	   	</div>
 	</display:column>
 </display:table>
-
+</div>
 </body>
 </html>

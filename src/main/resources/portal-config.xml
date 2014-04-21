@@ -89,7 +89,7 @@
 	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
 	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
 	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,audio/vnd.dlna.adts,
-	                video/3gpp,application/octet-stream,video/mp4
+	                video/3gpp,application/octet-stream,video/mp4,video/avi
 					</param>
 	            </interceptor-ref>  
 	        <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -133,7 +133,7 @@
 		                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
 		                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
 		                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,
-		                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+		                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 						</param>
 		    </interceptor-ref>  
 		    <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -171,7 +171,7 @@
 		                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
 		                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
 		                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,
-		                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+		                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 						</param>
 		            </interceptor-ref>  
 		        <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -196,7 +196,7 @@
 		</action>
 		
 		<action name="ShowImages" class="com.saasforedu.irro.article.action.MenuAttachmentAction" method="showImages">
-			<result name="success" type="tiles">showMenuImages</result>
+			<result name="success">/attachmentcontent/ImageAttachmentContent.jsp</result>
 		</action>
 		
 		<action name="ShowVideos" class="com.saasforedu.irro.article.action.MenuAttachmentAction" method="showVideos">
@@ -226,6 +226,7 @@
 		<action name="CreateNews" class="com.saasforedu.irro.article.action.NewsAction" method="createNews">
 		    <result name="input" type="tiles">addNews</result>
 			<result name="success" type="tiles">newsSuccess</result>
+			<result name="error" type="tiles">addNews</result>
 		</action>
 	
 		<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
@@ -235,12 +236,13 @@
 	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
 	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
 	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,audio/vnd.dlna.adts,
-	                video/3gpp,application/octet-stream,video/mp4
+	                video/3gpp,application/octet-stream,video/mp4,video/avi
 					</param>
 	        </interceptor-ref>  
 	        <interceptor-ref name="defaultStack"></interceptor-ref>
 		    <result name="input" type="tiles">addNews</result>
 			<result name="success" type="tiles">addNews</result>
+			<result name="error" type="tiles">addNews</result>
 		</action>
 		
 		
@@ -266,11 +268,23 @@
 		<action name="SaveNews" class="com.saasforedu.irro.article.action.NewsAction" method="saveNews">
 			<result name="input" type="tiles">editNews</result>
 			<result name="success" type="tiles">newsSuccess</result>
+			<result name="error" type="tiles">editNews</result>
 		</action>
 		
 		<action name="UploadFileForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
-			<result name="input" type="tiles">editNews</result>
+		    <interceptor-ref name="fileUpload">  
+	                <param name="maximumSize">50097152</param>
+	               <param name="allowedTypes">
+	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,audio/vnd.dlna.adts,
+	                video/3gpp,application/octet-stream,video/mp4,video/avi
+					</param>
+	        </interceptor-ref>  
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="input" type="tiles">editNews</result>
 			<result name="success" type="tiles">editNews</result>
+			<result name="error" type="tiles">editNews</result>
 		</action>
 		
 		<action name="ActivateAttachmentForSavedNews" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
@@ -291,7 +305,7 @@
 		<!--  News Ends -->
 		
 		<!-- Event Starts -->
-		<action name="LoadCreateDepartmentEvent" class="com.saasforedu.irro.action.EventAction">
+		<action name="LoadCreateDepartmentEvent" class="com.saasforedu.irro.action.EventAction" method="loadCreateDepartmentEvent">
 			<result name="input" type="tiles">articles</result>
 			<result name="success" type="tiles">loadCreateDepartmentEvent</result>
 		</action>
@@ -306,7 +320,7 @@
 	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,
 	                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
 	                application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,
-	                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+	                audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 					</param> 
 	            </interceptor-ref>  
 	        <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -318,10 +332,22 @@
 		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">
 			<result name="input" type="tiles">loadCreateDepartmentEvent</result>
 			<result name="success" type="tiles">eventSuccess</result>
+			<result name="error" type="tiles">loadCreateDepartmentEvent</result>
 		</action>
 		
 		
 		<!-- Event Ends -->
+		
+		<action name="SendFeedBack" class="com.saasforedu.irro.action.ExampleSupport" method="sendFeedBack">
+			<result name="input" type="tiles">articles</result>
+			<result name="success">/article/EmailSuccess.jsp</result>
+		</action>
+		
+		<!-- Main Contacts , Hotel, Online Resources -->
+		<action name="LoadArticlesByName" class="com.saasforedu.irro.article.action.ArticleAction" method="loadArticlesByName">
+			<result name="success" type="tiles">articles</result>
+		</action>
+		
 		
 	</package>
 	

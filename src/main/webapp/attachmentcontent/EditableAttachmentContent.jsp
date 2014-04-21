@@ -14,23 +14,32 @@
 .myClass{
  background-colour : white
 }
-.pagination-table {
+
+.attachmentTable {
 background: none;
+width : 300px;
+background-color:rgb(198,217,241);
+
+}
+.file-table {
+background: none;
+float : left;
 
 }
 </style>
 </head> 
 
-<body cssClass="myClass">
-<div style="margin : 5px 0px 0px 10px" class="pagination-table">
-	<h1 style="font-size: 18px;font-family: 'Open Sans';">Edit Attachment Bean</h1>
+<body>
+<div style="margin : 5px 0px 0px 10px">
 
-	<s:form action="DeleteMenuAttachments" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
+	<h1 style="font-size: 18px;font-family: 'Open Sans';">Edit Attachment Bean</h1>
+    <div>
+	<s:form action="DeleteMenuAttachments" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" cssClass="attachmentTable">
 	
-		<s:hidden id="menuName" name="menuName" value="%{menuName}"/>
-		<s:hidden id="parentMenuName" name="parentMenuName" value="%{parentMenuName}"/>
+		<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+		<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="id" name="attachmentContent.id" value="%{attachmentContent.id}"/>
-		<table style="width:1000px">
+		
 			  <tr style="padding-bottom:10px">
 			    <th style="font-weight:bold;font-size:14px">Select</th>
 			    <th style="font-weight:bold;font-size:14px">Name</th>
@@ -77,38 +86,67 @@ background: none;
 					  </tr>
 				   </s:iterator>
 				  </s:if>
-		  </table>
+		  
 		  
 		<input type="submit" value="Activate" onclick="form.action='ActivateMenuAttachments';">
 		<input type="submit" value="DeActivate" onclick="form.action='DeActivateMenuAttachments';">
-		<sj:submit style="float:right;height : 25px;margin: 20px 30px 0px 0px;" button="Delete" value="Delete" />
+		<input type="submit" button="Delete" value="Delete" />
 		
 	</s:form>
-	
+	</div>
 	<!--  Add new files -->
 	
+	
+	<div style="margin-top : 100px;width : 100px">
 	Add New Files
-	<s:form action="UploadAttachments" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-	    <s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
-		<s:hidden id="attachmentContent.id" name="attachmentContent.id" value="%{attachmentContent.id}"/>
-	    <s:file name="upload" label="File" size="40" />
-	    <s:a onlick="removeRow()" >Remove</s:a>
-	    <s:file name="upload" label="File" size="40" />
-	    <s:a onlick="removeRow()" >Remove</s:a>
-	    <s:file name="upload" label="File" size="40" />
-	    <s:a onlick="removeRow()" >Remove</s:a>
-	    <s:file name="upload" label="File" size="40" />
-	    <s:a onlick="removeRow()" >Remove</s:a>
-	    <s:file name="upload" label="File" size="40" />
-	    <s:a onlick="removeRow()" >Remove</s:a>
+	<form id="UploadAttachments" name="UploadAttachments" action="UploadAttachments" method="post" enctype="multipart/form-data">
+<table class="wwFormTable">
+	    <s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+		<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
+		<s:hidden id="id" name="attachmentContent.id" value="%{attachmentContent.id}"/>
+		
+		<th>
+		<td style="font-weight:bold">Local File</td>
+		<td style="font-weight:bold">Youtube/Vimeo/Mail.RU</td>
+        </th>
+		
 	    <tr>
-		    <td class="tdLabel"><label for="UploadAttachmentContentFile_upload" class="label">File:</label></td>
-		    <td><input type="file" name="upload" size="40" value="" id="UploadAttachmentContentFile_upload"/></td>
-		</tr>
-	    <s:submit value="Upload File" onclick="setBeanValue()" />
-	    
-	</s:form>
+		<td class="tdLabel"><label for="UploadAttachments_upload" class="label">File:</label></td>
+		<td><input type="file" name="upload" size="40" value="[]" id="UploadAttachments_upload"/></td>
+		<td><input type="text" name="externalUrl" size="40" id="UploadAttachments_externalUrl"/></td>
+        </tr>
+
+	    <tr>
+		<td class="tdLabel"><label for="UploadAttachments_upload" class="label">File:</label></td>
+		<td><input type="file" name="upload" size="40" value="[]" id="UploadAttachments_upload"/></td>
+		<td><input type="text" name="externalUrl" size="40" id="UploadAttachments_externalUrl"/></td>
+        </tr>
+		<tr>
+		<td class="tdLabel"><label for="UploadAttachments_upload" class="label">File:</label></td>
+		<td><input type="file" name="upload" size="40" value="[]" id="UploadAttachments_upload"/></td>
+		<td><input type="text" name="externalUrl" size="40" id="UploadAttachments_externalUrl"/></td>
+        </tr>
+		<tr>
+		<td class="tdLabel"><label for="UploadAttachments_upload" class="label">File:</label></td>
+		<td><input type="file" name="upload" size="40" value="[]" id="UploadAttachments_upload"/></td>
+		<td><input type="text" name="externalUrl" size="40" id="UploadAttachments_externalUrl"/></td>
+        </tr>
+		<tr>
+		<td class="tdLabel"><label for="UploadAttachments_upload" class="label">File:</label></td>
+		<td><input type="file" name="upload" size="40" value="[]" id="UploadAttachments_upload"/></td>
+		<td><input type="text" name="externalUrl" size="40" id="UploadAttachments_externalUrl"/></td>
+        </tr>
+
+	    <tr>
+    <td colspan="3"><div align="right"><input type="submit" id="UploadAttachments_0" value="Upload File" onclick="setBeanValue()"/>
+</div></td>
+</tr>
+	</table>
+	
+	</form>
+	</div>
+	
+	
 	
 </div>
 	

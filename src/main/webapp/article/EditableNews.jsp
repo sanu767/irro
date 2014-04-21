@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head jquerytheme="lightness" jqueryui="true"/>
+	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <script src="../editor/ckeditor.js"></script>
 <script type="text/javascript">
 
@@ -78,6 +78,11 @@ function validateDate()
 background: none;
 
 }
+.errorDiv{
+	background-color:white;
+	border:1px solid black;
+	width:485px;
+}
 </style>
 </head> 
 
@@ -93,13 +98,20 @@ if(path != null) {
 %>
 <div style="margin : 5px 0px 0px 10px" class="pagination-table">
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Save News</h1>
-
+	
+	<s:if test="hasActionErrors()">
+		<div class="errorDiv">
+			<s:actionerror/>
+		</div>
+	</s:if>
+	
 	<s:form action="SaveNews" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
 	
-	<s:hidden id="menuName" name="menuName" value="%{menuName}"/>
-	<s:hidden id="parentMenuName" name="parentMenuName" value="%{parentMenuName}"/>
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 	<s:hidden id="id" name="bean.id" value="%{bean.id}"/>	
 	<s:hidden name="bean.content" value="%{bean.content}"/>
+	<s:hidden name="bean.sliderImage" value="%{bean.sliderImage}"/>
 
 		<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
 			required="true" placeholder="Enter title" />
@@ -113,9 +125,9 @@ if(path != null) {
 		
 		</div>
 
-		<sj:datepicker id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="mm/dd/yy" id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 		
 		<s:checkbox id="sliderSelected" name="bean.sliderSelected" label="Show in slider " />
 		
@@ -165,14 +177,15 @@ if(path != null) {
 	
 	Add New Files
 	<s:form action="UploadFileForSavedNews" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-	    <s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
+	    <s:hidden name="menuId" value="%{menuId}"/>
+		<s:hidden name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>
 		<s:hidden id="bean.startDate" name="bean.startDate" value="%{bean.startDate}"/>
 		<s:hidden id="bean.endDate" name="bean.endDate" value="%{bean.endDate}"/>
 		<s:hidden id="bean.showInHomePage" name="bean.showInHomePage" value="%{bean.showInHomePage}"/>
+		<s:hidden id="bean.sliderImage" name="bean.sliderImage" value="%{bean.sliderImage}"/>
 		<s:hidden id="bean.id" name="bean.id" value="%{bean.id}"/>
 	    <s:file name="upload" label="File"/>
 	    <s:submit value="Upload File" onclick="setBeanValue()" />

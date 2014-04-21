@@ -36,10 +36,6 @@ div div div h6 {
 	          			 <s:iterator value="#application['News']" id="eachNews">
 	          			 	<li>
 	          			 		<div style="font-size:14px;">
-					              <h6 style="font-size:14px;font-weight:bold;font-family:'Calibri'">
-					              		Семинар «Вопросы реализации нового <br>Федерального закона «Об образовании в Российской Федерации»
-					              </h6>
-	
 					          	 	 <p>	
 					          	 	 	<s:property value="#eachNews.title" />
 								      </p>
@@ -62,8 +58,6 @@ div div div h6 {
 						<s:iterator value="#application['Events']" id="eachEvent">
 		          		  <li>
 		          			 <div style="font-size:14px;">
-					              <h6 style="font-size:14px;font-weight:bold;font-family:'Calibri'">
-					              Семинар «Вопросы реализации нового <br>Федерального закона «Об образовании в Российской Федерации»</h6>
 					              	<p>	
 					          	 	 	<s:property value="#eachEvent.title" />
 								      </p>
@@ -101,7 +95,7 @@ div div div h6 {
             animtype      : 'slide',
             height        : 250,
             width         : 300,
-            responsive    : true,
+            responsive    : false,
             randomstart   : true
           });
           

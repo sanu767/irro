@@ -46,7 +46,7 @@ a div.sliderShortDescription {
 		<s:iterator value="#application['SliderItems']" id="eachSliderItem">
 		
 		    <s:if test='%{#eachSliderItem.eventType.typeId == "N"}'>
-		         <s:url id="editUrl" action="content/LoadSelectedNews">
+		        <s:url id="editUrl" action="content/LoadSelectedNews">
 			      	<s:param name="selectedItemId" value="#eachSliderItem.id" />
 			    </s:url>
 		    </s:if>

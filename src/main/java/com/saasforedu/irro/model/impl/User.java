@@ -55,6 +55,9 @@ public class User implements IUser {
 	@Column(name = "MAX_UPLOAD_FILE_SIZE")
 	Long maxUploadFileSize;
 	
+	@Column(name = "IS_SUPERADMIN")
+	boolean superAdmin;
+	
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=UserPermission.class, mappedBy="user")
 	List<IUserPermission> permissions = new ArrayList<IUserPermission>();
 
@@ -150,6 +153,14 @@ public class User implements IUser {
 		this.maxUploadFileSize = maxUploadFileSize;
 	}
 
+	public boolean isSuperAdmin() {
+		return superAdmin;
+	}
+
+	public void setSuperAdmin(boolean superAdmin) {
+		this.superAdmin = superAdmin;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -171,6 +182,7 @@ public class User implements IUser {
 		result = prime
 				* result
 				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
+		result = prime * result + (superAdmin ? 1231 : 1237);
 		result = prime * result
 				+ ((userCode == null) ? 0 : userCode.hashCode());
 		result = prime * result
@@ -231,6 +243,8 @@ public class User implements IUser {
 				return false;
 		} else if (!registrationDate.equals(other.registrationDate))
 			return false;
+		if (superAdmin != other.superAdmin)
+			return false;
 		if (userCode == null) {
 			if (other.userCode != null)
 				return false;
@@ -248,16 +262,4 @@ public class User implements IUser {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userCode=" + userCode + ", userName="
-				+ userName + ", userSurname=" + userSurname + ", email="
-				+ email + ", password=" + password + ", address=" + address
-				+ ", phoneNumber=" + phoneNumber + ", registrationDate="
-				+ registrationDate + ", active=" + active
-				+ ", maxUploadFileSize=" + maxUploadFileSize + ", permissions="
-				+ permissions + "]";
-	}
-
 }

@@ -6,12 +6,27 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <body>
+	
+<ul>
+	
 	<s:if test="%{menuOtherDocs.size() > 0}">
 		<s:iterator value="menuOtherDocs">
-				  <a href='<%=request.getContextPath() %><s:property value="location" /><s:property value="name" />'>
-				  	<s:property value="name" />
-				  </a>
+			  <s:if test="active">
+			  <li>	
+			     <s:if test="external">
+				  	   <s:property value="name" />
+			     </s:if>
+			     <s:else>			      									
+				   <a href='<%=request.getContextPath() %><s:property value="location" /><s:property value="name" />'>
+				  	     <s:property value="name" />
+				    </a>
+				  </s:else>	
+			</li>
+			  </s:if>
 		 </s:iterator>
-	</s:if>
+	 </s:if>
+
+</ul>
+
 </body>
 </html>

@@ -79,6 +79,7 @@ function validateDate()
 background: none;
 
 }
+
 </style>
 </head> 
 
@@ -94,7 +95,6 @@ if(path != null) {
 %>
 <div style="margin : 5px 0px 0px 10px" class="pagination-table">
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Create Event</h1>
-
 	<s:form action="CreateEvent" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
 	
 	

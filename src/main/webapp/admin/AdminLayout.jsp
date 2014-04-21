@@ -63,7 +63,7 @@ padding-top:5px;
 <div id="wrapper">
 		
      <div id="navigationwrap">
-	   <a href="ChangeMenus"  title="IRRO">
+	   <a href="#"  title="IRRO">
 			<img class="logo" src="<%=request.getContextPath() %>/images/logo/irrologo.png" border="0" alt="Home" />
 	   </a> 
 	   <h1 style="text-align : center">Welcome to Irro Administrator</h1>

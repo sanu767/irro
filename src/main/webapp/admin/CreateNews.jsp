@@ -79,6 +79,7 @@ function validateDate()
 background: none;
 
 }
+
 </style>
 </head> 
 
@@ -97,7 +98,9 @@ if(path != null) {
 
 	<s:form action="CreateNews" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
 	
-	<s:hidden id="menuName" name="menuName" value="News"/>
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
+	
 	<s:hidden name="bean.content" value="%{bean.content}"/>
 	
 	<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
@@ -110,7 +113,6 @@ if(path != null) {
 		<div id="editor" style="margin : 50px 0px 0px 10px">
 		
 		</div>
-		
 		
 		<sj:datepicker displayFormat="mm/dd/yy" id="startDate"  name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
@@ -166,7 +168,8 @@ if(path != null) {
 	
 	Add New Files
 	<s:form action="UploadNewsFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-		<s:hidden name="menuName" value="News"/>
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

@@ -51,7 +51,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public void updateItem(ItemBean itemBean) {
 		IItem item = itemDAO.findById(Item.class, itemBean.getId());
-		if(itemBean.isSliderSelected()) {
+		if(itemBean.isSliderSelected() && itemBean.getSliderFile() != null)  {
 			uploadSliderImageInServer(itemBean);
 		}
 		copyProperties(itemBean, item);

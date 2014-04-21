@@ -56,7 +56,7 @@ background: none;
 
 <div class="pagination">
 <s:form action="DeleteItems" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
-<display:table name="searchedItems" defaultsort="2" pagesize="3" sort="list" requestURI="" uid="bean" id="bean">
+<display:table name="searchedItems" defaultsort="2" pagesize="5" sort="list" requestURI="" uid="bean" id="bean">
 	
 	<display:column title="Delete">
 		<input type="checkbox" name="checkedId" value="${bean.rowId}">

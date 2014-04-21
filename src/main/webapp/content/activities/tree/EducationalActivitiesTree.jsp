@@ -26,119 +26,109 @@ window.onload = function () {
 	}	
 };
 </script>
-<style>
-ul li {
-    margin-left: 20px !important;
-}
-
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
-</style>
 </head>
 <body>
 <ul>
 <li id="Activities"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Activities</s:param>
+					<s:param name="menuId">Activities</s:param>
 				</s:url>'>Деятельность</a>
      <ul>
       <li id="EducationalActivities"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivities</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
+					<s:param name="menuId">EducationalActivities</s:param>
+					<s:param name="parentMenuId">Activities</s:param>
 				</s:url>'>Образовательная деятельность</a>
        <ul>
         <li id="Development"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDevelopment</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesDevelopment</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Повышение квалификации</a>
 			<ul>
 				<li><a  href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDevelopmentYearlySchedule</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+					<s:param name="menuId">EducationalActivitiesDevelopmentYearlySchedule</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesDevelopment</s:param>
 				</s:url>'>График  на год</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDevelopmentMonthlyPlan</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+					<s:param name="menuId">EducationalActivitiesDevelopmentMonthlyPlan</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesDevelopment</s:param>
 				</s:url>'>План на месяц</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDevelopmentCatalog</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesDevelopment</s:param>
+					<s:param name="menuId">EducationalActivitiesDevelopmentCatalog</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesDevelopment</s:param>
 				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
         <li id="Retraining"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesRetraining</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesRetraining</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Профессиональная переподготовка</a>
 			<ul>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesRetrainingYearlySchedule</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+					<s:param name="menuId">EducationalActivitiesRetrainingYearlySchedule</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesRetraining</s:param>
 				</s:url>'>График  на год</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesRetrainingMonthlyPlan</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+					<s:param name="menuId">EducationalActivitiesRetrainingMonthlyPlan</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesRetraining</s:param>
 				</s:url>'>План на месяц</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesRetrainingCatalog</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesRetraining</s:param>
+					<s:param name="menuId">EducationalActivitiesRetrainingCatalog</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesRetraining</s:param>
 				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
 		<li id="Internship"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesInternship</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesInternship</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Стажировка</a>
 			<ul>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesInternshipYearlySchedule</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+					<s:param name="menuId">EducationalActivitiesInternshipYearlySchedule</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesInternship</s:param>
 				</s:url>'>График  на год</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesInternshipMonthlyPlan</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+					<s:param name="menuId">EducationalActivitiesInternshipMonthlyPlan</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesInternship</s:param>
 				</s:url>'>План на месяц</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesInternshipCatalog</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesInternship</s:param>
+					<s:param name="menuId">EducationalActivitiesInternshipCatalog</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesInternship</s:param>
 				</s:url>'>Аннотированный каталог</a></li>
 		   </ul>
 		</li>
 		<li id="DistanceLearning"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDistanceLearning</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesDistanceLearning</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Дистанционное обучение</a>
 			<ul>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDistanceLearningContract</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesDistanceLearning</s:param>
+					<s:param name="menuId">EducationalActivitiesDistanceLearningContract</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesDistanceLearning</s:param>
 				</s:url>' href="EducationalActivitiesDistanceLearningContract">Договор оферты</a></li>
 				
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesDistanceLearningCatalog</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesDistanceLearning</s:param>
+					<s:param name="menuId">EducationalActivitiesDistanceLearningCatalog</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesDistanceLearning</s:param>
 				</s:url>'>Аннотированный каталог (Описание и ссылка для перехода на http://elearn.irro.ru/)</a></li>			
 		   </ul>
 		</li>	
 		<li id="Extrabudgetary"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesExtrabudgetary</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesExtrabudgetary</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Внебюджетная деятельность</a>
 		   <ul>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesExtrabudgetaryContract</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesExtrabudgetary</s:param>
+					<s:param name="menuId">EducationalActivitiesExtrabudgetaryContract</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesExtrabudgetary</s:param>
 				</s:url>'>Договор</a></li>
 				<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesExtrabudgetaryCatalog</s:param>
-					<s:param name="parentMenuName">EducationalActivitiesExtrabudgetary</s:param>
+					<s:param name="menuId">EducationalActivitiesExtrabudgetaryCatalog</s:param>
+					<s:param name="parentMenuId">EducationalActivitiesExtrabudgetary</s:param>
 				</s:url>'>Аннотированный каталог</a></li>			
 		   </ul>
 		</li>
 		<li id="Seminar"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">EducationalActivitiesSeminar</s:param>
-					<s:param name="parentMenuName">EducationalActivities</s:param>
+					<s:param name="menuId">EducationalActivitiesSeminar</s:param>
+					<s:param name="parentMenuId">EducationalActivities</s:param>
 				</s:url>'>Семинары</a></li>
        </ul>
        </li>

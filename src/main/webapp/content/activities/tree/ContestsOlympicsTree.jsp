@@ -26,54 +26,44 @@ window.onload = function () {
 	}	
 };
 </script>
-<style>
-ul li {
-    margin-left: 20px !important;
-}
-
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
-</style>
 </head>
 <body>
 <ul>
 <li id="Activities"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Activities</s:param>
+					<s:param name="menuId">Activities</s:param>
 				</s:url>'>Деятельность</a>
      <ul>
       <li id="Contests"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Contests</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
+					<s:param name="menuId">Contests</s:param>
+					<s:param name="parentMenuId">Activities</s:param>
 				</s:url>'>Конкурсы</a>
        <ul>
         <li id="Staff"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ContestsStaff</s:param>
-					<s:param name="parentMenuName">Contests</s:param>
+					<s:param name="menuId">ContestsStaff</s:param>
+					<s:param name="parentMenuId">Contests</s:param>
 				</s:url>'>для педагогических <br>работников</a></li>
         <li id="Organization"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ContestsOrganization</s:param>
-					<s:param name="parentMenuName">Contests</s:param>
+					<s:param name="menuId">ContestsOrganization</s:param>
+					<s:param name="parentMenuId">Contests</s:param>
 				</s:url>'>для образовательных <br>организаций</a></li>
 		<li id="Learner"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ContestsLearner</s:param>
-					<s:param name="parentMenuName">Contests</s:param>
+					<s:param name="menuId">ContestsLearner</s:param>
+					<s:param name="parentMenuId">Contests</s:param>
 				</s:url>'>для обучающихся</a></li>
        </ul>
       </li>
 	  <li id="Olympics"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Olympics</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
+					<s:param name="menuId">Olympics</s:param>
+					<s:param name="parentMenuId">Activities</s:param>
 				</s:url>'>Олимпиады</a>
        <ul>
         <li id="AllRussia"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">OlympicsAllRussia</s:param>
-					<s:param name="parentMenuName">Olympics</s:param>
+					<s:param name="menuId">OlympicsAllRussia</s:param>
+					<s:param name="parentMenuId">Olympics</s:param>
 				</s:url>'>Всероссийская олимпиада школьников</a></li>
         <li id="School"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">OlympicsSchool</s:param>
-					<s:param name="parentMenuName">Olympics</s:param>
+					<s:param name="menuId">OlympicsSchool</s:param>
+					<s:param name="parentMenuId">Olympics</s:param>
 				</s:url>'>Предметные олимпиады школьников</a></li>		
        </ul>
       </li>

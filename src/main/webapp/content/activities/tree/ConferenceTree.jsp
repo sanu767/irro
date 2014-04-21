@@ -28,43 +28,33 @@ window.onload = function () {
 	}	
 };
 </script>
-<style>
-ul li {
-    margin-left: 20px !important;
-}
-
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
-</style>
 </head>
 <body>
 <ul>
 <li id="Activities"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Activities</s:param>
+					<s:param name="menuId">Activities</s:param>
 				</s:url>'>Деятельность</a>
      <ul>
       <li id="Conference"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Conference</s:param>
-					<s:param name="parentMenuName">Activities</s:param>
+					<s:param name="menuId">Conference</s:param>
+					<s:param name="parentMenuId">Activities</s:param>
 				</s:url>'>Конференции</a>
        <ul>
 			<li id="International"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ConferenceInternational</s:param>
-					<s:param name="parentMenuName">Conference</s:param>
+					<s:param name="menuId">ConferenceInternational</s:param>
+					<s:param name="parentMenuId">Conference</s:param>
 				</s:url>'>Международные</a></li>
 			<li id="Russia"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ConferenceRussia</s:param>
-					<s:param name="parentMenuName">Conference</s:param>
+					<s:param name="menuId">ConferenceRussia</s:param>
+					<s:param name="parentMenuId">Conference</s:param>
 				</s:url>'>Всероссийские</a></li>
 			<li id="Regional"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ConferenceRegional</s:param>
-					<s:param name="parentMenuName">Conference</s:param>
+					<s:param name="menuId">ConferenceRegional</s:param>
+					<s:param name="parentMenuId">Conference</s:param>
 				</s:url>'>Региональные</a></li>
 			<li id="Oblastnyye"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">ConferenceOblastnyye</s:param>
-					<s:param name="parentMenuName">Conference</s:param>
+					<s:param name="menuId">ConferenceOblastnyye</s:param>
+					<s:param name="parentMenuId">Conference</s:param>
 				</s:url>'>Областные</a></li>			
        </ul>
       </li>

@@ -1,3 +1,5 @@
+<%@page import="com.saasforedu.irro.enums.MenuType"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@page import="org.apache.commons.collections.CollectionUtils"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -40,7 +42,7 @@
 
 .pagination-table {
 background: none;
-
+width : 600px;
 }
 
 .pagination-table td {
@@ -58,23 +60,47 @@ background: none;
 
 <body>
 <div class="pagination">
-<% List<String> permissions = (List<String>)request.getSession().getAttribute("PermissionList");
-String menuName = request.getParameter("menuName");
-String parentMenuName = request.getParameter("parentMenuName");
+<%
+List<Long> permissions = (List<Long>)request.getSession().getAttribute("PermissionList");
+String menuName = (String)request.getParameter("menuName");
+
+Long menuId = null;
+Long parentMenuId = null;
+
+if(StringUtils.equals("MainContacts", menuName) || 
+		StringUtils.equals("Hotel", menuName)  || 
+		StringUtils.equals("OnlineResources", menuName) ) {
+	menuId = (Long)request.getAttribute("menuId");
+	parentMenuId = (Long)request.getAttribute("parentMenuId");
+} else {
+	menuId = StringUtils.isNotBlank(request.getParameter("menuId")) ? Long.parseLong(request.getParameter("menuId")) : null;
+	parentMenuId = StringUtils.isNotBlank(request.getParameter("parentMenuId")) ? Long.parseLong(request.getParameter("parentMenuId")) : null;
+}
+
 if(CollectionUtils.isNotEmpty(permissions) && 
-		(permissions.contains(menuName) || permissions.contains(parentMenuName))) {%>
-	<a id="add" href='<s:url action="AddArticle"><s:param name="menuName" value="%{menuName}"></s:param>
-			<s:param name="parentMenuName" value="%{parentMenuName}"></s:param></s:url>'>
+		(permissions.contains(menuId) || permissions.contains(parentMenuId))) {%>
+	<a id="add" href='<s:url action="AddArticle"><s:param name="menuId" value="%{menuId}"></s:param>
+			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param></s:url>'>
 				<button class="btn btn-primary" type="button" value="Add New" >Add New</button>
 	</a>
+	<%
+	MenuType menuType = (MenuType)request.getAttribute("menuType");
+	if(MenuType.DEPARTMENT.equals(menuType)) {%>
+		<a id="Create" href='<s:url action="LoadCreateDepartmentEvent"><s:param name="menuId" value="%{menuId}"></s:param>
+			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param></s:url>'>
+				<button class="btn btn-primary" type="button" value="Create Event" >Create Event</button>
+		</a>
+	<%}%>
+	
 <%}%>
+
 <display:table name="beans" defaultsort="2" pagesize="5" sort="list" requestURI="" uid="bean" id="bean" class="pagination-table">
 	<display:column>
 		<div class="result-document">
 		<h4>
 	      <a href='<s:url action="LoadSelectedArticle">
-	     		<s:param name="menuName" value="%{menuName}"></s:param>
-				<s:param name="parentMenuName" value="%{parentMenuName}"></s:param>
+	     		<s:param name="menuId" value="%{menuId}"></s:param>
+				<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
 				<s:param name="id" value="%{#attr.bean.id}"></s:param></s:url>'>
 				<p>
 					<s:property value="%{#attr.bean.title}"/>
@@ -109,7 +135,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 
 <s:if test="%{#parameters.menuName[0]	== 'MainContacts' || 
 #parameters.menuName[0]	== 'MainContacts' }">
-	<jsp:include page="/content/MainContacts.jsp"></jsp:include>
+	<jsp:include page="../content/MainContacts.jsp"></jsp:include>
 </s:if>
 
 <s:else>

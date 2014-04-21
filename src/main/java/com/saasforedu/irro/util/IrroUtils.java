@@ -3,14 +3,17 @@ package com.saasforedu.irro.util;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -18,11 +21,14 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.saasforedu.irro.article.action.Menu;
 import com.saasforedu.irro.bean.FeedBackBean;
 import com.saasforedu.irro.bean.UserGroupBean;
 import com.saasforedu.irro.bean.UserPermissionBean;
 import com.saasforedu.irro.enums.PermissionType;
+import com.saasforedu.irro.model.IMenuMetadata;
 import com.saasforedu.irro.model.IUser;
+import com.saasforedu.irro.model.impl.MenuMetadata;
 
 public class IrroUtils {
 	
@@ -58,7 +64,7 @@ public class IrroUtils {
 		Properties properties = System.getProperties();
 		// Setup mail server
 		// Assuming you are sending email from localhost
-		properties.setProperty(IConstants.MAIL_SMTP_HOST, IConstants.LOCAL_HOST);
+		properties.setProperty(IConstants.MAIL_SMTP_HOST, "127.0.0.1");
 		// Get the default Session object.
 		Session session = Session.getDefaultInstance(properties);
 
@@ -77,6 +83,61 @@ public class IrroUtils {
 			// Send message
 			Transport.send(message);
 		}catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+	}
+	
+	public static void sendFeedbackMail(Mail mail) {
+		
+		Authenticator authenticator = new Authenticator() {
+			private PasswordAuthentication authentication;
+		 
+			{
+				authentication = new PasswordAuthentication("feedback@irro.ru", "gh0dthr@");
+			}
+		 
+			public PasswordAuthentication getPasswordAuthentication() {
+				return authentication;
+			}
+		};
+		
+		// Recipient's email ID needs to be mentioned.
+		String to = mail.getTo();
+
+		// Sender's email ID needs to be mentioned
+		String from = mail.getFrom();		
+		// Get system properties
+		Properties properties = System.getProperties();
+		// Setup mail server
+		// Assuming you are sending email from localhost
+		properties.setProperty(IConstants.MAIL_SMTP_HOST, "smtp.yandex.ru");
+		// Get the default Session object.
+		properties.put("mail.transport.protocol", "smtp");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.submitter", "feedback@irro.ru");
+		properties.put("mail.smtp.starttls.enable", "true");
+		
+		Session session = Session.getDefaultInstance(properties, authenticator);
+
+		try {
+			// Create a default MimeMessage object.
+			MimeMessage message = new MimeMessage(session);
+			// Set From: header field of the header.
+			message.setFrom(new InternetAddress(from));
+			// Set To: header field of the header.
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			// Set Subject: header field
+			message.setSubject(mail.getSubject());
+			// Send the actual HTML message, as big as you like
+
+			message.setContent(mail.getContent(), IConstants.MAIL_CONTENT_TYPE );
+			
+			Transport transport = session.getTransport("smtp");
+		    transport.connect("smtp.yandex.ru", "feedback@irro.ru", "gh0dthr@");
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+			// Send message
+		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
 	}
@@ -112,7 +173,7 @@ public class IrroUtils {
 		for (UserGroupBean group : allGroups) {			
 			boolean groupExists = IrroUtils.isGroupExists(permissionBeans, group.getGroupName());
 			if(groupExists) {
-				permissionCodeList.add(group.getGroupCode());
+				permissionCodeList.add(group.getGroupName());
 			}
 		}
 		return permissionCodeList;
@@ -150,6 +211,64 @@ public class IrroUtils {
 		return !(StringUtils.equals(MIME_VIDEO, type) || 
 				StringUtils.equals(MIME_IMAGE, type));
 		
+	}
+	
+	public static String getResourceString(String value) {
+		try {
+			//TODO : Could be done better
+			ResourceBundle resourceBundle = ResourceBundle.getBundle(IConstants.IRRO_BUNDLE, Locale.ENGLISH);
+			String encodedValue = new String(value.getBytes(IConstants.UTF_8), IConstants.ISO_8859_1);
+			Enumeration<String> enumeration = resourceBundle.getKeys();
+			while (enumeration.hasMoreElements()) {
+				String resourceKey = enumeration.nextElement();
+				String resourceValue = resourceBundle.getString(resourceKey);
+				if(encodedValue.equals(resourceValue)) {
+					return resourceKey;
+				}
+			}
+			return null;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (MissingResourceException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static Menu formMenuTree(IMenuMetadata menuTree) {
+		Menu root = new Menu();
+		root.setLabel(menuTree.getLabel());
+		root.setId(menuTree.getId());
+		root.setMenuType(menuTree.getMenuType());
+		root.setChildren(buildMenu(root, menuTree));
+		return root;
+	}
+	
+	public static String getDisplayNameForOtherDocs(String name) {
+		StringBuffer strBuff = new StringBuffer(name);
+		if(strBuff.length() > 30 ) {
+			StringBuffer replace = strBuff.replace(29, name.length(), "...");
+			return replace.toString();
+		}
+		return name;
+	}
+	
+	private static List<Menu> buildMenu(Menu root, IMenuMetadata menuTree) {
+		List<MenuMetadata> childrenMenuMeta = menuTree.getChildren();
+		List<Menu> children = new LinkedList<Menu>();
+		for (MenuMetadata menuMetadata : childrenMenuMeta) {
+			if(menuMetadata.isTree()) {
+				Menu child = new Menu();
+				child.setId(menuMetadata.getId());
+				child.setLabel(menuMetadata.getLabel());
+				child.setMenuType(menuMetadata.getMenuType());
+				child.setChildren(buildMenu(child, menuMetadata));
+				child.setParent(root);
+				children.add(child);
+			}
+		}
+		
+		return children;
 	}
 	
 	private static String getMIMEType(String fileType) {
@@ -192,25 +311,4 @@ public class IrroUtils {
 		return content;
 	}
 	
-	public static String getResourceString(String value) {
-		try {
-			//TODO : Could be done better
-			ResourceBundle resourceBundle = ResourceBundle.getBundle(IConstants.IRRO_BUNDLE, Locale.ENGLISH);
-			String encodedValue = new String(value.getBytes(IConstants.UTF_8), IConstants.ISO_8859_1);
-			Enumeration<String> enumeration = resourceBundle.getKeys();
-			while (enumeration.hasMoreElements()) {
-				String resourceKey = enumeration.nextElement();
-				String resourceValue = resourceBundle.getString(resourceKey);
-				if(encodedValue.equals(resourceValue)) {
-					return resourceKey;
-				}
-			}
-			return null;
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (MissingResourceException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 }

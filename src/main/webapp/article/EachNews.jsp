@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="org.apache.commons.collections.CollectionUtils"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -19,15 +20,15 @@ if(path != null) {
 %>
 
 <div id="main" onmouseover="editButton()"  onmouseout="removeEditButton()">
-<% List<String> permissions = (List<String>)request.getSession().getAttribute("PermissionList");
-String menuName = request.getParameter("menuName");
-String parentMenuName = request.getParameter("parentMenuName");
+<% List<Long> permissions = (List<Long>)request.getSession().getAttribute("PermissionList");
+Long menuId = StringUtils.isNotBlank(request.getParameter("menuId")) ? Long.parseLong(request.getParameter("menuId")) : null;
+Long parentMenuId = StringUtils.isNotBlank(request.getParameter("parentMenuId")) ? Long.parseLong(request.getParameter("parentMenuId")) : null;
 if(CollectionUtils.isNotEmpty(permissions) && 
-		(permissions.contains(menuName) || permissions.contains(parentMenuName))) {%>
+		(permissions.contains(menuId) || permissions.contains(parentMenuId))) {%>
 <a id="edittp" href='<s:url action="EditNews">
      		<s:param name="selectedItemId" value="%{bean.id}"></s:param>
-     		<s:param name="menuName" value="%{menuName}"></s:param>
-			<s:param name="parentMenuName" value="%{parentMenuName}"></s:param>
+     		<s:param name="menuId" value="%{menuId}"></s:param>
+			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
 			</s:url>'>Edit</a>
 <%}%>
 			
@@ -41,11 +42,11 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 
 
 <h1 style="font-size: 18px;font-family: 'Open Sans';">
-	<s:property value="bean.startDate" />
+	<s:date name="bean.startDate" format="dd/MM/yyyy"/>
 </h1>
 
 <h1 style="font-size: 18px;font-family: 'Open Sans';">
-	<s:property value="bean.endDate" />
+    <s:date name="bean.endDate" format="dd/MM/yyyy"/>
 </h1>
 
 

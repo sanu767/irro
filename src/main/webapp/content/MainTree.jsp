@@ -30,8 +30,12 @@ window.onload = function () {
 };
 </script>
 <style>
-ul li {
-    margin-left: 20px !important;
+.leftmenu {
+
+}
+
+.leftmenu ul li {
+    margin-left: 20px;
 }
 
 a {
@@ -41,154 +45,155 @@ a {
 </style>
 </head>
 <body>
-
-<s:if test="%{#parameters.menuName[0]	== 'Institute' || 
-#parameters.menuName[0]	== 'Rector' || 
-#parameters.menuName[0]	== 'Documents' || 
-#parameters.menuName[0]	== 'History' || 
-#parameters.menuName[0]	== 'Logistics' || 
-#parameters.menuName[0]	== 'Contacts' || 
-#parameters.menuName[0]	== 'Jobs' || 
-#parameters.parentMenuName[0]	== 'Rector' || 
-#parameters.parentMenuName[0]	== 'Documents' }">
+<div class="leftmenu">
+<s:if test="%{#parameters.menuId[0]	== 'Institute' || 
+#parameters.menuId[0]	== 'Rector' || 
+#parameters.menuId[0]	== 'Documents' || 
+#parameters.menuId[0]	== 'History' || 
+#parameters.menuId[0]	== 'Logistics' || 
+#parameters.menuId[0]	== 'Contacts' || 
+#parameters.menuId[0]	== 'Jobs' || 
+#parameters.parentMenuId[0]	== 'Rector' || 
+#parameters.parentMenuId[0]	== 'Documents' }">
   	<jsp:include page="/content/institute/tree/RectorTree.jsp"></jsp:include>
 </s:if>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Conference' || 
-#parameters.parentMenuName[0]	== 'Conference' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Conference' || 
+#parameters.parentMenuId[0]	== 'Conference' }">
 	<jsp:include page="/content/activities/tree/ConferenceTree.jsp"></jsp:include>
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Contests' || 
-#parameters.menuName[0]	== 'Olympics' ||
-#parameters.parentMenuName[0]	== 'Contests' || 
-#parameters.parentMenuName[0]	== 'Olympics' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Contests' || 
+#parameters.menuId[0]	== 'Olympics' ||
+#parameters.parentMenuId[0]	== 'Contests' || 
+#parameters.parentMenuId[0]	== 'Olympics' }">
 	<jsp:include page="/content/activities/tree/ContestsOlympicsTree.jsp"></jsp:include>
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Activities' || 
-#parameters.menuName[0]	== 'EducationalActivities' || 
-#parameters.menuName[0]	== 'EducationalActivitiesDevelopment' || 
-#parameters.menuName[0]	== 'EducationalActivitiesRetraining' || 
-#parameters.menuName[0]	== 'EducationalActivitiesDistanceLearning' || 
-#parameters.menuName[0]	== 'EducationalActivitiesExtrabudgetary' || 
-#parameters.menuName[0]	== 'EducationalActivitiesSeminar' || 
-#parameters.parentMenuName[0]	== 'Activities' || 
-#parameters.parentMenuName[0]	== 'EducationalActivities' || 
-#parameters.parentMenuName[0]	== 'EducationalActivitiesDevelopment' || 
-#parameters.parentMenuName[0]	== 'EducationalActivitiesRetraining' || 
-#parameters.parentMenuName[0]	== 'EducationalActivitiesDistanceLearning' || 
-#parameters.parentMenuName[0]	== 'EducationalActivitiesExtrabudgetary' || 
-#parameters.parentMenuName[0]	== 'EducationalActivitiesSeminar'  }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Activities' || 
+#parameters.menuId[0]	== 'EducationalActivities' || 
+#parameters.menuId[0]	== 'EducationalActivitiesDevelopment' || 
+#parameters.menuId[0]	== 'EducationalActivitiesRetraining' || 
+#parameters.menuId[0]	== 'EducationalActivitiesDistanceLearning' || 
+#parameters.menuId[0]	== 'EducationalActivitiesExtrabudgetary' || 
+#parameters.menuId[0]	== 'EducationalActivitiesSeminar' || 
+#parameters.parentMenuId[0]	== 'Activities' || 
+#parameters.parentMenuId[0]	== 'EducationalActivities' || 
+#parameters.parentMenuId[0]	== 'EducationalActivitiesDevelopment' || 
+#parameters.parentMenuId[0]	== 'EducationalActivitiesRetraining' || 
+#parameters.parentMenuId[0]	== 'EducationalActivitiesDistanceLearning' || 
+#parameters.parentMenuId[0]	== 'EducationalActivitiesExtrabudgetary' || 
+#parameters.parentMenuId[0]	== 'EducationalActivitiesSeminar'  }">
 	<jsp:include page="/content/activities/tree/EducationalActivitiesTree.jsp"></jsp:include>
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Certification' || 
-#parameters.menuName[0]	== 'Employees' || 
-#parameters.menuName[0]	== 'Graduates' || 
-#parameters.menuName[0]	== 'GraduatesEGE' || 
-#parameters.menuName[0]	== 'GraduatesJEG' || 
-#parameters.parentMenuName[0]	== 'Certification' || 
-#parameters.parentMenuName[0]	== 'Employees' || 
-#parameters.parentMenuName[0]	== 'Graduates' || 
-#parameters.parentMenuName[0]	== 'GraduatesEGE' || 
-#parameters.parentMenuName[0]	== 'GraduatesJEG'}">
+<s:elseif test="%{#parameters.menuId[0]	== 'Certification' || 
+#parameters.menuId[0]	== 'Employees' || 
+#parameters.menuId[0]	== 'Graduates' || 
+#parameters.menuId[0]	== 'GraduatesEGE' || 
+#parameters.menuId[0]	== 'GraduatesJEG' || 
+#parameters.parentMenuId[0]	== 'Certification' || 
+#parameters.parentMenuId[0]	== 'Employees' || 
+#parameters.parentMenuId[0]	== 'Graduates' || 
+#parameters.parentMenuId[0]	== 'GraduatesEGE' || 
+#parameters.parentMenuId[0]	== 'GraduatesJEG'}">
 	<jsp:include page="/content/certification/tree/CertificationTree.jsp"></jsp:include>
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Centers' || 
-#parameters.menuName[0]	== 'CentersInformation' || 
-#parameters.menuName[0]	== 'CentersRegional' || 
-#parameters.menuName[0]	== 'CentersEducationSystem' || 
-#parameters.menuName[0]	== 'CentersLibrary' ||
-#parameters.menuName[0]	== 'CentersAdministration' ||
-#parameters.menuName[0]	== 'CentersRobotics' ||
-#parameters.parentMenuName[0]	== 'Centers' || 
-#parameters.parentMenuName[0]	== 'CentersInformation' || 
-#parameters.parentMenuName[0]	== 'CentersRegional' || 
-#parameters.parentMenuName[0]	== 'CentersEducationSystem' || 
-#parameters.parentMenuName[0]	== 'CentersLibrary' ||
-#parameters.parentMenuName[0]	== 'CentersAdministration' ||
-#parameters.menuName[0]	== 'CentersRobotics' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Centers' || 
+#parameters.menuId[0]	== 'CentersInformation' || 
+#parameters.menuId[0]	== 'CentersRegional' || 
+#parameters.menuId[0]	== 'CentersEducationSystem' || 
+#parameters.menuId[0]	== 'CentersLibrary' ||
+#parameters.menuId[0]	== 'CentersAdministration' ||
+#parameters.menuId[0]	== 'CentersRobotics' ||
+#parameters.parentMenuId[0]	== 'Centers' || 
+#parameters.parentMenuId[0]	== 'CentersInformation' || 
+#parameters.parentMenuId[0]	== 'CentersRegional' || 
+#parameters.parentMenuId[0]	== 'CentersEducationSystem' || 
+#parameters.parentMenuId[0]	== 'CentersLibrary' ||
+#parameters.parentMenuId[0]	== 'CentersAdministration' ||
+#parameters.menuId[0]	== 'CentersRobotics' }">
 	<jsp:include page="/content/institute/tree/CentersTree.jsp"></jsp:include>
 
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Departments' || 
-#parameters.menuName[0]	== 'DepartmentsPhilosophy' || 
-#parameters.menuName[0]	== 'DepartmentsChildren' || 
-#parameters.menuName[0]	== 'DepartmentsScience' || 
-#parameters.menuName[0]	== 'DepartmentsVocational' ||
-#parameters.menuName[0]	== 'DepartmentsHumanities' || 
-#parameters.menuName[0]	== 'DepartmentsPhilological' || 
-#parameters.menuName[0]	== 'DepartmentsIT' || 
-#parameters.menuName[0]	== 'DepartmentsSocioScientific' || 
-#parameters.menuName[0]	== 'DepartmentsCabinet' ||
-#parameters.parentMenuName[0]	== 'Departments' || 
-#parameters.parentMenuName[0]	== 'DepartmentsPhilosophy' || 
-#parameters.parentMenuName[0]	== 'DepartmentsChildren' || 
-#parameters.parentMenuName[0]	== 'DepartmentsScience' || 
-#parameters.parentMenuName[0]	== 'DepartmentsVocational' ||
-#parameters.parentMenuName[0]	== 'DepartmentsHumanities' || 
-#parameters.parentMenuName[0]	== 'DepartmentsPhilological' || 
-#parameters.parentMenuName[0]	== 'DepartmentsPsychology' || 
-#parameters.parentMenuName[0]	== 'DepartmentsIT' || 
-#parameters.parentMenuName[0]	== 'DepartmentsSocioScientific' || 
-#parameters.parentMenuName[0]	== 'DepartmentsCabinet' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Departments' || 
+#parameters.menuId[0]	== 'DepartmentsPhilosophy' || 
+#parameters.menuId[0]	== 'DepartmentsChildren' || 
+#parameters.menuId[0]	== 'DepartmentsScience' || 
+#parameters.menuId[0]	== 'DepartmentsVocational' ||
+#parameters.menuId[0]	== 'DepartmentsHumanities' || 
+#parameters.menuId[0]	== 'DepartmentsPhilological' || 
+#parameters.menuId[0]	== 'DepartmentsIT' || 
+#parameters.menuId[0]	== 'DepartmentsSocioScientific' || 
+#parameters.menuId[0]	== 'DepartmentsCabinet' ||
+#parameters.parentMenuId[0]	== 'Departments' || 
+#parameters.parentMenuId[0]	== 'DepartmentsPhilosophy' || 
+#parameters.parentMenuId[0]	== 'DepartmentsChildren' || 
+#parameters.parentMenuId[0]	== 'DepartmentsScience' || 
+#parameters.parentMenuId[0]	== 'DepartmentsVocational' ||
+#parameters.parentMenuId[0]	== 'DepartmentsHumanities' || 
+#parameters.parentMenuId[0]	== 'DepartmentsPhilological' || 
+#parameters.parentMenuId[0]	== 'DepartmentsPsychology' || 
+#parameters.parentMenuId[0]	== 'DepartmentsIT' || 
+#parameters.parentMenuId[0]	== 'DepartmentsSocioScientific' || 
+#parameters.parentMenuId[0]	== 'DepartmentsCabinet' }">
 	<jsp:include page="/content/institute/tree/DepartmentTree.jsp"></jsp:include>
 
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Divisions' || 
-#parameters.menuName[0]	== 'DivisionsEscort' || 
-#parameters.menuName[0]	== 'DivisionsEditorial' || 
-#parameters.menuName[0]	== 'DivisionsCustomerEvaluation' || 
-#parameters.menuName[0]	== 'DivisionsPostUniversity' ||
-#parameters.menuName[0]	== 'DivisionsTechSupport' || 
-#parameters.menuName[0]	== 'DivisionsLaw' || 
-#parameters.menuName[0]	== 'DivisionsOrganization' || 
-#parameters.menuName[0]	== 'BranchOffice' || 
-#parameters.parentMenuName[0]	== 'Divisions' || 
-#parameters.parentMenuName[0]	== 'DivisionsEscort' || 
-#parameters.parentMenuName[0]	== 'DivisionsEditorial' || 
-#parameters.parentMenuName[0]	== 'DivisionsCustomerEvaluation' || 
-#parameters.parentMenuName[0]	== 'DivisionsPostUniversity' ||
-#parameters.parentMenuName[0]	== 'DivisionsTechSupport' || 
-#parameters.parentMenuName[0]	== 'DivisionsLaw' || 
-#parameters.parentMenuName[0]	== 'DivisionsOrganization' || 
-#parameters.parentMenuName[0]	== 'BranchOffice'}">
+<s:elseif test="%{#parameters.menuId[0]	== 'Divisions' || 
+#parameters.menuId[0]	== 'DivisionsEscort' || 
+#parameters.menuId[0]	== 'DivisionsEditorial' || 
+#parameters.menuId[0]	== 'DivisionsCustomerEvaluation' || 
+#parameters.menuId[0]	== 'DivisionsPostUniversity' ||
+#parameters.menuId[0]	== 'DivisionsTechSupport' || 
+#parameters.menuId[0]	== 'DivisionsLaw' || 
+#parameters.menuId[0]	== 'DivisionsOrganization' || 
+#parameters.menuId[0]	== 'BranchOffice' || 
+#parameters.parentMenuId[0]	== 'Divisions' || 
+#parameters.parentMenuId[0]	== 'DivisionsEscort' || 
+#parameters.parentMenuId[0]	== 'DivisionsEditorial' || 
+#parameters.parentMenuId[0]	== 'DivisionsCustomerEvaluation' || 
+#parameters.parentMenuId[0]	== 'DivisionsPostUniversity' ||
+#parameters.parentMenuId[0]	== 'DivisionsTechSupport' || 
+#parameters.parentMenuId[0]	== 'DivisionsLaw' || 
+#parameters.parentMenuId[0]	== 'DivisionsOrganization' || 
+#parameters.parentMenuId[0]	== 'BranchOffice'}">
 	<jsp:include page="/content/institute/tree/DivisionsTree.jsp"></jsp:include>
 
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'Projects' || 
-#parameters.menuName[0]	== 'Sverdlovsk' ||
-#parameters.menuName[0]	== 'SverdlovskOptional' ||
-#parameters.menuName[0]	== 'SverdlovskInstitutions' ||
-#parameters.menuName[0]	== 'SverdlovskChildren' ||
-#parameters.menuName[0]	== 'SverdlovskRuralSchool' ||
-#parameters.menuName[0]	== 'SverdlovskModernEducation' ||
-#parameters.menuName[0]	== 'Basic' ||
-#parameters.menuName[0]	== 'ContinuingEducation' ||
-#parameters.parentMenuName[0]	== 'Projects' || 
-#parameters.parentMenuName[0]	== 'Sverdlovsk' ||
-#parameters.parentMenuName[0]	== 'SverdlovskOptional' ||
-#parameters.parentMenuName[0]	== 'SverdlovskInstitutions' ||
-#parameters.parentMenuName[0]	== 'SverdlovskChildren' ||
-#parameters.parentMenuName[0]	== 'SverdlovskRuralSchool' ||
-#parameters.parentMenuName[0]	== 'SverdlovskModernEducation' ||
-#parameters.parentMenuName[0]	== 'Basic' ||
-#parameters.parentMenuName[0]	== 'ContinuingEducation' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'Projects' || 
+#parameters.menuId[0]	== 'Sverdlovsk' ||
+#parameters.menuId[0]	== 'SverdlovskOptional' ||
+#parameters.menuId[0]	== 'SverdlovskInstitutions' ||
+#parameters.menuId[0]	== 'SverdlovskChildren' ||
+#parameters.menuId[0]	== 'SverdlovskRuralSchool' ||
+#parameters.menuId[0]	== 'SverdlovskModernEducation' ||
+#parameters.menuId[0]	== 'Basic' ||
+#parameters.menuId[0]	== 'ContinuingEducation' ||
+#parameters.parentMenuId[0]	== 'Projects' || 
+#parameters.parentMenuId[0]	== 'Sverdlovsk' ||
+#parameters.parentMenuId[0]	== 'SverdlovskOptional' ||
+#parameters.parentMenuId[0]	== 'SverdlovskInstitutions' ||
+#parameters.parentMenuId[0]	== 'SverdlovskChildren' ||
+#parameters.parentMenuId[0]	== 'SverdlovskRuralSchool' ||
+#parameters.parentMenuId[0]	== 'SverdlovskModernEducation' ||
+#parameters.parentMenuId[0]	== 'Basic' ||
+#parameters.parentMenuId[0]	== 'ContinuingEducation' }">
 	<jsp:include page="/content/projects/tree/ProjectsTree.jsp"></jsp:include>
 </s:elseif>
 
-<s:elseif test="%{#parameters.menuName[0]	== 'News' || 
-#parameters.parentMenuName[0]	== 'News' }">
+<s:elseif test="%{#parameters.menuId[0]	== 'News' || 
+#parameters.parentMenuId[0]	== 'News' }">
 	<jsp:include page="/content/news/tree/NewsTree.jsp"></jsp:include>
 </s:elseif>
 
 <s:else>
 	<jsp:include page="/content/institute/tree/RectorTree.jsp"></jsp:include>	
 </s:else>
+</div>
 </body>
 

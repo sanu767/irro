@@ -78,6 +78,7 @@ function validateDate()
 background: none;
 
 }
+
 </style>
 </head> 
 
@@ -93,7 +94,6 @@ if(path != null) {
 %>
 <div style="margin : 5px 0px 0px 10px" class="pagination-table">
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Save Item</h1>
-
 	<s:form action="ModifyItem" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
 	
 	<s:hidden id="id" name="bean.id" value="%{bean.id}"/>	
@@ -162,9 +162,9 @@ if(path != null) {
 	<!--  Add new files -->
 	
 	Add New Files
-	<s:form action="UploadItemFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-	    <s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
+	<s:form action="UploadSavedItemFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
+	    <s:hidden name="menuId" value="%{menuId}"/>
+		<s:hidden name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

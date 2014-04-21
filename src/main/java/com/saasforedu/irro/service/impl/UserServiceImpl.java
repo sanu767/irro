@@ -33,7 +33,9 @@ public class UserServiceImpl implements UserService {
 	public Long create(UserBean userBean) {
 		IUser newUser = new User();
 		copyProperties(userBean, newUser);
-		setUpdatedPermissions(userBean, newUser);
+		if(!userBean.isSuperAdmin()) {
+			setUpdatedPermissions(userBean, newUser);
+		}
 		return (Long)userDAO.create((User)newUser);
 	}
 
@@ -41,8 +43,17 @@ public class UserServiceImpl implements UserService {
 	public void update(UserBean userBean, Long userId) {
 		IUser user = userDAO.findById(User.class, userId);
 		copyProperties(userBean, user);
-		List<IUserPermission> removedPermissions = setUpdatedPermissions(userBean, user);
-		userDAO.update(user, removedPermissions);
+		if(userBean.isSuperAdmin()) {
+			List<IUserPermission> removedPermissions = user.getPermissions();
+			List<IUserPermission> permissionsInDB = user.getPermissions();
+			permissionsInDB.removeAll(removedPermissions);
+			user.setPermissions(permissionsInDB);
+			userDAO.update(user, removedPermissions);
+			return;
+		} else {
+			List<IUserPermission> removedPermissions = setUpdatedPermissions(userBean, user);
+			userDAO.update(user, removedPermissions);
+		}
 	}
 
 	@Override
@@ -120,6 +131,7 @@ public class UserServiceImpl implements UserService {
 		userBean.setUserName(user.getUserName());
 		userBean.setUserSurname(user.getUserSurname());		
 		userBean.setActive(user.isActive());
+		userBean.setSuperAdmin(user.isSuperAdmin());
 		userBean.setMaxUploadFileSize(user.getMaxUploadFileSize());
 	}
 
@@ -164,6 +176,9 @@ public class UserServiceImpl implements UserService {
 			user.setUserSurname(userSurName);
 		}
 		
+		user.setActive(userBean.isActive());
+		
+		user.setSuperAdmin(userBean.isSuperAdmin());
 	}
 	
 	private List<IUserPermission> setUpdatedPermissions(UserBean userBean, IUser user) {

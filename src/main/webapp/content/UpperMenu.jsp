@@ -5,15 +5,15 @@
 
 <ul id="cssmenu" style="font-style:oblique;font-size:18px;font-weight:bold;font-family:'Open Sans'">
    
-   <li><a href='<s:url action="../content/LoadArticles">
+   <li><a href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">OnlineResources</s:param>
 				</s:url>'><span>Интернет-ресурсы  ИРО</span></a></li>
 				
-   <li><a href='<s:url action="../content/LoadArticles">
+   <li><a href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Hotel</s:param>
 				</s:url>'><span>Гостиница</span></a></li>
 				
-   <li><a href='<s:url action="../content/LoadArticles">
+   <li><a href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">MainContacts</s:param>
 				</s:url>'><span>Контакты</span></a></li> 
 </ul>

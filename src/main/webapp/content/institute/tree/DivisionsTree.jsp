@@ -27,213 +27,203 @@ window.onload = function () {
 	}	
 };
 </script>
-<style>
-ul li {
-    margin-left: 20px !important;
-}
-
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
-</style>
 </head>
 <body>
 <ul>
 <li id="Institute"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Institute</s:param>
+					<s:param name="menuId">Institute</s:param>
 				</s:url>'>Институт</a>
     <ul>
       <li id="Divisions"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">Divisions</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
+					<s:param name="menuId">Divisions</s:param>
+					<s:param name="parentMenuId">Institute</s:param>
 				</s:url>'>Отделы</a>
 		   <ul>
 				<li id="Escort"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEscort</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsEscort</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>'>Отдел сопровождения конкурсов и инновационных проектов</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEscortConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsEscort</s:param>
+					<s:param name="menuId">DivisionsEscortConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsEscort</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEscortNews</s:param>
-					<s:param name="parentMenuName">DivisionsEscort</s:param>
+					<s:param name="menuId">DivisionsEscortNews</s:param>
+					<s:param name="parentMenuId">DivisionsEscort</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEscortMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsEscort</s:param>
+					<s:param name="menuId">DivisionsEscortMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsEscort</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEscortContacts</s:param>
-					<s:param name="parentMenuName">DivisionsEscort</s:param>
+					<s:param name="menuId">DivisionsEscortContacts</s:param>
+					<s:param name="parentMenuId">DivisionsEscort</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
 				</li>
 				<li id="Editorial"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEditorial</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsEditorial</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>'>Редакционно-издательский отдел</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEditorialConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsEditorial</s:param>
+					<s:param name="menuId">DivisionsEditorialConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsEditorial</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEditorialNews</s:param>
-					<s:param name="parentMenuName">DivisionsEditorial</s:param>
+					<s:param name="menuId">DivisionsEditorialNews</s:param>
+					<s:param name="parentMenuId">DivisionsEditorial</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEditorialMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsEditorial</s:param>
+					<s:param name="menuId">DivisionsEditorialMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsEditorial</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsEditorialContacts</s:param>
-					<s:param name="parentMenuName">DivisionsEditorial</s:param>
+					<s:param name="menuId">DivisionsEditorialContacts</s:param>
+					<s:param name="parentMenuId">DivisionsEditorial</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
 				</li>
 
 				<li id="CustomerEvaluation"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsCustomerEvaluation</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsCustomerEvaluation</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>'>Отдел сопровождения аттестационных процессов</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsCustomerEvaluationConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsCustomerEvaluation</s:param>
+					<s:param name="menuId">DivisionsCustomerEvaluationConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsCustomerEvaluation</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsCustomerEvaluationNews</s:param>
-					<s:param name="parentMenuName">DivisionsCustomerEvaluation</s:param>
+					<s:param name="menuId">DivisionsCustomerEvaluationNews</s:param>
+					<s:param name="parentMenuId">DivisionsCustomerEvaluation</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsCustomerEvaluationMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsCustomerEvaluation</s:param>
+					<s:param name="menuId">DivisionsCustomerEvaluationMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsCustomerEvaluation</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsCustomerEvaluationContacts</s:param>
-					<s:param name="parentMenuName">DivisionsCustomerEvaluation</s:param>
+					<s:param name="menuId">DivisionsCustomerEvaluationContacts</s:param>
+					<s:param name="parentMenuId">DivisionsCustomerEvaluation</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
 				</li>
 				<li id="PostUniversity"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsPostUniversity</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsPostUniversity</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>'>Отдел послевузовского образования</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsPostUniversityConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsPostUniversity</s:param>
+					<s:param name="menuId">DivisionsPostUniversityConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsPostUniversity</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsPostUniversityNews</s:param>
-					<s:param name="parentMenuName">DivisionsPostUniversity</s:param>
+					<s:param name="menuId">DivisionsPostUniversityNews</s:param>
+					<s:param name="parentMenuId">DivisionsPostUniversity</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsPostUniversityMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsPostUniversity</s:param>
+					<s:param name="menuId">DivisionsPostUniversityMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsPostUniversity</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsPostUniversityContacts</s:param>
-					<s:param name="parentMenuName">DivisionsPostUniversity</s:param>
+					<s:param name="menuId">DivisionsPostUniversityContacts</s:param>
+					<s:param name="parentMenuId">DivisionsPostUniversity</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
 				</li>
 				<li id="TechSupport"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsTechSupport</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsTechSupport</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>' >Отдел программно-технического обеспечения</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsTechSupportConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsTechSupport</s:param>
+					<s:param name="menuId">DivisionsTechSupportConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsTechSupport</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsTechSupportNews</s:param>
-					<s:param name="parentMenuName">DivisionsTechSupport</s:param>
+					<s:param name="menuId">DivisionsTechSupportNews</s:param>
+					<s:param name="parentMenuId">DivisionsTechSupport</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsTechSupportMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsTechSupport</s:param>
+					<s:param name="menuId">DivisionsTechSupportMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsTechSupport</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsTechSupportContacts</s:param>
-					<s:param name="parentMenuName">DivisionsTechSupport</s:param>
+					<s:param name="menuId">DivisionsTechSupportContacts</s:param>
+					<s:param name="parentMenuId">DivisionsTechSupport</s:param>
 							</s:url>'>Контакты</a></li>
 					</ul>
 				</li>
 				<li id="Law"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsLaw</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsLaw</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>' >Кадрово-юридический отдел</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsLawConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsLaw</s:param>
+					<s:param name="menuId">DivisionsLawConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsLaw</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsLawNews</s:param>
-					<s:param name="parentMenuName">DivisionsLaw</s:param>
+					<s:param name="menuId">DivisionsLawNews</s:param>
+					<s:param name="parentMenuId">DivisionsLaw</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsLawMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsLaw</s:param>
+					<s:param name="menuId">DivisionsLawMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsLaw</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsLawContacts</s:param>
-					<s:param name="parentMenuName">DivisionsLaw</s:param>
+					<s:param name="menuId">DivisionsLawContacts</s:param>
+					<s:param name="parentMenuId">DivisionsLaw</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
 				</li>
 				<li id="Organization"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsOrganization</s:param>
-					<s:param name="parentMenuName">Divisions</s:param>
+					<s:param name="menuId">DivisionsOrganization</s:param>
+					<s:param name="parentMenuId">Divisions</s:param>
 							</s:url>'>Контрольно-организационный отдел</a>
 					<ul>
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsOrganizationConstitution</s:param>
-					<s:param name="parentMenuName">DivisionsOrganization</s:param>
+					<s:param name="menuId">DivisionsOrganizationConstitution</s:param>
+					<s:param name="parentMenuId">DivisionsOrganization</s:param>
 							</s:url>'>Состав подразделения</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsOrganizationNews</s:param>
-					<s:param name="parentMenuName">DivisionsOrganization</s:param>
+					<s:param name="menuId">DivisionsOrganizationNews</s:param>
+					<s:param name="parentMenuId">DivisionsOrganization</s:param>
 							</s:url>'>Новости</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsOrganizationMaterials</s:param>
-					<s:param name="parentMenuName">DivisionsOrganization</s:param>
+					<s:param name="menuId">DivisionsOrganizationMaterials</s:param>
+					<s:param name="parentMenuId">DivisionsOrganization</s:param>
 							</s:url>'>Материалы</a></li>
 						
 						<li><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">DivisionsOrganizationContacts</s:param>
-					<s:param name="parentMenuName">DivisionsOrganization</s:param>
+					<s:param name="menuId">DivisionsOrganizationContacts</s:param>
+					<s:param name="parentMenuId">DivisionsOrganization</s:param>
 							</s:url>'>Контакты</a></li>
 						
 					</ul>
@@ -241,29 +231,29 @@ a {
 		   </ul>
       </li>
 	  <li id="BranchOffice"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">BranchOffice</s:param>
-					<s:param name="parentMenuName">Institute</s:param>
+					<s:param name="menuId">BranchOffice</s:param>
+					<s:param name="parentMenuId">Institute</s:param>
 				</s:url>'>Филиал и представительства</a>
 		  <ul>
 		  
 			<li id="Nizhny"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">BranchOfficeNizhny</s:param>
-					<s:param name="parentMenuName">BranchOffice</s:param>
+					<s:param name="menuId">BranchOfficeNizhny</s:param>
+					<s:param name="parentMenuId">BranchOffice</s:param>
 							</s:url>'>Нижнетагильский филиал ИРО</a></li>
 			
 			<li id="Kamyshlov"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">BranchOfficeKamyshlov</s:param>
-					<s:param name="parentMenuName">BranchOffice</s:param>
+					<s:param name="menuId">BranchOfficeKamyshlov</s:param>
+					<s:param name="parentMenuId">BranchOffice</s:param>
 							</s:url>'>Представительство ИРО в г. Камышлов</a></li>
 			
 			<li id="Krasnoufimsk"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">BranchOfficeKrasnoufimsk</s:param>
-					<s:param name="parentMenuName">BranchOffice</s:param>
+					<s:param name="menuId">BranchOfficeKrasnoufimsk</s:param>
+					<s:param name="parentMenuId">BranchOffice</s:param>
 							</s:url>'>Представительство ИРО в г. Красноуфимск</a></li>
 			
 			<li id="Serov"><a href='<s:url action="../content/LoadArticles">
-					<s:param name="menuName">BranchOfficeSerov</s:param>
-					<s:param name="parentMenuName">BranchOffice</s:param>
+					<s:param name="menuId">BranchOfficeSerov</s:param>
+					<s:param name="parentMenuId">BranchOffice</s:param>
 							</s:url>'>Представительство ИРО в г. Серов</a></li>
 			
 		 </ul>

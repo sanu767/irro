@@ -27,31 +27,21 @@ window.onload = function () {
 	}	
 };
 </script>
-<style>
-ul li {
-    margin-left: 20px !important;
-}
-
-a {
- font-family : "Calibri";
- color : rgb(127,127,127);
-}
-</style>
 </head>
 <body>
 <ul>
 <li id="News"><a href='<s:url action="../content/LoadNews">
-					<s:param name="menuName">News</s:param>
+					<s:param name="menuId">News</s:param>
 				</s:url>'>Новости</a>
      <ul>
       <li><a href='<s:url action="../content/LoadNews">
-      				<s:param name="menuName">NewsAnnouncements</s:param>
-					<s:param name="parentMenuName">News</s:param>
+      				<s:param name="menuId">NewsAnnouncements</s:param>
+					<s:param name="parentMenuId">News</s:param>
 				</s:url>'>Анонсы</a></li>
 				
 	  <li><a href='<s:url action="../content/LoadNews">
-					<s:param name="menuName">NewsArchive</s:param>
-					<s:param name="parentMenuName">News</s:param>
+					<s:param name="menuId">NewsArchive</s:param>
+					<s:param name="parentMenuId">News</s:param>
 				</s:url>'>Архив</a></li>
      </ul>
 </li>

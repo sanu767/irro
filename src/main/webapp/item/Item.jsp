@@ -6,6 +6,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <body>
+<div style="text-align: center ;">
 <%
 String path = request.getContextPath();
 String basePath = null;
@@ -26,11 +27,11 @@ if(path != null) {
 
 
 <h1 style="font-size: 18px;font-family: 'Open Sans';">
-	<s:property value="bean.startDate" />
+	<s:date name="bean.startDate" format="dd/MM/yyyy"/>
 </h1>
 
 <h1 style="font-size: 18px;font-family: 'Open Sans';">
-	<s:property value="bean.endDate" />
+	<s:date name="bean.endDate" format="dd/MM/yyyy"/>
 </h1>
 
 
@@ -58,5 +59,6 @@ window.onload = function() {
 	document.getElementById('editor').innerHTML = document.getElementById('hiddenMainContent').value;
 };
 </script>
+</div>
 </body>
 </html>

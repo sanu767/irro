@@ -93,8 +93,8 @@ if(path != null) {
 
 	<s:form action="SaveArticle" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-form">
 	
-	<s:hidden id="menuName" name="menuName" value="%{menuName}"/>
-	<s:hidden id="parentMenuName" name="parentMenuName" value="%{parentMenuName}"/>
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 	<s:hidden id="id" name="bean.id" value="%{bean.id}"/>	
 	<s:hidden name="bean.content" value="%{bean.content}"/>
 
@@ -153,8 +153,8 @@ if(path != null) {
 	
 	Add New Files
 	<s:form action="UploadFileForSavedArticle" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-	    <s:hidden name="menuName" value="%{menuName}"/>
-		<s:hidden name="parentMenuName" value="%{parentMenuName}"/>
+	    <s:hidden name="menuId" value="%{menuId}"/>
+		<s:hidden name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

@@ -78,6 +78,7 @@ function validateDate()
 background: none;
 
 }
+
 </style>
 </head> 
 
@@ -95,6 +96,8 @@ if(path != null) {
 	<h1 style="font-size: 18px;font-family: 'Open Sans';">Save Event</h1>
 
 	<s:form action="ModifyEvent" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" style="backgound:white" cssClass="pagination-table">
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 	
 	<s:hidden id="id" name="bean.id" value="%{bean.id}"/>	
 	<s:hidden name="bean.content" value="%{bean.content}"/>
@@ -162,7 +165,9 @@ if(path != null) {
 	<!--  Add new files -->
 	
 	Add New Files
-	<s:form action="UploadEventFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
+	<s:form action="UploadSavedEventFile" method="post" enctype="multipart/form-data" cssClass="pagination-table">
+	<s:hidden id="menuId" name="menuId" value="%{menuId}"/>
+	<s:hidden id="parentMenuId" name="parentMenuId" value="%{parentMenuId}"/>
 		<s:hidden id="bean.content" name="bean.content" value="%{bean.content}"/>
 		<s:hidden id="bean.title" name="bean.title" value="%{bean.title}"/>
 		<s:hidden id="bean.description" name="bean.description" value="%{bean.description}"/>

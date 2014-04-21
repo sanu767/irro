@@ -18,6 +18,7 @@
 <script src="../themes/content/Tree.js" type="text/javascript"></script> 
 <link href="welcomepagecontent.css" rel="stylesheet" type="text/css" />
 <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../datepicker.css" rel="stylesheet" type="text/css"/>
 <script src="jquery-1.10.2.js"></script>
 <script type="text/javascript"> 
 window.onload = function () {     

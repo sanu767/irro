@@ -53,6 +53,7 @@ function validate()
     <sj:textfield name="userBean.userSurname" label="Sur Name" size="40"/>    
     <sj:textfield name="userBean.email" label="Email" size="60" required="true" placeholder="username@domain.com" id="mail"/>
     <sj:textfield name="userBean.address" label="Address" size="60" />
+    <s:checkbox id="superAdmin" name="userBean.superAdmin" label="Super Admin" />
     <s:select multiple="true" label="Choose Article permission" list="allPermissions" name="userBean.selectedPermissions"></s:select>
     <s:submit value="Register" onclick="return validate();"/>
  </s:form>
