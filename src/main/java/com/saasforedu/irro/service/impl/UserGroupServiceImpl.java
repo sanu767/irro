@@ -49,9 +49,15 @@ public class UserGroupServiceImpl implements UserGroupService {
 			List<String> groupNames = getGroupNames(groupsToDelete);
 			userService.deletePermissionsByGroupNames(groupNames);
 		}
+		deleteAll(groupsToDelete);
+	}
+
+	@Override
+	public void deleteAll(List<IUserGroup> groupsToDelete) {
 		userGroupDAO.delete(groupsToDelete);
 	}
 
+	
 	private List<String> getGroupNames(List<IUserGroup> groupsToDelete) {
 		List<String> groupNames = new ArrayList<String>();
 		for (IUserGroup userGroup : groupsToDelete) {
@@ -119,9 +125,25 @@ public class UserGroupServiceImpl implements UserGroupService {
 	private void copyPropeties(UserGroupBean userGroupBean, IUserGroup userGroup) {
 		userGroup.setActive(userGroupBean.isActive());
 		userGroup.setGroupId(userGroupBean.getGroupId());
-		userGroup.setGroupCode(IrroUtils.getResourceString(userGroupBean.getGroupName()));
+		String groupCode = userGroupBean.getGroupCode();
+		userGroup.setGroupCode(groupCode == null ? IrroUtils.getResourceString(userGroupBean.getGroupName()) : groupCode) ;
 		userGroup.setGroupName(userGroupBean.getGroupName());
 		userGroup.setCreationDate(userGroupBean.getCreationDate());
+	}
+	
+	@Override
+	public void renameGroup(String oldName, String newMenu) {
+		IUserGroup userGroup = findByNameAndCode(oldName);
+		if(userGroup == null) {
+			return;
+		}
+		userGroup.setGroupName(newMenu);
+		userGroupDAO.update(userGroup);
+	}
+	
+	@Override
+	public IUserGroup findByNameAndCode(String groupName) {
+		return userGroupDAO.findByNameAndCode(groupName);
 	}
 
 }

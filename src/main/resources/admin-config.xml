@@ -13,27 +13,58 @@
   		<action name="Login" class="com.saasforedu.irro.action.AdminLogin">
 			<result name="success" type="tiles">changeMenus</result>
 		</action>
-		
+	
+	<!-- This action to quickly create any group -->
 	<action name="CreateMenuMetadata" class="com.saasforedu.irro.action.MenuMetadataAction" method="createMenuMetadata">
 	    <result name="input">/admin/MenuMetadata.jsp</result>
 		<result name="success">/admin/MenuMetadata.jsp</result>
 	</action>
+	
+	<!-- Menu actions  -->
+	
+	<action name="ChangeMenu" class="com.saasforedu.irro.action.MenuMetadataAction" method="LoadMenuTree">
+		<result name="success" type="tiles">changeMenu</result>
+	</action>
+	
+  	<action name="CreateChildrenMenu" class="com.saasforedu.irro.action.MenuMetadataAction" method="createChildren">
+	    <result name="input" type="tiles">changeMenu</result>
+		<result name="success">/admin/Success.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+  	<action name="CreateSiblingMenu" class="com.saasforedu.irro.action.MenuMetadataAction" method="createSibling">
+	    <result name="input" type="tiles">changeMenu</result>
+		<result name="success">/admin/Success.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+  	<action name="RenameMenu" class="com.saasforedu.irro.action.MenuMetadataAction" method="renameMenu">
+	    <result name="input" type="tiles">changeItem</result>
+		<result name="success">/admin/Success.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+  	<action name="DeleteMenu" class="com.saasforedu.irro.action.MenuMetadataAction" method="deleteMenu">
+	    <result name="input" type="tiles">changeMenu</result>
+		<result name="success">/admin/Success.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
 		
 	<!-- News -->
   	
-  	<action name="LoadCreateNews" class="com.saasforedu.irro.action.ItemSearchAction">
+  	<action name="LoadCreateNews" class="com.saasforedu.irro.article.action.BaseNewsAction" method="loadCreateNewsFromAdmin">
 	    <result name="input" type="tiles">changeItem</result>
 		<result name="success" type="tiles">loadCreateNews</result>
 	</action>
 	
 	
-  	<action name="CreateNews" class="com.saasforedu.irro.article.action.NewsAction" method="createNews">
+  	<action name="CreateNews" class="com.saasforedu.irro.article.action.BaseNewsAction" method="createNewsFromAdmin">
 	    <result name="input" type="tiles">changeItem</result>
 		<result name="success" type="tiles">itemSuccess</result>
-		<result name="error" type="tiles">/admin/Failure.jsp</result>
+		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
+	<action name="UploadNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="doUploadNewsFile">
 		<interceptor-ref name="fileUpload">  
                 <param name="maximumSize">50097152</param>
                <param name="allowedTypes">
@@ -42,7 +73,7 @@
                 video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,
                 application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
                 application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -51,49 +82,60 @@
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="ActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+	<action name="ActivateNewsAttachment" class="com.saasforedu.irro.article.action.BaseNewsAction" method="activateAttachment">
 			<result name="input" type="tiles">loadCreateNews</result>
 			<result name="success" type="tiles">loadCreateNews</result>
 		</action>
 		
-	<action name="DeActivateNewsAttachment" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+	<action name="DeActivateNewsAttachment" class="com.saasforedu.irro.article.action.BaseNewsAction" method="deActivateAttachment">
 		<result name="input" type="tiles">loadCreateNews</result>
 		<result name="success" type="tiles">loadCreateNews</result>
 	</action>
 	
-	<action name="DeleteNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+	<action name="DeleteNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="removeAttachment">
 		<result name="input" type="tiles">loadCreateNews</result>
 		<result name="success" type="tiles">loadCreateNews</result>
 	</action>
 	
 	
-	<action name="UploadSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="doUploadNewsFile">
-			<result name="input" type="tiles">loadModifyNews</result>
+	<action name="UploadSavedNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="doUploadNewsFile">
+			<interceptor-ref name="fileUpload">  
+	                <param name="maximumSize">50097152</param>
+	               <param name="allowedTypes">
+	                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+	                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+	                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,audio/mp3,audio/vnd.dlna.adts,
+	                video/3gpp,application/octet-stream,video/mp4,video/avi
+					</param>
+	        </interceptor-ref>  
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <result name="input" type="tiles">loadModifyNews</result>
 			<result name="success" type="tiles">loadModifyNews</result>
+			<result name="error" type="tiles">loadModifyNews</result>
 		</action>
 		
-	<action name="ActivateSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="activateAttachment">
+	<action name="ActivateSavedNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="activateAttachment">
 		<result name="input" type="tiles">loadModifyNews</result>
 		<result name="success" type="tiles">loadModifyNews</result>
 	</action>
 	
-	<action name="DeActivateSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="deActivateAttachment">
+	<action name="DeActivateSavedNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="deActivateAttachment">
 		<result name="input" type="tiles">loadModifyNews</result>
 		<result name="success" type="tiles">loadModifyNews</result>
 	</action>
 	
-	<action name="DeleteSavedNewsFile" class="com.saasforedu.irro.article.action.NewsAction" method="removeAttachment">
+	<action name="DeleteSavedNewsFile" class="com.saasforedu.irro.article.action.BaseNewsAction" method="removeAttachment">
 		<result name="input" type="tiles">loadModifyNews</result>
 		<result name="success" type="tiles">loadModifyNews</result>
 	</action>
 	
 	
-	<action name="LoadSelectedNews" class="com.saasforedu.irro.article.action.NewsAction" method="loadSelectedNews">
+	<action name="LoadSelectedNews" class="com.saasforedu.irro.article.action.BaseNewsAction" method="loadSelectedNews">
 		<result name="input" type="tiles">searchItemResults</result>
 		<result name="success" type="tiles">loadModifyNews</result>
 	</action>
 	
-	<action name="ModifyNews" class="com.saasforedu.irro.article.action.NewsAction" method="saveNews">
+	<action name="ModifyNews" class="com.saasforedu.irro.article.action.BaseNewsAction" method="saveNews">
 	    <result name="input" type="tiles">loadModifyNews</result>
 		<result name="success" type="tiles">itemSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
@@ -102,19 +144,19 @@
   
   	<!-- Event -->
   	
-  	<action name="LoadCreateEvent" class="com.saasforedu.irro.action.EventAction">
+  	<action name="LoadCreateEvent" class="com.saasforedu.irro.action.BaseEventAction">
 	    <result name="input" type="tiles">changeItem</result>
 		<result name="success" type="tiles">loadCreateEvent</result>
 	</action>
 	
 	
-  	<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">
+  	<action name="CreateEvent" class="com.saasforedu.irro.action.BaseEventAction" method="createItemFromAdmin">
 	   <result name="input" type="tiles">changeItem</result>
 		<result name="success" type="tiles">itemSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="UploadEventFile" class="com.saasforedu.irro.action.EventAction" method="doUploadEventFile">
+	<action name="UploadEventFile" class="com.saasforedu.irro.action.BaseEventAction" method="doUploadEventFile">
 		<interceptor-ref name="fileUpload">  
                 <param name="maximumSize">50097152</param>
                <param name="allowedTypes">
@@ -123,7 +165,7 @@
                 video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,
                 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
                 application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -132,27 +174,45 @@
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
 	
-	<action name="ActivateEventAttachment" class="com.saasforedu.irro.action.EventAction" method="activateAttachment">
+	<action name="UploadSavedEventFile" class="com.saasforedu.irro.action.BaseEventAction" method="doUploadEventFile">
+		<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">50097152</param>
+               <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,
+                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
+				</param>
+        </interceptor-ref>  
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+	    <result name="input" type="tiles">loadModifyEvent</result>
+		<result name="success" type="tiles">loadModifyEvent</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
+	
+	<action name="ActivateEventAttachment" class="com.saasforedu.irro.action.BaseEventAction" method="activateAttachment">
 			<result name="input" type="tiles">loadCreateEvent</result>
 			<result name="success" type="tiles">loadCreateEvent</result>
 		</action>
 		
-	<action name="DeActivateEventAttachment" class="com.saasforedu.irro.action.EventAction" method="deActivateAttachment">
+	<action name="DeActivateEventAttachment" class="com.saasforedu.irro.action.BaseEventAction" method="deActivateAttachment">
 		<result name="input" type="tiles">loadCreateEvent</result>
 		<result name="success" type="tiles">loadCreateEvent</result>
 	</action>
 	
-	<action name="DeleteEventFile" class="com.saasforedu.irro.action.EventAction" method="removeAttachment">
+	<action name="DeleteEventFile" class="com.saasforedu.irro.action.BaseEventAction" method="removeAttachment">
 		<result name="input" type="tiles">loadCreateEvent</result>
 		<result name="success" type="tiles">loadCreateEvent</result>
 	</action>
 	
-	<action name="LoadSelectedEvent" class="com.saasforedu.irro.action.EventAction" method="loadEvent">
+	<action name="LoadSelectedEvent" class="com.saasforedu.irro.action.BaseEventAction" method="loadEvent">
 		<result name="input" type="tiles">searchItemResults</result>
 		<result name="success" type="tiles">loadModifyEvent</result>
 	</action>
 	
-	<action name="ModifyEvent" class="com.saasforedu.irro.action.EventAction" method="modifyItem">
+	<action name="ModifyEvent" class="com.saasforedu.irro.action.BaseEventAction" method="modifyItem">
 	    <result name="input" type="tiles">loadModifyEvent</result>
 		<result name="success" type="tiles">itemSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
@@ -187,7 +247,7 @@
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
                     application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
                 video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 				</param>
         </interceptor-ref>  
         <interceptor-ref name="defaultStack"></interceptor-ref>
@@ -216,6 +276,22 @@
 		<result name="success" type="tiles">itemSuccess</result>
 		<result name="error">/admin/Failure.jsp</result>
 	</action>
+	
+	<action name="UploadSavedItemFile" class="com.saasforedu.irro.action.ItemAction" method="doUploadItemFile">
+		<interceptor-ref name="fileUpload">  
+                <param name="maximumSize">50097152</param>
+               <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,application/vnd.ms-excel,
+                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
+                video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
+				</param>
+        </interceptor-ref>  
+        <interceptor-ref name="defaultStack"></interceptor-ref>
+	    <result name="input" type="tiles">loadModifyItem</result>
+		<result name="success" type="tiles">loadModifyItem</result>
+		<result name="error">/admin/Failure.jsp</result>
+	</action>
 		
 	<action name="ModifyItem" class="com.saasforedu.irro.action.ItemAction" method="modifyItem">
 	    <result name="input" type="tiles">loadModifyItem</result>
@@ -242,7 +318,7 @@
                     image/png,image/gif,image/jpeg,image/jpg,application/msword,video/x-ms-rmvb,video/x-ms-wmv,video/x-ms-avi,
                 video/fli,video/x-fli,video/x-atomic3d-feature,video/gl,video/x-gl,video/x-isvideo,video/mpeg,video/x-motion-jpeg,video/quicktime,video/x-sgi-movie,
                 video/x-mpeg,video/vnd.rn-realvideo,video/x-scm,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.openxmlformats-officedocument.presentationml.presentation,
-                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4
+                audio/mp3,audio/vnd.dlna.adts,video/3gpp,application/octet-stream,video/mp4,video/avi
 				</param>  
             </interceptor-ref>  
             <interceptor-ref name="defaultStack"></interceptor-ref>

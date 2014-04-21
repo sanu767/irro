@@ -4,17 +4,17 @@
 <head>
 
 <style>
-table
+.footer-table
 {
 border-collapse:collapse;
-background-color:rgb(198,217,241);
+background-color: rgb(88,103,168);
 width:100%;
 height:80px;
 float:left;
 padding-top:10px;
 }
  
-th  {
+.footer-th  {
   width:20%;
   text-align:left;
   color:rgb(0,0,0);
@@ -22,12 +22,17 @@ th  {
   
 }
 
-td
+.footer-td
 {
 width:20%;
 text-align:left;
 color:rgb(0,0,0);
 }
+
+.footer-td-anchor {
+ color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -65,28 +70,28 @@ color:rgb(0,0,0);
 </div>
 
 <div style="padding-top:10px;padding-left:100px">
-<table style="width:1000px">
+<table class="footer-table" style="width:950px">
   <tr style="padding-bottom:10px">
   
-    <th style="font-weight:bold;font-size:14px" ><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+    <th class="footer-th" style="font-weight:bold;font-size:14px" ><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Institute</s:param>
 				</s:url>' >Об Институте</a></th>
 				
-    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Activities</s:param>
 				</s:url>'> Деятельность</a></th>
 				
-    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">EducationalActivitiesInternship</s:param>
 					<s:param name="parentMenuName">EducationalActivities</s:param>
 				</s:url>'>Стажировочная площадка</a></th>
 				
-	<th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+	<th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Centers</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Центры</a></th>
 				
-    <th style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticles">
+    <th class="footer-th" style="font-weight:bold;font-size:14px"><a style="font-weight:bold;font-size:14px;color:black;" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">BranchOffice</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Мероприятия</a></th>   
@@ -102,34 +107,34 @@ color:rgb(0,0,0);
   </tr>
  
  <tr >
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Rector</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Ректорат</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">EducationalActivities</s:param>
 					<s:param name="parentMenuName">Activities</s:param>
 				</s:url>'>Образовательная деятельность</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Basic</s:param>
 					<s:param name="parentMenuName">Projects</s:param>
 				</s:url>'>Базовые площадки</a>
     </td>
     
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">CentersLibrary</s:param>
 					<s:param name="parentMenuName">Centers</s:param>
 							</s:url>'>Библиотечно-информационный центр</a>
     </td>
     
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">BranchOffice</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Филиал и Представительства</a>
@@ -139,25 +144,25 @@ color:rgb(0,0,0);
   </tr>
   
  <tr>
-   <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+   <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">History</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Вехи истории</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Certification</s:param>
 				</s:url>'>Аттестация</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">CentersAdministrationMaterials</s:param>
 					<s:param name="parentMenuName">CentersAdministration</s:param>
 							</s:url>'>Методические материалы</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">CentersLibraryPublications</s:param>
 					<s:param name="parentMenuName">CentersLibrary</s:param>
 							</s:url>'>Издания и публикации ИРО</a>
@@ -166,26 +171,26 @@ color:rgb(0,0,0);
   </tr>
   
  <tr>
-    <td style="font-size:10px">
-      <a href='http://irro-new.irro.ru/welcomeIrro'>Администрация</a>
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='http://irro-new.irro.ru/welcomeIrro'>Администрация</a>
     </td>
     
-    <td style="font-size:10px">
-    	<a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+    	<a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">GraduatesEGE</s:param>
 					<s:param name="parentMenuName">Graduates</s:param>
 							</s:url>'>ЕГЭ</a>
     </td>
     
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Documents</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Документы</a>
       </td>
       
-	<td style="font-size:10px">
-    <a href='<s:url action="../content/LoadArticles">
+	<td class="footer-td" style="font-size:10px">
+    <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">DepartmentsVocationalService</s:param>
 					<s:param name="parentMenuName">DepartmentsVocational</s:param>
 							</s:url>'>Методическая копилка</a>
@@ -196,14 +201,14 @@ color:rgb(0,0,0);
   </tr>
   
    <tr>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Contacts</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Структура</a>
     </td>
-    <td style="font-size:10px">
-      <a href="">ГИА-9</a>
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor"  href="">ГИА-9</a>
     </td>
     <td>&nbsp;</td>
 	<td>&nbsp;</td>
@@ -211,14 +216,14 @@ color:rgb(0,0,0);
     
   </tr>
     <tr>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">BranchOffice</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Филиал и Представительства</a>
       </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Contests</s:param>
 					<s:param name="parentMenuName">Activities</s:param>
 				</s:url>'>Конкурсы, олимпиады</a>
@@ -229,14 +234,14 @@ color:rgb(0,0,0);
   </tr>
   
   <tr>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Contacts</s:param>
 					<s:param name="parentMenuName">Institute</s:param>
 				</s:url>'>Контакты</a>
     </td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">Conference</s:param>
 					<s:param name="parentMenuName">Activities</s:param>
 				</s:url>'>Конференции</a>
@@ -248,8 +253,8 @@ color:rgb(0,0,0);
   
   <tr>
     <td>&nbsp;</td>
-    <td style="font-size:10px">
-      <a href='<s:url action="../content/LoadArticles">
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href='<s:url action="../content/LoadArticlesByName">
 					<s:param name="menuName">CentersLibraryEducationalPublishing</s:param>
 					<s:param name="parentMenuName">CentersLibrary</s:param>
 							</s:url>'>Издательская деятельность</a>
@@ -261,14 +266,14 @@ color:rgb(0,0,0);
   
   <tr>
     <td>&nbsp;</td>
-    <td style="font-size:10px">
-      <a href="">Научные исследования</a>
+    <td class="footer-td" style="font-size:10px">
+      <a class="footer-td-anchor" href="">Научные исследования</a>
     </td>
     <td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
   </tr>
-  <tr style="background-color:rgb(6,85,117);">
+  <tr>
     <td>&nbsp;</td> 
 	<td>&nbsp;</td> 
 	<td>&nbsp;</td> 

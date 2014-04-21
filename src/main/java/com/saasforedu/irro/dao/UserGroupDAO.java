@@ -17,4 +17,6 @@ public interface UserGroupDAO {
 	public IUserGroup findById(Integer id);
 	public void changeActivation(List<Integer> groupIds, boolean activate);
 	public List<IUserGroup> search(GroupSearchBean groupSearchBean);
+	public IUserGroup findByNameAndCode(String groupName);
+	public void deleteGroup(IUserGroup groupsToDelete);
 }

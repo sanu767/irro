@@ -82,11 +82,6 @@
 		<put-attribute name="result" value="/admin/EmptyResults.jsp"/>
  	</definition>
  	
- 	<definition name="changeMenus" extends="adminLayout">
-		<put-attribute name="title"  value="Change Menus"/>
-		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
- 	</definition>
-	
  	<definition name="changeItem" extends="adminLayout">
 		<put-attribute name="title"  value="Change Item"/>
 		<put-attribute name="searchParameterSubMenus" value="/admin/SearchItem.jsp"/>
@@ -194,6 +189,38 @@
 		<put-attribute name="result" value="/admin/Success.jsp"/>
  	</definition>
  	
+ 	<!-- Menu Actions -->
+
+	<definition name="changeMenus" extends="adminLayout">
+		<put-attribute name="title"  value="Change Menus"/>
+		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="changeMenu" extends="adminLayout">
+		<put-attribute name="title"  value="Change Menu"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/MenuTree.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateChildrenMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Create Children Menu"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateSiblingMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Create Children Sibling"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadRenameMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Rename Menu"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	 <definition name="menuSuccess" extends="changeMenu">
+		<put-attribute name="title"  value="Menu Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
  	
 	<!-- Content actions -->
 	
@@ -205,7 +232,7 @@
 		<put-attribute name="mainMenu" value="/content/MainMenu.jsp"/>
 		<put-attribute name="slider" value="/content/Welcome.jsp"/>
 		<put-attribute name="footer" value="/content/Footer.jsp"/>
-		<put-attribute name="tree" value="/content/MainTree.jsp"/>
+		<put-attribute name="tree" value="/content/LeftMenuTree.jsp"/>
  	</definition>
 	
 	<definition name="editableContentLayout" template="/content/EditableContentLayout.jsp">
@@ -216,7 +243,7 @@
 		<put-attribute name="mainMenu" value="/content/MainMenu.jsp"/>
 		<put-attribute name="slider" value="/content/Welcome.jsp"/>
 		<put-attribute name="footer" value="/content/Footer.jsp"/>
-		<put-attribute name="tree" value="/content/MainTree.jsp"/>
+		<put-attribute name="tree" value="/content/LeftMenuTree.jsp"/>
  	</definition>
  	
 	<!-- Article -->
@@ -241,7 +268,7 @@
 	<definition name="articleSuccess" extends="editableContentLayout">
 		<put-attribute name="content" value="/article/ArticleSuccess.jsp" />
 	</definition>
-	
+
 	<!-- News -->
 	
 	<definition name="news" extends="contentLayout">

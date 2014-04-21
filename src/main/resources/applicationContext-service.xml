@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
          http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<context:annotation-config />
+	<tx:annotation-driven/>
 	<import resource="config/DataSource.xml" />
 	
 	<bean id="sessionFactory"
@@ -28,6 +31,9 @@
 
 	</bean>
 	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	
 	<!-- Item dependencies -->
 	<bean id="itemDAO" class="com.saasforedu.irro.dao.impl.ItemDAOImpl" >
@@ -46,7 +52,8 @@
 	<bean id="itemSearchAction" class="com.saasforedu.irro.action.ItemSearchAction" scope="prototype">
 		<property name="itemService" ref="itemService" />
 		<property name="eventService" ref="eventService" />
-		<property name="newsService" ref="newsService" />		
+		<property name="newsService" ref="newsService" />
+		<property name="menuService" ref="menuService"/>		
 	</bean>
 
 
@@ -71,7 +78,8 @@
 	
 	<bean id="menuMetadataService" class="com.saasforedu.irro.service.impl.MenuMetadataServiceImpl"  scope="prototype">
 		<property name="menuMetadataDAO" ref="menuMetadataDAO" />
-	</bean>	
+		<property name="userGroupService" ref="userGroupService" />
+	</bean>
 	
 	<bean id="menuMetadataAction" class="com.saasforedu.irro.action.MenuMetadataAction" scope="prototype">
 		<property name="menuMetadataService" ref="menuMetadataService" />
@@ -95,7 +103,11 @@
 	</bean>
 	
 	<bean id="articleAction" class="com.saasforedu.irro.article.action.ArticleAction">
-		<property name="articleService" ref="articleService" /> 
+		<property name="articleService" ref="articleService" />
+	</bean>
+	
+	<bean id="menuBaseAction" class="com.saasforedu.irro.article.action.MenuBaseAction">
+		<property name="menuService" ref="menuService"/>
 	</bean>
 	
 	<!-- News Action -->
@@ -164,4 +176,8 @@
 		<property name="userService" ref="userService" />		
 	</bean>
 	
+	<bean id="menuService" class="com.saasforedu.irro.service.impl.MenuService">
+		<property name="menuMetadataService" ref="menuMetadataService"/>
+	</bean>
+
 </beans>

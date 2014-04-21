@@ -310,7 +310,7 @@
 				// show or hide event description
 				var eventDescClass = '';
 				if(!eventsOpts.showDescription) {
-					eventDescClass = 'hidden';
+					eventDescClass = 'hdden';
 				}
 				var eventLinkTarget = "_self";
 				if(eventsOpts.openEventInNewWindow) {
@@ -365,7 +365,7 @@
 									} else {
 										var eventTitle = '<span class="eventTitle">'+event.title+'</span>';
 									}
-									events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em><small></small></time>'+eventTitle+'<p class="eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
+									events.push('<li id="' + key + '" class="'+event.type+'"><time datetime="'+eventDate+'"><em>' + eventStringDate + '</em></time>'+eventTitle+'<p class="eventDesc ' + eventDescClass + '">' + event.description + '</p></li>');
 									i++;
 								}
 						}

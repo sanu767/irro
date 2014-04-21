@@ -1,5 +1,6 @@
 /*= CORE CSS */
-.hidden { display:none; }
+/* dont change this hidden name*/
+.hdden { display:none; }
 
 .eventCalendar-wrap { 
 	position:relative; 

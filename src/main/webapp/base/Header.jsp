@@ -1,1 +1,1 @@
-﻿<h1 style="font-size: 18px;font-family: 'Open Sans'; padding-top:50px;"><a style="font-size:18px;font-family: 'Open Sans';color:black;" href="<%=request.getContextPath() %>/welcomeIrro"  title="IRRO">ГАОУ ДПО Свердловской области «Институт развития образования»</a></h1>
+﻿<h1 style="font-size: 18px;font-family: 'Open Sans'; padding-top:35px;"><a style="font-size:18px;font-family: 'Open Sans';color:black;" href="<%=request.getContextPath() %>/welcomeIrro"  title="IRRO">ГАОУ ДПО Свердловской области «Институт развития образования»</a></h1>

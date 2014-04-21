@@ -32,6 +32,11 @@ public class UserGroupDAOImpl extends HibernateDaoSupport implements UserGroupDA
 		getHibernateTemplate().deleteAll(groupsToDelete);
 	}
 	
+	@Override
+	public void deleteGroup(IUserGroup groupsToDelete) {
+		getHibernateTemplate().delete(groupsToDelete);
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<IUserGroup> findAll() {
@@ -51,6 +56,16 @@ public class UserGroupDAOImpl extends HibernateDaoSupport implements UserGroupDA
 		return resultUserGroups;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public IUserGroup findByNameAndCode(String groupName) {
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append("select u from UserGroup u  where u.groupName = ? and u.groupCode = ?");
+		List<IUserGroup> result = getHibernateTemplate().find(queryBuilder.toString(),
+				new Object []  {groupName, groupName});
+		return CollectionUtils.isEmpty(result) ? null : result.get(0);
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<IUserGroup> findAll(List<Integer> groupIds) {

@@ -18,6 +18,7 @@ import com.saasforedu.irro.bean.ItemBean;
 import com.saasforedu.irro.enums.EventType;
 import com.saasforedu.irro.service.EventService;
 import com.saasforedu.irro.service.ItemService;
+import com.saasforedu.irro.service.impl.MenuService;
 import com.saasforedu.irro.util.IConstants;
 
 public class ItemSearchAction extends ActionSupport implements ServletRequestAware {
@@ -29,6 +30,8 @@ public class ItemSearchAction extends ActionSupport implements ServletRequestAwa
 	private EventService eventService;
 	
 	private INewsService newsService;
+
+	private MenuService menuService;
 
 	private ItemBean itemSearchBean;
 	
@@ -52,6 +55,14 @@ public class ItemSearchAction extends ActionSupport implements ServletRequestAwa
 
 	public void setItemService(ItemService itemService) {
 		this.itemService = itemService;
+	}
+
+	public MenuService getMenuService() {
+		return menuService;
+	}
+
+	public void setMenuService(MenuService menuService) {
+		this.menuService = menuService;
 	}
 	
 	public List<ItemBean> getNews() {

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>2.2.3</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>sfe</short-name>
+    <uri>/saas-edu-tags</uri>
+    <display-name>"Saas For Edu Tags"</display-name>
+    <description><![CDATA["Edu"]]></description>
+    <tag>
+        <name>tree</name>
+        <tag-class>com.saasforedu.irro.tags.TreeTag</tag-class>
+        <body-content>JSP</body-content>
+        <description><![CDATA[Render a Tree]]></description>
+        <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                <![CDATA[id for referencing element]]></description>
+        </attribute>
+        <attribute>
+            <name>menu</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ Bean Name]]></description>
+        </attribute>
+         <attribute>
+            <name>href</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ href]]></description>
+        </attribute>
+         <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ CSS]]></description>
+        </attribute>
+         <attribute>
+            <name>cssStyle</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ Style]]></description>
+        </attribute>
+        <attribute>
+            <name>rcchref</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ RightClick Creation URL]]></description>
+        </attribute>
+        <attribute>
+            <name>rcdhref</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ RightClick Deletion URL]]></description>
+        </attribute>
+        <attribute>
+            <name>rcuhref</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ RightClick Updation URL]]></description>
+        </attribute>
+        <attribute>
+            <name>cssSelection</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ CSS for Selected Node]]></description>
+        </attribute>
+        
+    </tag>
+    <tag>
+    <name>topmenu</name>
+        <tag-class>com.saasforedu.irro.tags.TopMenuTag</tag-class>
+        <body-content>JSP</body-content>
+        <description><![CDATA[Render a Top Menu]]></description>
+        <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>
+                <![CDATA[id for referencing element]]></description>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ Bean Name]]></description>
+        </attribute>
+         <attribute>
+            <name>href</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[ href]]></description>
+        </attribute>
+    </tag>
+</taglib>

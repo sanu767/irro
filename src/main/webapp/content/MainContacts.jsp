@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
 <head>
 <style type="text/css">
@@ -20,7 +21,7 @@ width: auto;
 }
 
 .pagination-table input{
-	width: 100%;
+	width: 95%;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -28,7 +29,7 @@ width: auto;
 
 }
 .pagination-table textarea{
-	width: 100%;
+	width: 95%;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -96,15 +97,15 @@ Let's talk<p><p><p>
 <p><p><p>
 <div>
 <s:form action="SendFeedBack" theme="xhtml" accept-charset="UTF-8" method="post" enctype="multipart/form-data" cssClass="pagination-table">
-		<s:textfield  name="feedBackBean.name"  required="true" placeholder="Enter Name" id="name" />
+		<sj:textfield  cssClass="form-control" name="feedBackBean.name"  required="true" placeholder="Enter Name" id="name" />
 			
-		<s:textfield name="feedBackBean.email"  required="true" placeholder="Enter Email" id="mail" />
+		<sj:textfield cssClass="form-control" name="feedBackBean.email"  required="true" placeholder="Enter Email" id="mail" />
 			
-		<s:textfield name="feedBackBean.subject" required="true" placeholder="Enter Subject" />
+		<sj:textfield cssClass="form-control" name="feedBackBean.subject" required="true" placeholder="Enter Subject" />
 			
-		<s:textarea name="feedBackBean.message" cssStyle="min-height: 130px;" placeholder="Enter Message"></s:textarea>
+		<s:textarea cssClass="form-control" name="feedBackBean.message" cssStyle="min-height: 130px;" placeholder="Enter Message"></s:textarea>
 
-		<s:submit cssClass="btn btn-primary"  button="Send" value="Send"  cssStyle="width:20%;" onclick="return validate();"/>
+		<s:submit cssClass="btn btn-primary"  button="Send" value="Send"  cssStyle="width:20%;" align="left" onclick="return validate();"/>
 		
 </s:form>
 </div>

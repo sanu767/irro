@@ -22,7 +22,7 @@ padding:0;
 #cssmenu li a {
 float:left;
 color:black;
-text-decoration:none;
+text-decoration:inherit;
 /*height:24px;*/
 padding:9px 15px 0;
 font-weight:normal;
@@ -30,9 +30,9 @@ font-weight:normal;
 
 #cssmenu li a:hover,
 #cssmenu .active {
-color:#fff;
-background:url(images/bg.png) repeat-x top left;
-text-decoration:none;
+/*color:#fff;*/
+/*background:url(images/bg.png) repeat-x top left;*/
+text-decoration: underline;
 }
 
 #cssmenu .active a {
@@ -45,7 +45,7 @@ background-color:rgb(255, 255, 255);
 }
 #cssmenu li a:hover, 
 #cssmenu li.active {
-background-color:#F46D00;
+/*background-color:#F46D00;*/
 }
 
 

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.saasforedu.irro.article.bean.ArticleBean;
 import com.saasforedu.irro.article.bean.AttachmentBean;
 import com.saasforedu.irro.article.bean.MenuAttachmentBean;
@@ -19,7 +18,7 @@ import com.saasforedu.irro.article.service.IArticleService;
 import com.saasforedu.irro.article.service.IMenuAttachmentService;
 import com.saasforedu.irro.util.IConstants;
 
-public class ArticleAction extends ActionSupport implements ServletRequestAware {
+public class ArticleAction extends MenuBaseAction implements ServletRequestAware {
 
 	private static final long serialVersionUID = 2950862007911909772L;
 	
@@ -40,9 +39,6 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	List<MenuAttachmentBean> menuImages = new ArrayList<MenuAttachmentBean>();
 	List<MenuAttachmentBean> menuVideos = new ArrayList<MenuAttachmentBean>();
 	List<MenuAttachmentBean> menuOtherDocs = new ArrayList<MenuAttachmentBean>();
-	
-	private String menuName;
-	private String parentMenuName;
 	
 	String type;
 	Long id;
@@ -68,31 +64,41 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 
 	public String loadArticles() {
-		this.beans = articleService.findArticles(menuName, parentMenuName);
-		loadAttachments(menuName, parentMenuName);
+		super.loadMenus();
+		this.beans = articleService.findArticles(menuId, parentMenuId);
+		loadAttachments(menuId, parentMenuId);
+		return SUCCESS;
+	}
+	
+	public String loadArticlesByName() {
+		setMenuParametersFromMenuName();
+		super.loadNonTreeMenus();
+		this.beans = articleService.findArticles(menuId, parentMenuId);
+		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
 
 	public String loadSelectedArticle() throws Exception {
+		super.loadMenus();
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		bean = articleService.findById(id);
 		getSession().setAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME, bean.getAttachmentBeans());
-		
-		loadAttachments(menuName, parentMenuName);
-		
+		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
 	
 	public String createArticle() throws Exception {
+		super.loadMenus();
 		//Create Article in DB
 		List<AttachmentBean> uploadedFilesInSession = getUploadedFilesInSession();
 		bean.setAttachmentBeans(uploadedFilesInSession);
-		Long articleId = articleService.createArticle(bean, menuName, parentMenuName);
+		Long articleId = articleService.createArticle(bean, menuId, parentMenuId);
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		return articleId > 0 ? SUCCESS : ERROR;
 	}
 	
 	public String saveArticle() throws Exception {
+		super.loadMenus();
 		List<AttachmentBean> uploadedFilesInSession = getUploadedFilesInSession();
 		bean.setAttachmentBeans(uploadedFilesInSession);
 		articleService.updateArticle(bean);
@@ -101,22 +107,24 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 	
 	public String deleteArticle()  throws Exception {
+		super.loadMenus();
 		bean = articleService.findById(id);
-		articleService.deleteArticle(bean, menuName, parentMenuName, getServerPath());
+		articleService.deleteArticle(bean, menuId, parentMenuId, getServerPath());
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		return SUCCESS;
 	}
 	
 	/** Methods for Creating articles **/	
 	public String doUploadArticleFile() throws Exception {
+		super.loadMenus();
 		//Upload in Server
-		if(!validateUploadFiles(fileName,menuName, parentMenuName, getServerPath() )) {
+		if(!validateUploadFiles(fileName, getServerPath() )) {
 			List<AttachmentBean> uploadedFiles = getUploadedFilesInSession();
 			bean.setAttachmentBeans(uploadedFiles);
 			return ERROR;
 		}
 		AttachmentBean uploadedArticleFile = 
-				articleService.doUploadArticleFile(fileName, contentType, menuName, parentMenuName, file, getServerPath());
+				articleService.doUploadArticleFile(fileName, contentType, menuId, parentMenuId, file, getServerPath());
 		List<AttachmentBean> uploadedFiles = getUploadedFilesInSession();
 		uploadedFiles.add(uploadedArticleFile);
 		bean.setAttachmentBeans(uploadedFiles);
@@ -124,6 +132,7 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 
 	public String activateAttachment() throws Exception {
+		super.loadMenus();
 		AttachmentBean selectedAttachment = getSelectedAttachmentBean(selectedFileAttachmentName);
 		selectedAttachment.setActive(true);
 		replaceAttachmentBean(selectedAttachment);
@@ -133,6 +142,7 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 	
 	public String deActivateAttachment() throws Exception  {
+		super.loadMenus();
 		AttachmentBean selectedAttachment = getSelectedAttachmentBean(selectedFileAttachmentName);
 		selectedAttachment.setActive(false);
 		replaceAttachmentBean(selectedAttachment);
@@ -142,8 +152,9 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 	}
 	
 	public String removeAttachment() throws Exception  {
+		super.loadMenus();
 		AttachmentBean selectedAttachment = getSelectedAttachmentBean(selectedFileAttachmentName);
-		articleService.removeAttachment(selectedAttachment, getServerPath(), menuName, parentMenuName);
+		articleService.removeAttachment(selectedAttachment, getServerPath(), menuId, parentMenuId);
 		removeAttachmentBean(selectedAttachment);
 		List<AttachmentBean> files = getUploadedFilesInSession();
 		bean.setAttachmentBeans(files);
@@ -184,7 +195,7 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 		return null;
 	}
 	
-	public boolean validateUploadFiles(String fileName, String menuName, String parentMenuName, String serverPath) {
+	public boolean validateUploadFiles(String fileName, String serverPath) {
 		if(StringUtils.isEmpty(fileName)) {
 			addActionError("Please choose file to upload");
 			return false;
@@ -193,10 +204,10 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 		return true;
 	}
 	
-	private void loadAttachments(String menuName, String parentMenuName) {
-		this.menuImages = menuAttachmentService.getImages(menuName, parentMenuName);
-		this.menuVideos = menuAttachmentService.getVideos(menuName, parentMenuName);
-		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuName, parentMenuName);
+	private void loadAttachments(Long menuId, Long parentMenuId) {
+		this.menuImages = menuAttachmentService.getImages(menuId, parentMenuId);
+		this.menuVideos = menuAttachmentService.getVideos(menuId, parentMenuId);
+		this.menuOtherDocs = menuAttachmentService.getOtherDocs(menuId, parentMenuId);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -243,24 +254,9 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 		this.beans = beans;
 	}
 
-	public String getMenuName() {
-		return menuName;
-	}
-
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
-
-	public String getParentMenuName() {
-		return parentMenuName;
-	}
-
-	public void setParentMenuName(String parentMenuName) {
-		this.parentMenuName = parentMenuName;
-	}
-
 	@Override
 	public String execute() throws Exception {
+		super.loadMenus();
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 		return SUCCESS;
 	}
@@ -310,5 +306,4 @@ public class ArticleAction extends ActionSupport implements ServletRequestAware 
 			IMenuAttachmentService menuAttachmentService) {
 		this.menuAttachmentService = menuAttachmentService;
 	}
-	
 }
