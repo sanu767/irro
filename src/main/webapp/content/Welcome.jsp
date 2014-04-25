@@ -7,30 +7,30 @@
 <style>
 a div.sliderTitle {
 	position:relative; 
-	left:61px;
-	top:80px; 
-	width: 319px;
-	font-size:36px;
+	left:41px;
+	top:20px; 
+	width: auto;
+	font-size:24px;
 	color : white;
 	z-index:1;
 }
 
 a div.sliderDate {
 	position:relative; 
-	left:61px;
-	top:100px; 
-	width: 319px;
-	font-size:24px;
+	left:41px;
+	top:40px; 
+	width: auto;
+	font-size:18px;
 	color : white;
 	z-index:1;
 }
 
 a div.sliderShortDescription {
 	position:relative; 
-	left:61px;
-	top:100px; 
-	width: 319px;
-	font-size:30px;
+	left:41px;
+	top:60px; 
+	width: auto;
+	font-size:20px;
 	color : white;
 	z-index:1;
 }
