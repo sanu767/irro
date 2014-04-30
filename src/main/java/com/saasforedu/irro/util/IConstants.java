@@ -16,7 +16,9 @@ public interface IConstants {
 	public static final String LOCAL_HOST = "127.0.0.1";
 	public static final String MAIL_SMTP_HOST = "mail.smtp.host";
 	public static final String MAIL_CONTENT_TYPE = "text/html";
-	public static final String FEEDBACK_TO_EMAIL = "feedback@irro.ru";
+	public static final String FEEDBACK_FROM_EMAIL = "feedback@irro.ru";
+	public static final String FEEDBACK_TO_EMAIL = "irro@irro.ru";
+	
 	
 	public static final boolean FALSE = Boolean.FALSE;
 	public static final String SLIDER = "/slider";

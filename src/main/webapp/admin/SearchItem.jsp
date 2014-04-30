@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head jquerytheme="lightness" jqueryui="true"/>
+	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <script src="content/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){	 
@@ -48,10 +48,10 @@ $(document).ready(function(){
 		<s:radio name="itemSearchBean.searchType" label=" Select Item  "  value="1"	list="#{'1':'News', '2':'Events', '3':'Others'}"
 			/>
 
-		<sj:datepicker displayFormat="mm/dd/yy" name="itemSearchBean.beforeSearchDate" label="Before "
+		<sj:datepicker displayFormat="dd/mm/yy" name="itemSearchBean.beforeSearchDate" label="Before "
 			changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker displayFormat="mm/dd/yy" name="itemSearchBean.afterSearchDate" label="After " 
+		<sj:datepicker displayFormat="dd/mm/yy" name="itemSearchBean.afterSearchDate" label="After " 
 			changeYear="true" changeMonth="true" showOn="focus" />
 				
 		<sj:submit style="float:right;height : 25px;margin: 5px 0px 0px 0px;" button="Search" value="Search"/>	

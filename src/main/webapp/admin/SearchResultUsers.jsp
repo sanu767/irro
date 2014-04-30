@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head jquerytheme="lightness" jqueryui="true"/>
+	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <style type="text/css">
 .deleteCheckBox{
   width : 10px;

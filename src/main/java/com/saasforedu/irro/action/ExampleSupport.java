@@ -3,7 +3,6 @@ package com.saasforedu.irro.action;
 import com.saasforedu.irro.article.action.Menu;
 import com.saasforedu.irro.bean.FeedBackBean;
 import com.saasforedu.irro.util.IrroUtils;
-import com.saasforedu.irro.util.Mail;
 
 
 public class ExampleSupport extends ItemSearchAction {
@@ -20,6 +19,12 @@ public class ExampleSupport extends ItemSearchAction {
 		topMenu = getMenuService().getMenuTree();
         return SUCCESS;
     }
+
+    public String search() {
+		loadSliderItems();
+		topMenu = getMenuService().getMenuTree();
+        return SUCCESS;
+	}
 	
 	public String login() {
         return "login";
@@ -41,8 +46,7 @@ public class ExampleSupport extends ItemSearchAction {
 	}
 	
 	public void sendFeedBack() throws Exception {
-		Mail mail = IrroUtils.getMail(feedBackBean);
-		IrroUtils.sendFeedbackMail(mail);
+		IrroUtils.sendFeedbackMail(feedBackBean);
 	}
 
 	public FeedBackBean getFeedBackBean() {

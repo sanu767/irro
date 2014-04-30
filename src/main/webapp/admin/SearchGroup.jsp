@@ -6,7 +6,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head jquerytheme="lightness" jqueryui="true"/>
+	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 	
 </head> 
 
@@ -19,9 +19,9 @@
 	
 	    <sj:textfield name="groupSearchBean.searchedName"  label="Group Name" maxlength="100" placeholder="Enter Group Name" />
 	    
-	    <sj:datepicker displayFormat="mm/dd/yy" name="groupSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
+	    <sj:datepicker displayFormat="dd/mm/yy" name="groupSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker displayFormat="mm/dd/yy" name="groupSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" language="English" />
+		<sj:datepicker displayFormat="dd/mm/yy" name="groupSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" language="English" />
 		
 		<sj:submit button="Search" style="float:right;height : 25px;margin: 5px 0px 0px 0px;" value="Search"/>
 		

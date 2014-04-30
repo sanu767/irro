@@ -26,6 +26,10 @@
 			method="welcome">
 			<result name="success" type="tiles">welcome</result>
 		</action>
+
+		<action name="eduSearch" class="com.saasforedu.irro.action.ExampleSupport"	method="search">
+			<result name="success" type="tiles">search</result>
+		</action>
 		
 		<!-- Slider/News/Events -->
 		
@@ -340,7 +344,7 @@
 		
 		<action name="SendFeedBack" class="com.saasforedu.irro.action.ExampleSupport" method="sendFeedBack">
 			<result name="input" type="tiles">articles</result>
-			<result name="success">/article/EmailSuccess.jsp</result>
+			<result name="success" type="tiles">emailSuccess</result>
 		</action>
 		
 		<!-- Main Contacts , Hotel, Online Resources -->

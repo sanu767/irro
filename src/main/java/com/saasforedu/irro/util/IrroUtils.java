@@ -10,10 +10,8 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -29,6 +27,7 @@ import com.saasforedu.irro.enums.PermissionType;
 import com.saasforedu.irro.model.IMenuMetadata;
 import com.saasforedu.irro.model.IUser;
 import com.saasforedu.irro.model.impl.MenuMetadata;
+import com.sun.mail.smtp.SMTPTransport;
 
 public class IrroUtils {
 	
@@ -45,15 +44,6 @@ public class IrroUtils {
 		return mail;
 	}
 	
-	public static Mail getMail(FeedBackBean feedBackBean) {
-		Mail mail = new Mail();
-		mail.setFrom(feedBackBean.getEmail());
-		mail.setTo(IConstants.FEEDBACK_TO_EMAIL);
-		mail.setSubject(feedBackBean.getSubject());
-		mail.setContent(getContent(feedBackBean).toString());
-		return mail;
-	}
-	
 	public static void sendMail(Mail mail) {
 		// Recipient's email ID needs to be mentioned.
 		String to = mail.getTo();
@@ -64,7 +54,7 @@ public class IrroUtils {
 		Properties properties = System.getProperties();
 		// Setup mail server
 		// Assuming you are sending email from localhost
-		properties.setProperty(IConstants.MAIL_SMTP_HOST, "127.0.0.1");
+		properties.setProperty(IConstants.MAIL_SMTP_HOST, IConstants.LOCAL_HOST);
 		// Get the default Session object.
 		Session session = Session.getDefaultInstance(properties);
 
@@ -87,60 +77,46 @@ public class IrroUtils {
 		}
 	}
 	
-	public static void sendFeedbackMail(Mail mail) {
-		
-		Authenticator authenticator = new Authenticator() {
-			private PasswordAuthentication authentication;
-		 
-			{
-				authentication = new PasswordAuthentication("feedback@irro.ru", "gh0dthr@");
-			}
-		 
-			public PasswordAuthentication getPasswordAuthentication() {
-				return authentication;
-			}
-		};
+	public static void sendFeedbackMail(FeedBackBean feedBackBean) {
 		
 		// Recipient's email ID needs to be mentioned.
-		String to = mail.getTo();
+		String to = IConstants.FEEDBACK_TO_EMAIL;
 
 		// Sender's email ID needs to be mentioned
-		String from = mail.getFrom();		
+		String from = IConstants.FEEDBACK_FROM_EMAIL;		
 		// Get system properties
 		Properties properties = System.getProperties();
+		
 		// Setup mail server
 		// Assuming you are sending email from localhost
-		properties.setProperty(IConstants.MAIL_SMTP_HOST, "smtp.yandex.ru");
-		// Get the default Session object.
+		properties.setProperty(IConstants.MAIL_SMTP_HOST, IConstants.LOCAL_HOST);
+		properties.put("mail.smtp.port", "25");
 		properties.put("mail.transport.protocol", "smtp");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.submitter", "feedback@irro.ru");
 		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.password", "gh0dthr@");
 		
-		Session session = Session.getDefaultInstance(properties, authenticator);
+		
+		Session session = Session.getDefaultInstance(properties);
 
 		try {
-			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
-			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
-			// Set To: header field of the header.
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			// Set Subject: header field
-			message.setSubject(mail.getSubject());
-			// Send the actual HTML message, as big as you like
-
-			message.setContent(mail.getContent(), IConstants.MAIL_CONTENT_TYPE );
-			
-			Transport transport = session.getTransport("smtp");
-		    transport.connect("smtp.yandex.ru", "feedback@irro.ru", "gh0dthr@");
+			message.setSubject(feedBackBean.getSubject());
+			message.setContent(getContent(feedBackBean).toString(), IConstants.MAIL_CONTENT_TYPE );
+			SMTPTransport transport = (SMTPTransport)session.getTransport("smtp");
+		    transport.connect("87.250.250.38", 25, "feedback@irro.ru",  "gh0dthr@");
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
 			// Send message
 		} catch (MessagingException mex) {
+			System.out.println(mex.getMessage());
 			mex.printStackTrace();
 		}
 	}
+	
 	
 	public static String[] getParamArray(List<String> params) {
 		String [] paramArray = new String [params.size()];
@@ -304,7 +280,13 @@ public class IrroUtils {
 		StringBuilder content = new StringBuilder("<h2>Hi Admin </h2>");
 		content.append("<br>");
 		content.append(feedBackBean.getName());
-		content.append("send a feedback request");
+		content.append("<br>");
+		content.append("<br>");
+		content.append("Email : ");
+		content.append(feedBackBean.getEmail());
+		content.append("<br>");
+		content.append("<br>");
+		content.append("Sent a feedback. Please see below.");
 		content.append("<br>");
 		content.append("<br>");
 		content.append(feedBackBean.getMessage());

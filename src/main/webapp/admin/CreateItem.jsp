@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<sj:head jquerytheme="lightness" jqueryui="true"/>
+	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <script src="../editor/ckeditor.js"></script>
 <script type="text/javascript">
 
@@ -113,9 +113,9 @@ if(path != null) {
 		</div>
 		
 		
-		<sj:datepicker displayFormat="mm/dd/yy" id="startDate" name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="dd/mm/yy" id="startDate" name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker displayFormat="mm/dd/yy" id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker displayFormat="dd/mm/yy" id="endDate" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 		
 		
 		<s:checkbox id="sliderSelected" name="bean.sliderSelected" label="Show in slider " />
