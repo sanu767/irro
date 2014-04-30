@@ -18,6 +18,11 @@
 		<put-attribute name="title"  value="Welcome"/>
 		<put-attribute name="body" value="/welcome/NewsEvents.jsp"/>
  	</definition>
+
+ 	<definition name="search" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/edusearch/edusearch.html"/>
+ 	</definition>
  	
  	<definition name="departments.event" extends="baseLayout">
 		<put-attribute name="title"  value="Welcome"/>
@@ -326,6 +331,11 @@
 	
 	<definition name="eventSuccess" extends="editableContentLayout">
 		<put-attribute name="content" value="/item/EventSuccess.jsp" />
+	</definition>
+	
+	<!-- Email Success -->
+	<definition name="emailSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/EmailSuccess.jsp" />
 	</definition>
 		
  </tiles-definitions>
