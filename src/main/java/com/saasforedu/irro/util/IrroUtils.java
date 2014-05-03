@@ -102,10 +102,14 @@ public class IrroUtils {
 
 		try {
 			MimeMessage message = new MimeMessage(session);
+			message.setHeader("Content-Type", IConstants.MAIL_CONTENT_TYPE);
+			String [] languageArray = new String [] {"ru", "en"};
+			message.setContentLanguage(languageArray);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject(feedBackBean.getSubject());
+			message.setSubject(feedBackBean.getSubject(), "UTF-8");
 			message.setContent(getContent(feedBackBean).toString(), IConstants.MAIL_CONTENT_TYPE );
+			
 			SMTPTransport transport = (SMTPTransport)session.getTransport("smtp");
 		    transport.connect("87.250.250.38", 25, "feedback@irro.ru",  "gh0dthr@");
             transport.sendMessage(message, message.getAllRecipients());
