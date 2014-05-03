@@ -6,8 +6,8 @@ a {
 }
 
 div div div ul li p {
-	margin: 5px;
-	padding: 3px;
+	margin: 0px;
+	padding: 0px;
 }
 
 div div div h6 {
