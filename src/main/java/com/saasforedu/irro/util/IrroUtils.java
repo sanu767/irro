@@ -77,7 +77,9 @@ public class IrroUtils {
 		}
 	}
 	
-	public static void sendFeedbackMail(FeedBackBean feedBackBean) {
+	public static boolean sendFeedbackMail(FeedBackBean feedBackBean)  {
+		
+		boolean emailSent = true;
 		
 		// Recipient's email ID needs to be mentioned.
 		String to = IConstants.FEEDBACK_TO_EMAIL;
@@ -109,16 +111,16 @@ public class IrroUtils {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject(feedBackBean.getSubject(), "UTF-8");
 			message.setContent(getContent(feedBackBean).toString(), IConstants.MAIL_CONTENT_TYPE );
-			
+
 			SMTPTransport transport = (SMTPTransport)session.getTransport("smtp");
-		    transport.connect("87.250.250.38", 25, "feedback@irro.ru",  "gh0dthr@");
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-			// Send message
+			transport.connect("87.250.250.38", 25, "feedback@irro.ru",  "gh0dthr@");
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
 		} catch (MessagingException mex) {
-			System.out.println(mex.getMessage());
 			mex.printStackTrace();
+			emailSent = false;
 		}
+		return emailSent;
 	}
 	
 	

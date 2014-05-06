@@ -16,7 +16,9 @@ import com.saasforedu.irro.article.bean.AttachmentBean;
 import com.saasforedu.irro.article.bean.MenuAttachmentBean;
 import com.saasforedu.irro.article.service.IArticleService;
 import com.saasforedu.irro.article.service.IMenuAttachmentService;
+import com.saasforedu.irro.bean.FeedBackBean;
 import com.saasforedu.irro.util.IConstants;
+import com.saasforedu.irro.util.IrroUtils;
 
 public class ArticleAction extends MenuBaseAction implements ServletRequestAware {
 
@@ -28,6 +30,9 @@ public class ArticleAction extends MenuBaseAction implements ServletRequestAware
 	private IMenuAttachmentService menuAttachmentService;
 	
 	private HttpServletRequest httpServletRequest;
+	
+	/** Feedback Bean **/
+	FeedBackBean feedBackBean;
 	
 	
 	/** Attributes For Articles **/
@@ -77,7 +82,17 @@ public class ArticleAction extends MenuBaseAction implements ServletRequestAware
 		loadAttachments(menuId, parentMenuId);
 		return SUCCESS;
 	}
-
+	
+	public String sendFeedBack() throws Exception {
+		setMenuParametersFromMenuName();
+		super.loadNonTreeMenus();
+		if(IrroUtils.sendFeedbackMail(feedBackBean)) {
+			return SUCCESS;
+		} else { 
+			return ERROR;
+		}
+	}
+	
 	public String loadSelectedArticle() throws Exception {
 		super.loadMenus();
 		getSession().removeAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
@@ -305,5 +320,13 @@ public class ArticleAction extends MenuBaseAction implements ServletRequestAware
 	public void setMenuAttachmentService(
 			IMenuAttachmentService menuAttachmentService) {
 		this.menuAttachmentService = menuAttachmentService;
+	}
+
+	public FeedBackBean getFeedBackBean() {
+		return feedBackBean;
+	}
+
+	public void setFeedBackBean(FeedBackBean feedBackBean) {
+		this.feedBackBean = feedBackBean;
 	}
 }

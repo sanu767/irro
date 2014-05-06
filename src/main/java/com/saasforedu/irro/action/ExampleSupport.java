@@ -1,15 +1,12 @@
 package com.saasforedu.irro.action;
 
 import com.saasforedu.irro.article.action.Menu;
-import com.saasforedu.irro.bean.FeedBackBean;
-import com.saasforedu.irro.util.IrroUtils;
 
 
 public class ExampleSupport extends ItemSearchAction {
 	
 	private static final long serialVersionUID = -4005814064030848367L;
 
-	FeedBackBean feedBackBean;
 	Menu topMenu;
 	
 	public String welcome() {
@@ -43,18 +40,6 @@ public class ExampleSupport extends ItemSearchAction {
 
 	public void setTopMenu(Menu topMenu) {
 		this.topMenu = topMenu;
-	}
-	
-	public void sendFeedBack() throws Exception {
-		IrroUtils.sendFeedbackMail(feedBackBean);
-	}
-
-	public FeedBackBean getFeedBackBean() {
-		return feedBackBean;
-	}
-
-	public void setFeedBackBean(FeedBackBean feedBackBean) {
-		this.feedBackBean = feedBackBean;
 	}
 	
 }
