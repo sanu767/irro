@@ -46,9 +46,9 @@ $(document).ready(function() {
 	    
 	    <sj:textfield name="userSearchBean.searchedName" label="User Name" maxlength="100" placeholder="Enter User Name" />
 	    
-	    <sj:datepicker displayFormat="dd/mm/yy" name="userSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
+	    <sj:datepicker displayFormat="dd.mm.yy" name="userSearchBean.beforeSearchDate" label="Before " changeYear="true" changeMonth="true" showOn="focus" />
 
-		<sj:datepicker displayFormat="dd/mm/yy" name="userSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" />
+		<sj:datepicker displayFormat="dd.mm.yy" name="userSearchBean.afterSearchDate" label="After " changeYear="true" changeMonth="true" showOn="focus" />
 		
 		<sj:submit style="float:right;margin: 5px 0px 0px 0px;height : 25px;" button="Search" value="Search"/>
 		

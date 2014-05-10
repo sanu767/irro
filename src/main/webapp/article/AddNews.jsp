@@ -125,9 +125,9 @@ if(path != null) {
 		
 		</div>
 		
-		<sj:datepicker id="startDate" displayFormat="dd/mm/yy" name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker id="startDate" displayFormat="dd.mm.yy" name="bean.startDate" label="Start date " changeYear="true" changeMonth="true" showOn="focus"/>
 
-		<sj:datepicker id="endDate" displayFormat="dd/mm/yy" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
+		<sj:datepicker id="endDate" displayFormat="dd.mm.yy" name="bean.endDate" label="Last date " changeYear="true" changeMonth="true" showOn="focus"/>
 		
 		<s:checkbox id="sliderSelected" name="bean.sliderSelected" label="Show in slider " />
 		
