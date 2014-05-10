@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+       
+ <tiles-definitions>
+ 	<definition name="baseLayout" template="/base/BaseLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="header" value="/base/Header.jsp"/>
+		<put-attribute name="search" value="/base/Search.jsp"/>
+		<put-attribute name="upperMenu" value="/base/UpperMenu.jsp"/>
+		<put-attribute name="mainMenu" value="/base/MainMenu.jsp"/>
+		<put-attribute name="slider" value="/welcome/Welcome.jsp"/>
+		<put-attribute name="footer" value="/base/Footer.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="welcome" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/welcome/NewsEvents.jsp"/>
+ 	</definition>
+
+ 	<definition name="search" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/edusearch/edusearch.html"/>
+ 	</definition>
+ 	
+ 	<definition name="departments.event" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/welcome/CreateEvent.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadSelectedEvent" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/item/Event.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadSelectedItem" extends="baseLayout">
+		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="body" value="/item/Item.jsp"/>
+ 	</definition>
+
+ 	<definition name="login" extends="baseLayout">
+		<put-attribute name="title"  value="Login"/>
+		<put-attribute name="topMenu" value="/login/LoginTopMenu.jsp"/>
+		<put-attribute name="body" value="/login/Login.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loginFailed" extends="baseLayout">
+		<put-attribute name="title"  value="Login Failed"/>
+		<put-attribute name="body" value="/login/LoginFail.jsp"/>
+ 	</definition>
+
+ 	<definition name="main" extends="baseLayout">
+		<put-attribute name="title"  value="Main"/>
+		<put-attribute name="topMenu" value="/main/LoginTopMenu.jsp"/>
+		<put-attribute name="body" value="/main/Main.jsp"/>
+ 	</definition>
+ 	
+ 	
+ 	<definition name="registration" extends="changeUser">
+		<put-attribute name="title"  value="Registration"/>
+		<put-attribute name="result" value="/registration/Register.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="registrationFailed" extends="baseLayout">
+		<put-attribute name="title"  value="Registration Failed"/>
+		<put-attribute name="body" value="/registration/RegisterFail.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="registrationSuccess" extends="baseLayout">
+ 		<put-attribute name="title"  value="Registration Successful"/>
+ 		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="forgotPassword" extends="baseLayout">
+ 		<put-attribute name="title"  value="Forgot Pssword"/>
+ 		<put-attribute name="body" value="/login/ForgotPassword.jsp"/>
+ 	</definition>
+ 	
+ 	<!--  Admin Actions -->
+ 	
+ 	<!--  Item -->
+ 	<definition name="adminLayout" template="/admin/AdminLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/EmptySubMenus.jsp"/>
+		<put-attribute name="result" value="/admin/EmptyResults.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="changeItem" extends="adminLayout">
+		<put-attribute name="title"  value="Change Item"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchItem.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchItemResults" extends="changeItem">
+		<put-attribute name="title"  value="Searched Items"/>
+		<put-attribute name="result" value="/admin/SearchResultItems.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="itemSuccess" extends="changeItem">
+		<put-attribute name="title"  value="Item Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateItem" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/CreateItem.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateEvent" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/CreateEvent.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateNews" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/CreateNews.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadModifyItem" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/ModifyItem.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadModifyNews" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/ModifyNews.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadModifyEvent" extends="changeItem">
+		<put-attribute name="title"  value="Create Items"/>
+		<put-attribute name="result" value="/admin/ModifyEvent.jsp"/>
+ 	</definition>
+ 	
+ 	
+ 	<!-- User -->
+ 	
+ 	<definition name="changeUser" extends="adminLayout">
+		<put-attribute name="title"  value="Change User"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchUser.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchUserResults" extends="changeUser">
+		<put-attribute name="title"  value="Searched Users"/>
+		<put-attribute name="result" value="/admin/SearchResultUsers.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadUser" extends="changeUser">
+		<put-attribute name="title"  value="Modify User"/>
+		<put-attribute name="result" value="/admin/ModifyUser.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="userSuccess" extends="changeUser">
+		<put-attribute name="title"  value="User Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- Permission -->
+
+ 	<definition name="changePermissions" extends="adminLayout">
+		<put-attribute name="title"  value="Change Permission"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchUserPermission.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchPermissionResults" extends="changePermissions">
+		<put-attribute name="title"  value="Searched Users"/>
+		<put-attribute name="result" value="/admin/SearchResultUserPermissions.jsp"/>
+ 	</definition>
+
+    <definition name="permissionSuccess" extends="changePermissions">
+		<put-attribute name="title"  value="Permission Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- Groups -->
+ 	
+ 	<definition name="changeGroup" extends="adminLayout">
+		<put-attribute name="title"  value="Change Group"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/SearchGroup.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="searchGroupResults" extends="changeGroup">
+		<put-attribute name="title"  value="Searched Groups"/>
+		<put-attribute name="result" value="/admin/SearchResultGroups.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateGroup" extends="changeGroup">
+		<put-attribute name="title"  value="Create Groups"/>
+		<put-attribute name="result" value="/admin/CreateGroup.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="groupSuccess" extends="changeGroup">
+		<put-attribute name="title"  value="Group Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	<!-- Menu Actions -->
+
+	<definition name="changeMenus" extends="adminLayout">
+		<put-attribute name="title"  value="Change Menus"/>
+		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="changeMenu" extends="adminLayout">
+		<put-attribute name="title"  value="Change Menu"/>
+		<put-attribute name="searchParameterSubMenus" value="/admin/MenuTree.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateChildrenMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Create Children Menu"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadCreateSiblingMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Create Children Sibling"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	<definition name="loadRenameMenu" extends="changeMenu">
+		<put-attribute name="title"  value="Rename Menu"/>
+		<put-attribute name="result" value="/admin/CreateMenu.jsp"/>
+ 	</definition>
+ 	
+ 	 <definition name="menuSuccess" extends="changeMenu">
+		<put-attribute name="title"  value="Menu Updated"/>
+		<put-attribute name="result" value="/admin/Success.jsp"/>
+ 	</definition>
+ 	
+ 	
+	<!-- Content actions -->
+	
+	<definition name="contentLayout" template="/content/ContentLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="header" value="/base/Header.jsp"/>
+		<put-attribute name="search" value="/content/Search.jsp"/>
+		<put-attribute name="upperMenu" value="/content/UpperMenu.jsp"/>
+		<put-attribute name="mainMenu" value="/content/MainMenu.jsp"/>
+		<put-attribute name="slider" value="/content/Welcome.jsp"/>
+		<put-attribute name="footer" value="/content/Footer.jsp"/>
+		<put-attribute name="tree" value="/content/LeftMenuTree.jsp"/>
+ 	</definition>
+	
+	<definition name="editableContentLayout" template="/content/EditableContentLayout.jsp">
+		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="header" value="/base/Header.jsp"/>
+		<put-attribute name="search" value="/content/Search.jsp"/>
+		<put-attribute name="upperMenu" value="/content/UpperMenu.jsp"/>
+		<put-attribute name="mainMenu" value="/content/MainMenu.jsp"/>
+		<put-attribute name="slider" value="/content/Welcome.jsp"/>
+		<put-attribute name="footer" value="/content/Footer.jsp"/>
+		<put-attribute name="tree" value="/content/LeftMenuTree.jsp"/>
+ 	</definition>
+ 	
+	<!-- Article -->
+	<definition name="articles" extends="contentLayout">
+		<put-attribute name="content" value="/article/Articles.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+	
+	<definition name="loadSelectedArticle" extends="contentLayout">
+		<put-attribute name="content" value="/article/Article.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+
+	<definition name="addArticle" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/AddArticle.jsp" />
+	</definition>
+
+	<definition name="editArticle" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/EditableArticle.jsp" />
+	</definition>
+
+	<definition name="articleSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/ArticleSuccess.jsp" />
+	</definition>
+
+	<!-- News -->
+	
+	<definition name="news" extends="contentLayout">
+		<put-attribute name="content" value="/article/News.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+	
+	<definition name="loadSelectedNews" extends="contentLayout">
+		<put-attribute name="content" value="/article/EachNews.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+
+	<definition name="addNews" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/AddNews.jsp" />
+	</definition>
+
+	<definition name="editNews" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/EditableNews.jsp" />
+	</definition>
+
+	<definition name="newsSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/NewsSuccess.jsp" />
+	</definition>
+	
+	<!-- Attachment Content -->
+	
+	<definition name="loadChangeAttachment" extends="editableContentLayout">
+		<put-attribute name="content" value="/attachmentcontent/EditableAttachmentContent.jsp"/>
+	</definition>
+
+	<definition name="attachmentContentSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/attachmentcontent/AttachmentContentSuccess.jsp"/>
+	</definition>
+		
+	<definition name="showMenuImages" extends="contentLayout">
+	    <put-attribute name="content" value="/attachmentcontent/ImageAttachmentContent.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+	
+	<definition name="showMenuVideos" extends="contentLayout">
+	    <put-attribute name="content" value="/attachmentcontent/VideoAttachmentContent.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+	
+	<definition name="showMenuOtherDocuments" extends="contentLayout">
+	    <put-attribute name="content" value="/attachmentcontent/OtherAttachmentContent.jsp"/>
+		<put-attribute name="attachmentContent" value="/attachmentcontent/AttachmentContent.jsp"/>
+	</definition>
+	
+	
+	<!-- Event -->
+	<definition name="loadCreateDepartmentEvent" extends="editableContentLayout">
+		<put-attribute name="content" value="/item/DepartmentEvent.jsp" />
+	</definition>
+	
+	<definition name="eventSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/item/EventSuccess.jsp" />
+	</definition>
+	
+	<!-- Email Success -->
+	<definition name="emailSentSuccess" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/EmailSuccess.jsp" />
+	</definition>
+	
+	<definition name="emailSentError" extends="editableContentLayout">
+		<put-attribute name="content" value="/article/EmailError.jsp" />
+	</definition>
+		
+ </tiles-definitions>
