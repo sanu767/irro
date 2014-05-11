@@ -3,11 +3,20 @@
 <style>
 a {
   color:rgb(6,85,117);
+  font-family : Calibri;
+}
+
+div div div ul li h6{
+	margin: 0px;
+	padding: 0px;
+	font-weight : bold;
+	font-size : 14px;
+	font-family : Calibri;
 }
 
 div div div ul li p {
-	margin: 0px;
-	padding: 0px;
+	padding: 10px 0px 0px 0px;
+	font-family : Calibri;
 }
 
 div div div h6 {
@@ -36,11 +45,13 @@ div div div h6 {
 	          			 <s:iterator value="#application['News']" id="eachNews">
 	          			 	<li>
 	          			 		<div style="font-size:14px;">
-					          	 	 <p>	
+					          	 	 <h6>	
 					          	 	 	<s:property value="#eachNews.title" />
-								      </p>
+								      </h6>
 					              
-					             <s:property value="#eachNews.description" /> 
+								 <p>
+									<s:property value="#eachNews.description" /> 
+								  </p>
 					             <a href='<s:url action="content/LoadSelectedNews">
 					             <s:param name="selectedItemId" value="#eachNews.id"></s:param></s:url>'>ПОДРОБНЕЕ >>></a>
 					            </div>
@@ -58,10 +69,13 @@ div div div h6 {
 						<s:iterator value="#application['Events']" id="eachEvent">
 		          		  <li>
 		          			 <div style="font-size:14px;">
-					              	<p>	
+					              	   <h6>	
 					          	 	 	<s:property value="#eachEvent.title" />
-								      </p>
+								      </h6>
+									  
+								  <p>
 					              <s:property value="#eachEvent.description" />
+								  </p>
 					              <a href='<s:url action="LoadSelectedEvent"><s:param name="selectedItemId" value="#eachEvent.id"></s:param></s:url>'>
 					              ПОДРОБНЕЕ >>>
 					              </a>
