@@ -38,7 +38,7 @@
     padding-bottom: 15px !important;
     padding-right: 6px !important;
     padding-top: 6px !important;
-    font-family: "Open Sans";     
+    font-family: "Open Sans";
     -webkit-box-sizing:content-box;
     -moz-box-sizing:content-box;
      box-sizing:content-box;
@@ -52,10 +52,10 @@ font-family: "Open Sans";
 }
 .nav2 li:hover, .nav2 li:focus {
     background: url("00396a.gif") repeat scroll 0px 99% ;
-background-color: rgb(88, 103, 168);
+    background-color: rgb(88, 103, 168);
 }
 
-
+.nav2 li:hover a{color:#fff;}
 
 .overlayer-menu {
     width: 998px;

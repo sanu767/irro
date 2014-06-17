@@ -6,6 +6,9 @@
 
 <html>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>
+	 	 <s:property value="title" />
+	</title>
 	<sj:head locale="ru" jquerytheme="lightness" jqueryui="true"/>
 <link rel="stylesheet" type="text/css" href="../themes/imagegallery/css/imagegallery.css" />
 <link rel="stylesheet" type="text/css" href="../themes/imagegallery/css/imagegallerycomponent.css" />

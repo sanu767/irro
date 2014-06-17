@@ -15,38 +15,38 @@
  	</definition>
  	
  	<definition name="welcome" extends="baseLayout">
-		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="title"  value="Институт Развития Образования"/>
 		<put-attribute name="body" value="/welcome/NewsEvents.jsp"/>
  	</definition>
 
  	<definition name="search" extends="baseLayout">
-		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="title"  value="Поиск"/>
 		<put-attribute name="body" value="/edusearch/edusearch.html"/>
  	</definition>
  	
  	<definition name="departments.event" extends="baseLayout">
-		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="title"  value="Создать событие подразделения"/>
 		<put-attribute name="body" value="/welcome/CreateEvent.jsp"/>
  	</definition>
  	
  	<definition name="loadSelectedEvent" extends="baseLayout">
-		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="title"  value="Cобытие"/>
 		<put-attribute name="body" value="/item/Event.jsp"/>
  	</definition>
  	
  	<definition name="loadSelectedItem" extends="baseLayout">
-		<put-attribute name="title"  value="Welcome"/>
+		<put-attribute name="title"  value="Cобытие"/>
 		<put-attribute name="body" value="/item/Item.jsp"/>
  	</definition>
 
  	<definition name="login" extends="baseLayout">
-		<put-attribute name="title"  value="Login"/>
+		<put-attribute name="title"  value="Вход"/>
 		<put-attribute name="topMenu" value="/login/LoginTopMenu.jsp"/>
 		<put-attribute name="body" value="/login/Login.jsp"/>
  	</definition>
  	
  	<definition name="loginFailed" extends="baseLayout">
-		<put-attribute name="title"  value="Login Failed"/>
+		<put-attribute name="title"  value="Ошибка входа"/>
 		<put-attribute name="body" value="/login/LoginFail.jsp"/>
  	</definition>
 
@@ -58,22 +58,22 @@
  	
  	
  	<definition name="registration" extends="changeUser">
-		<put-attribute name="title"  value="Registration"/>
+		<put-attribute name="title"  value="Регистрация"/>
 		<put-attribute name="result" value="/registration/Register.jsp"/>
  	</definition>
  	
  	<definition name="registrationFailed" extends="baseLayout">
-		<put-attribute name="title"  value="Registration Failed"/>
+		<put-attribute name="title"  value="Регистрация не удалась"/>
 		<put-attribute name="body" value="/registration/RegisterFail.jsp"/>
  	</definition>
  	
  	<definition name="registrationSuccess" extends="baseLayout">
- 		<put-attribute name="title"  value="Registration Successful"/>
+ 		<put-attribute name="title"  value="Регистрация успешно"/>
  		<put-attribute name="body" value="/registration/RegisterSuccess.jsp"/>
  	</definition>
  	
  	<definition name="forgotPassword" extends="baseLayout">
- 		<put-attribute name="title"  value="Forgot Pssword"/>
+ 		<put-attribute name="title"  value="Забыли пароль"/>
  		<put-attribute name="body" value="/login/ForgotPassword.jsp"/>
  	</definition>
  	
@@ -81,7 +81,7 @@
  	
  	<!--  Item -->
  	<definition name="adminLayout" template="/admin/AdminLayout.jsp">
-		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="title"  value="ГАОУ ДПО СО ИРО"/>
 		<put-attribute name="searchGroupMenus" value="/admin/GroupMenus.jsp"/>
 		<put-attribute name="searchParameterSubMenus" value="/admin/EmptySubMenus.jsp"/>
 		<put-attribute name="result" value="/admin/EmptyResults.jsp"/>
@@ -230,7 +230,7 @@
 	<!-- Content actions -->
 	
 	<definition name="contentLayout" template="/content/ContentLayout.jsp">
-		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="title"  value="ГАОУ ДПО СО ИРО"/>
 		<put-attribute name="header" value="/base/Header.jsp"/>
 		<put-attribute name="search" value="/content/Search.jsp"/>
 		<put-attribute name="upperMenu" value="/content/UpperMenu.jsp"/>
@@ -241,7 +241,7 @@
  	</definition>
 	
 	<definition name="editableContentLayout" template="/content/EditableContentLayout.jsp">
-		<put-attribute name="title"  value="Student Portal"/>
+		<put-attribute name="title"  value="ГАОУ ДПО СО ИРО"/>
 		<put-attribute name="header" value="/base/Header.jsp"/>
 		<put-attribute name="search" value="/content/Search.jsp"/>
 		<put-attribute name="upperMenu" value="/content/UpperMenu.jsp"/>
@@ -326,10 +326,12 @@
 	
 	<!-- Event -->
 	<definition name="loadCreateDepartmentEvent" extends="editableContentLayout">
+		<put-attribute name="title" value="Create Event" />
 		<put-attribute name="content" value="/item/DepartmentEvent.jsp" />
 	</definition>
 	
 	<definition name="eventSuccess" extends="editableContentLayout">
+		<put-attribute name="title" value="Event Edited Successfully" />
 		<put-attribute name="content" value="/item/EventSuccess.jsp" />
 	</definition>
 	

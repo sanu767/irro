@@ -6,7 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
-<title><tiles:insertAttribute name="title" ignore="true" /></title>
+<title>
+	<s:if test="%{title == null}">
+		<tiles:insertAttribute name="title" ignore="true" />	
+	 </s:if>
+	 <s:else>
+	 	 <s:property value="title" />
+	 </s:else>
+</title>
+
 <link href="../menucss/styles.css" rel="stylesheet" type="text/css"></link>
 <link href="../menucss/mainmenu.css" rel="stylesheet" type="text/css"></link>
 <link href="../mainLayout.css" rel="stylesheet" type="text/css"></link>

@@ -21,16 +21,27 @@ public class MenuBaseAction extends ActionSupport {
 	String parentMenuName;
 	
 	MenuType menuType;
+	
+	String title;
 
 	public void loadMenus() {
 		menu = menuService.getMenu(menuId, parentMenuId);
 		topMenu = menuService.getMenuTree();
 		menuType = MenuType.getType(menu.getMenuType());
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
+		title = menuMetadata.getLabel();
 	}
 	
 	public void loadNonTreeMenus() {
 		menu = menuService.getNonTreeMenu(menuId, parentMenuId);
 		topMenu = menuService.getMenuTree();
+		IMenuMetadata menuMetadata = getMenuMetadata(menuId, parentMenuId);
+		title = menuMetadata.getLabel();
+	}
+	
+	private IMenuMetadata getMenuMetadata(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuService.getMenuMetadata(menuId, parentMenuId);
+		return menuMetadata;
 	}
 
 	public void loadTopMenu() {
@@ -111,5 +122,13 @@ public class MenuBaseAction extends ActionSupport {
 
 	public void setMenuType(MenuType menuType) {
 		this.menuType = menuType;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }

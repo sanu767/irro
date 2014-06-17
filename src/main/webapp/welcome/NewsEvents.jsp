@@ -8,14 +8,19 @@ a {
 
 div div div ul li h6{
 	margin: 0px;
-	padding: 0px;
+	padding-top: 15px;
 	font-weight : bold;
 	font-size : 14px;
 	font-family : Calibri;
 }
 
 div div div ul li p {
-	padding: 10px 0px 0px 0px;
+	padding: 30px 0px 0px 0px;
+	font-family : Calibri;
+}
+
+.newsEventAnchor {
+	margin-top : 50px;
 	font-family : Calibri;
 }
 
@@ -52,8 +57,11 @@ div div div h6 {
 								 <p>
 									<s:property value="#eachNews.description" /> 
 								  </p>
+								  <div class="newsEventAnchor">
 					             <a href='<s:url action="content/LoadSelectedNews">
-					             <s:param name="selectedItemId" value="#eachNews.id"></s:param></s:url>'>ПОДРОБНЕЕ >>></a>
+					             <s:param name="selectedItemId" value="#eachNews.id"></s:param></s:url>'>ПОДРОБНЕЕ >>>
+								 </a>
+								 <div>
 					            </div>
 		         			</li>
 				         </s:iterator>
@@ -76,9 +84,11 @@ div div div h6 {
 								  <p>
 					              <s:property value="#eachEvent.description" />
 								  </p>
+								  <div class="newsEventAnchor">
 					              <a href='<s:url action="LoadSelectedEvent"><s:param name="selectedItemId" value="#eachEvent.id"></s:param></s:url>'>
 					              ПОДРОБНЕЕ >>>
 					              </a>
+								  </div>
 		         			   </div>	
 		         			</li>
 		         		</s:iterator>
@@ -87,7 +97,7 @@ div div div h6 {
 			</div>
 	</div>
 	<div class="irro-wl-context-div irro-wl-context-lastdiv">
-		<p class="irro-wl-context-header"> календарь</p><div class="underline"></div>
+		<p class="irro-wl-context-header"> Kалендарь</p><div class="underline"></div>
 				<div id="eventCalendarNoCache" class="width:300px"></div>
 				<script>
 					$(document).ready(function() {

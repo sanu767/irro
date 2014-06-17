@@ -71,6 +71,10 @@ public class MenuService {
 		return menuMetadataService.getMainNewsMenuparameters();
 	}
 	
+	public IMenuMetadata getMenuMetadata(Long menuId, Long parentMenuId) {
+		IMenuMetadata menuMetadata = menuMetadataService.getMenuMetadata(menuId, parentMenuId);
+		return menuMetadata;
+	}
 	
 	private List<Menu> buildMenu(Menu root, IMenuMetadata menuTree) {
 		List<MenuMetadata> childrenMenuMeta = menuTree.getChildren();
