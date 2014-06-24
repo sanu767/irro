@@ -29,7 +29,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
      		<s:param name="selectedItemId" value="%{bean.id}"></s:param>
      		<s:param name="menuId" value="%{menuId}"></s:param>
 			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-			</s:url>'>Edit</a>
+			</s:url>'>Редактировать</a>
 <%}%>
 			
 <h4 style="font-weight:bold;font-size: 18px;font-family: 'Open Sans';color : rgb(88, 103, 168);">

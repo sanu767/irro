@@ -115,7 +115,7 @@ if(path != null) {
 	
 	
 	<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
-			required="true" placeholder="Enter title" />
+			required="true" placeholder="Введите заголовок" />
 
 
 		<sj:textarea id="description" name="bean.description" label="Short Description "
@@ -135,6 +135,7 @@ if(path != null) {
 		
 		<s:checkbox id="bean.showInHomePage" name="bean.showInHomePage" label="Show in Home Page " />
 		
+		<s:if test="%{bean.attachmentBeans.size() > 0}">
 		<table class="pagination-table">
 		     <thead>
 		         <tr>
@@ -167,6 +168,7 @@ if(path != null) {
 				</s:iterator>
 		</tbody>
 		</table>
+		</s:if>
 		
 		<s:hidden id="selectedFileAttachmentName" name="selectedFileAttachmentName" />
 		

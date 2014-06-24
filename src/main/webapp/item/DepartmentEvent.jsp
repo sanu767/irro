@@ -99,7 +99,7 @@ if(path != null) {
 }
 %>
 <div style="margin : 5px 0px 0px 10px" class="pagination-table">
-	<h1 style="font-size: 18px;font-family: 'Open Sans';">Create Event From Department</h1>
+	<h1 style="font-size: 18px;font-family: 'Open Sans';">Создать событие подразделения</h1>
 
 	<s:if test="hasActionErrors()">
 			<div class="errorDiv">
@@ -115,7 +115,7 @@ if(path != null) {
 	
 	
 	<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
-			required="true" placeholder="Enter title" />
+			required="true" placeholder="Введите заголовок" />
 
 
 		<sj:textarea id="description" name="bean.description" label="Short Description "

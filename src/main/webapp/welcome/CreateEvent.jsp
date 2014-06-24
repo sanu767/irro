@@ -102,7 +102,7 @@ if(path != null) {
 	
 	
 	<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
-			required="true" placeholder="Enter title" />
+			required="true" placeholder="Введите заголовок" />
 
 
 		<sj:textarea id="description" name="bean.description" label="Short Description "

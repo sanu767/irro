@@ -96,7 +96,7 @@ if(path != null) {
 	<s:hidden name="bean.content" value="%{bean.content}"/>
 	
 	<sj:textfield id="title" name="bean.title" label="Title " maxlength="100"
-			required="true" placeholder="Enter title" />
+			required="true" placeholder="Введите заголовок" />
 
 	<sj:textarea id="description" name="bean.description" label="Short Description "
 		rows="2" cols="25" placeholder="Write here..." />

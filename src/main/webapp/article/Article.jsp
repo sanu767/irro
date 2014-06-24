@@ -19,7 +19,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 		     		<s:param name="id" value="%{bean.id}"></s:param>
 		     		<s:param name="menuId" value="%{menuId}"></s:param>
 					<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-					</s:url>'>Edit</a>
+					</s:url>'>Редактировать статью</a>
 		<a id="deletetp" href='<s:url action="DeleteArticle">
 		     		<s:param name="id" value="%{bean.id}"></s:param>
 		     		<s:param name="menuId" value="%{menuId}"></s:param>

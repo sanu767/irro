@@ -17,7 +17,7 @@
 
 .attachmentTable {
 background: none;
-width : 300px;
+width : 500px;
 background-color:rgb(198,217,241);
 
 }
@@ -42,7 +42,7 @@ float : left;
 		
 			  <tr style="padding-bottom:10px">
 			    <th style="font-weight:bold;font-size:14px">Select</th>
-			    <th style="font-weight:bold;font-size:14px">Name</th>
+			    <th style="font-weight:bold;font-size:14px">Имя</th>
 			    <th style="font-weight:bold;font-size:14px">Is Active</th>
 			  </tr>
 			  	 <s:if test="%{menuImages.size() > 0}">
@@ -88,9 +88,9 @@ float : left;
 				  </s:if>
 		  
 		  
-		<input type="submit" value="Activate" onclick="form.action='ActivateMenuAttachments';">
-		<input type="submit" value="DeActivate" onclick="form.action='DeActivateMenuAttachments';">
-		<input type="submit" button="Delete" value="Delete" />
+		<input type="submit" value="активировать" onclick="form.action='ActivateMenuAttachments';">
+		<input type="submit" value="Деактивировать" onclick="form.action='DeActivateMenuAttachments';">
+		<input type="submit" button="Delete" value="Удалить" />
 		
 	</s:form>
 	</div>
@@ -138,7 +138,7 @@ float : left;
         </tr>
 
 	    <tr>
-    <td colspan="3"><div align="right"><input type="submit" id="UploadAttachments_0" value="Upload File" onclick="setBeanValue()"/>
+    <td colspan="3"><div align="right"><input type="submit" id="UploadAttachments_0" value="Загрузить файл" onclick="setBeanValue()"/>
 </div></td>
 </tr>
 	</table>

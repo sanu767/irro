@@ -14,6 +14,6 @@
 				</s:url>'><span>Гостиница</span></a></li>
 				
    <li><a href='<s:url action="content/LoadArticlesByName">
-					<s:param name="menuName">MainContacts</s:param>
+					<s:param name="menuName">Contacts</s:param>
 				</s:url>'><span>Контакты</span></a></li> 
 </ul>

@@ -82,7 +82,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 	<a id="edittp" href='<s:url action="LoadChangeAttachment">
      		<s:param name="menuId" value="%{menuId}"></s:param>
 			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-			</s:url>'>Edit</a>
+			</s:url>'>Редактировать</a>
 <%}%>
 
 
@@ -92,7 +92,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 <a id="imagetp" href='<s:url action="ShowImages">
      		<s:param name="menuId" value="%{menuId}"></s:param>
 			<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-			</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Images</a>
+			</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Изображения</a>
 			
 			<div class="underline"></div>
 			
@@ -129,7 +129,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 <a id="videotp" href='<s:url action="ShowVideos">
    	<s:param name="menuId" value="%{menuId}"></s:param>
 	<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-	</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Videos</a>
+	</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Видео</a>
 	<div class="underline"></div>
 
 	<s:if test="%{menuVideos.size() > 0}">
@@ -156,7 +156,7 @@ if(CollectionUtils.isNotEmpty(permissions) &&
 <a id="documenttp" href='<s:url action="ShowDocuments">
    	<s:param name="menuId" value="%{menuId}"></s:param>
 	<s:param name="parentMenuId" value="%{parentMenuId}"></s:param>
-	</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Documents</a>
+	</s:url>' style="font-weight : bold ; font-color : black; font-size : 20px">Документы</a>
 	<div class="underline"></div></li>
 	<s:if test="%{menuOtherDocs.size() > 0}">
 		<s:iterator value="menuOtherDocs">
