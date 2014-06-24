@@ -1,5 +1,10 @@
 package com.saasforedu.irro.util;
 
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -10,6 +15,7 @@ import java.util.MissingResourceException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -17,6 +23,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.saasforedu.irro.article.action.Menu;
@@ -233,6 +240,46 @@ public class IrroUtils {
 			return replace.toString();
 		}
 		return name;
+	}
+	
+	/**
+	 * Resizes images with newWidth and newHeight but maintains aspect ratio
+	 * @param file
+	 * @param newWidth
+	 * @param newHeight
+	 * @return
+	 */
+	public static File scaleImage(File file, int newWidth, int newHeight) {
+		try {
+			BufferedImage image = ImageIO.read(file);
+			int imageHeight = image.getHeight();
+			int imageWidth = image.getWidth();
+			if(imageHeight > newWidth || imageWidth > newHeight) {
+				File destFile = new File(file.getAbsolutePath());
+				double thumbRatio = (double) newWidth / (double) newHeight;
+				double aspectRatio = (double) imageWidth / (double) imageHeight;
+				if (thumbRatio < aspectRatio) {
+					newHeight = (int) (newWidth / aspectRatio);
+				} else {
+					newWidth = (int) (newHeight * aspectRatio);
+				}
+
+				// Draw the scaled image
+				BufferedImage newImage = new BufferedImage(newWidth, newHeight,
+						image.getType());
+				Graphics2D graphics2D = newImage.createGraphics();
+				graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+						RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+				graphics2D.drawImage(image, 0, 0, newWidth, newHeight, null);
+				
+				ImageIO.write(newImage, FilenameUtils.getExtension(file.getName()), destFile);
+				return destFile;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return file;
 	}
 	
 	private static List<Menu> buildMenu(Menu root, IMenuMetadata menuTree) {
