@@ -66,6 +66,7 @@
         </welcome-file-list>
 
         <!-- Roles and authentication using tomcat inbuilt Realms -->
+        <!-- 
         <security-constraint>
                 <display-name>Admin access support</display-name>
                 <web-resource-collection>
@@ -84,11 +85,21 @@
         <login-config>
                 <auth-method>BASIC</auth-method>
                 <realm-name>default</realm-name>
-        </login-config>
+        </login-config> 
 
+		<login-config>
+			<auth-method>FORM</auth-method>
+			<realm-name>Example Form-Based Authentication Area</realm-name>
+			<form-login-config>
+				<form-login-page>/login/Login.jsp</form-login-page>
+				<form-error-page>/login/LoginFail.jsp</form-error-page>
+			</form-login-config>
+		</login-config>
+  
         <security-role>
                 <role-name>irroadmin</role-name>
         </security-role>
+        -->
         <!-- End of Roles and authentication -->
    
 </web-app>
