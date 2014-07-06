@@ -235,6 +235,18 @@ public class ArticleAction extends MenuBaseAction implements ServletRequestAware
 		return (List<AttachmentBean>)session.getAttribute(IConstants.UPLOADED_ARTICLE_FILES_SESSION_ATTRIBUTE_NAME);
 	}
 	
+	/**
+	 * method is used to activate/deactivate article as per the input provided
+	 * in attribute ArtcileBean.isActive.
+	 */
+	public String activateArticle() {
+		boolean active = this.bean.isActive();
+		ArticleBean articleBean = articleService.findById(getId());
+		articleBean.setActive(active);
+		articleService.updateArticle(articleBean);
+		return SUCCESS;
+	}
+	
 	private HttpSession getSession() {
 		HttpSession session = httpServletRequest.getSession();
 		return session;

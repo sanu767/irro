@@ -10,6 +10,7 @@ public class ArticleBean {
 	String description;
 	String content;
 	Long referenceArticleId;
+	boolean active;
 	
 	List<AttachmentBean> attachmentBeans = new ArrayList<AttachmentBean>();
 	
@@ -60,4 +61,13 @@ public class ArticleBean {
 	public void setReferenceArticleId(Long referenceArticleId) {
 		this.referenceArticleId = referenceArticleId;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 }

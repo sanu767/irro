@@ -33,12 +33,13 @@
 		
 		<!-- Slider/News/Events -->
 		
-		<action name="adminLogin" class="com.saasforedu.irro.action.AdminLogin">
+		<!-- <action name="adminLogin" class="com.saasforedu.irro.action.AdminLogin">
 			<result name="success" type="tiles">changeMenus</result>
-		</action>
-
+		</action> -->
+	
 		<action name="administrator">
-			<result>/AdminLogin.jsp</result>
+			<result>/login/Login.jsp</result>
+			<!-- <result>/AdminLogin.jsp</result> -->
 		</action>
 		
 		<action name="CreateEvent" class="com.saasforedu.irro.action.EventAction" method="createItem">

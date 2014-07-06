@@ -42,6 +42,9 @@ public class Article implements IArticle {
 	@Column(name = "MODIFICATION_DATE")
 	private Date modificationDate;
 	
+	@Column(name = "IS_ACTIVE")
+	private boolean active = true;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=ArticleAttachment.class, mappedBy="article")
 	List<IArticleAttachment> articleAttachments;
 
@@ -100,6 +103,14 @@ public class Article implements IArticle {
 		this.modificationDate = modificationDate;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public List<IArticleAttachment> getArticleAttachments() {
 		return articleAttachments;
 	}
@@ -117,6 +128,7 @@ public class Article implements IArticle {
 				+ ((articleAttachments == null) ? 0 : articleAttachments
 						.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (active ? 1231 : 1237);
 		result = prime * result
 				+ ((mainContent == null) ? 0 : mainContent.hashCode());
 		result = prime
@@ -151,6 +163,8 @@ public class Article implements IArticle {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (active != other.active)
 			return false;
 		if (mainContent == null) {
 			if (other.mainContent != null)
