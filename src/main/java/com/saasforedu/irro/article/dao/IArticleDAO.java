@@ -10,5 +10,6 @@ import com.saasforedu.irro.model.IArticleAttachment;
 public interface IArticleDAO extends IBaseDAO<Article>{
 	public void deleteArticle(IArticle article);
 	public List<IArticle> findByRefereceArticleId(Long referenceArticleId);
+	/** update Article **/
 	public void update(IArticle article, List<IArticleAttachment> removedAttachments);
 }
